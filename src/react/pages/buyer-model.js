@@ -49,6 +49,29 @@ export const keepList = (ctx, path) => addQuery(path, 'return', listReturn(ctx))
 export const detailPath = (ctx, fabric) => keepList(ctx, fabricRoute(fabric.id));
 export const pickupPath = (ctx, fabric) => keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}`);
 export const listPath = (ctx, fabric) => listReturn(ctx) || `/buyer/fabrics?sale_type=${fabric.sale_type}`;
+export const FILTER_NAMES = ['material', 'thickness', 'color'];
+export function filterResultPath(query) {
+  const applied = new URLSearchParams({ sale_type: query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP' });
+  for (const name of FILTER_NAMES) if (query.get(name)) applied.set(name, query.get(name));
+  applied.set('view', 'search');
+  return `/buyer/fabrics?${applied}`;
+}
+// Cancellation restores the applied route, never the unsaved select values.
+export const filterCancelPath = ctx => internalReturn(ctx.query.get('return'), 'list') || filterResultPath(ctx.query);
+export const filterEditPath = ctx => {
+  const query = new URLSearchParams({ sale_type: ctx.query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP' });
+  for (const name of FILTER_NAMES) if (ctx.query.get(name)) query.set(name, ctx.query.get(name));
+  return addQuery(`/buyer/filters?${query}`, 'return', listReturn(ctx));
+};
+export const filterSummary = query => [query.get('sale_type') === 'ROLL' ? '롤' : '자투리', ...FILTER_NAMES.map((name, i) => query.get(name) || ['전체 소재', '전체 두께', '전체 색상'][i])];
+export function currentPickupStore(state, fabric) {
+  if (!fabric || !state.store) return null;
+  // The demo has one managed store. Do not attach its address to another seller's fabric.
+  const matches = fabric.store_id ? fabric.store_id === state.store.id : fabric.seller_id && fabric.seller_id === state.seller?.id;
+  return matches ? state.store : null;
+}
+export const storeAddress = store => [store?.address, store?.detail_address].filter(Boolean).join(' ');
+export const reservationPrimaryAction = item => ({ path: reservationPath(item), label: item.status === 'ACCEPTED' ? '픽업 정보 보기' : '상세 보기' });
 export function availability(ctx, fabric) {
   const active = ctx.state.reservations.filter(item => item.fabric_id === fabric.id && ['REQUESTED', 'ACCEPTED'].includes(item.status));
   const own = active.find(item => item.buyer_id === ctx.state.buyer.id);

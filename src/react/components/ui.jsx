@@ -23,12 +23,13 @@ export function EmptyState({ title, description = '', children }) {
   return <section className="empty-state"><h2>{title}</h2><p>{description}</p>{children && <div className="actions">{children}</div>}</section>;
 }
 
-export function FabricImage({ fabric, className = '' }) {
-  const texture = ['linen', 'gingham', 'canvas', 'denim'].includes(fabric.texture) ? fabric.texture : 'canvas';
+export function FabricImage({ fabric, className = '', exampleLabel = true }) {
+  const texture = /블루.*스트라이프|스트라이프.*블루/.test(`${fabric.title} ${fabric.color || ''}`) ? 'stripe'
+    : ['linen', 'gingham', 'canvas', 'denim', 'stripe'].includes(fabric.texture) ? fabric.texture : 'canvas';
   if (fabric.image_url && /^(https?:|blob:|\/)/.test(fabric.image_url)) {
     return <img className={`fabric-art ${className}`} src={fabric.image_url} alt={fabric.title} />;
   }
-  return <div className={`fabric-art fabric-art--${texture} ${className}`} role="img" aria-label={`${fabric.title} 질감 예시`}><span aria-hidden="true" /></div>;
+  return <div className={`fabric-art fabric-art--${texture} ${className}`} role="img" aria-label={`${fabric.title} 질감 예시`}><span aria-hidden="true" />{exampleLabel && <em className="fabric-example-label" aria-hidden="true">질감 예시</em>}</div>;
 }
 
 export function Field({ label, name, type = 'text', required = false, readOnly = false, hint = '', id = `field-${name}`, ...props }) {

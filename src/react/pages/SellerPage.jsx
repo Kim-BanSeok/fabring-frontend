@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { SellerScreen, UploadState } from './seller/SellerViews.jsx';
 import { SellerRuntime } from './seller/SellerRuntime.js';
 import { draftFor, formDraft, unfinishedDraft, validateSellerDraft, canRegister } from './seller/sellerModel.js';
+import { inquiryDraftKey, submitInquiryDraft } from './seller/sellerUx.js';
 
 const PHOTO_ORDER = ['FULL', 'ZOOM', 'DEFECT'];
 const fabricRoute = fabric => `/seller/fabrics/detail?id=${encodeURIComponent(fabric.id)}`;
@@ -135,7 +136,10 @@ export default function SellerPage({ ctx }) {
     if (!form.reportValidity()) return;
     const content = String(new FormData(form).get('answer') || '').trim();
     if (!content || content.length > 1000) { setError('답변을 1~1,000자로 입력해 주세요.'); return; }
-    run(async () => { await ctx.api.answerInquiry(form.dataset.inquiryId, content); ctx.navigate(`/seller/inquiries/answered?id=${encodeURIComponent(form.dataset.inquiryId)}`); });
+    run(async () => {
+      await submitInquiryDraft(ctx.api, ctx.drafts, form.dataset.inquiryId, content);
+      ctx.navigate(`/seller/inquiries/answered?id=${encodeURIComponent(form.dataset.inquiryId)}`);
+    });
   }
 
   function reservationSubmit(event) {
@@ -170,8 +174,20 @@ export default function SellerPage({ ctx }) {
     });
     if (name === 'review-photos') return run(async () => {
       const draft = formDraft(fabricForm.current, draftFor(snapshotContext()));
+      ctx.drafts.set(`seller:photo-return:${draft.sale_type}`, window.scrollY);
       await ctx.api.saveDraft(draft); ctx.navigate(`/seller/register/photos?type=${draft.sale_type}`);
     });
+    if (name === 'photos-to-review') return run(async () => {
+      const draft = draftFor(snapshotContext()), message = validateSellerDraft(draft);
+      if (message) { ctx.navigate(`/seller/register/error?type=${draft.sale_type}`); return; }
+      await ctx.api.saveDraft(draft); ctx.navigate('/seller/register/review');
+    });
+    if (name === 'photos-back') {
+      const type = draftFor(snapshotContext()).sale_type;
+      const scrollY = ctx.drafts.get(`seller:photo-return:${type}`);
+      ctx.navigate(`/seller/register/manual?type=${type}${Number.isFinite(scrollY) ? '' : '&focus=photos'}`, Number.isFinite(scrollY) ? { scrollY, focusTarget: 'seller-photo-review' } : {});
+      return;
+    }
     if (name === 'remove-photo') return run(async () => {
       const draft = formDraft(fabricForm.current, draftFor(snapshotContext()));
       draft.photo_slots = { ...draft.photo_slots }; delete draft.photo_slots[props['data-slot']];
@@ -239,9 +255,24 @@ export default function SellerPage({ ctx }) {
     return () => { if (element?.open) element.close(); };
   }, [dialog]);
 
+  const focusPhotos = ctx.path === '/seller/register/manual' && ctx.query.get('focus') === 'photos';
+  useEffect(() => {
+    if (!focusPhotos) return;
+    const frame = requestAnimationFrame(() => {
+      const section = fabricForm.current?.querySelector('[data-seller-photos]');
+      section?.focus({ preventScroll: true });
+      section?.scrollIntoView({ block: 'start' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [focusPhotos]);
+
   const runtime = {
     error, busy, fabricForm, aiForm, dialogRef, dialog,
     fabricSubmit, storeSubmit, profileSubmit, aiSubmit, inquirySubmit, reservationSubmit, photoChange,
+    rememberInquiry: event => {
+      const form = event.currentTarget;
+      ctx.drafts.set(inquiryDraftKey(form.dataset.inquiryId), String(new FormData(form).get('answer') || ''));
+    },
     rememberInput: () => remember(), action,
     discardEdit: () => { if (fabricForm.current?.dataset.editId) ctx.drafts.delete(draftKey(fabricForm.current)); },
     logout: () => ctx.logout('SELLER'),
@@ -256,5 +287,13 @@ export default function SellerPage({ ctx }) {
       });
     },
   };
-  return <SellerRuntime.Provider value={runtime}>{creating ? <UploadState ctx={{ ...ctx, state: { ...ctx.state, upload: { stage: 'CREATING' } } }} /> : <SellerScreen ctx={{ ...ctx, runtime }} />}</SellerRuntime.Provider>;
+  const navigateView = (path, options = {}) => {
+    const [destination, search = ''] = path.split('?');
+    if (options.preserveScroll && ['/seller/dashboard', '/seller/calendar'].includes(destination)) {
+      const focusTarget = new URLSearchParams(search).has('date') ? 'seller-calendar-date' : 'seller-calendar-first';
+      return ctx.navigate(path, { ...options, focusTarget });
+    }
+    return ctx.navigate(path, options);
+  };
+  return <SellerRuntime.Provider value={runtime}>{creating ? <UploadState ctx={{ ...ctx, state: { ...ctx.state, upload: { stage: 'CREATING' } } }} /> : <SellerScreen ctx={{ ...ctx, runtime, navigate: navigateView }} />}</SellerRuntime.Provider>;
 }

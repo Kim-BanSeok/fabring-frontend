@@ -2,10 +2,16 @@ import { createMockApi } from '../../prototype/services/mock-api.js';
 import { createScenarioApi } from '../../prototype/data/scenarios.js';
 
 export const HOME = { BUYER: '/buyer/home', SELLER: '/seller/dashboard', ADMIN: '/admin/dashboard' };
+// Navigation accepts named destinations, never a selector supplied through a URL.
+export const NAVIGATION_FOCUS_TARGETS = Object.freeze({
+  'seller-calendar-date': '.seller-calendar-day[aria-current="date"]',
+  'seller-calendar-first': '.seller-calendar-day',
+  'seller-photo-review': '[data-seller-action="review-photos"]',
+});
 
 export function parseRoute(hash = '') {
   const [rawPath, ...search] = hash.replace(/^#/, '').split('?');
-  const path = (rawPath || '/preview').replace(/\/$/, '') || '/preview';
+  const path = (rawPath || '/auth/buyer/login').replace(/\/$/, '') || '/auth/buyer/login';
   const query = new URLSearchParams(search.join('?'));
   const rolePath = path.startsWith('/auth/') ? path.split('/')[2] : path.split('/')[1];
   return { path, query, role: rolePath === 'seller' ? 'SELLER' : rolePath === 'admin' ? 'ADMIN' : 'BUYER' };
@@ -16,11 +22,12 @@ export function parseRoute(hash = '') {
 export function createAppStore({ browser = window, savedApi = createMockApi(), scenarioFactory = createScenarioApi, liveApi } = {}) {
   const listeners = new Set();
   const draftStores = new WeakMap();
-  let api = savedApi, scenario = '', sessionId = 0, snapshot, toastTimer, notificationVersion = 0;
+  let api = savedApi, scenario = '', sessionId = 0, snapshot, toastTimer, notificationVersion = 0, scrollRestoration = null;
   let toast = { message: '', route: '', role: '' };
   let mode = liveApi ? 'live' : 'demo';
   let lastAuth = liveApi?.getAuth();
   try { if (liveApi && browser.sessionStorage?.getItem('yangju-loop-mode') === 'demo') mode = 'demo'; } catch { /* Memory-only mode is sufficient. */ }
+  if (liveApi && !browser.location.hash.replace(/^#\/?$/, '')) mode = 'live';
 
   function emit() { listeners.forEach(listener => listener()); }
   function draftStore() {
@@ -65,13 +72,19 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
       clearTimeout(toastTimer);
       toast = { message: '', route: '', role: '' };
     }
-    snapshot = { ...route, mode, auth: mode === 'live' ? liveApi.getAuth() : null, state: api.getState(), api, drafts: draftStore(), scenario, sessionId, toast: toast.message };
+    snapshot = { ...route, mode, auth: mode === 'live' ? liveApi.getAuth() : null, state: api.getState(), api, drafts: draftStore(), scenario, sessionId, toast: toast.message, scrollRestoration };
     emit();
     return snapshot;
   }
   function refresh() { update(); return Promise.resolve(); }
-  function navigate(path, { replace = false } = {}) {
+  function navigate(path, { replace = false, preserveScroll = false, scrollY, focusTarget } = {}) {
     const hash = `#${path.replace(/^#/, '')}`;
+    const explicitPosition = Number.isFinite(scrollY);
+    scrollRestoration = {
+      hash,
+      top: Math.max(0, explicitPosition ? scrollY : preserveScroll ? browser.scrollY || 0 : 0),
+      focusTarget: Object.hasOwn(NAVIGATION_FOCUS_TARGETS, focusTarget) ? focusTarget : null,
+    };
     if (replace) browser.history.replaceState(null, '', hash);
     else if (browser.location.hash !== hash) browser.location.hash = hash;
     update();

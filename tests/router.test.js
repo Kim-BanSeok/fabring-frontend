@@ -15,10 +15,41 @@ function setup(hash = '#/preview', savedStorage) {
 }
 
 test('hash routes preserve queries and infer auth and service roles', () => {
-  assert.equal(parseRoute('').path, '/preview');
+  assert.equal(parseRoute('').path, '/auth/buyer/login');
+  assert.equal(parseRoute('#/preview').path, '/preview');
   assert.equal(parseRoute('#/seller/dashboard/').role, 'SELLER');
   assert.equal(parseRoute('#/auth/admin/login').role, 'ADMIN');
   assert.equal(parseRoute('#/buyer/fabrics?q=%EC%BA%94%EB%B2%84%EC%8A%A4').query.get('q'), '캔버스');
+});
+
+test('intentional same-context navigation retains or restores scroll without leaking it to another route', async () => {
+  const { store, browser } = setup('#/seller/calendar');
+  browser.scrollY = 420;
+  await store.navigate('/seller/calendar?date=2026-10-15', { preserveScroll: true });
+  assert.equal(store.getSnapshot().scrollRestoration.top, 420);
+  assert.equal(store.getSnapshot().scrollRestoration.focusTarget, null);
+  await store.navigate('/seller/register/manual', { scrollY: 930 });
+  assert.equal(store.getSnapshot().scrollRestoration.top, 930);
+  await store.navigate('/seller/dashboard');
+  assert.equal(store.getSnapshot().scrollRestoration.top, 0);
+  assert.equal(store.getSnapshot().scrollRestoration.focusTarget, null);
+});
+
+test('focus restoration is explicit, validated and independent from scroll restoration', async () => {
+  const { store, browser } = setup('#/seller/calendar');
+  browser.scrollY = 420;
+  await store.navigate('/seller/calendar?date=2026-10-15', { preserveScroll: true, focusTarget: 'seller-calendar-date' });
+  assert.equal(store.getSnapshot().scrollRestoration.top, 420);
+  assert.equal(store.getSnapshot().scrollRestoration.focusTarget, 'seller-calendar-date');
+  await store.navigate('/seller/register/manual?type=ROLL', { scrollY: 930, focusTarget: 'seller-photo-review' });
+  assert.equal(store.getSnapshot().scrollRestoration.top, 930);
+  assert.equal(store.getSnapshot().scrollRestoration.focusTarget, 'seller-photo-review');
+  await store.navigate('/buyer/supplies?selected=2&focus=selected', { preserveScroll: true });
+  assert.equal(store.getSnapshot().scrollRestoration.top, 420);
+  assert.equal(store.getSnapshot().scrollRestoration.focusTarget, null);
+  await store.navigate('/seller/dashboard', { focusTarget: 'body, input' });
+  assert.equal(store.getSnapshot().scrollRestoration.top, 0);
+  assert.equal(store.getSnapshot().scrollRestoration.focusTarget, null);
 });
 
 test('external snapshot is stable until state changes; unsubscribe removes listener', async () => {

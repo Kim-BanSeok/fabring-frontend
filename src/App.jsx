@@ -1,4 +1,4 @@
-import { Component, useEffect, useRef, useSyncExternalStore } from 'react';
+import { Component, useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
 import AppShell from './react/components/AppShell.jsx';
 import ReviewTools from './react/components/ReviewTools.jsx';
 import { Button, EmptyState } from './react/components/ui.jsx';
@@ -7,13 +7,14 @@ import AuthPage from './react/pages/AuthPage.jsx';
 import BuyerPage from './react/pages/BuyerPage.jsx';
 import SellerPage from './react/pages/SellerPage.jsx';
 import AdminPage from './react/pages/AdminPage.jsx';
+import { NAVIGATION_FOCUS_TARGETS } from './react/app/store.js';
 
 class PageErrorBoundary extends Component {
   state = { error: null };
   static getDerivedStateFromError(error) { return { error }; }
   componentDidCatch(error) { console.error(error); }
   render() {
-    if (this.state.error) return <EmptyState title="화면을 불러오지 못했어요" description={this.state.error.message}><Button href="/preview">화면 안내로</Button></EmptyState>;
+    if (this.state.error) return <EmptyState title="화면을 불러오지 못했어요" description={this.state.error.message}><Button href="/auth/buyer/login">다시 시작하기</Button></EmptyState>;
     return this.props.children;
   }
 }
@@ -28,7 +29,7 @@ function RoutePage({ ctx }) {
     return <EmptyState title={title} description={error || (loading ? '잠시만 기다려 주세요.' : status === 'expired' ? '로그인 유효 시간이 지났어요.' : '로그인 후 내 계정의 화면을 이용할 수 있어요.')}>
       {status === 'unavailable' && <Button onClick={ctx.retrySession} tone="primary">다시 연결</Button>}
       {!loading && <Button href={`/auth/${ctx.role.toLowerCase()}/login?mode=live`} tone="primary">로그인으로 이동</Button>}
-      <Button href="/preview">전체 화면 미리보기</Button>
+      {import.meta.env.DEV && <Button href="/preview">전체 화면 미리보기</Button>}
     </EmptyState>;
   }
   if (ctx.role === 'SELLER') return <SellerPage ctx={ctx} />;
@@ -42,18 +43,23 @@ export default function App({ store }) {
   const routeKey = `${snapshot.sessionId}:${snapshot.path}?${snapshot.query}`;
   const lastRoute = useRef(null);
   useEffect(() => store.connect(), [store]);
-  useEffect(() => {
+  useLayoutEffect(() => {
     const heading = document.querySelector('#main-content h1');
     document.title = `${heading?.textContent || '섬유 루프'} · 섬유 루프`;
     if (lastRoute.current !== routeKey) {
-      window.scrollTo(0, 0);
-      if (lastRoute.current !== null) heading?.focus({ preventScroll: true });
+      const restore = snapshot.scrollRestoration?.hash === window.location.hash ? snapshot.scrollRestoration : null;
+      window.scrollTo(0, restore?.top || 0);
+      if (lastRoute.current !== null) {
+        const selector = NAVIGATION_FOCUS_TARGETS[restore?.focusTarget];
+        const target = selector ? document.querySelector('#main-content')?.querySelector(selector) : null;
+        (target || heading)?.focus({ preventScroll: true });
+      }
       lastRoute.current = routeKey;
     }
   });
   return <>
     <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); const main = document.getElementById('main-content'); main.tabIndex = -1; main.focus(); }}>본문으로 바로가기</a>
-    <AppShell ctx={ctx} footer={<ReviewTools ctx={ctx} onReset={store.reset} />}><PageErrorBoundary key={routeKey}><RoutePage ctx={ctx} /></PageErrorBoundary></AppShell>
+    <AppShell ctx={ctx} footer={import.meta.env.DEV || snapshot.mode === 'demo' ? <ReviewTools ctx={ctx} onReset={store.reset} /> : null}><PageErrorBoundary key={routeKey}><RoutePage ctx={ctx} /></PageErrorBoundary></AppShell>
     <div className="toast" id="feedback" role="status" aria-live="polite">{snapshot.toast}</div>
   </>;
 }

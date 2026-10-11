@@ -86,3 +86,30 @@
   .admin-workspace > .main-content { padding-bottom: 32px; }
   .app-shell > .prototype-tools:not([open]) { width: calc(100% - 40px); }
 }
+
+/* A compact mobile header exposes every destination in an explicit menu. */
+.mobile-menu { display:none; }
+@media (max-width:700px) {
+  .app-shell .site-header { padding:12px 20px; gap:12px; flex-wrap:nowrap; align-items:center; }
+  .app-shell .site-header > .site-nav,
+  .app-shell .site-header > .badge,
+  .app-shell .admin-sidebar > .admin-nav,
+  .app-shell .admin-sidebar > .admin-sidebar-footer,
+  .app-shell .admin-topbar { display:none; }
+  .app-shell .admin-sidebar { position:relative; flex-direction:row; align-items:center; gap:12px; padding:12px 20px; }
+  .app-shell .admin-sidebar > small { display:none; }
+  .mobile-menu { display:block; margin-left:auto; }
+  .mobile-menu > summary { min-height:44px; display:flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid var(--loop-control-border); border-radius:8px; cursor:pointer; list-style:none; white-space:nowrap; font-size:14px; background:#fff; color:var(--loop-brand); }
+  .mobile-menu > summary::-webkit-details-marker { display:none; }
+  .mobile-menu[open] > summary { background:var(--loop-selected); }
+  .site-header,.admin-sidebar { position:relative; }
+  .mobile-menu-panel { position:absolute; top:calc(100% - 1px); left:0; right:0; z-index:20; background:#fff; padding:16px 20px; color:var(--loop-ink); border-bottom:1px solid var(--loop-border); box-shadow:0 8px 16px #17362d18; }
+  .mobile-menu-links { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .mobile-menu-links a { min-height:44px; display:flex; align-items:center; padding:8px 12px; color:var(--loop-text-secondary); border-radius:8px; }
+  .mobile-menu-links [aria-current=page] { background:var(--loop-selected); color:var(--loop-brand); font-weight:600; }
+  .mobile-menu-account { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:16px; padding-top:12px; border-top:1px solid var(--loop-line); font-size:14px; }
+  .mobile-menu-account .button { min-height:44px; min-width:104px; padding:8px 12px; font-size:14px; }
+  .app-shell .main-content { padding-top:24px; }
+  .app-shell .page-heading { gap:8px; }
+  .app-shell .page-heading h1 { font-size:24px; line-height:34px; }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Badge, Button, FabricImage, Notice } from '../components/ui.jsx';
 import { getAuthState } from './auth-state.js';
+import { POLICIES } from '../content/policies.js';
 
 const names = { buyer: '구매자', seller: '판매자', admin: '관리자' };
 const homes = { buyer: '/buyer/home', seller: '/seller/dashboard', admin: '/admin/dashboard' };
@@ -34,17 +35,39 @@ function Brand({ role }) {
     <p className="auth-kicker">YANGJU TEXTILE LOOP</p>
     <p className="auth-display">{copy[0]}</p>
     <p className="auth-brand-description">{copy[1]}</p>
-    <FabricImage fabric={{ title: role === 'seller' ? '블루 데님' : '내추럴 캔버스', texture: copy[2] }} className="auth-fabric" />
+    <FabricImage fabric={{ title: role === 'seller' ? '블루 데님' : '내추럴 캔버스', texture: copy[2] }} className="auth-fabric" exampleLabel={false} />
   </aside>;
 }
 
 // Auth labels intentionally omit the generic field's visible required marker.
-function AuthInput({ label, name, data, onChange, type = 'text', ...props }) {
+function AuthInput({ label, name, data, onChange, type = 'text', hint = '', ...props }) {
   const id = `field-${name}`;
+  const [visible, setVisible] = useState(false);
+  const password = type === 'password';
   return <div className="field">
     <label htmlFor={id}>{label}</label>
-    <input id={id} name={name} type={type} required value={data[name]} onChange={onChange} {...props} />
+    <div className={password ? 'auth-password-field' : undefined}>
+      <input id={id} name={name} type={password && visible ? 'text' : type} required value={data[name]} onChange={onChange} aria-describedby={hint ? `${id}-hint` : undefined} {...props} />
+      {password && <button className="password-toggle" type="button" aria-label={`${label} ${visible ? '숨기기' : '표시'}`} aria-pressed={visible} aria-controls={id} onClick={() => setVisible(!visible)}>{visible ? '숨기기' : '표시'}</button>}
+    </div>
+    {hint && <p className="field-hint" id={`${id}-hint`}>{hint}</p>}
   </div>;
+}
+
+function PolicyViewer({ policyKey, onClose }) {
+  const ref = useRef(null);
+  const policy = POLICIES[policyKey];
+  useEffect(() => {
+    const trigger = document.activeElement;
+    const dialog = ref.current;
+    dialog.showModal();
+    return () => { dialog.close(); if (trigger?.isConnected) trigger.focus({ preventScroll: true }); };
+  }, []);
+  return <dialog ref={ref} className="policy-dialog" aria-labelledby="policy-title" onCancel={event => { event.preventDefault(); onClose(); }}>
+    <header><h2 id="policy-title">{policy.title}</h2><button className="policy-close" type="button" aria-label="내용 보기 닫기" onClick={onClose}>닫기</button></header>
+    {policy.status === 'published' ? policy.sections.map(section => <section key={section.heading}><h3>{section.heading}</h3><p>{section.body}</p></section>) : <Notice><strong>문안 준비 중</strong><p>아직 확정된 내용이 등록되지 않았어요. 문안이 준비되면 이 화면에서 확인할 수 있어요.</p></Notice>}
+    <Button onClick={onClose} tone="primary">입력 화면으로 돌아가기</Button>
+  </dialog>;
 }
 
 function LoginFields({ data, onChange }) {
@@ -58,7 +81,7 @@ function SignupFields({ data, onChange }) {
   return <>
     <AuthInput label="닉네임" name="nickname" data={data} onChange={onChange} autoComplete="nickname" maxLength={50} />
     <AuthInput label="이메일" name="email" data={data} onChange={onChange} type="email" autoComplete="username" maxLength={255} inputMode="email" spellCheck={false} />
-    <AuthInput label="비밀번호" name="password" data={data} onChange={onChange} type="password" autoComplete="new-password" minLength={8} maxLength={72} placeholder="8~72자" />
+    <AuthInput label="비밀번호" name="password" data={data} onChange={onChange} type="password" autoComplete="new-password" minLength={8} maxLength={72} hint="8~72자로 입력해 주세요." />
     <AuthInput label="비밀번호 확인" name="confirm" data={data} onChange={onChange} type="password" autoComplete="new-password" minLength={8} maxLength={72} />
   </>;
 }
@@ -73,6 +96,7 @@ export default function AuthPage({ ctx }) {
   const kind = view === 'signup' ? 'signup' : 'login';
   const [data, setData] = useState(() => store.initialForm(ctx.state, role, kind, ctx.query.get('consent')));
   const [submitting, setSubmitting] = useState(false);
+  const [policyKey, setPolicyKey] = useState(null);
   const submittingRef = useRef(false);
   const expiryHandled = useRef(false);
   const current = useRef(ctx);
@@ -156,13 +180,14 @@ export default function AuthPage({ ctx }) {
       <form className="auth-form" data-auth-form={kind} aria-labelledby="auth-title" onSubmit={onSubmit}>
         <h1 id="auth-title" tabIndex={-1}>{names[role]} {signup ? '회원가입' : '로그인'}</h1>
         <p className="auth-subtitle">{signup ? '필요한 정보만 입력하고 시작하세요.' : role === 'admin' ? '발급받은 계정으로 로그인하세요.' : '이메일로 섬유 루프를 시작하세요.'}</p>
-        {signup && <nav className="auth-role-tabs" aria-label="가입할 계정 선택">
-          {['buyer', 'seller'].map(item => <a key={item} href={`#${url(item, 'signup')}`} aria-current={item === role ? 'page' : undefined}>{names[item]}</a>)}
+        {role !== 'admin' && <nav className="auth-role-tabs" aria-label={signup ? '가입할 계정 선택' : '로그인할 계정 선택'}>
+          {['buyer', 'seller'].map(item => <a key={item} href={`#${url(item, signup ? 'signup' : 'login')}`} aria-current={item === role ? 'page' : undefined}>{names[item]}</a>)}
         </nav>}
         {signup ? <SignupFields data={data} onChange={onChange} /> : <LoginFields data={data} onChange={onChange} />}
         {signup && <>
-          <label className="auth-consent"><input type="checkbox" name="terms" required checked={data.terms} onChange={onChange} /><span>이용약관 동의 (필수)</span></label>
-          <label className="auth-consent"><input type="checkbox" name="privacy" required checked={data.privacy} onChange={onChange} /><span>개인정보 수집·이용 동의 (필수)</span></label>
+          <div className="auth-consent-row"><label className="auth-consent"><input type="checkbox" name="terms" required checked={data.terms} onChange={onChange} /><span>이용약관 동의 (필수)</span></label><button type="button" className="policy-link" onClick={() => setPolicyKey('terms')} aria-label="이용약관 내용 보기">내용 보기</button></div>
+          <div className="auth-consent-row"><label className="auth-consent"><input type="checkbox" name="privacy" required checked={data.privacy} onChange={onChange} /><span>개인정보 수집·이용 동의 (필수)</span></label><button type="button" className="policy-link" onClick={() => setPolicyKey('privacy')} aria-label="개인정보 수집·이용 내용 보기">내용 보기</button></div>
+          {Object.values(POLICIES).some(policy => policy.status !== 'published') && <p className="auth-small">약관·개인정보 안내 문안은 현재 준비 중이에요.</p>}
           {role === 'seller' && <p className="auth-small">매장 등록과 운영팀의 판매자 승인을 마친 뒤 원단을 등록할 수 있어요.</p>}
           <p className="auth-consent-hint" id="auth-consent-hint" hidden={agreed}>필수 약관 2개에 모두 동의하면 가입할 수 있어요.</p>
         </>}
@@ -170,8 +195,10 @@ export default function AuthPage({ ctx }) {
           {signup ? '가입하기' : role === 'admin' ? '관리자 로그인' : '로그인'}
         </Button>
         {!signup && role !== 'admin' && <Button href={url(role, 'signup')}>회원가입</Button>}
-        <p className="auth-policy">개인정보처리방침　·　이용약관</p>
+        {signup && <p className="auth-login-return">이미 계정이 있나요? <a href={`#${url(role, 'login')}`}>로그인</a></p>}
+        <div className="auth-policy"><button type="button" className="policy-link" onClick={() => setPolicyKey('privacy')}>개인정보 안내</button><span aria-hidden="true">·</span><button type="button" className="policy-link" onClick={() => setPolicyKey('terms')}>이용약관</button></div>
       </form>
+      {policyKey && <PolicyViewer policyKey={policyKey} onClose={() => setPolicyKey(null)} />}
     </div>;
   }
 

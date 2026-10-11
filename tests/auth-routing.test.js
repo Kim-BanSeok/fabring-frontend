@@ -22,6 +22,16 @@ function setup(hash = '#/auth/buyer/login?mode=live', storage = memory(), option
   return { store, liveApi, savedApi, browser, storage };
 }
 
+test('plain public entry opens real login even after a prior demo session', () => {
+  const storage = memory();
+  storage.setItem('yangju-loop-mode', 'demo');
+  const { store } = setup('', storage);
+  assert.equal(store.getSnapshot().path, '/auth/buyer/login');
+  assert.equal(store.getSnapshot().mode, 'live');
+  assert.equal(store.getSnapshot().auth.status, 'anonymous');
+  assert.deepEqual(store.getSnapshot().state.fabrics, []);
+});
+
 test('live route roles never change authenticated server role or expose demo state', async () => {
   const { store, liveApi } = setup();
   const stop = store.connect();
