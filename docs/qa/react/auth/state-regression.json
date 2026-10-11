@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "StrictMode reattachment: API and completion each once; successful passwords cleared",
+    "Leaving processing before completion cancels request and prevents late navigation",
+    "Logout/reset draft clear invalidates outstanding operation",
+    "Separate service/scenario draft Maps cannot share inputs or error records"
+  ],
+  "passed": true
+}

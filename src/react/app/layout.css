@@ -1,0 +1,88 @@
+/* Header, content and review controls share one viewport-height frame. */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.app-shell > .main-content,
+.admin-workspace > .main-content {
+  flex: 1;
+  min-height: 0;
+}
+.app-shell > header,
+.admin-workspace > header,
+.app-shell .prototype-tools {
+  flex-shrink: 0;
+}
+.app-shell:not(.auth-shell):not(.upload-shell) > .main-content,
+.app-shell.preview-shell > .main-content {
+  padding-bottom: 40px;
+}
+.app-shell .prototype-tools {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+.app-shell > .prototype-tools:not([open]) {
+  width: min(1408px, calc(100% - 2 * clamp(24px, 6.667vw, 96px)));
+}
+.app-shell .empty-state {
+  min-height: 0;
+  padding-block: 24px;
+  gap: 16px;
+}
+
+/* Sidebar remains at the viewport edge while only the workspace scrolls. */
+.app-shell.admin-shell {
+  --admin-gutter: 64px;
+  display: grid;
+}
+.app-shell .admin-sidebar {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+}
+.app-shell .admin-sidebar > .brand,
+.app-shell .admin-sidebar > small,
+.app-shell .admin-sidebar-footer {
+  flex-shrink: 0;
+}
+.app-shell .admin-nav {
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.app-shell .admin-nav .button {
+  flex-shrink: 0;
+}
+.admin-workspace {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.admin-workspace > .main-content {
+  padding-bottom: 40px;
+}
+.admin-workspace > .prototype-tools {
+  width: calc(100% - 2 * var(--admin-gutter));
+  max-width: none;
+}
+.admin-workspace > .prototype-tools[open] {
+  width: min(540px, calc(100% - 2 * var(--admin-gutter)));
+}
+@media (max-width: 1150px) {
+  .app-shell.admin-shell { --admin-gutter: 28px; }
+}
+@media (max-width: 700px) {
+  .app-shell.admin-shell { --admin-gutter: 20px; display: flex; }
+  .app-shell .admin-sidebar { position: static; height: auto; align-self: stretch; }
+  .app-shell .admin-nav { overflow: visible; }
+  .admin-workspace { flex: 1; }
+  .app-shell:not(.auth-shell):not(.upload-shell) > .main-content,
+  .app-shell.preview-shell > .main-content,
+  .admin-workspace > .main-content { padding-bottom: 32px; }
+  .app-shell > .prototype-tools:not([open]) { width: calc(100% - 40px); }
+}

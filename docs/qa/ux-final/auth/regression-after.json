@@ -1,0 +1,240 @@
+{
+  "checks": [
+    "390 buyer: login success -> browser back skips processing; password cleared",
+    "390 seller: login success -> browser back skips processing; password cleared",
+    "390 admin: login success -> browser back skips processing; password cleared",
+    "1440 buyer: login success -> browser back skips processing; password cleared",
+    "1440 seller: login success -> browser back skips processing; password cleared",
+    "1440 admin: login success -> browser back skips processing; password cleared",
+    "390: login error browser back preserves inputs and skips processing",
+    "390: consent gating, mismatch recovery and signup completion browser back",
+    "1440: login error browser back preserves inputs and skips processing",
+    "1440: consent gating, mismatch recovery and signup completion browser back",
+    "Seller first login -> store -> browser back returns to first login with empty password",
+    "Direct and interrupted/reloaded processing provide recovery",
+    "Explicit scenario keeps the processing view and provides recovery",
+    "Expanded common review tools do not overlap auth form"
+  ],
+  "geometry": [
+    {
+      "width": 390,
+      "role": "buyer",
+      "brand": {
+        "top": 94,
+        "bottom": 196,
+        "height": 102,
+        "width": 350
+      },
+      "form": {
+        "top": 220,
+        "bottom": 726,
+        "height": 506,
+        "width": 350
+      },
+      "submit": {
+        "top": 542,
+        "bottom": 590,
+        "height": 48,
+        "width": 302
+      },
+      "tools": {
+        "top": 860,
+        "bottom": 902,
+        "height": 42,
+        "width": 350
+      },
+      "logo": {
+        "top": 21,
+        "bottom": 49,
+        "height": 28,
+        "width": 28
+      },
+      "viewport": 844,
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "role": "seller",
+      "brand": {
+        "top": 94,
+        "bottom": 230,
+        "height": 136,
+        "width": 350
+      },
+      "form": {
+        "top": 254,
+        "bottom": 760,
+        "height": 506,
+        "width": 350
+      },
+      "submit": {
+        "top": 576,
+        "bottom": 624,
+        "height": 48,
+        "width": 302
+      },
+      "tools": {
+        "top": 860,
+        "bottom": 902,
+        "height": 42,
+        "width": 350
+      },
+      "logo": {
+        "top": 21,
+        "bottom": 49,
+        "height": 28,
+        "width": 28
+      },
+      "viewport": 844,
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "role": "admin",
+      "brand": {
+        "top": 94,
+        "bottom": 196,
+        "height": 102,
+        "width": 350
+      },
+      "form": {
+        "top": 220,
+        "bottom": 658,
+        "height": 438,
+        "width": 350
+      },
+      "submit": {
+        "top": 542,
+        "bottom": 590,
+        "height": 48,
+        "width": 302
+      },
+      "tools": {
+        "top": 860,
+        "bottom": 902,
+        "height": 42,
+        "width": 350
+      },
+      "logo": {
+        "top": 21,
+        "bottom": 49,
+        "height": 28,
+        "width": 28
+      },
+      "viewport": 844,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "buyer",
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720,
+        "width": 572
+      },
+      "form": {
+        "top": 158,
+        "bottom": 712,
+        "height": 554,
+        "width": 572
+      },
+      "submit": {
+        "top": 508,
+        "bottom": 556,
+        "height": 48,
+        "width": 476
+      },
+      "tools": {
+        "top": 1067,
+        "bottom": 1109,
+        "height": 42,
+        "width": 1248
+      },
+      "logo": {
+        "top": 33,
+        "bottom": 61,
+        "height": 28,
+        "width": 28
+      },
+      "viewport": 1050,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "seller",
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720,
+        "width": 572
+      },
+      "form": {
+        "top": 158,
+        "bottom": 712,
+        "height": 554,
+        "width": 572
+      },
+      "submit": {
+        "top": 508,
+        "bottom": 556,
+        "height": 48,
+        "width": 476
+      },
+      "tools": {
+        "top": 1067,
+        "bottom": 1109,
+        "height": 42,
+        "width": 1248
+      },
+      "logo": {
+        "top": 33,
+        "bottom": 61,
+        "height": 28,
+        "width": 28
+      },
+      "viewport": 1050,
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "admin",
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720,
+        "width": 572
+      },
+      "form": {
+        "top": 158,
+        "bottom": 644,
+        "height": 486,
+        "width": 572
+      },
+      "submit": {
+        "top": 508,
+        "bottom": 556,
+        "height": 48,
+        "width": 476
+      },
+      "tools": {
+        "top": 1067,
+        "bottom": 1109,
+        "height": 42,
+        "width": 1248
+      },
+      "logo": {
+        "top": 33,
+        "bottom": 61,
+        "height": 28,
+        "width": 28
+      },
+      "viewport": 1050,
+      "overflow": 0
+    }
+  ],
+  "errors": [],
+  "hotReloadDisabled": true,
+  "passwordPersisted": false,
+  "passed": true
+}

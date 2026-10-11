@@ -1,0 +1,30 @@
+{
+  "fileKey": "uYO6eu041WwmEBKAfA7a6Y",
+  "pageId": "122:12",
+  "implementation": "src/prototype/pages/auth.js",
+  "screens": [
+    {"nodeId":"123:59","route":"/auth/buyer/login"},
+    {"nodeId":"123:2190","route":"/auth/seller/login"},
+    {"nodeId":"123:4835","route":"/auth/admin/login"},
+    {"nodeId":"123:189","route":"/auth/buyer/signup?consent=11"},
+    {"nodeId":"123:2323","route":"/auth/seller/signup?consent=11"},
+    {"nodeId":"152:6946","route":"/auth/buyer/signup?consent=00"},
+    {"nodeId":"152:7054","route":"/auth/buyer/signup?consent=01"},
+    {"nodeId":"152:7162","route":"/auth/buyer/signup?consent=10"},
+    {"nodeId":"152:7312","route":"/auth/seller/signup?consent=00"},
+    {"nodeId":"152:7421","route":"/auth/seller/signup?consent=01"},
+    {"nodeId":"152:7530","route":"/auth/seller/signup?consent=10"},
+    {"nodeId":"125:2482","route":"/auth/buyer/error"},
+    {"nodeId":"125:2498","route":"/auth/buyer/processing?scenario=125%3A2498"},
+    {"nodeId":"127:2514","route":"/auth/seller/error"},
+    {"nodeId":"127:2530","route":"/auth/seller/processing"},
+    {"nodeId":"127:2607","route":"/auth/admin/error"},
+    {"nodeId":"127:2623","route":"/auth/admin/processing"},
+    {"nodeId":"125:2508","route":"/auth/buyer/signup-done"},
+    {"nodeId":"125:2559","route":"/auth/buyer/signup-error"},
+    {"nodeId":"127:2540","route":"/auth/seller/signup-done"},
+    {"nodeId":"127:2591","route":"/auth/seller/signup-error"},
+    {"nodeId":"127:2633","route":"/auth/seller/first-login"},
+    {"nodeId":"202:8424","route":"/auth/buyer/session-expired"}
+  ]
+}

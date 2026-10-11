@@ -1,0 +1,519 @@
+Figma phase 2 high fidelity context inspection, 2026-10-11
+Sources: file uYO6eu041WwmEBKAfA7a6Y, page122:12
+All calls included screenshots. No sparse responses. Source code converted to native HTML and shared helpers.
+
+
+NODE 123:4699
+de-id="I123:4700;82:518;4:198">
+            판매자
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[64px] pt-[48px] px-[96px] relative shrink-0 w-[1440px]" data-node-id="123:4701" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="123:4702">
+          마이페이지
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="123:4703">
+          계정과 매장 정보를 최신 상태로 관리하세요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[1248px]" data-node-id="123:4704" data-name="계정과 매장">
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid cont
+Labels: 이정원 | Label | seller@example.com | 양주 원단상회 | 경기도 양주시 · 매장 앞 픽업 공간 | 031-000-0000 | 월–토 10:00–18:00 | 변경 사항 저장
+
+NODE 127:5927
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:5949" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:5950">
+          변경 사항을 저장했어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:5951">
+          계정 및 매장 정보
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="입력한 정보가 저장되었어요." />
+        <div className="[word-break:break-word] bg-[var
+Labels: 입력한 정보가 저장되었어요. | 마이페이지 확인 | 메인으로 | 새 원단 등록
+
+NODE 127:6016
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6038" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6039">
+          어떤 형태로 판매하나요?
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6040">
+          직접 입력 · 판매 형태 선택
+        </p>
+        <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[var(--loop-space-16,16px)] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-space-16,16px)] shrink-0 w-[1248px]"
+Labels: 롤 원단 입력 | 자투리 원단 입력 | 이전
+
+NODE 127:6105
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6127" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6128">
+          어떤 형태의 원단인가요?
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6129">
+          AI 등록 도우미 · 첫 질문
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="판매 형태에 맞춰 필요한 정보를 하나씩 여쭤볼게요." />
+        <div className="bg-[var(--l
+Labels: 판매 형태에 맞춰 필요한 정보를 하나씩 여쭤볼게요. | 롤 원단으로 시작 | 자투리 원단으로 시작 | 이전
+
+NODE 127:6410
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6432" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6433">
+          자투리 정보를 알려주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6434">
+          AI 등록 도우미 · 입력한 내용은 직접 입력으로 이어갈 수 있어요.
+        </p>
+        <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[var(--loop-space-16,16px)] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-space-16,16px)
+Labels: 아이보리 면 거즈예요. 가로 110cm, 세로 80cm이고 얇아요. 하자는 없고 한 장에 8,000원이에요. | Label | 답변 정리하기 | 직접 입력으로 계속 | 사진으로 치수나 소재를 자동 판별하지 않아요. 알려주신 값을 확인해 주세요.
+
+NODE 127:6487
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6509" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6510">
+          답변을 정리하고 있어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6511">
+          AI 등록 도우미
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="보내주신 답변에서 등록 항목을 정리하고 있어요. 입력한 내용은 유지돼요." />
+        <div className="[word-break:
+Labels: 보내주신 답변에서 등록 항목을 정리하고 있어요. 입력한 내용은 유지돼요. | 직접 입력으로 계속
+
+NODE 127:6528
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6550" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6551">
+          AI가 정리한 내용을 확인해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6552">
+          AI 초안 · 판매자 확인 전에는 게시되지 않아요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="남은 길이 5마를 450cm로 정리했어요. 90cm당 가격은 5,000원이에요." />
+ 
+Labels: 남은 길이 5마를 450cm로 정리했어요. 90cm당 가격은 5,000원이에요. | 등록 내용 확인 | 항목 직접 수정 | 사진 추가
+
+NODE 127:6588
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6610" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6611">
+          응답을 받지 못했어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6612">
+          한 번 다시 시도했지만 답변을 정리하지 못했어요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-dangerBg,#fbece7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="지금까지 입력한 내용은 유지했어요. 직접 입력에서 이어서 확인해 주세요." />
+        <div class
+Labels: 지금까지 입력한 내용은 유지했어요. 직접 입력에서 이어서 확인해 주세요. | 직접 입력으로 계속 | 등록 방식으로
+
+NODE 127:6637
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6659" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6660">
+          선택한 사진을 확인해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6661">
+          전체 사진 · 선택 완료 상태
+        </p>
+        <FabricCanvas className="bg-[var(--loop-sand,#e7ddca)] h-[200px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[1248px]" />
+        <FlowUiNotice className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex flex-col items-start p-[var(--loop-
+Labels: 전체 사진 1장을 선택했어요. jpg·png·webp 최대 3장, 장당 5MB 이하이며 최종 등록 뒤 업로드돼요. | 입력 화면으로 돌아가기
+
+NODE 127:6779
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6801" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6802">
+          게시 중인 원단
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6803">
+          구매자에게 공개된 원단을 관리하세요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:6804" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[v
+Labels: 전체 | 게시 중 | 승인 대기 | 승인 거절 | 판매 완료 | 상세보기 | 삭제
+
+NODE 127:6879
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6901" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6902">
+          승인 대기 중인 원단
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6903">
+          등록 내용을 저장했어요. 운영팀 승인 후 구매자에게 공개돼요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:6904" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center re
+Labels: 전체 | 게시 중 | 승인 대기 | 승인 거절 | 판매 완료 | 등록 내용 확인
+
+NODE 127:7011
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7033" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7034">
+          승인 거절 사유를 확인해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7035">
+          내용을 보완하고 다시 승인 신청할 수 있어요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:7036" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relat
+Labels: 전체 | 게시 중 | 승인 대기 | 승인 거절 | 판매 완료 | 내용 보완하기
+
+NODE 127:7076
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7098" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7099">
+          판매 완료 원단
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7100">
+          현재 구매자에게 노출되지 않는 원단이에요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:7101" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded
+Labels: 전체 | 게시 중 | 승인 대기 | 승인 거절 | 판매 완료 | 롤은 남은 길이가 90cm 미만이면 판매 완료로 처리해요. 남은 원단을 판매하려면 자투리로 새로 등록해 주세요. | 새 원단 등록
+
+NODE 127:7149
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7171" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7172">
+          내 원단 상세
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7173">
+          내추럴 코튼 캔버스
+        </p>
+        <FabricCanvas className="bg-[var(--loop-sand,#e7ddca)] h-[200px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[1248px]" />
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid 
+Labels: 정보 수정 | 판매 내역 확인 | 삭제
+
+NODE 127:7250
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7272" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7273">
+          원단 정보 수정
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7274">
+          게시 중인 원단의 수정 내용은 저장 즉시 반영돼요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="진행 중인 예약 2마가 있어요. 예약된 길이보다 재고를 적게 변경할 수 없어요." />
+        <div clas
+Labels: 진행 중인 예약 2마가 있어요. 예약된 길이보다 재고를 적게 변경할 수 없어요. | 내추럴 코튼 캔버스 | Label | 150 / 450 | 5,000 | 보통 두께의 탄탄한 면 캔버스예요. 가정용 재봉틀로 작업할 수 있어요. | 수정 내용 저장 | 취소
+
+NODE 127:7322
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7344" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7345">
+          거절된 원단 보완
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7346">
+          네이비 옥스퍼드 · 승인 거절 항목 수정
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-dangerBg,#fbece7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="거절 사유: 하자 위치와 범위를 확인하기 어려워요." />
+        <div className="bg-[var(--loo
+Labels: 거절 사유: 하자 위치와 범위를 확인하기 어려워요. | 네이비 옥스퍼드 | Label | 롤 / 150cm / 270cm | 6,000 | 시작점에서 20cm 지점, 가장자리의 2 × 3cm 얼룩 | 하자 위치 사진 1장 추가됨 | 확인 후 다시 승인 신청 | 취소
+
+NODE 127:7402
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7424" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7425">
+          진행 중인 예약을 확인해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7426">
+          원단 삭제 제한
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="요청됨 또는 수락됨 상태의 예약이 있어 원단을 삭제할 수 없어요." />
+        <div className="[word-break:
+Labels: 요청됨 또는 수락됨 상태의 예약이 있어 원단을 삭제할 수 없어요. | 판매 내역 확인 | 원단 상세로
+
+NODE 127:7448
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7470" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7471">
+          자투리 원단 상세 · 삭제 확인
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7472">
+          포근한 더블 거즈 · 진행 중인 예약 없음
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="삭제하면 원단이 구매자 목록에서 사라져요." />
+        <div className="[word-brea
+Labels: 삭제하면 원단이 구매자 목록에서 사라져요. | 원단 삭제 | 취소
+
+NODE 127:7497
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7519" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7520">
+          원단을 삭제했어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7521">
+          삭제한 원단은 구매자에게 표시되지 않아요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="포근한 더블 거즈를 삭제했어요. 구매자에게 표시되지 않아요." />
+        <div className="bg-
+Labels: 포근한 더블 거즈를 삭제했어요. 구매자에게 표시되지 않아요. | 메인으로 | 새 원단 등록
+
+NODE 127:8098
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:8120" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:8121">
+          답변을 등록했어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:8122">
+          구매자가 내 문의에서 답변을 확인할 수 있어요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:8123" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rou
+Labels: 답변 대기 | 답변 완료 | 다른 문의 확인
+
+NODE 127:8297
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:8319" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:8320">
+          입력한 항목을 확인해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:8321">
+          자투리 원단 · 등록 내용을 확인하지 못했어요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-dangerBg,#fbece7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="자투리 길이는 30–90cm여야 해요. 입력한 100cm는 자투리 범위를 넘어요." />
+        <d
+Labels: 자투리 길이는 30–90cm여야 해요. 입력한 100cm는 자투리 범위를 넘어요. | 100 | Label | 8,000 | 미선택 | 자투리 입력 수정 | 롤로 등록하기
+
+NODE 127:6325
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:6347" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:6348">
+          자투리 등록 내용 확인
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:6349">
+          사진과 정보를 확인한 후 승인 신청을 보내 주세요.
+        </p>
+        <FabricLinen className="bg-[var(--loop-linen,#c7bba5)] h-[200px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[1248px]" />
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,
+Labels: 확인 후 승인 신청 | 내용 수정
+
+NODE 127:7558
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7580" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7581">
+          예약을 수락할까요?
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7582">
+          재고와 픽업 일시를 다시 확인해 주세요.
+        </p>
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[1
+Labels: 수락하면 요청한 2마가 확보되고 픽업 일시가 확정돼요. 아직 실제 재고는 차감되지 않아요. | 확인 후 수락 | 돌아가기
+
+NODE 127:7621
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7643" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7644">
+          수락된 예약
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:7646" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="요청됨" />
+          <LoopUiNavItem className="bg-[var(--loop-selectedSoft,#dcefe2)] border-[var(--loop-action,#16794e)] border-b-3 border-solid content-stretch flex h-[44px] items-center justify-center relative ro
+Labels: 요청됨 | 수락됨 | 수령 완료 | 거절됨 | 취소됨
+
+NODE 127:7692
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7714" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7715">
+          예약 거절 사유를 입력해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7716">
+          거절 사유는 구매자에게 표시돼요.
+        </p>
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w
+Labels: 요청하신 시간에 매장 픽업이 어려워요. 다른 시간으로 다시 요청해 주세요. | Label | 거절 확정 | 돌아가기
+
+NODE 127:7753
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7775" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7776">
+          거절된 예약
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:7778" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="요청됨" />
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="수락됨" />
+          <Loop
+Labels: 요청됨 | 수락됨 | 수령 완료 | 거절됨 | 취소됨
+
+NODE 127:7829
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7851" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7852">
+          원단 전달을 완료했나요?
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7853">
+          수령 확인 후 요청 길이만큼 실제 재고가 차감돼요.
+        </p>
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shri
+Labels: 내추럴 코튼 캔버스 2마를 구매자에게 전달했는지 확인해 주세요. | 전달 완료 · 수령 확인 | 아직 전달 전
+
+NODE 127:7892
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7914" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7915">
+          수령 완료 예약
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:7917" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="요청됨" />
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="수락됨" />
+          <Lo
+Labels: 요청됨 | 수락됨 | 수령 완료 | 거절됨 | 취소됨
+
+NODE 127:7974
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:7996" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:7997">
+          예약을 취소할까요?
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:7998">
+          김하늘 · 내추럴 코튼 캔버스 · 수락됨
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="취소하면 확보했던 2마가 풀려 다른 구매자가 예약할 수 있어요." />
+        <div className="bg-[va
+Labels: 취소하면 확보했던 2마가 풀려 다른 구매자가 예약할 수 있어요. | 구매자와 협의하여 픽업 예약을 취소합니다. | Label | 예약 취소 확정 | 예약 유지
+
+NODE 127:8022
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="127:8044" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:8045">
+          취소된 예약
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:8047" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="요청됨" />
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[112px]" label="수락됨" />
+          <Loop
+Labels: 요청됨 | 수락됨 | 수령 완료 | 거절됨 | 취소됨
+
+NODE 129:5726
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="129:5748" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="129:5749">
+          내 원단 목록
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="129:5750">
+          수령 확인으로 변경된 원단 재고를 확인하세요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="내추럴 코튼 캔버스 2마의 수령이 완료되어 남은 길이를 3마로 반영했어요." />
+        <div classN
+Labels: 내추럴 코튼 캔버스 2마의 수령이 완료되어 남은 길이를 3마로 반영했어요. | 수령 완료 내역 보기
+
+NODE 142:6789
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="142:6809" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="142:6810">
+          픽업 일정
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="142:6811">
+          월별 픽업 일정을 확인하세요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="142:6812" data-name="Tabs">
+          <LoopUiNavItem className="bg-[var(--loop-selectedSoft,#dcefe2)] border-[var(--loop-action,#16794e)] border-b-3 border-solid c
+Labels: 9월 | 10월 | 11월 | 9월에는 등록된 픽업 일정이 없어요. | 대시보드로
+
+NODE 142:6919
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="142:6939" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="142:6940">
+          픽업 일정
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="142:6941">
+          월별 픽업 일정을 확인하세요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="142:6942" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--lo
+Labels: 9월 | 10월 | 11월 | 판매 내역 확인 | 대시보드로
+
+NODE 142:7090
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="142:7110" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="142:7111">
+          픽업 일정
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="142:7112">
+          월별 픽업 일정을 확인하세요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[1248px]" data-node-id="142:7113" data-name="Tabs">
+          <LoopUiNavItem className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--lo
+Labels: 9월 | 10월 | 11월 | 11월에는 등록된 픽업 일정이 없어요. | 대시보드로
+
+NODE 144:6910
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="144:6930" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="144:6931">
+          판매를 시작할 준비를 해볼까요?
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="144:6932">
+          아직 등록한 원단과 픽업 요청이 없어요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="상품을 등록하기 전에 구매자가 방문할 매장 정보를 입력해 주세요." />
+        <div className
+Labels: 상품을 등록하기 전에 구매자가 방문할 매장 정보를 입력해 주세요. | 매장 정보 입력 | 새 원단 등록
+
+NODE 210:8648
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[var(--loop-space-64,64px)] pt-[var(--loop-space-48,48px)] px-[var(--loop-space-96,96px)] relative shrink-0 w-[1440px]" data-node-id="210:8650" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="210:8651">
+          승인 신청을 보냈어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="210:8652">
+          원단 정보와 선택한 사진이 모두 저장되었어요.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-amberBg,#fff2d7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="운영팀이 승인하면 구매자에게 공개돼요. 승인 전에는 구매자 목록에 표시되지 않아요." />
+        <div cl
+Labels: 운영팀이 승인하면 구매자에게 공개돼요. 승인 전에는 구매자 목록에 표시되지 않아요. | 승인 대기 목록 | 메인으로 | 다른 원단 등록
+
+NODE 123:3842
+de-id="I123:3843;82:518;4:198">
+            판매자
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[64px] pt-[48px] px-[96px] relative shrink-0 w-[1440px]" data-node-id="123:3844" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="123:3845">
+          원단 등록 · AI와 대화로
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="123:3846">
+          대화로 정리한 내용을 직접 확인하고 수정할 수 있어요.
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[1248px]" data-node-id="123:3847" data-name="대화와 항목">
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] b
+Labels: 원단에 대해 알려주세요. | Label | 보내기 | + 사진 추가 | 항목 직접 수정 | 등록 내용 확인 | 대화를 마치고 초안 확인
+

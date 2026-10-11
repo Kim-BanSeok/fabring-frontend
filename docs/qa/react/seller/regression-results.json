@@ -1,0 +1,108 @@
+{
+  "observations": [
+    {
+      "issue": "direct-draft-loss",
+      "before": {
+        "title": "미저장 원단 이름",
+        "price": "7700"
+      },
+      "after": {
+        "title": "미저장 원단 이름",
+        "price": "7700"
+      },
+      "url": "http://127.0.0.1:5173/#/seller/register/manual?type=ROLL&scenario=123%3A3466"
+    },
+    {
+      "issue": "stale-edit-draft",
+      "photoSnapshotTitle": "내추럴 코튼 캔버스",
+      "savedDetailContainsFinal": true,
+      "savedDetailContainsPrice": true,
+      "reopened": {
+        "title": "최종 보완한 원단 이름",
+        "price": "9200"
+      }
+    },
+    {
+      "issue": "completed-guidance",
+      "copy": "수령 완료 · 현재 재고\n현재 남은 길이\n270cm (3마)\n현재 수락된 예약 길이\n0cm\n전달한 수량\n180cm (2마)\n현재 판매 가능 길이\n270cm (3마)\n전달한 수량을 재고에 반영했어요. 완료된 예약은 다시 처리하거나 취소할 수 없어요.\n\n처리가 완료된 예약이에요.\n\n변경된 재고 확인",
+      "url": "http://127.0.0.1:5173/#/seller/reservations?status=PICKED_UP&id=reservation-scenario"
+    },
+    {
+      "issue": "mobile-form-length",
+      "geometry": {
+        "formTop": 385,
+        "formHeight": 2165,
+        "firstTextTop": 1154,
+        "submitTop": 2501.703125,
+        "viewport": 844,
+        "width": 390
+      },
+      "roll89Invalid": true,
+      "roll90Valid": true
+    },
+    {
+      "issue": "unknown-recovery",
+      "buttons": "내 원단 목록 확인"
+    }
+  ],
+  "checks": [
+    {
+      "name": "direct form previous + browser back keeps draft?",
+      "pass": true
+    },
+    {
+      "name": "missing photo error keeps correct validation after remembered input",
+      "pass": true
+    },
+    {
+      "name": "rejected photo + subsequent edit saved/reopened",
+      "pass": true
+    },
+    {
+      "name": "requested -> accepted -> picked up",
+      "pass": true
+    },
+    {
+      "name": "scrap boundaries",
+      "bounds": [
+        [
+          "29",
+          false
+        ],
+        [
+          "30",
+          true
+        ],
+        [
+          "90",
+          true
+        ],
+        [
+          "91",
+          false
+        ]
+      ]
+    },
+    {
+      "name": "mobile form geometry + required boundaries",
+      "pass": true
+    },
+    {
+      "name": "AI input -> sample result -> manual photos -> partial retry",
+      "pass": true
+    },
+    {
+      "name": "unknown create has no resend + inquiry answer completion",
+      "pass": true
+    },
+    {
+      "name": "pending seller store save never approves",
+      "pass": true
+    },
+    {
+      "name": "320/390/1440 representative geometry",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

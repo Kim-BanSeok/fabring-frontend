@@ -1,0 +1,128 @@
+[
+  {
+    "width": 1151,
+    "name": "approvals",
+    "overflow": 0,
+    "table": [],
+    "details": [
+      {
+        "width": 347,
+        "height": 24
+      },
+      {
+        "width": 347,
+        "height": 24
+      },
+      {
+        "width": 347,
+        "height": 24
+      },
+      {
+        "width": 347,
+        "height": 24
+      },
+      {
+        "width": 347,
+        "height": 24
+      }
+    ],
+    "height": 1199
+  },
+  {
+    "width": 1151,
+    "name": "fabrics",
+    "overflow": 0,
+    "table": [
+      {
+        "client": 725,
+        "scroll": 725
+      }
+    ],
+    "details": [],
+    "height": 1333
+  },
+  {
+    "width": 1200,
+    "name": "approvals",
+    "overflow": 0,
+    "table": [],
+    "details": [
+      {
+        "width": 396,
+        "height": 24
+      },
+      {
+        "width": 396,
+        "height": 24
+      },
+      {
+        "width": 396,
+        "height": 24
+      },
+      {
+        "width": 396,
+        "height": 24
+      },
+      {
+        "width": 396,
+        "height": 24
+      }
+    ],
+    "height": 1199
+  },
+  {
+    "width": 1200,
+    "name": "fabrics",
+    "overflow": 0,
+    "table": [
+      {
+        "client": 774,
+        "scroll": 774
+      }
+    ],
+    "details": [],
+    "height": 1333
+  },
+  {
+    "width": 768,
+    "name": "approvals",
+    "overflow": 0,
+    "table": [],
+    "details": [
+      {
+        "width": 326,
+        "height": 24
+      },
+      {
+        "width": 326,
+        "height": 24
+      },
+      {
+        "width": 326,
+        "height": 24
+      },
+      {
+        "width": 326,
+        "height": 24
+      },
+      {
+        "width": 326,
+        "height": 24
+      }
+    ],
+    "height": 1419
+  },
+  {
+    "width": 768,
+    "name": "fabrics",
+    "overflow": 0,
+    "table": [
+      {
+        "client": 452,
+        "scroll": 452
+      }
+    ],
+    "details": [],
+    "height": 1376
+  }
+]

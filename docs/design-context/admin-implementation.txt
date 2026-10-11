@@ -1,0 +1,41 @@
+Administrator HTML module coverage — 2026-10-11
+
+Implementation files: src/prototype/pages/admin.js and admin.css.
+Pure HTML strings and DOM event binding; no React dependency in the module.
+Common shell, controls, typography, and dynamic fabric images are reused from root-owned shared modules.
+
+Figma reference file: uYO6eu041WwmEBKAfA7a6Y, work page 122:12.
+Each source below was retrieved with high-fidelity get_design_context and its screenshot:
+123:4955 -> /admin/dashboard
+123:5138 -> /admin/sellers?status=PENDING|APPROVED|REJECTED
+123:5272 -> /admin/sellers/:id
+123:5566 -> /admin/fabrics?status=PENDING|POSTED|REJECTED|SOLD_OUT
+131:9584 -> /admin/fabrics/:id
+131:9697 -> /admin/fabrics/:id?action=approve
+131:9893 -> /admin/fabrics/:id?action=reject
+
+Interaction rules:
+- Seller PENDING: approve or reject. REJECTED: approve only. APPROVED: no further review actions.
+- Seller rejection does not invent a reason or reapplication input.
+- Fabric review is available only in PENDING. Rejection requires a trimmed reason of 1–255 characters.
+- Fabric state filtering uses only status. Dashboard counts are derived from current mock state.
+- Mutations go through ctx.api; duplicate action clicks are locked while a request is pending.
+- Dynamic text/attributes are escaped. Server error text is assigned with textContent.
+- No external API, live login, or messages to team members are used.
+
+Implementation adaptation:
+- Figma Simple Design System mappings expose Button/InputField but no corresponding package/source exists in this scaffold. Their HTML equivalents use shared/ui.js and common styles; React snippets were not embedded.
+- Editable Figma fabric texture components are represented by the shared fabricImage helper and current mock data. The sidebar logo is the root-owned local asset.
+- Responsive panels and horizontally scrollable tables replace fixed Figma widths on narrow screens.
+
+Checks completed:
+- node --check for admin.js and targeted oxlint.
+- Render + shared mock service: PENDING -> REJECTED -> APPROVED seller action availability; fabric rejection reason/result; empty SOLD_OUT view; dynamic text escaping; malformed encoded route fallback.
+- Headless Chrome browser checks completed against the common shell at http://127.0.0.1:5173/.
+- Actual clicks verified seller PENDING -> REJECTED -> APPROVED, legal action visibility, fabric rejection whitespace validation and saved reason, fabric approval, native status filter, and empty SOLD_OUT view.
+- Six representative routes at 390px had document/body widths exactly 390px; no page overflow or console/page errors were found.
+- Desktop/mobile screenshots are in docs/qa/admin-*.png; structured results are in docs/qa/admin-browser-report.json; rerunnable script is docs/qa/admin.browser.mjs.
+- Browser computed font and loaded font-face are Noto Sans KR. Admin seller tabs were corrected after the initial screenshot so the active tab uses the Figma primary green button style.
+- Out-of-scope shared shell note sent to root: programmatic heading focus currently draws a large green outline on hash navigation. Shared seed texture/color fidelity was also reported for the five pending fabric rows.
+
+Scope: these administrator routes and states are implemented; this is not a claim that all Figma frames have been ported or that a real backend integration has been tested.

@@ -1,0 +1,63 @@
+{
+  "mobileNavigation": [
+    {
+      "text": "대시보드 홈",
+      "x": 20,
+      "right": 140
+    },
+    {
+      "text": "판매자 승인",
+      "x": 148,
+      "right": 268
+    },
+    {
+      "text": "상품목록",
+      "x": 276,
+      "right": 396
+    },
+    {
+      "text": "원단 게시 승인",
+      "x": 404,
+      "right": 524
+    }
+  ],
+  "mobileLogout": 0,
+  "mobileReviewTop": 857,
+  "reasonAfterRecheck": "",
+  "rejectWorks": true,
+  "approveWorks": true,
+  "buyerNavigation": [
+    {
+      "text": "홈",
+      "x": 20,
+      "right": 102
+    },
+    {
+      "text": "원단목록",
+      "x": 110,
+      "right": 192
+    },
+    {
+      "text": "부자재 찾기",
+      "x": 200,
+      "right": 282
+    },
+    {
+      "text": "구매내역",
+      "x": 290,
+      "right": 372
+    },
+    {
+      "text": "문의내역",
+      "x": 380,
+      "right": 462
+    },
+    {
+      "text": "마이페이지",
+      "x": 470,
+      "right": 552
+    }
+  ],
+  "toolbarPosition": "fixed",
+  "errors": []
+}

@@ -1,0 +1,332 @@
+[
+  {
+    "nodeId": "123:2473",
+    "route": "/seller/dashboard",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "123:2891",
+    "route": "/seller/fabrics",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "123:3245",
+    "route": "/seller/register",
+    "mode": "page",
+    "notes": "등록 전체 경로는 APPROVED+hasStore 조건을 공통 검사."
+  },
+  {
+    "nodeId": "123:3466",
+    "route": "/seller/register/manual?type=ROLL",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "123:3842",
+    "route": "/seller/register/ai?type=ROLL",
+    "mode": "page",
+    "notes": "실제 AI 호출이 아닌 예시 대화. 입력 메시지 보관."
+  },
+  {
+    "nodeId": "123:4153",
+    "route": "/seller/register/review",
+    "mode": "state",
+    "notes": "유효한 롤 draft 필요; 자료 없으면 입력으로 연결."
+  },
+  {
+    "nodeId": "123:4387",
+    "route": "/seller/reservations?status=REQUESTED",
+    "mode": "data",
+    "notes": "자기 매장의 요청 예약만 표시."
+  },
+  {
+    "nodeId": "123:4559",
+    "route": "/seller/inquiries",
+    "mode": "data",
+    "notes": "자기 원단 문의 조회와 답변 작성."
+  },
+  {
+    "nodeId": "123:4699",
+    "route": "/seller/profile",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:5855",
+    "route": "/seller/store",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:5927",
+    "route": "/seller/profile/saved",
+    "mode": "state",
+    "notes": "프로필/매장 저장 후 도착; 승인 상태는 변경하지 않음."
+  },
+  {
+    "nodeId": "127:5978",
+    "route": "/seller/approval",
+    "mode": "state",
+    "notes": "APPROVED이면서 hasStore=false 시 매장 필요 안내."
+  },
+  {
+    "nodeId": "127:6016",
+    "route": "/seller/register/type",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:6105",
+    "route": "/seller/register/type?mode=ai",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:6196",
+    "route": "/seller/register/manual?type=SCRAP",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:6325",
+    "route": "/seller/register/review",
+    "mode": "state",
+    "notes": "SCRAP draft를 등록 내용 확인으로 전달."
+  },
+  {
+    "nodeId": "127:6410",
+    "route": "/seller/register/ai?type=SCRAP",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:6487",
+    "route": "/seller/register/ai?type=ROLL&step=processing",
+    "mode": "state",
+    "notes": "예시 초안 준비 중; cleanup된 타이머는 취소."
+  },
+  {
+    "nodeId": "127:6528",
+    "route": "/seller/register/ai?type=ROLL&step=result",
+    "mode": "state",
+    "notes": "prepareAiDraft가 만든 예시 초안과 사용자 입력 원문 보존."
+  },
+  {
+    "nodeId": "127:6588",
+    "route": "/seller/register/ai?type=ROLL&step=error",
+    "mode": "state",
+    "notes": "실패 예시 표시; 입력은 직접 입력으로 이어짐."
+  },
+  {
+    "nodeId": "127:6637",
+    "route": "/seller/register/photos",
+    "mode": "state",
+    "notes": "선택한 파일명과 사진 용도 확인; 이미지 질감은 예시."
+  },
+  {
+    "nodeId": "127:6713",
+    "route": "/seller/upload",
+    "mode": "state",
+    "notes": "ROLL upload.stage=DONE; 저장된 원단이 승인 대기임을 표시."
+  },
+  {
+    "nodeId": "127:6779",
+    "route": "/seller/fabrics?status=POSTED",
+    "mode": "data",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:6879",
+    "route": "/seller/fabrics?status=PENDING",
+    "mode": "data",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:7011",
+    "route": "/seller/fabrics?status=REJECTED",
+    "mode": "data",
+    "notes": "거절 사유와 보완 버튼; 보완 저장 후 PENDING."
+  },
+  {
+    "nodeId": "127:7076",
+    "route": "/seller/fabrics?status=SOLD_OUT",
+    "mode": "data",
+    "notes": "판매 완료 원단은 수정 불가."
+  },
+  {
+    "nodeId": "127:7149",
+    "route": "/seller/fabrics/detail?id=fabric-roll-1",
+    "mode": "data",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:7250",
+    "route": "/seller/fabrics/edit?id=fabric-roll-1",
+    "mode": "data",
+    "notes": "sale_type 고정, 잔량은 예약 확보량 이상."
+  },
+  {
+    "nodeId": "127:7322",
+    "route": "/seller/fabrics/edit?id=fabric-pending-1",
+    "mode": "state",
+    "notes": "대상 원단이 REJECTED일 때 보완 화면; 임의 상태 변경 없음."
+  },
+  {
+    "nodeId": "127:7402",
+    "route": "/seller/fabrics/delete?id=fabric-roll-1",
+    "mode": "state",
+    "notes": "대상 원단에 REQUESTED 또는 ACCEPTED 예약 있으면 차단."
+  },
+  {
+    "nodeId": "127:7448",
+    "route": "/seller/fabrics/delete?id=fabric-scrap-1",
+    "mode": "state",
+    "notes": "활성 예약 없는 원단만 삭제 확인 가능."
+  },
+  {
+    "nodeId": "127:7497",
+    "route": "/seller/fabrics/deleted",
+    "mode": "state",
+    "notes": "삭제 완료 후 현재 남은 원단 목록."
+  },
+  {
+    "nodeId": "127:7558",
+    "route": "/seller/reservations/confirm?action=ACCEPTED",
+    "mode": "state",
+    "notes": "실제 예약 id 쿼리 필요. 유효 상태만 처리; Figma 취소 사유는 API에 없으므로 입력/전송하지 않음."
+  },
+  {
+    "nodeId": "127:7692",
+    "route": "/seller/reservations/confirm?action=REJECTED",
+    "mode": "state",
+    "notes": "실제 예약 id 쿼리 필요. 유효 상태만 처리; Figma 취소 사유는 API에 없으므로 입력/전송하지 않음."
+  },
+  {
+    "nodeId": "127:7829",
+    "route": "/seller/reservations/confirm?action=PICKED_UP",
+    "mode": "state",
+    "notes": "실제 예약 id 쿼리 필요. 유효 상태만 처리; Figma 취소 사유는 API에 없으므로 입력/전송하지 않음."
+  },
+  {
+    "nodeId": "127:7974",
+    "route": "/seller/reservations/confirm?action=CANCELED",
+    "mode": "state",
+    "notes": "실제 예약 id 쿼리 필요. 유효 상태만 처리; Figma 취소 사유는 API에 없으므로 입력/전송하지 않음."
+  },
+  {
+    "nodeId": "127:7621",
+    "route": "/seller/reservations?status=ACCEPTED",
+    "mode": "data",
+    "notes": "실제 상태의 자기 매장 예약 및 빈 상태."
+  },
+  {
+    "nodeId": "127:7753",
+    "route": "/seller/reservations?status=REJECTED",
+    "mode": "data",
+    "notes": "실제 상태의 자기 매장 예약 및 빈 상태."
+  },
+  {
+    "nodeId": "127:7892",
+    "route": "/seller/reservations?status=PICKED_UP",
+    "mode": "data",
+    "notes": "실제 상태의 자기 매장 예약 및 빈 상태."
+  },
+  {
+    "nodeId": "127:8022",
+    "route": "/seller/reservations?status=CANCELED",
+    "mode": "data",
+    "notes": "실제 상태의 자기 매장 예약 및 빈 상태."
+  },
+  {
+    "nodeId": "127:8098",
+    "route": "/seller/inquiries/answered",
+    "mode": "state",
+    "notes": "답변 등록 후 해당 실제 문의 id를 쿼리로 전달."
+  },
+  {
+    "nodeId": "127:8297",
+    "route": "/seller/register/error?type=SCRAP",
+    "mode": "state",
+    "notes": "입력한 draft 오류와 보완 동선; 서버 mutation 없음."
+  },
+  {
+    "nodeId": "129:5726",
+    "route": "/seller/fabrics/detail?id=fabric-roll-1&after=pickup",
+    "mode": "data",
+    "notes": "수령 완료 뒤 바뀐 실제 남은 길이/확보량 표시."
+  },
+  {
+    "nodeId": "142:6789",
+    "route": "/seller/calendar?month=2026-09",
+    "mode": "data",
+    "notes": "월 이동과 날짜 선택; 수락된 픽업만 표시."
+  },
+  {
+    "nodeId": "142:6919",
+    "route": "/seller/calendar?month=2026-10",
+    "mode": "data",
+    "notes": "월 이동과 날짜 선택; 수락된 픽업만 표시."
+  },
+  {
+    "nodeId": "142:7090",
+    "route": "/seller/calendar?month=2026-11",
+    "mode": "data",
+    "notes": "월 이동과 날짜 선택; 수락된 픽업만 표시."
+  },
+  {
+    "nodeId": "144:6910",
+    "route": "/seller/dashboard",
+    "mode": "state",
+    "notes": "hasStore=false 또는 원단 없음+view=new. 현황 숫자는 실제 예시 state에서 계산."
+  },
+  {
+    "nodeId": "209:8131",
+    "route": "/seller/approval",
+    "mode": "state",
+    "notes": "seller_approval_status=PENDING; APPROVED는 hasStore도 확인."
+  },
+  {
+    "nodeId": "209:8167",
+    "route": "/seller/approval",
+    "mode": "state",
+    "notes": "seller_approval_status=REJECTED; APPROVED는 hasStore도 확인."
+  },
+  {
+    "nodeId": "209:8203",
+    "route": "/seller/approval",
+    "mode": "state",
+    "notes": "seller_approval_status=APPROVED; APPROVED는 hasStore도 확인."
+  },
+  {
+    "nodeId": "210:8608",
+    "route": "/seller/upload",
+    "mode": "state",
+    "notes": "upload.stage=CREATING; 마지막 DONE은 SCRAP. 재생성 없이 사진만 재시도; UNKNOWN은 목록 확인만."
+  },
+  {
+    "nodeId": "210:8618",
+    "route": "/seller/upload",
+    "mode": "state",
+    "notes": "upload.stage=UPLOADING; 마지막 DONE은 SCRAP. 재생성 없이 사진만 재시도; UNKNOWN은 목록 확인만."
+  },
+  {
+    "nodeId": "210:8628",
+    "route": "/seller/upload",
+    "mode": "state",
+    "notes": "upload.stage=PARTIAL; 마지막 DONE은 SCRAP. 재생성 없이 사진만 재시도; UNKNOWN은 목록 확인만."
+  },
+  {
+    "nodeId": "210:8638",
+    "route": "/seller/upload",
+    "mode": "state",
+    "notes": "upload.stage=UNKNOWN; 마지막 DONE은 SCRAP. 재생성 없이 사진만 재시도; UNKNOWN은 목록 확인만."
+  },
+  {
+    "nodeId": "210:8648",
+    "route": "/seller/upload",
+    "mode": "state",
+    "notes": "upload.stage=DONE; 마지막 DONE은 SCRAP. 재생성 없이 사진만 재시도; UNKNOWN은 목록 확인만."
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "checks": [
+    "320px: buyer/seller/admin menus visible with 44px targets, no horizontal overflow",
+    "390px: buyer/seller/admin menus visible with 44px targets, no horizontal overflow",
+    "768px: buyer/seller/admin menus visible with 44px targets, no horizontal overflow",
+    "1440px: buyer/seller/admin menus visible with 44px targets, no horizontal overflow",
+    "Mobile selector changes selected fabric; logout is visible",
+    "Rejection draft survives recheck; final reason is saved on confirmation",
+    "Drafts are separate per fabric and cleared at logout",
+    "Approval works; success feedback is cleared when leaving its result route",
+    "Open and closed preview tools do not overlap login fields"
+  ],
+  "errors": []
+}

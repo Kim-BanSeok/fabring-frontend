@@ -1,0 +1,386 @@
+[
+  {
+    "nodeId": "123:482",
+    "route": "/buyer/home",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "123:855",
+    "route": "/buyer/fabrics",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "202:7763",
+    "route": "/buyer/fabrics?sale_type=ROLL",
+    "mode": "state",
+    "notes": "판매 형태에 따라 게시된 원단만 표시"
+  },
+  {
+    "nodeId": "123:1201",
+    "route": "/buyer/fabrics/fabric-roll-1",
+    "mode": "data",
+    "notes": "공통 상세 페이지에 해당 원단 데이터 적용"
+  },
+  {
+    "nodeId": "123:1493",
+    "route": "/buyer/pickup/fabric-roll-1",
+    "mode": "data",
+    "notes": "자투리는 한 장, 롤은 구매 가능량 안에서 1마 단위"
+  },
+  {
+    "nodeId": "127:2936",
+    "route": "/buyer/pickup/fabric-roll-1?state=DONE&example=1",
+    "mode": "state",
+    "notes": "예시 접수 결과. 실제 요청 성공 시 submitted=예약ID로 동일 화면 표시"
+  },
+  {
+    "nodeId": "127:2994",
+    "route": "/buyer/fabrics/fabric-scrap-1",
+    "mode": "data",
+    "notes": "공통 상세 페이지에 해당 원단 데이터 적용"
+  },
+  {
+    "nodeId": "127:3092",
+    "route": "/buyer/pickup/fabric-scrap-1",
+    "mode": "data",
+    "notes": "자투리는 한 장, 롤은 구매 가능량 안에서 1마 단위"
+  },
+  {
+    "nodeId": "127:3190",
+    "route": "/buyer/pickup/fabric-scrap-1?state=DONE&example=1",
+    "mode": "state",
+    "notes": "예시 접수 결과. 실제 요청 성공 시 submitted=예약ID로 동일 화면 표시"
+  },
+  {
+    "nodeId": "127:3248",
+    "route": "/buyer/fabrics/fabric-gauze",
+    "mode": "data",
+    "notes": "공통 상세 페이지에 해당 원단 데이터 적용"
+  },
+  {
+    "nodeId": "127:3339",
+    "route": "/buyer/pickup/fabric-gauze",
+    "mode": "data",
+    "notes": "자투리는 한 장, 롤은 구매 가능량 안에서 1마 단위"
+  },
+  {
+    "nodeId": "127:3437",
+    "route": "/buyer/pickup/fabric-gauze?state=DONE&example=1",
+    "mode": "state",
+    "notes": "예시 접수 결과. 실제 요청 성공 시 submitted=예약ID로 동일 화면 표시"
+  },
+  {
+    "nodeId": "127:3495",
+    "route": "/buyer/fabrics/fabric-check",
+    "mode": "data",
+    "notes": "공통 상세 페이지에 해당 원단 데이터 적용"
+  },
+  {
+    "nodeId": "127:3586",
+    "route": "/buyer/pickup/fabric-check",
+    "mode": "data",
+    "notes": "자투리는 한 장, 롤은 구매 가능량 안에서 1마 단위"
+  },
+  {
+    "nodeId": "127:3684",
+    "route": "/buyer/pickup/fabric-check?state=DONE&example=1",
+    "mode": "state",
+    "notes": "예시 접수 결과. 실제 요청 성공 시 submitted=예약ID로 동일 화면 표시"
+  },
+  {
+    "nodeId": "127:3742",
+    "route": "/buyer/fabrics/fabric-denim",
+    "mode": "data",
+    "notes": "공통 상세 페이지에 해당 원단 데이터 적용"
+  },
+  {
+    "nodeId": "127:3833",
+    "route": "/buyer/pickup/fabric-denim",
+    "mode": "data",
+    "notes": "자투리는 한 장, 롤은 구매 가능량 안에서 1마 단위"
+  },
+  {
+    "nodeId": "127:3931",
+    "route": "/buyer/pickup/fabric-denim?state=DONE&example=1",
+    "mode": "state",
+    "notes": "예시 접수 결과. 실제 요청 성공 시 submitted=예약ID로 동일 화면 표시"
+  },
+  {
+    "nodeId": "127:3989",
+    "route": "/buyer/fabrics/fabric-scrap-2",
+    "mode": "data",
+    "notes": "공통 상세 페이지에 해당 원단 데이터 적용"
+  },
+  {
+    "nodeId": "127:4080",
+    "route": "/buyer/pickup/fabric-scrap-2",
+    "mode": "data",
+    "notes": "자투리는 한 장, 롤은 구매 가능량 안에서 1마 단위"
+  },
+  {
+    "nodeId": "127:4178",
+    "route": "/buyer/pickup/fabric-scrap-2?state=DONE&example=1",
+    "mode": "state",
+    "notes": "예시 접수 결과. 실제 요청 성공 시 submitted=예약ID로 동일 화면 표시"
+  },
+  {
+    "nodeId": "127:2667",
+    "route": "/buyer/filters?sale_type=ROLL&material=면&thickness=중간+두께&color=내추럴",
+    "mode": "state",
+    "notes": "현재 원단 데이터의 소재·두께·색상 옵션 사용"
+  },
+  {
+    "nodeId": "202:7982",
+    "route": "/buyer/filters?sale_type=SCRAP",
+    "mode": "state",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:2745",
+    "route": "/buyer/fabrics?sale_type=ROLL&view=search&material=면&color=내추럴",
+    "mode": "state",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:2823",
+    "route": "/buyer/fabrics?sale_type=SCRAP&collapsed=1",
+    "mode": "state",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:2890",
+    "route": "/buyer/fabrics?sale_type=SCRAP&view=search&material=울&thickness=두꺼움&color=보라",
+    "mode": "state",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:4236",
+    "route": "/buyer/recommendations/fabric-roll-1",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:4299",
+    "route": "/buyer/patterns/pouch?fabric_id=fabric-roll-1",
+    "mode": "page",
+    "notes": "고정 치수 시연 도안, 실제 출력·다운로드 파일 없음"
+  },
+  {
+    "nodeId": "127:4377",
+    "route": "/buyer/recommendations/fabric-scrap-2",
+    "mode": "state",
+    "notes": "실제 예시 원단 치수가 고정 도안 조건에 미달"
+  },
+  {
+    "nodeId": "202:8188",
+    "route": "/buyer/recommendations/fabric-roll-1?state=NEEDS_CHECK&example=1",
+    "mode": "state",
+    "notes": "소재 미확인 상황의 예시, 저장된 원단 정보는 변경하지 않음"
+  },
+  {
+    "nodeId": "123:1637",
+    "route": "/buyer/supplies",
+    "mode": "page",
+    "notes": "실제 업체·위치가 아닌 예시 지도와 판매처"
+  },
+  {
+    "nodeId": "127:5669",
+    "route": "/buyer/supplies/1",
+    "mode": "data",
+    "notes": "시연용 판매처 상세; 지도·목록·다른 판매처로 이동 가능"
+  },
+  {
+    "nodeId": "127:5731",
+    "route": "/buyer/supplies/2",
+    "mode": "data",
+    "notes": "시연용 판매처 상세; 지도·목록·다른 판매처로 이동 가능"
+  },
+  {
+    "nodeId": "127:5793",
+    "route": "/buyer/supplies/3",
+    "mode": "data",
+    "notes": "시연용 판매처 상세; 지도·목록·다른 판매처로 이동 가능"
+  },
+  {
+    "nodeId": "123:1806",
+    "route": "/buyer/reservations?status=REQUESTED&example=1",
+    "mode": "state",
+    "notes": "검토용 예시. 실제 목록에서는 example 없이 로컬 요청 내역 표시"
+  },
+  {
+    "nodeId": "127:4648",
+    "route": "/buyer/reservations?status=ACCEPTED&example=1",
+    "mode": "state",
+    "notes": "검토용 예시. 실제 목록에서는 example 없이 로컬 요청 내역 표시"
+  },
+  {
+    "nodeId": "127:4860",
+    "route": "/buyer/reservations?status=PICKED_UP&example=1",
+    "mode": "state",
+    "notes": "검토용 예시. 실제 목록에서는 example 없이 로컬 요청 내역 표시"
+  },
+  {
+    "nodeId": "127:4960",
+    "route": "/buyer/reservations?status=REJECTED&example=1",
+    "mode": "state",
+    "notes": "검토용 예시. 실제 목록에서는 example 없이 로컬 요청 내역 표시"
+  },
+  {
+    "nodeId": "127:5025",
+    "route": "/buyer/reservations?status=CANCELED&example=1",
+    "mode": "state",
+    "notes": "검토용 예시. 실제 목록에서는 example 없이 로컬 요청 내역 표시"
+  },
+  {
+    "nodeId": "127:4434",
+    "route": "/buyer/reservations/demo-roll?example=1",
+    "mode": "state",
+    "notes": "예시 예약 상세; 실제 예약 ID로 동일 상세 페이지 제공"
+  },
+  {
+    "nodeId": "127:4541",
+    "route": "/buyer/reservations/demo-scrap?example=1",
+    "mode": "state",
+    "notes": "예시 예약 상세; 실제 예약 ID로 동일 상세 페이지 제공"
+  },
+  {
+    "nodeId": "127:4492",
+    "route": "/buyer/reservations/demo-roll/cancel?example=1&status=REQUESTED",
+    "mode": "state",
+    "notes": "예시 취소는 mutation 없이 예시 결과로 이동. 실제 예약 취소는 공유 서비스 호출"
+  },
+  {
+    "nodeId": "127:4599",
+    "route": "/buyer/reservations/demo-scrap/cancel?example=1&status=REQUESTED",
+    "mode": "state",
+    "notes": "예시 취소는 mutation 없이 예시 결과로 이동. 실제 예약 취소는 공유 서비스 호출"
+  },
+  {
+    "nodeId": "127:4756",
+    "route": "/buyer/reservations/demo-roll/cancel?example=1&status=ACCEPTED",
+    "mode": "state",
+    "notes": "예시 취소는 mutation 없이 예시 결과로 이동. 실제 예약 취소는 공유 서비스 호출"
+  },
+  {
+    "nodeId": "127:4808",
+    "route": "/buyer/reservations/demo-scrap/cancel?example=1&status=ACCEPTED",
+    "mode": "state",
+    "notes": "예시 취소는 mutation 없이 예시 결과로 이동. 실제 예약 취소는 공유 서비스 호출"
+  },
+  {
+    "nodeId": "123:1964",
+    "route": "/buyer/profile",
+    "mode": "page",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:5385",
+    "route": "/buyer/profile?edit=1",
+    "mode": "state",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:5587",
+    "route": "/buyer/profile?state=SAVED&example=1",
+    "mode": "state",
+    "notes": "실제 저장 성공 시에도 동일 완료 화면 표시"
+  },
+  {
+    "nodeId": "123:2068",
+    "route": "/buyer/inquiries?status=ANSWERED&example=1",
+    "mode": "state",
+    "notes": "답변 완료 예시. 실제 답변은 example 없는 목록에서 표시"
+  },
+  {
+    "nodeId": "127:5299",
+    "route": "/buyer/inquiries?status=WAITING&example=1",
+    "mode": "state",
+    "notes": "답변 대기 예시. 실제 작성 결과도 동일 목록 레이아웃"
+  },
+  {
+    "nodeId": "127:5133",
+    "route": "/buyer/inquiries?compose=1&fabric_id=fabric-roll-1",
+    "mode": "data",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:5197",
+    "route": "/buyer/inquiries?compose=1&fabric_id=fabric-scrap-1",
+    "mode": "data",
+    "notes": ""
+  },
+  {
+    "nodeId": "127:5261",
+    "route": "/buyer/inquiries?state=DONE&example=1",
+    "mode": "state",
+    "notes": "실제 등록 성공 시에도 동일 완료 화면 표시"
+  },
+  {
+    "nodeId": "202:8252",
+    "route": "/buyer/errors/insufficient?example=1",
+    "mode": "state",
+    "notes": "오류 시나리오 예시와 복구 행동. 실제 서비스 오류에도 같은 화면 사용"
+  },
+  {
+    "nodeId": "202:8295",
+    "route": "/buyer/errors/reserved?example=1",
+    "mode": "state",
+    "notes": "오류 시나리오 예시와 복구 행동. 실제 서비스 오류에도 같은 화면 사용"
+  },
+  {
+    "nodeId": "202:8338",
+    "route": "/buyer/errors/duplicate?example=1",
+    "mode": "state",
+    "notes": "오류 시나리오 예시와 복구 행동. 실제 서비스 오류에도 같은 화면 사용"
+  },
+  {
+    "nodeId": "202:8381",
+    "route": "/buyer/errors/unavailable?example=1",
+    "mode": "state",
+    "notes": "오류 시나리오 예시와 복구 행동. 실제 서비스 오류에도 같은 화면 사용"
+  },
+  {
+    "nodeId": "202:8424",
+    "route": "/buyer/errors/expired?example=1",
+    "mode": "state",
+    "notes": "오류 시나리오 예시와 복구 행동. 실제 서비스 오류에도 같은 화면 사용"
+  },
+  {
+    "nodeId": "154:7368",
+    "route": "/buyer/reservations?status=REQUESTED&example=1&subset=canvas",
+    "mode": "state",
+    "notes": "단일 롤·단일 자투리·빈 목록 예시. 실제 예약 데이터는 변경하지 않음"
+  },
+  {
+    "nodeId": "154:7452",
+    "route": "/buyer/reservations?status=REQUESTED&example=1&subset=stripe",
+    "mode": "state",
+    "notes": "단일 롤·단일 자투리·빈 목록 예시. 실제 예약 데이터는 변경하지 않음"
+  },
+  {
+    "nodeId": "154:7522",
+    "route": "/buyer/reservations?status=REQUESTED&example=1&subset=empty",
+    "mode": "state",
+    "notes": "단일 롤·단일 자투리·빈 목록 예시. 실제 예약 데이터는 변경하지 않음"
+  },
+  {
+    "nodeId": "154:7566",
+    "route": "/buyer/reservations?status=CANCELED&example=1&subset=canvas",
+    "mode": "state",
+    "notes": "단일 롤·단일 자투리·빈 목록 예시. 실제 예약 데이터는 변경하지 않음"
+  },
+  {
+    "nodeId": "154:7639",
+    "route": "/buyer/reservations?status=CANCELED&example=1&subset=stripe",
+    "mode": "state",
+    "notes": "단일 롤·단일 자투리·빈 목록 예시. 실제 예약 데이터는 변경하지 않음"
+  },
+  {
+    "nodeId": "154:7712",
+    "route": "/buyer/reservations?status=CANCELED&example=1&subset=empty",
+    "mode": "state",
+    "notes": "단일 롤·단일 자투리·빈 목록 예시. 실제 예약 데이터는 변경하지 않음"
+  }
+]

@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "width": 320,
+      "status": "PICKED_UP"
+    },
+    {
+      "width": 320,
+      "status": "REJECTED"
+    },
+    {
+      "width": 320,
+      "status": "CANCELED"
+    },
+    {
+      "width": 390,
+      "status": "PICKED_UP"
+    },
+    {
+      "width": 390,
+      "status": "REJECTED"
+    },
+    {
+      "width": 390,
+      "status": "CANCELED"
+    }
+  ],
+  "errors": []
+}

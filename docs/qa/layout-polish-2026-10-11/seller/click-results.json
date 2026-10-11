@@ -1,0 +1,147 @@
+{
+  "checks": [
+    {
+      "name": "1366: calendar link relocation",
+      "pass": true
+    },
+    {
+      "name": "1366: registration method buttons",
+      "pass": true
+    },
+    {
+      "name": "1366: partial photo retry",
+      "pass": true
+    },
+    {
+      "name": "1366: completed reservation stock button",
+      "pass": true
+    },
+    {
+      "name": "320: calendar link relocation",
+      "pass": true
+    },
+    {
+      "name": "320: registration method buttons",
+      "pass": true
+    },
+    {
+      "name": "320: partial photo retry",
+      "pass": true
+    },
+    {
+      "name": "320: completed reservation stock button",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "supplementaryScreens": [
+    {
+      "name": "type",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "name": "ai-result",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "name": "ai-error",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "name": "delete",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "name": "calendar",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "name": "store",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "width": 1366,
+      "overflow": false
+    },
+    {
+      "name": "type",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "name": "ai-result",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "name": "ai-error",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "name": "delete",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "name": "calendar",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "name": "store",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "width": 320,
+      "overflow": false
+    }
+  ]
+}

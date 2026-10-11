@@ -1,0 +1,4249 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "name": "auth-login",
+      "route": "/auth/buyer/login",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1024,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 848,
+        "bottom": 942
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 942,
+        "bottom": 942
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 554,
+        "bottom": 712
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 756,
+          "y": 508,
+          "width": 476,
+          "height": 48,
+          "bottom": 556
+        },
+        {
+          "text": "회원가입",
+          "x": 756,
+          "y": 576,
+          "width": 476,
+          "height": 48,
+          "bottom": 624
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1440,
+          "height": 848,
+          "bottom": 942
+        }
+      ]
+    },
+    {
+      "name": "auth-seller",
+      "route": "/auth/seller/login",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1024,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 848,
+        "bottom": 942
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 942,
+        "bottom": 942
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 554,
+        "bottom": 712
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 756,
+          "y": 508,
+          "width": 476,
+          "height": 48,
+          "bottom": 556
+        },
+        {
+          "text": "회원가입",
+          "x": 756,
+          "y": 576,
+          "width": 476,
+          "height": 48,
+          "bottom": 624
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1440,
+          "height": 848,
+          "bottom": 942
+        }
+      ]
+    },
+    {
+      "name": "auth-admin",
+      "route": "/auth/admin/login",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1024,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 848,
+        "bottom": 942
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 942,
+        "bottom": 942
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 486,
+        "bottom": 644
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "관리자 로그인",
+          "x": 756,
+          "y": 508,
+          "width": 476,
+          "height": 48,
+          "bottom": 556
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1440,
+          "height": 848,
+          "bottom": 942
+        }
+      ]
+    },
+    {
+      "name": "auth-signup",
+      "route": "/auth/buyer/signup",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1210,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 1034,
+        "bottom": 1128
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1128,
+        "bottom": 1128
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 906,
+        "bottom": 1064
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "가입하기",
+          "x": 756,
+          "y": 928,
+          "width": 476,
+          "height": 48,
+          "bottom": 976
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1440,
+          "height": 1034,
+          "bottom": 1128
+        }
+      ]
+    },
+    {
+      "name": "auth-error",
+      "route": "/auth/buyer/error",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 983,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 807,
+        "bottom": 901
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 901,
+        "bottom": 901
+      },
+      "heading": {
+        "x": 96,
+        "y": 318,
+        "width": 1248,
+        "height": 46,
+        "bottom": 364
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 706,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "text": "로그인으로 돌아가기",
+          "x": 96,
+          "y": 528,
+          "width": 184,
+          "height": 48,
+          "bottom": 576
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1440,
+          "height": 706,
+          "bottom": 800
+        }
+      ]
+    },
+    {
+      "name": "auth-done",
+      "route": "/auth/buyer/signup-done",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 983,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 807,
+        "bottom": 901
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 901,
+        "bottom": 901
+      },
+      "heading": {
+        "x": 96,
+        "y": 158,
+        "width": 1248,
+        "height": 46,
+        "bottom": 204
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 94,
+        "width": 1440,
+        "height": 706,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "text": "로그인하기",
+          "x": 121,
+          "y": 485,
+          "width": 240,
+          "height": 48,
+          "bottom": 533
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1440,
+          "height": 706,
+          "bottom": 800
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "route": "/buyer/home",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1273,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 1098,
+        "bottom": 1191
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1191,
+        "bottom": 1191
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 둘러보기 →",
+          "x": 136,
+          "y": 523,
+          "width": 220,
+          "height": 48,
+          "bottom": 571
+        },
+        {
+          "text": "전체 보기 →",
+          "x": 1144,
+          "y": 645,
+          "width": 200,
+          "height": 48,
+          "bottom": 693
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 970,
+          "bottom": 1111
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "route": "/buyer/fabrics",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1969,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 1794,
+        "bottom": 1887
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1887,
+        "bottom": 1887
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "자투리",
+          "x": 96,
+          "y": 267,
+          "width": 112,
+          "height": 44,
+          "bottom": 311
+        },
+        {
+          "text": "롤",
+          "x": 216,
+          "y": 267,
+          "width": 112,
+          "height": 44,
+          "bottom": 311
+        },
+        {
+          "text": "초기화",
+          "x": 121,
+          "y": 510,
+          "width": 140,
+          "height": 48,
+          "bottom": 558
+        },
+        {
+          "text": "검색",
+          "x": 277,
+          "y": 510,
+          "width": 140,
+          "height": 48,
+          "bottom": 558
+        },
+        {
+          "text": "상세 조건 접기 ↑",
+          "x": 433,
+          "y": 510,
+          "width": 153.046875,
+          "height": 48,
+          "bottom": 558
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1140,
+          "y": 837,
+          "width": 180,
+          "height": 48,
+          "bottom": 885
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1140,
+          "y": 1111,
+          "width": 180,
+          "height": 48,
+          "bottom": 1159
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1140,
+          "y": 1385,
+          "width": 180,
+          "height": 48,
+          "bottom": 1433
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1140,
+          "y": 1659,
+          "width": 180,
+          "height": 48,
+          "bottom": 1707
+        },
+        {
+          "text": "필터 조건 선택",
+          "x": 96,
+          "y": 1759,
+          "width": 140,
+          "height": 48,
+          "bottom": 1807
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 1666,
+          "bottom": 1807
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "route": "/buyer/fabrics/fabric-roll-1",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1465,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 1290,
+        "bottom": 1383
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1383,
+        "bottom": 1383
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "픽업 요청하기",
+          "x": 745,
+          "y": 744,
+          "width": 351.328125,
+          "height": 48,
+          "bottom": 792
+        },
+        {
+          "text": "판매자 문의",
+          "x": 1112.328125,
+          "y": 744,
+          "width": 206.65625,
+          "height": 48,
+          "bottom": 792
+        },
+        {
+          "text": "제작 조건 확인",
+          "x": 96,
+          "y": 1255,
+          "width": 140,
+          "height": 48,
+          "bottom": 1303
+        },
+        {
+          "text": "도안 미리보기",
+          "x": 252,
+          "y": 1255,
+          "width": 140,
+          "height": 48,
+          "bottom": 1303
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 1162,
+          "bottom": 1303
+        }
+      ]
+    },
+    {
+      "name": "pickup",
+      "route": "/buyer/pickup/fabric-roll-1",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1479,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 1304,
+        "bottom": 1397
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1397,
+        "bottom": 1397
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 상세로 돌아가기",
+          "x": 96,
+          "y": 1269,
+          "width": 173.765625,
+          "height": 48,
+          "bottom": 1317
+        },
+        {
+          "text": "픽업 요청 보내기",
+          "x": 285.765625,
+          "y": 1269,
+          "width": 148,
+          "height": 48,
+          "bottom": 1317
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 1176,
+          "bottom": 1317
+        }
+      ]
+    },
+    {
+      "name": "profile",
+      "route": "/buyer/profile",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 989,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 814,
+        "bottom": 907
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 907,
+        "bottom": 907
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "정보 수정",
+          "x": 1119,
+          "y": 342,
+          "width": 200,
+          "height": 48,
+          "bottom": 390
+        },
+        {
+          "text": "구매 내역 바로 가기 →",
+          "x": 121,
+          "y": 678,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 726
+        },
+        {
+          "text": "문의 내역 바로 가기 →",
+          "x": 757,
+          "y": 678,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 726
+        },
+        {
+          "text": "로그아웃",
+          "x": 96,
+          "y": 779,
+          "width": 140,
+          "height": 48,
+          "bottom": 827
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 686,
+          "bottom": 827
+        }
+      ]
+    },
+    {
+      "name": "profile-done",
+      "route": "/buyer/profile?state=SAVED&example=1",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 982,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 807,
+        "bottom": 900
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900,
+        "bottom": 900
+      },
+      "heading": {
+        "x": 96,
+        "y": 270,
+        "width": 1248,
+        "height": 46,
+        "bottom": 316
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 592,
+        "bottom": 733
+      },
+      "buttons": [
+        {
+          "text": "마이페이지로",
+          "x": 96,
+          "y": 556,
+          "width": 140,
+          "height": 48,
+          "bottom": 604
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 592,
+          "bottom": 733
+        }
+      ]
+    },
+    {
+      "name": "buyer-error",
+      "route": "/buyer/errors/insufficient?example=1",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 982,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 807,
+        "bottom": 900
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 900,
+        "bottom": 900
+      },
+      "heading": {
+        "x": 96,
+        "y": 270,
+        "width": 1248,
+        "height": 46,
+        "bottom": 316
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 592,
+        "bottom": 733
+      },
+      "buttons": [
+        {
+          "text": "수량 다시 선택",
+          "x": 96,
+          "y": 556,
+          "width": 140,
+          "height": 48,
+          "bottom": 604
+        },
+        {
+          "text": "구매 가능량 확인",
+          "x": 252,
+          "y": 556,
+          "width": 148,
+          "height": 48,
+          "bottom": 604
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 592,
+          "bottom": 733
+        }
+      ]
+    },
+    {
+      "name": "reservations",
+      "route": "/buyer/reservations?example=1",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1209,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 1034,
+        "bottom": 1127
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1127,
+        "bottom": 1127
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "요청됨",
+          "x": 96,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "수락됨",
+          "x": 216,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "수령 완료",
+          "x": 336,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "거절",
+          "x": 456,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "취소",
+          "x": 576,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "상세 보기",
+          "x": 1060,
+          "y": 543,
+          "width": 260,
+          "height": 48,
+          "bottom": 591
+        },
+        {
+          "text": "예약 취소",
+          "x": 1060,
+          "y": 607,
+          "width": 260,
+          "height": 48,
+          "bottom": 655
+        },
+        {
+          "text": "상세 보기",
+          "x": 1060,
+          "y": 831,
+          "width": 260,
+          "height": 48,
+          "bottom": 879
+        },
+        {
+          "text": "예약 취소",
+          "x": 1060,
+          "y": 895,
+          "width": 260,
+          "height": 48,
+          "bottom": 943
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 906,
+          "bottom": 1047
+        }
+      ]
+    },
+    {
+      "name": "supplies",
+      "route": "/buyer/supplies",
+      "width": 1440,
+      "height": 900,
+      "scrollWidth": 1440,
+      "scrollHeight": 1261,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1440,
+        "height": 1086,
+        "bottom": 1179
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1440,
+        "height": 1179,
+        "bottom": 1179
+      },
+      "heading": {
+        "x": 96,
+        "y": 141,
+        "width": 1248,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "판매처 안내 보기",
+          "x": 121,
+          "y": 1026,
+          "width": 148,
+          "height": 48,
+          "bottom": 1074
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 96,
+          "y": 141,
+          "width": 1248,
+          "height": 958,
+          "bottom": 1099
+        }
+      ]
+    },
+    {
+      "name": "auth-login",
+      "route": "/auth/buyer/login",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1024,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 848,
+        "bottom": 942
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 942,
+        "bottom": 942
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 554,
+        "bottom": 712
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 756,
+          "y": 508,
+          "width": 476,
+          "height": 48,
+          "bottom": 556
+        },
+        {
+          "text": "회원가입",
+          "x": 756,
+          "y": 576,
+          "width": 476,
+          "height": 48,
+          "bottom": 624
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1366,
+          "height": 848,
+          "bottom": 942
+        }
+      ]
+    },
+    {
+      "name": "auth-seller",
+      "route": "/auth/seller/login",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1024,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 848,
+        "bottom": 942
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 942,
+        "bottom": 942
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 554,
+        "bottom": 712
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 756,
+          "y": 508,
+          "width": 476,
+          "height": 48,
+          "bottom": 556
+        },
+        {
+          "text": "회원가입",
+          "x": 756,
+          "y": 576,
+          "width": 476,
+          "height": 48,
+          "bottom": 624
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1366,
+          "height": 848,
+          "bottom": 942
+        }
+      ]
+    },
+    {
+      "name": "auth-admin",
+      "route": "/auth/admin/login",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1024,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 848,
+        "bottom": 942
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 942,
+        "bottom": 942
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 486,
+        "bottom": 644
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "관리자 로그인",
+          "x": 756,
+          "y": 508,
+          "width": 476,
+          "height": 48,
+          "bottom": 556
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1366,
+          "height": 848,
+          "bottom": 942
+        }
+      ]
+    },
+    {
+      "name": "auth-signup",
+      "route": "/auth/buyer/signup",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1210,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 1034,
+        "bottom": 1128
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1128,
+        "bottom": 1128
+      },
+      "heading": {
+        "x": 756,
+        "y": 206,
+        "width": 476,
+        "height": 46,
+        "bottom": 252
+      },
+      "brand": {
+        "x": 64,
+        "y": 158,
+        "width": 572,
+        "height": 720,
+        "bottom": 878
+      },
+      "form": {
+        "x": 708,
+        "y": 158,
+        "width": 572,
+        "height": 906,
+        "bottom": 1064
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "가입하기",
+          "x": 756,
+          "y": 928,
+          "width": 476,
+          "height": 48,
+          "bottom": 976
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1366,
+          "height": 1034,
+          "bottom": 1128
+        }
+      ]
+    },
+    {
+      "name": "auth-error",
+      "route": "/auth/buyer/error",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 882,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 706,
+        "bottom": 800
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 800,
+        "bottom": 800
+      },
+      "heading": {
+        "x": 96,
+        "y": 318,
+        "width": 1174,
+        "height": 46,
+        "bottom": 364
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 706,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "text": "로그인으로 돌아가기",
+          "x": 96,
+          "y": 528,
+          "width": 184,
+          "height": 48,
+          "bottom": 576
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1366,
+          "height": 706,
+          "bottom": 800
+        }
+      ]
+    },
+    {
+      "name": "auth-done",
+      "route": "/auth/buyer/signup-done",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 882,
+      "main": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 706,
+        "bottom": 800
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 800,
+        "bottom": 800
+      },
+      "heading": {
+        "x": 96,
+        "y": 158,
+        "width": 1174,
+        "height": 46,
+        "bottom": 204
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 94,
+        "width": 1366,
+        "height": 706,
+        "bottom": 800
+      },
+      "buttons": [
+        {
+          "text": "로그인하기",
+          "x": 121,
+          "y": 485,
+          "width": 240,
+          "height": 48,
+          "bottom": 533
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 94,
+          "width": 1366,
+          "height": 706,
+          "bottom": 800
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "route": "/buyer/home",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1273,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 1098,
+        "bottom": 1191
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1191,
+        "bottom": 1191
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 둘러보기 →",
+          "x": 131.0625,
+          "y": 523,
+          "width": 220,
+          "height": 48,
+          "bottom": 571
+        },
+        {
+          "text": "전체 보기 →",
+          "x": 1074.9375,
+          "y": 645,
+          "width": 200,
+          "height": 48,
+          "bottom": 693
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 970,
+          "bottom": 1111
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "route": "/buyer/fabrics",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1969,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 1794,
+        "bottom": 1887
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1887,
+        "bottom": 1887
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "자투리",
+          "x": 91.0625,
+          "y": 267,
+          "width": 112,
+          "height": 44,
+          "bottom": 311
+        },
+        {
+          "text": "롤",
+          "x": 211.0625,
+          "y": 267,
+          "width": 112,
+          "height": 44,
+          "bottom": 311
+        },
+        {
+          "text": "초기화",
+          "x": 116.0625,
+          "y": 510,
+          "width": 140,
+          "height": 48,
+          "bottom": 558
+        },
+        {
+          "text": "검색",
+          "x": 272.0625,
+          "y": 510,
+          "width": 140,
+          "height": 48,
+          "bottom": 558
+        },
+        {
+          "text": "상세 조건 접기 ↑",
+          "x": 428.0625,
+          "y": 510,
+          "width": 153.046875,
+          "height": 48,
+          "bottom": 558
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1070.9375,
+          "y": 837,
+          "width": 180,
+          "height": 48,
+          "bottom": 885
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1070.9375,
+          "y": 1111,
+          "width": 180,
+          "height": 48,
+          "bottom": 1159
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1070.9375,
+          "y": 1385,
+          "width": 180,
+          "height": 48,
+          "bottom": 1433
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 1070.9375,
+          "y": 1659,
+          "width": 180,
+          "height": 48,
+          "bottom": 1707
+        },
+        {
+          "text": "필터 조건 선택",
+          "x": 91.0625,
+          "y": 1759,
+          "width": 140,
+          "height": 48,
+          "bottom": 1807
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 1666,
+          "bottom": 1807
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "route": "/buyer/fabrics/fabric-roll-1",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1465,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 1290,
+        "bottom": 1383
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1383,
+        "bottom": 1383
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "픽업 요청하기",
+          "x": 708.625,
+          "y": 744,
+          "width": 330.75,
+          "height": 48,
+          "bottom": 792
+        },
+        {
+          "text": "판매자 문의",
+          "x": 1055.375,
+          "y": 744,
+          "width": 194.5625,
+          "height": 48,
+          "bottom": 792
+        },
+        {
+          "text": "제작 조건 확인",
+          "x": 91.0625,
+          "y": 1255,
+          "width": 140,
+          "height": 48,
+          "bottom": 1303
+        },
+        {
+          "text": "도안 미리보기",
+          "x": 247.0625,
+          "y": 1255,
+          "width": 140,
+          "height": 48,
+          "bottom": 1303
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 1162,
+          "bottom": 1303
+        }
+      ]
+    },
+    {
+      "name": "pickup",
+      "route": "/buyer/pickup/fabric-roll-1",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1479,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 1304,
+        "bottom": 1397
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1397,
+        "bottom": 1397
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 상세로 돌아가기",
+          "x": 91.0625,
+          "y": 1269,
+          "width": 173.765625,
+          "height": 48,
+          "bottom": 1317
+        },
+        {
+          "text": "픽업 요청 보내기",
+          "x": 280.828125,
+          "y": 1269,
+          "width": 148,
+          "height": 48,
+          "bottom": 1317
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 1176,
+          "bottom": 1317
+        }
+      ]
+    },
+    {
+      "name": "profile",
+      "route": "/buyer/profile",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 989,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 814,
+        "bottom": 907
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 907,
+        "bottom": 907
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "정보 수정",
+          "x": 1049.9375,
+          "y": 342,
+          "width": 200,
+          "height": 48,
+          "bottom": 390
+        },
+        {
+          "text": "구매 내역 바로 가기 →",
+          "x": 116.0625,
+          "y": 678,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 726
+        },
+        {
+          "text": "문의 내역 바로 가기 →",
+          "x": 720,
+          "y": 678,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 726
+        },
+        {
+          "text": "로그아웃",
+          "x": 91.0625,
+          "y": 779,
+          "width": 140,
+          "height": 48,
+          "bottom": 827
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 686,
+          "bottom": 827
+        }
+      ]
+    },
+    {
+      "name": "profile-done",
+      "route": "/buyer/profile?state=SAVED&example=1",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 895,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 720,
+        "bottom": 813
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 813,
+        "bottom": 813
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 270,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 316
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 592,
+        "bottom": 733
+      },
+      "buttons": [
+        {
+          "text": "마이페이지로",
+          "x": 91.0625,
+          "y": 556,
+          "width": 140,
+          "height": 48,
+          "bottom": 604
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 592,
+          "bottom": 733
+        }
+      ]
+    },
+    {
+      "name": "buyer-error",
+      "route": "/buyer/errors/insufficient?example=1",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 895,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 720,
+        "bottom": 813
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 813,
+        "bottom": 813
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 270,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 316
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 592,
+        "bottom": 733
+      },
+      "buttons": [
+        {
+          "text": "수량 다시 선택",
+          "x": 91.0625,
+          "y": 556,
+          "width": 140,
+          "height": 48,
+          "bottom": 604
+        },
+        {
+          "text": "구매 가능량 확인",
+          "x": 247.0625,
+          "y": 556,
+          "width": 148,
+          "height": 48,
+          "bottom": 604
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 592,
+          "bottom": 733
+        }
+      ]
+    },
+    {
+      "name": "reservations",
+      "route": "/buyer/reservations?example=1",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1209,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 1034,
+        "bottom": 1127
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1127,
+        "bottom": 1127
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "요청됨",
+          "x": 91.0625,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "수락됨",
+          "x": 211.0625,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "수령 완료",
+          "x": 331.0625,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "거절",
+          "x": 451.0625,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "취소",
+          "x": 571.0625,
+          "y": 347,
+          "width": 112,
+          "height": 44,
+          "bottom": 391
+        },
+        {
+          "text": "상세 보기",
+          "x": 990.9375,
+          "y": 543,
+          "width": 260,
+          "height": 48,
+          "bottom": 591
+        },
+        {
+          "text": "예약 취소",
+          "x": 990.9375,
+          "y": 607,
+          "width": 260,
+          "height": 48,
+          "bottom": 655
+        },
+        {
+          "text": "상세 보기",
+          "x": 990.9375,
+          "y": 831,
+          "width": 260,
+          "height": 48,
+          "bottom": 879
+        },
+        {
+          "text": "예약 취소",
+          "x": 990.9375,
+          "y": 895,
+          "width": 260,
+          "height": 48,
+          "bottom": 943
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 906,
+          "bottom": 1047
+        }
+      ]
+    },
+    {
+      "name": "supplies",
+      "route": "/buyer/supplies",
+      "width": 1366,
+      "height": 600,
+      "scrollWidth": 1366,
+      "scrollHeight": 1261,
+      "main": {
+        "x": 0,
+        "y": 93,
+        "width": 1366,
+        "height": 1086,
+        "bottom": 1179
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 1366,
+        "height": 1179,
+        "bottom": 1179
+      },
+      "heading": {
+        "x": 91.0625,
+        "y": 141,
+        "width": 1183.875,
+        "height": 46,
+        "bottom": 187
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "판매처 안내 보기",
+          "x": 116.0625,
+          "y": 1026,
+          "width": 148,
+          "height": 48,
+          "bottom": 1074
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 91.0625,
+          "y": 141,
+          "width": 1183.875,
+          "height": 958,
+          "bottom": 1099
+        }
+      ]
+    },
+    {
+      "name": "auth-login",
+      "route": "/auth/buyer/login",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 926,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 751,
+        "bottom": 821
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844
+      },
+      "heading": {
+        "x": 44,
+        "y": 248,
+        "width": 302,
+        "height": 38,
+        "bottom": 286
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 350,
+        "height": 102,
+        "bottom": 196
+      },
+      "form": {
+        "x": 20,
+        "y": 220,
+        "width": 350,
+        "height": 506,
+        "bottom": 726
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 44,
+          "y": 542,
+          "width": 302,
+          "height": 48,
+          "bottom": 590
+        },
+        {
+          "text": "회원가입",
+          "x": 44,
+          "y": 610,
+          "width": 302,
+          "height": 48,
+          "bottom": 658
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 728,
+          "bottom": 798
+        }
+      ]
+    },
+    {
+      "name": "auth-seller",
+      "route": "/auth/seller/login",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 926,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 762,
+        "bottom": 832
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844
+      },
+      "heading": {
+        "x": 44,
+        "y": 282,
+        "width": 302,
+        "height": 38,
+        "bottom": 320
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 350,
+        "height": 136,
+        "bottom": 230
+      },
+      "form": {
+        "x": 20,
+        "y": 254,
+        "width": 350,
+        "height": 506,
+        "bottom": 760
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 44,
+          "y": 576,
+          "width": 302,
+          "height": 48,
+          "bottom": 624
+        },
+        {
+          "text": "회원가입",
+          "x": 44,
+          "y": 644,
+          "width": 302,
+          "height": 48,
+          "bottom": 692
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 762,
+          "bottom": 832
+        }
+      ]
+    },
+    {
+      "name": "auth-admin",
+      "route": "/auth/admin/login",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 926,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 751,
+        "bottom": 821
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844
+      },
+      "heading": {
+        "x": 44,
+        "y": 248,
+        "width": 302,
+        "height": 38,
+        "bottom": 286
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 350,
+        "height": 102,
+        "bottom": 196
+      },
+      "form": {
+        "x": 20,
+        "y": 220,
+        "width": 350,
+        "height": 438,
+        "bottom": 658
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "관리자 로그인",
+          "x": 44,
+          "y": 542,
+          "width": 302,
+          "height": 48,
+          "bottom": 590
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 660,
+          "bottom": 730
+        }
+      ]
+    },
+    {
+      "name": "auth-signup",
+      "route": "/auth/buyer/signup",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 1232,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 1080,
+        "bottom": 1150
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1150,
+        "bottom": 1150
+      },
+      "heading": {
+        "x": 44,
+        "y": 248,
+        "width": 302,
+        "height": 38,
+        "bottom": 286
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 350,
+        "height": 102,
+        "bottom": 196
+      },
+      "form": {
+        "x": 20,
+        "y": 220,
+        "width": 350,
+        "height": 858,
+        "bottom": 1078
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "가입하기",
+          "x": 44,
+          "y": 962,
+          "width": 302,
+          "height": 48,
+          "bottom": 1010
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 1080,
+          "bottom": 1150
+        }
+      ]
+    },
+    {
+      "name": "auth-error",
+      "route": "/auth/buyer/error",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 926,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 751,
+        "bottom": 821
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844
+      },
+      "heading": {
+        "x": 20,
+        "y": 256,
+        "width": 350,
+        "height": 38,
+        "bottom": 294
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 650,
+        "bottom": 720
+      },
+      "buttons": [
+        {
+          "text": "로그인으로 돌아가기",
+          "x": 20,
+          "y": 446,
+          "width": 169.84375,
+          "height": 48,
+          "bottom": 494
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 650,
+          "bottom": 720
+        }
+      ]
+    },
+    {
+      "name": "auth-done",
+      "route": "/auth/buyer/signup-done",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 926,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 751,
+        "bottom": 821
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 844,
+        "bottom": 844
+      },
+      "heading": {
+        "x": 20,
+        "y": 110,
+        "width": 350,
+        "height": 38,
+        "bottom": 148
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 70,
+        "width": 390,
+        "height": 650,
+        "bottom": 720
+      },
+      "buttons": [
+        {
+          "text": "로그인하기",
+          "x": 41,
+          "y": 413,
+          "width": 308,
+          "height": 48,
+          "bottom": 461
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 390,
+          "height": 650,
+          "bottom": 720
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "route": "/buyer/home",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 2735,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 2474,
+        "bottom": 2653
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 2653,
+        "bottom": 2653
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 둘러보기 →",
+          "x": 44,
+          "y": 537,
+          "width": 220,
+          "height": 48,
+          "bottom": 585
+        },
+        {
+          "text": "전체 보기 →",
+          "x": 20,
+          "y": 949,
+          "width": 200,
+          "height": 48,
+          "bottom": 997
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 2366,
+          "bottom": 2573
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "route": "/buyer/fabrics",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 3159,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 2898,
+        "bottom": 3077
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 3077,
+        "bottom": 3077
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "자투리",
+          "x": 20,
+          "y": 333,
+          "width": 112,
+          "height": 44,
+          "bottom": 377
+        },
+        {
+          "text": "롤",
+          "x": 140,
+          "y": 333,
+          "width": 112,
+          "height": 44,
+          "bottom": 377
+        },
+        {
+          "text": "초기화",
+          "x": 41,
+          "y": 752,
+          "width": 140,
+          "height": 48,
+          "bottom": 800
+        },
+        {
+          "text": "검색",
+          "x": 193,
+          "y": 752,
+          "width": 140,
+          "height": 48,
+          "bottom": 800
+        },
+        {
+          "text": "상세 조건 접기 ↑",
+          "x": 41,
+          "y": 812,
+          "width": 153.046875,
+          "height": 48,
+          "bottom": 860
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 226.625,
+          "y": 1357,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 1405
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 226.625,
+          "y": 1857,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 1905
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 226.625,
+          "y": 2357,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 2405
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 226.625,
+          "y": 2857,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 2905
+        },
+        {
+          "text": "필터 조건 선택",
+          "x": 20,
+          "y": 2949,
+          "width": 140,
+          "height": 48,
+          "bottom": 2997
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 2790,
+          "bottom": 2997
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "route": "/buyer/fabrics/fabric-roll-1",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 2545,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 2284,
+        "bottom": 2463
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 2463,
+        "bottom": 2463
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "픽업 요청하기",
+          "x": 41,
+          "y": 1234,
+          "width": 308,
+          "height": 48,
+          "bottom": 1282
+        },
+        {
+          "text": "판매자 문의",
+          "x": 41,
+          "y": 1298,
+          "width": 308,
+          "height": 48,
+          "bottom": 1346
+        },
+        {
+          "text": "제작 조건 확인",
+          "x": 20,
+          "y": 2335,
+          "width": 140,
+          "height": 48,
+          "bottom": 2383
+        },
+        {
+          "text": "도안 미리보기",
+          "x": 172,
+          "y": 2335,
+          "width": 140,
+          "height": 48,
+          "bottom": 2383
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 2176,
+          "bottom": 2383
+        }
+      ]
+    },
+    {
+      "name": "pickup",
+      "route": "/buyer/pickup/fabric-roll-1",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 2077,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 1816,
+        "bottom": 1995
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1995,
+        "bottom": 1995
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 상세로 돌아가기",
+          "x": 20,
+          "y": 1867,
+          "width": 173.765625,
+          "height": 48,
+          "bottom": 1915
+        },
+        {
+          "text": "픽업 요청 보내기",
+          "x": 205.765625,
+          "y": 1867,
+          "width": 148,
+          "height": 48,
+          "bottom": 1915
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 1708,
+          "bottom": 1915
+        }
+      ]
+    },
+    {
+      "name": "profile",
+      "route": "/buyer/profile",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 1207,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 946,
+        "bottom": 1125
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1125,
+        "bottom": 1125
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "정보 수정",
+          "x": 209,
+          "y": 380,
+          "width": 140,
+          "height": 48,
+          "bottom": 428
+        },
+        {
+          "text": "구매 내역 바로 가기 →",
+          "x": 41,
+          "y": 704,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 752
+        },
+        {
+          "text": "문의 내역 바로 가기 →",
+          "x": 41,
+          "y": 904,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 952
+        },
+        {
+          "text": "로그아웃",
+          "x": 20,
+          "y": 997,
+          "width": 140,
+          "height": 48,
+          "bottom": 1045
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 838,
+          "bottom": 1045
+        }
+      ]
+    },
+    {
+      "name": "profile-done",
+      "route": "/buyer/profile?state=SAVED&example=1",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 1012,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 751,
+        "bottom": 930
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 930,
+        "bottom": 930
+      },
+      "heading": {
+        "x": 20,
+        "y": 266,
+        "width": 350,
+        "height": 38,
+        "bottom": 304
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 440,
+        "bottom": 647
+      },
+      "buttons": [
+        {
+          "text": "마이페이지로",
+          "x": 20,
+          "y": 540,
+          "width": 140,
+          "height": 48,
+          "bottom": 588
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 440,
+          "bottom": 647
+        }
+      ]
+    },
+    {
+      "name": "buyer-error",
+      "route": "/buyer/errors/insufficient?example=1",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 1012,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 751,
+        "bottom": 930
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 930,
+        "bottom": 930
+      },
+      "heading": {
+        "x": 20,
+        "y": 256,
+        "width": 350,
+        "height": 38,
+        "bottom": 294
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 440,
+        "bottom": 647
+      },
+      "buttons": [
+        {
+          "text": "수량 다시 선택",
+          "x": 20,
+          "y": 550,
+          "width": 140,
+          "height": 48,
+          "bottom": 598
+        },
+        {
+          "text": "구매 가능량 확인",
+          "x": 172,
+          "y": 550,
+          "width": 148,
+          "height": 48,
+          "bottom": 598
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 440,
+          "bottom": 647
+        }
+      ]
+    },
+    {
+      "name": "reservations",
+      "route": "/buyer/reservations?example=1",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 2043,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 1782,
+        "bottom": 1961
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1961,
+        "bottom": 1961
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "요청됨",
+          "x": 20,
+          "y": 405,
+          "width": 112,
+          "height": 44,
+          "bottom": 449
+        },
+        {
+          "text": "수락됨",
+          "x": 140,
+          "y": 405,
+          "width": 112,
+          "height": 44,
+          "bottom": 449
+        },
+        {
+          "text": "수령 완료",
+          "x": 20,
+          "y": 457,
+          "width": 112,
+          "height": 44,
+          "bottom": 501
+        },
+        {
+          "text": "거절",
+          "x": 140,
+          "y": 457,
+          "width": 112,
+          "height": 44,
+          "bottom": 501
+        },
+        {
+          "text": "취소",
+          "x": 20,
+          "y": 509,
+          "width": 112,
+          "height": 44,
+          "bottom": 553
+        },
+        {
+          "text": "상세 보기",
+          "x": 40,
+          "y": 1099,
+          "width": 120,
+          "height": 48,
+          "bottom": 1147
+        },
+        {
+          "text": "예약 취소",
+          "x": 176,
+          "y": 1099,
+          "width": 120,
+          "height": 48,
+          "bottom": 1147
+        },
+        {
+          "text": "상세 보기",
+          "x": 40,
+          "y": 1717,
+          "width": 120,
+          "height": 48,
+          "bottom": 1765
+        },
+        {
+          "text": "예약 취소",
+          "x": 176,
+          "y": 1717,
+          "width": 120,
+          "height": 48,
+          "bottom": 1765
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 1674,
+          "bottom": 1881
+        }
+      ]
+    },
+    {
+      "name": "supplies",
+      "route": "/buyer/supplies",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "scrollHeight": 1597,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 390,
+        "height": 1336,
+        "bottom": 1515
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 1515,
+        "bottom": 1515
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 350,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "판매처 안내 보기",
+          "x": 41,
+          "y": 1366,
+          "width": 148,
+          "height": 48,
+          "bottom": 1414
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 350,
+          "height": 1228,
+          "bottom": 1435
+        }
+      ]
+    },
+    {
+      "name": "auth-login",
+      "route": "/auth/buyer/login",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 914,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 762,
+        "bottom": 832
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 832,
+        "bottom": 832
+      },
+      "heading": {
+        "x": 44,
+        "y": 282,
+        "width": 232,
+        "height": 38,
+        "bottom": 320
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 280,
+        "height": 136,
+        "bottom": 230
+      },
+      "form": {
+        "x": 20,
+        "y": 254,
+        "width": 280,
+        "height": 506,
+        "bottom": 760
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 44,
+          "y": 576,
+          "width": 232,
+          "height": 48,
+          "bottom": 624
+        },
+        {
+          "text": "회원가입",
+          "x": 44,
+          "y": 644,
+          "width": 232,
+          "height": 48,
+          "bottom": 692
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 320,
+          "height": 762,
+          "bottom": 832
+        }
+      ]
+    },
+    {
+      "name": "auth-seller",
+      "route": "/auth/seller/login",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 914,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 762,
+        "bottom": 832
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 832,
+        "bottom": 832
+      },
+      "heading": {
+        "x": 44,
+        "y": 282,
+        "width": 232,
+        "height": 38,
+        "bottom": 320
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 280,
+        "height": 136,
+        "bottom": 230
+      },
+      "form": {
+        "x": 20,
+        "y": 254,
+        "width": 280,
+        "height": 506,
+        "bottom": 760
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "로그인",
+          "x": 44,
+          "y": 576,
+          "width": 232,
+          "height": 48,
+          "bottom": 624
+        },
+        {
+          "text": "회원가입",
+          "x": 44,
+          "y": 644,
+          "width": 232,
+          "height": 48,
+          "bottom": 692
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 320,
+          "height": 762,
+          "bottom": 832
+        }
+      ]
+    },
+    {
+      "name": "auth-admin",
+      "route": "/auth/admin/login",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 846,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 694,
+        "bottom": 764
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 764,
+        "bottom": 764
+      },
+      "heading": {
+        "x": 44,
+        "y": 282,
+        "width": 232,
+        "height": 38,
+        "bottom": 320
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 280,
+        "height": 136,
+        "bottom": 230
+      },
+      "form": {
+        "x": 20,
+        "y": 254,
+        "width": 280,
+        "height": 438,
+        "bottom": 692
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "관리자 로그인",
+          "x": 44,
+          "y": 576,
+          "width": 232,
+          "height": 48,
+          "bottom": 624
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 320,
+          "height": 694,
+          "bottom": 764
+        }
+      ]
+    },
+    {
+      "name": "auth-signup",
+      "route": "/auth/buyer/signup",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 1286,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 1134,
+        "bottom": 1204
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 1204,
+        "bottom": 1204
+      },
+      "heading": {
+        "x": 44,
+        "y": 282,
+        "width": 232,
+        "height": 38,
+        "bottom": 320
+      },
+      "brand": {
+        "x": 20,
+        "y": 94,
+        "width": 280,
+        "height": 136,
+        "bottom": 230
+      },
+      "form": {
+        "x": 20,
+        "y": 254,
+        "width": 280,
+        "height": 878,
+        "bottom": 1132
+      },
+      "state": null,
+      "buttons": [
+        {
+          "text": "가입하기",
+          "x": 44,
+          "y": 1016,
+          "width": 232,
+          "height": 48,
+          "bottom": 1064
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 320,
+          "height": 1134,
+          "bottom": 1204
+        }
+      ]
+    },
+    {
+      "name": "auth-error",
+      "route": "/auth/buyer/error",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 802,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 650,
+        "bottom": 720
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 720,
+        "bottom": 720
+      },
+      "heading": {
+        "x": 20,
+        "y": 225,
+        "width": 280,
+        "height": 76,
+        "bottom": 301
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 650,
+        "bottom": 720
+      },
+      "buttons": [
+        {
+          "text": "로그인으로 돌아가기",
+          "x": 20,
+          "y": 477,
+          "width": 169.84375,
+          "height": 48,
+          "bottom": 525
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 320,
+          "height": 650,
+          "bottom": 720
+        }
+      ]
+    },
+    {
+      "name": "auth-done",
+      "route": "/auth/buyer/signup-done",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 802,
+      "main": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 650,
+        "bottom": 720
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 720,
+        "bottom": 720
+      },
+      "heading": {
+        "x": 20,
+        "y": 110,
+        "width": 280,
+        "height": 38,
+        "bottom": 148
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 0,
+        "y": 70,
+        "width": 320,
+        "height": 650,
+        "bottom": 720
+      },
+      "buttons": [
+        {
+          "text": "로그인하기",
+          "x": 41,
+          "y": 445,
+          "width": 238,
+          "height": 48,
+          "bottom": 493
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 0,
+          "y": 70,
+          "width": 320,
+          "height": 650,
+          "bottom": 720
+        }
+      ]
+    },
+    {
+      "name": "home",
+      "route": "/buyer/home",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 2843,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 2582,
+        "bottom": 2761
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 2761,
+        "bottom": 2761
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 76,
+        "bottom": 283
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 둘러보기 →",
+          "x": 44,
+          "y": 645,
+          "width": 220,
+          "height": 48,
+          "bottom": 693
+        },
+        {
+          "text": "전체 보기 →",
+          "x": 20,
+          "y": 1057,
+          "width": 200,
+          "height": 48,
+          "bottom": 1105
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 2474,
+          "bottom": 2681
+        }
+      ]
+    },
+    {
+      "name": "list",
+      "route": "/buyer/fabrics",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 3283,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 3022,
+        "bottom": 3201
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 3201,
+        "bottom": 3201
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "자투리",
+          "x": 20,
+          "y": 333,
+          "width": 112,
+          "height": 44,
+          "bottom": 377
+        },
+        {
+          "text": "롤",
+          "x": 140,
+          "y": 333,
+          "width": 112,
+          "height": 44,
+          "bottom": 377
+        },
+        {
+          "text": "초기화",
+          "x": 41,
+          "y": 752,
+          "width": 140,
+          "height": 48,
+          "bottom": 800
+        },
+        {
+          "text": "검색",
+          "x": 41,
+          "y": 812,
+          "width": 140,
+          "height": 48,
+          "bottom": 860
+        },
+        {
+          "text": "상세 조건 접기 ↑",
+          "x": 41,
+          "y": 872,
+          "width": 153.046875,
+          "height": 48,
+          "bottom": 920
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 156.625,
+          "y": 1441,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 1489
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 156.625,
+          "y": 1961,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 2009
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 156.625,
+          "y": 2481,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 2529
+        },
+        {
+          "text": "상세 보기 →",
+          "x": 156.625,
+          "y": 2981,
+          "width": 123.375,
+          "height": 48,
+          "bottom": 3029
+        },
+        {
+          "text": "필터 조건 선택",
+          "x": 20,
+          "y": 3073,
+          "width": 140,
+          "height": 48,
+          "bottom": 3121
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 2914,
+          "bottom": 3121
+        }
+      ]
+    },
+    {
+      "name": "detail",
+      "route": "/buyer/fabrics/fabric-roll-1",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 2691,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 2430,
+        "bottom": 2609
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 2609,
+        "bottom": 2609
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "픽업 요청하기",
+          "x": 41,
+          "y": 1258,
+          "width": 238,
+          "height": 48,
+          "bottom": 1306
+        },
+        {
+          "text": "판매자 문의",
+          "x": 41,
+          "y": 1322,
+          "width": 238,
+          "height": 48,
+          "bottom": 1370
+        },
+        {
+          "text": "제작 조건 확인",
+          "x": 20,
+          "y": 2421,
+          "width": 140,
+          "height": 48,
+          "bottom": 2469
+        },
+        {
+          "text": "도안 미리보기",
+          "x": 20,
+          "y": 2481,
+          "width": 140,
+          "height": 48,
+          "bottom": 2529
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 2322,
+          "bottom": 2529
+        }
+      ]
+    },
+    {
+      "name": "pickup",
+      "route": "/buyer/pickup/fabric-roll-1",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 2261,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 2000,
+        "bottom": 2179
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 2179,
+        "bottom": 2179
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "원단 상세로 돌아가기",
+          "x": 20,
+          "y": 1991,
+          "width": 173.765625,
+          "height": 48,
+          "bottom": 2039
+        },
+        {
+          "text": "픽업 요청 보내기",
+          "x": 20,
+          "y": 2051,
+          "width": 148,
+          "height": 48,
+          "bottom": 2099
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 1892,
+          "bottom": 2099
+        }
+      ]
+    },
+    {
+      "name": "profile",
+      "route": "/buyer/profile",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 1309,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 1048,
+        "bottom": 1227
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 1227,
+        "bottom": 1227
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "정보 수정",
+          "x": 41,
+          "y": 434,
+          "width": 140,
+          "height": 48,
+          "bottom": 482
+        },
+        {
+          "text": "구매 내역 바로 가기 →",
+          "x": 41,
+          "y": 782,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 830
+        },
+        {
+          "text": "문의 내역 바로 가기 →",
+          "x": 41,
+          "y": 1006,
+          "width": 182.734375,
+          "height": 48,
+          "bottom": 1054
+        },
+        {
+          "text": "로그아웃",
+          "x": 20,
+          "y": 1099,
+          "width": 140,
+          "height": 48,
+          "bottom": 1147
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 940,
+          "bottom": 1147
+        }
+      ]
+    },
+    {
+      "name": "profile-done",
+      "route": "/buyer/profile?state=SAVED&example=1",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 868,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 607,
+        "bottom": 786
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 786,
+        "bottom": 786
+      },
+      "heading": {
+        "x": 20,
+        "y": 266,
+        "width": 280,
+        "height": 38,
+        "bottom": 304
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 440,
+        "bottom": 647
+      },
+      "buttons": [
+        {
+          "text": "마이페이지로",
+          "x": 20,
+          "y": 540,
+          "width": 140,
+          "height": 48,
+          "bottom": 588
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 440,
+          "bottom": 647
+        }
+      ]
+    },
+    {
+      "name": "buyer-error",
+      "route": "/buyer/errors/insufficient?example=1",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 868,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 607,
+        "bottom": 786
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 786,
+        "bottom": 786
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 76,
+        "bottom": 283
+      },
+      "brand": null,
+      "form": null,
+      "state": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 464,
+        "bottom": 671
+      },
+      "buttons": [
+        {
+          "text": "수량 다시 선택",
+          "x": 20,
+          "y": 563,
+          "width": 140,
+          "height": 48,
+          "bottom": 611
+        },
+        {
+          "text": "구매 가능량 확인",
+          "x": 20,
+          "y": 623,
+          "width": 148,
+          "height": 48,
+          "bottom": 671
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 464,
+          "bottom": 671
+        }
+      ]
+    },
+    {
+      "name": "reservations",
+      "route": "/buyer/reservations?example=1",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 2171,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 1910,
+        "bottom": 2089
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 2089,
+        "bottom": 2089
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "요청됨",
+          "x": 20,
+          "y": 405,
+          "width": 112,
+          "height": 44,
+          "bottom": 449
+        },
+        {
+          "text": "수락됨",
+          "x": 140,
+          "y": 405,
+          "width": 112,
+          "height": 44,
+          "bottom": 449
+        },
+        {
+          "text": "수령 완료",
+          "x": 20,
+          "y": 457,
+          "width": 112,
+          "height": 44,
+          "bottom": 501
+        },
+        {
+          "text": "거절",
+          "x": 140,
+          "y": 457,
+          "width": 112,
+          "height": 44,
+          "bottom": 501
+        },
+        {
+          "text": "취소",
+          "x": 20,
+          "y": 509,
+          "width": 112,
+          "height": 44,
+          "bottom": 553
+        },
+        {
+          "text": "상세 보기",
+          "x": 40,
+          "y": 1099,
+          "width": 120,
+          "height": 48,
+          "bottom": 1147
+        },
+        {
+          "text": "예약 취소",
+          "x": 40,
+          "y": 1163,
+          "width": 120,
+          "height": 48,
+          "bottom": 1211
+        },
+        {
+          "text": "상세 보기",
+          "x": 40,
+          "y": 1781,
+          "width": 120,
+          "height": 48,
+          "bottom": 1829
+        },
+        {
+          "text": "예약 취소",
+          "x": 40,
+          "y": 1845,
+          "width": 120,
+          "height": 48,
+          "bottom": 1893
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 1802,
+          "bottom": 2009
+        }
+      ]
+    },
+    {
+      "name": "supplies",
+      "route": "/buyer/supplies",
+      "width": 320,
+      "height": 700,
+      "scrollWidth": 320,
+      "scrollHeight": 1669,
+      "main": {
+        "x": 0,
+        "y": 179,
+        "width": 320,
+        "height": 1408,
+        "bottom": 1587
+      },
+      "shell": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 1587,
+        "bottom": 1587
+      },
+      "heading": {
+        "x": 20,
+        "y": 207,
+        "width": 280,
+        "height": 38,
+        "bottom": 245
+      },
+      "brand": null,
+      "form": null,
+      "state": null,
+      "buttons": [
+        {
+          "text": "판매처 안내 보기",
+          "x": 41,
+          "y": 1438,
+          "width": 148,
+          "height": 48,
+          "bottom": 1486
+        }
+      ],
+      "bottomChildren": [
+        {
+          "x": 20,
+          "y": 207,
+          "width": 280,
+          "height": 1300,
+          "bottom": 1507
+        }
+      ]
+    }
+  ]
+}

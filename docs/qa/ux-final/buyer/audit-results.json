@@ -1,0 +1,106 @@
+{
+  "observed": {
+    "searchReturn": {
+      "from": "#/buyer/fabrics?sale_type=ROLL&color=%EB%82%B4%EC%B6%94%EB%9F%B4&view=search",
+      "to": "#/buyer/fabrics?sale_type=ROLL",
+      "selectedColor": ""
+    },
+    "pickupDraft": {
+      "before": {
+        "requested_ma": "3",
+        "pickup_date": "2026-10-13",
+        "pickup_time": "16:30",
+        "memo": "방문 전에 두께를 확인하고 싶어요."
+      },
+      "after": {
+        "requested_ma": "2",
+        "pickup_date": "2026-10-13",
+        "pickup_time": "14:00",
+        "memo": ""
+      }
+    },
+    "inquiryDraft": {
+      "before": {
+        "content": "세탁 후 수축이 있는지 궁금합니다."
+      },
+      "after": {
+        "content": ""
+      }
+    },
+    "recommendation": {
+      "detailClaim": "이 원단으로 만들 수 있어요",
+      "resultHeading": "추천할 수 있는 도안이 없어요"
+    },
+    "noAvailability": {
+      "available": 0,
+      "detailBadge": "거래 가능",
+      "detailRequestLink": 1,
+      "quantity": "1",
+      "max": "0",
+      "submitDisabled": true,
+      "hasStockRecovery": 0
+    },
+    "mobileMapSelection": {
+      "scrollY": 0,
+      "selectedCardTop": 1055,
+      "height": 844,
+      "selectedName": "그린 봉제 공방",
+      "focus": "부자재 둘러보기"
+    },
+    "patternSupplyReturn": {
+      "route": "#/buyer/supplies",
+      "returnLinks": 0
+    }
+  },
+  "smoke": [
+    {
+      "action": "5마 요청 → 접수 → 상세",
+      "heading": "픽업 요청 상세"
+    },
+    {
+      "action": "실제 수락 예약 취소",
+      "status": "CANCELED",
+      "available": 450
+    },
+    {
+      "action": "390px pickup",
+      "width": 390,
+      "scroll": 390,
+      "docHeight": 1951,
+      "h1Top": 163
+    },
+    {
+      "action": "390px reservation",
+      "width": 390,
+      "scroll": 390,
+      "docHeight": 1033,
+      "h1Top": 163
+    },
+    {
+      "action": "390px inquiry",
+      "width": 390,
+      "scroll": 390,
+      "docHeight": 953,
+      "h1Top": 163
+    },
+    {
+      "action": "390px pattern",
+      "width": 390,
+      "scroll": 390,
+      "docHeight": 1168,
+      "h1Top": 163
+    },
+    {
+      "action": "390px error",
+      "width": 390,
+      "scroll": 390,
+      "docHeight": 886,
+      "h1Top": 212
+    },
+    {
+      "action": "도안 → 부자재 → 판매처 상세",
+      "heading": "루프 부자재 공방"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,48 @@
+{
+  "checks": [
+    "Seller PENDING → REJECTED → APPROVED; legal action availability verified",
+    "Fabric rejection trims/validates reason and displays it in detail and filtered result",
+    "Fabric approval updates state; native status selector and empty SOLD_OUT result verified",
+    "Mobile screenshots and document bounds collected at 390px"
+  ],
+  "dimensions": [
+    {
+      "label": "dashboard",
+      "viewport": 390,
+      "document": 390,
+      "body": 390
+    },
+    {
+      "label": "sellers",
+      "viewport": 390,
+      "document": 390,
+      "body": 390
+    },
+    {
+      "label": "seller-detail",
+      "viewport": 390,
+      "document": 390,
+      "body": 390
+    },
+    {
+      "label": "fabrics",
+      "viewport": 390,
+      "document": 390,
+      "body": 390
+    },
+    {
+      "label": "fabric-detail",
+      "viewport": 390,
+      "document": 390,
+      "body": 390
+    },
+    {
+      "label": "fabric-reject",
+      "viewport": 390,
+      "document": 390,
+      "body": 390
+    }
+  ],
+  "errors": [],
+  "overflow": []
+}

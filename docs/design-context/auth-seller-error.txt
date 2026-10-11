@@ -1,0 +1,89 @@
+const imgEllipse = "https://www.figma.com/api/mcp/asset/3dee6498-f6e9-440b-90db-5472a04ece20.svg";
+
+type FlowUiNoticeProps = {
+  className?: string;
+  message?: string;
+  tone?: "red";
+};
+
+function FlowUiNotice({ className, message = "상태에 맞는 안내 메시지", tone = "red" }: FlowUiNoticeProps) {
+  return (
+    <div className={className || "bg-[var(--loop-dangerBg,#fbece7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] w-[1000px]"} data-node-id="124:2495">
+      <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-danger,#aa473c)] w-full" data-node-id="124:2496">
+        {message}
+      </p>
+    </div>
+  );
+}
+
+type LoopUiLogoProps = {
+  className?: string;
+  theme?: "Light";
+};
+
+function LoopUiLogo({ className, theme = "Light" }: LoopUiLogoProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[10px] items-start relative w-[160px]"} data-node-id="77:364">
+      <div className="relative shrink-0 size-[28px]" data-node-id="77:362" data-name="Ellipse">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse} />
+      </div>
+      <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="77:363">
+        섬유 루프
+      </p>
+    </div>
+  );
+}
+
+export default function SfLoginError() {
+  return (
+    <div className="bg-[var(--loop-canvasClear,#f2f5f3)] content-stretch flex flex-col items-start relative size-full" data-node-id="127:2514" data-name="SF_LOGIN_ERROR · 로그인 정보를 확인해 주세요">
+      <div className="bg-[var(--loop-surface,white)] content-stretch flex items-start p-[var(--loop-space-32,32px)] relative shrink-0 w-[1440px]" data-node-id="127:2515" data-name="Auth header">
+        <LoopUiLogo className="content-stretch flex gap-[10px] items-start relative shrink-0 w-[160px]" />
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start justify-center min-h-[706px] px-[var(--loop-space-96,96px)] py-[var(--loop-space-64,64px)] relative shrink-0 w-[1440px]" data-node-id="127:2519" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="127:2520">
+          로그인 정보를 확인해 주세요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="127:2521">
+          이메일과 비밀번호가 일치하지 않습니다.
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-dangerBg,#fbece7)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="입력한 정보를 확인한 뒤 다시 로그인해 주세요." />
+        <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1248px]" data-node-id="127:2524" data-name="Actions">
+          <a className="content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="127:2525" data-name="Button / 로그인으로 돌아가기">
+            <CodeConnectSnippet data-node-id="I127:2525;79:102" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="로그인으로 돌아가기" label="로그인으로 돌아가기" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Loop / h3: Font(family: "Noto Sans KR", style: Bold, size: 20, weight: 700, lineHeight: 30, letterSpacing: 0), Loop / h1: Font(family: "Noto Sans KR", style: Bold, size: 32, weight: 700, lineHeight: 46, letterSpacing: 0), Loop / body: Font(family: "Noto Sans KR", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Theme=Light
+**Node ID:** 77:364
+
+기존 섬유 루프 심벌과 워드마크를 보존합니다. 클릭 시 현재 역할의 메인으로 이동하며 선택 상태는 유지하지 않습니다.
+
+## Loop UI / Logo
+**Node ID:** 80:305
+
+기존 심벌과 워드마크 유지 · Light/Dark · 역할별 홈 이동 · 선택 상태 없음
+
+## Loop UI / Button
+**Node ID:** 80:226
+
+색상 기준: 주요 행동 action #16794E, Hover #12633F, Pressed #0E4E32. 보조 버튼은 흰색, 비활성은 기존 회색. Focus는 흰색 간격과 초록 외곽선. 거절 액션은 Kind=Danger: 적색 글자·테두리, Hover/Pressed에서 연적색 배경. Disabled/Loading은 동작을 막습니다.
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

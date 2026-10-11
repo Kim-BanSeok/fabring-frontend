@@ -1,0 +1,130 @@
+{
+  "passed": true,
+  "checks": [
+    "23 assigned source nodes resolve to correct source annotations and non-error pages",
+    "Buyer/seller/admin login forms process and route to role homes",
+    "Both signup journeys: each consent disables independently, confirmation mismatch preserves all fields, success clears password, seller first login opens store",
+    "Credential and network failures preserve input and offer an actionable retry without retaining forced failure query",
+    "Session expiry renders and reconnects to login",
+    "23 routes at 390px with no document overflow; local logo loaded at exact 28×28 geometry"
+  ],
+  "dimensions": [
+    {
+      "route": "/auth/buyer/login",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/login",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/admin/login",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/signup?consent=11",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/signup?consent=11",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/signup?consent=00",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/signup?consent=01",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/signup?consent=10",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/signup?consent=00",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/signup?consent=01",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/signup?consent=10",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/error",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/processing",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/error",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/processing",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/admin/error",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/admin/processing",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/signup-done",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/signup-error",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/signup-done",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/signup-error",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/seller/first-login",
+      "viewport": 390,
+      "content": 390
+    },
+    {
+      "route": "/auth/buyer/session-expired",
+      "viewport": 390,
+      "content": 390
+    }
+  ],
+  "errors": [],
+  "scope": "Local HTML prototype only; no real authentication or backend integration"
+}

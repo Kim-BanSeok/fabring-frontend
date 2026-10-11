@@ -1,0 +1,4781 @@
+{
+  "rows": [
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "dashboard",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1085,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [
+        {
+          "x": 312,
+          "y": 262,
+          "width": 254,
+          "height": 164,
+          "bottom": 426,
+          "right": 566
+        },
+        {
+          "x": 582,
+          "y": 262,
+          "width": 254,
+          "height": 164,
+          "bottom": 426,
+          "right": 836
+        },
+        {
+          "x": 852,
+          "y": 262,
+          "width": 254,
+          "height": 164,
+          "bottom": 426,
+          "right": 1106
+        },
+        {
+          "x": 1122,
+          "y": 262,
+          "width": 254,
+          "height": 164,
+          "bottom": 426,
+          "right": 1376
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "dashboard",
+      "position": "middle",
+      "scroll": 93,
+      "scrollHeight": 1085,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [
+        {
+          "x": 312,
+          "y": 169,
+          "width": 254,
+          "height": 164,
+          "bottom": 333,
+          "right": 566
+        },
+        {
+          "x": 582,
+          "y": 169,
+          "width": 254,
+          "height": 164,
+          "bottom": 333,
+          "right": 836
+        },
+        {
+          "x": 852,
+          "y": 169,
+          "width": 254,
+          "height": 164,
+          "bottom": 333,
+          "right": 1106
+        },
+        {
+          "x": 1122,
+          "y": 169,
+          "width": 254,
+          "height": 164,
+          "bottom": 333,
+          "right": 1376
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "dashboard",
+      "position": "bottom",
+      "scroll": 185,
+      "scrollHeight": 1085,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [
+        {
+          "x": 312,
+          "y": 77,
+          "width": 254,
+          "height": 164,
+          "bottom": 241,
+          "right": 566
+        },
+        {
+          "x": 582,
+          "y": 77,
+          "width": 254,
+          "height": 164,
+          "bottom": 241,
+          "right": 836
+        },
+        {
+          "x": 852,
+          "y": 77,
+          "width": 254,
+          "height": 164,
+          "bottom": 241,
+          "right": 1106
+        },
+        {
+          "x": 1122,
+          "y": 77,
+          "width": 254,
+          "height": 164,
+          "bottom": 241,
+          "right": 1376
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "sellers",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "sellers",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "sellers",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "seller-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1003,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 849,
+          "width": 1064,
+          "height": 48,
+          "bottom": 897,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "seller-detail",
+      "position": "middle",
+      "scroll": 52,
+      "scrollHeight": 1003,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 797,
+          "width": 1064,
+          "height": 48,
+          "bottom": 845,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "seller-detail",
+      "position": "bottom",
+      "scroll": 103,
+      "scrollHeight": 1003,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 746,
+          "width": 1064,
+          "height": 48,
+          "bottom": 794,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "fabrics",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1333,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 1179,
+          "width": 1064,
+          "height": 48,
+          "bottom": 1227,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "fabrics",
+      "position": "middle",
+      "scroll": 217,
+      "scrollHeight": 1333,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 962,
+          "width": 1064,
+          "height": 48,
+          "bottom": 1010,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "fabrics",
+      "position": "bottom",
+      "scroll": 433,
+      "scrollHeight": 1333,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 746,
+          "width": 1064,
+          "height": 48,
+          "bottom": 794,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "approvals",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1095,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 621,
+        "y": 457,
+        "width": 232,
+        "height": 232,
+        "bottom": 689,
+        "right": 853
+      },
+      "reviewProduct": {
+        "x": 621,
+        "y": 457,
+        "width": 730,
+        "height": 248,
+        "bottom": 705,
+        "right": 1351
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 621,
+          "y": 916,
+          "width": 730,
+          "height": 48,
+          "bottom": 964,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "approvals",
+      "position": "middle",
+      "scroll": 98,
+      "scrollHeight": 1095,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 621,
+        "y": 359,
+        "width": 232,
+        "height": 232,
+        "bottom": 591,
+        "right": 853
+      },
+      "reviewProduct": {
+        "x": 621,
+        "y": 359,
+        "width": 730,
+        "height": 248,
+        "bottom": 607,
+        "right": 1351
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 621,
+          "y": 818,
+          "width": 730,
+          "height": 48,
+          "bottom": 866,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "approvals",
+      "position": "bottom",
+      "scroll": 195,
+      "scrollHeight": 1095,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 621,
+        "y": 262,
+        "width": 232,
+        "height": 232,
+        "bottom": 494,
+        "right": 853
+      },
+      "reviewProduct": {
+        "x": 621,
+        "y": 262,
+        "width": 730,
+        "height": 248,
+        "bottom": 510,
+        "right": 1351
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 621,
+          "y": 721,
+          "width": 730,
+          "height": 48,
+          "bottom": 769,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "fabric-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1580,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 1426,
+          "width": 1064,
+          "height": 48,
+          "bottom": 1474,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "fabric-detail",
+      "position": "middle",
+      "scroll": 340,
+      "scrollHeight": 1580,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 1086,
+          "width": 1064,
+          "height": 48,
+          "bottom": 1134,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "fabric-detail",
+      "position": "bottom",
+      "scroll": 680,
+      "scrollHeight": 1580,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 746,
+          "width": 1064,
+          "height": 48,
+          "bottom": 794,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "reject",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1292,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 1029,
+          "width": 1014,
+          "height": 48,
+          "bottom": 1077,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "reject",
+      "position": "middle",
+      "scroll": 196,
+      "scrollHeight": 1292,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 833,
+          "width": 1014,
+          "height": 48,
+          "bottom": 881,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "reject",
+      "position": "bottom",
+      "scroll": 392,
+      "scrollHeight": 1292,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 637,
+          "width": 1014,
+          "height": 48,
+          "bottom": 685,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "approve",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1088,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 934,
+          "width": 1064,
+          "height": 48,
+          "bottom": 982,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "approve",
+      "position": "middle",
+      "scroll": 94,
+      "scrollHeight": 1088,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 840,
+          "width": 1064,
+          "height": 48,
+          "bottom": 888,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "approve",
+      "position": "bottom",
+      "scroll": 188,
+      "scrollHeight": 1088,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 746,
+          "width": 1064,
+          "height": 48,
+          "bottom": 794,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "result",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1180,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 557,
+          "width": 1014,
+          "height": 48,
+          "bottom": 605,
+          "right": 1351
+        },
+        {
+          "x": 312,
+          "y": 1026,
+          "width": 1064,
+          "height": 48,
+          "bottom": 1074,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "result",
+      "position": "middle",
+      "scroll": 140,
+      "scrollHeight": 1180,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 417,
+          "width": 1014,
+          "height": 48,
+          "bottom": 465,
+          "right": 1351
+        },
+        {
+          "x": 312,
+          "y": 886,
+          "width": 1064,
+          "height": 48,
+          "bottom": 934,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "result",
+      "position": "bottom",
+      "scroll": 280,
+      "scrollHeight": 1180,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 1014,
+          "scroll": 1014
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 277,
+          "width": 1014,
+          "height": 48,
+          "bottom": 325,
+          "right": 1351
+        },
+        {
+          "x": 312,
+          "y": 746,
+          "width": 1064,
+          "height": 48,
+          "bottom": 794,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "filter",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 425,
+          "width": 1014,
+          "height": 48,
+          "bottom": 473,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "filter",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 425,
+          "width": 1014,
+          "height": 48,
+          "bottom": 473,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "filter",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 425,
+          "width": 1014,
+          "height": 48,
+          "bottom": 473,
+          "right": 1351
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "error",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 570,
+          "width": 1064,
+          "height": 48,
+          "bottom": 618,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "error",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 570,
+          "width": 1064,
+          "height": 48,
+          "bottom": 618,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "name": "error",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 900,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 900,
+        "bottom": 900,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 570,
+          "width": 1064,
+          "height": 48,
+          "bottom": 618,
+          "right": 1376
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "dashboard",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1085,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [
+        {
+          "x": 312,
+          "y": 262,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 426,
+          "right": 547.5
+        },
+        {
+          "x": 563.5,
+          "y": 262,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 426,
+          "right": 799
+        },
+        {
+          "x": 815,
+          "y": 262,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 426,
+          "right": 1050.5
+        },
+        {
+          "x": 1066.5,
+          "y": 262,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 426,
+          "right": 1302
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "dashboard",
+      "position": "middle",
+      "scroll": 243,
+      "scrollHeight": 1085,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [
+        {
+          "x": 312,
+          "y": 19,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 183,
+          "right": 547.5
+        },
+        {
+          "x": 563.5,
+          "y": 19,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 183,
+          "right": 799
+        },
+        {
+          "x": 815,
+          "y": 19,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 183,
+          "right": 1050.5
+        },
+        {
+          "x": 1066.5,
+          "y": 19,
+          "width": 235.5,
+          "height": 164,
+          "bottom": 183,
+          "right": 1302
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "dashboard",
+      "position": "bottom",
+      "scroll": 485,
+      "scrollHeight": 1085,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [
+        {
+          "x": 312,
+          "y": -223,
+          "width": 235.5,
+          "height": 164,
+          "bottom": -59,
+          "right": 547.5
+        },
+        {
+          "x": 563.5,
+          "y": -223,
+          "width": 235.5,
+          "height": 164,
+          "bottom": -59,
+          "right": 799
+        },
+        {
+          "x": 815,
+          "y": -223,
+          "width": 235.5,
+          "height": 164,
+          "bottom": -59,
+          "right": 1050.5
+        },
+        {
+          "x": 1066.5,
+          "y": -223,
+          "width": 235.5,
+          "height": 164,
+          "bottom": -59,
+          "right": 1302
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "sellers",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 685,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "sellers",
+      "position": "middle",
+      "scroll": 43,
+      "scrollHeight": 685,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "sellers",
+      "position": "bottom",
+      "scroll": 85,
+      "scrollHeight": 685,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": []
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "seller-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1003,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 849,
+          "width": 990,
+          "height": 48,
+          "bottom": 897,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "seller-detail",
+      "position": "middle",
+      "scroll": 202,
+      "scrollHeight": 1003,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 647,
+          "width": 990,
+          "height": 48,
+          "bottom": 695,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "seller-detail",
+      "position": "bottom",
+      "scroll": 403,
+      "scrollHeight": 1003,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 446,
+          "width": 990,
+          "height": 48,
+          "bottom": 494,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "fabrics",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1333,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 1179,
+          "width": 990,
+          "height": 48,
+          "bottom": 1227,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "fabrics",
+      "position": "middle",
+      "scroll": 367,
+      "scrollHeight": 1333,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 812,
+          "width": 990,
+          "height": 48,
+          "bottom": 860,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "fabrics",
+      "position": "bottom",
+      "scroll": 733,
+      "scrollHeight": 1333,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 446,
+          "width": 990,
+          "height": 48,
+          "bottom": 494,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "approvals",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1095,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 621,
+        "y": 457,
+        "width": 232,
+        "height": 232,
+        "bottom": 689,
+        "right": 853
+      },
+      "reviewProduct": {
+        "x": 621,
+        "y": 457,
+        "width": 656,
+        "height": 248,
+        "bottom": 705,
+        "right": 1277
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 621,
+          "y": 916,
+          "width": 656,
+          "height": 48,
+          "bottom": 964,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "approvals",
+      "position": "middle",
+      "scroll": 248,
+      "scrollHeight": 1095,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 621,
+        "y": 209,
+        "width": 232,
+        "height": 232,
+        "bottom": 441,
+        "right": 853
+      },
+      "reviewProduct": {
+        "x": 621,
+        "y": 209,
+        "width": 656,
+        "height": 248,
+        "bottom": 457,
+        "right": 1277
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 621,
+          "y": 668,
+          "width": 656,
+          "height": 48,
+          "bottom": 716,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "approvals",
+      "position": "bottom",
+      "scroll": 495,
+      "scrollHeight": 1095,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 621,
+        "y": -38,
+        "width": 232,
+        "height": 232,
+        "bottom": 194,
+        "right": 853
+      },
+      "reviewProduct": {
+        "x": 621,
+        "y": -38,
+        "width": 656,
+        "height": 248,
+        "bottom": 210,
+        "right": 1277
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 621,
+          "y": 421,
+          "width": 656,
+          "height": 48,
+          "bottom": 469,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "fabric-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1580,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 1426,
+          "width": 990,
+          "height": 48,
+          "bottom": 1474,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "fabric-detail",
+      "position": "middle",
+      "scroll": 490,
+      "scrollHeight": 1580,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 936,
+          "width": 990,
+          "height": 48,
+          "bottom": 984,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "fabric-detail",
+      "position": "bottom",
+      "scroll": 980,
+      "scrollHeight": 1580,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 446,
+          "width": 990,
+          "height": 48,
+          "bottom": 494,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "reject",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1292,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 1029,
+          "width": 940,
+          "height": 48,
+          "bottom": 1077,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "reject",
+      "position": "middle",
+      "scroll": 346,
+      "scrollHeight": 1292,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 683,
+          "width": 940,
+          "height": 48,
+          "bottom": 731,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "reject",
+      "position": "bottom",
+      "scroll": 692,
+      "scrollHeight": 1292,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 337,
+          "width": 940,
+          "height": 48,
+          "bottom": 385,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "approve",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1088,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 934,
+          "width": 990,
+          "height": 48,
+          "bottom": 982,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "approve",
+      "position": "middle",
+      "scroll": 244,
+      "scrollHeight": 1088,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 690,
+          "width": 990,
+          "height": 48,
+          "bottom": 738,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "approve",
+      "position": "bottom",
+      "scroll": 488,
+      "scrollHeight": 1088,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 446,
+          "width": 990,
+          "height": 48,
+          "bottom": 494,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "result",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1180,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 557,
+          "width": 940,
+          "height": 48,
+          "bottom": 605,
+          "right": 1277
+        },
+        {
+          "x": 312,
+          "y": 1026,
+          "width": 990,
+          "height": 48,
+          "bottom": 1074,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "result",
+      "position": "middle",
+      "scroll": 290,
+      "scrollHeight": 1180,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 267,
+          "width": 940,
+          "height": 48,
+          "bottom": 315,
+          "right": 1277
+        },
+        {
+          "x": 312,
+          "y": 736,
+          "width": 990,
+          "height": 48,
+          "bottom": 784,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "result",
+      "position": "bottom",
+      "scroll": 580,
+      "scrollHeight": 1180,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 940,
+          "scroll": 940
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": -23,
+          "width": 940,
+          "height": 48,
+          "bottom": 25,
+          "right": 1277
+        },
+        {
+          "x": 312,
+          "y": 446,
+          "width": 990,
+          "height": 48,
+          "bottom": 494,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "filter",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 604,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 425,
+          "width": 940,
+          "height": 48,
+          "bottom": 473,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "filter",
+      "position": "middle",
+      "scroll": 2,
+      "scrollHeight": 604,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 423,
+          "width": 940,
+          "height": 48,
+          "bottom": 471,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "filter",
+      "position": "bottom",
+      "scroll": 4,
+      "scrollHeight": 604,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 337,
+          "y": 421,
+          "width": 940,
+          "height": 48,
+          "bottom": 469,
+          "right": 1277
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "error",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 724,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 570,
+          "width": 990,
+          "height": 48,
+          "bottom": 618,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "error",
+      "position": "middle",
+      "scroll": 62,
+      "scrollHeight": 724,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 508,
+          "width": 990,
+          "height": 48,
+          "bottom": 556,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 600,
+      "name": "error",
+      "position": "bottom",
+      "scroll": 124,
+      "scrollHeight": 724,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 248,
+        "height": 600,
+        "bottom": 600,
+        "right": 248
+      },
+      "actions": [
+        {
+          "x": 312,
+          "y": 446,
+          "width": 990,
+          "height": 48,
+          "bottom": 494,
+          "right": 1302
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "dashboard",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1241,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [
+        {
+          "x": 238,
+          "y": 238,
+          "width": 371,
+          "height": 164,
+          "bottom": 402,
+          "right": 609
+        },
+        {
+          "x": 625,
+          "y": 238,
+          "width": 371,
+          "height": 164,
+          "bottom": 402,
+          "right": 996
+        },
+        {
+          "x": 238,
+          "y": 418,
+          "width": 371,
+          "height": 164,
+          "bottom": 582,
+          "right": 609
+        },
+        {
+          "x": 625,
+          "y": 418,
+          "width": 371,
+          "height": 164,
+          "bottom": 582,
+          "right": 996
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "dashboard",
+      "position": "middle",
+      "scroll": 237,
+      "scrollHeight": 1241,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [
+        {
+          "x": 238,
+          "y": 1,
+          "width": 371,
+          "height": 164,
+          "bottom": 165,
+          "right": 609
+        },
+        {
+          "x": 625,
+          "y": 1,
+          "width": 371,
+          "height": 164,
+          "bottom": 165,
+          "right": 996
+        },
+        {
+          "x": 238,
+          "y": 181,
+          "width": 371,
+          "height": 164,
+          "bottom": 345,
+          "right": 609
+        },
+        {
+          "x": 625,
+          "y": 181,
+          "width": 371,
+          "height": 164,
+          "bottom": 345,
+          "right": 996
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "dashboard",
+      "position": "bottom",
+      "scroll": 473,
+      "scrollHeight": 1241,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [
+        {
+          "x": 238,
+          "y": -235,
+          "width": 371,
+          "height": 164,
+          "bottom": -71,
+          "right": 609
+        },
+        {
+          "x": 625,
+          "y": -235,
+          "width": 371,
+          "height": 164,
+          "bottom": -71,
+          "right": 996
+        },
+        {
+          "x": 238,
+          "y": -55,
+          "width": 371,
+          "height": 164,
+          "bottom": 109,
+          "right": 609
+        },
+        {
+          "x": 625,
+          "y": -55,
+          "width": 371,
+          "height": 164,
+          "bottom": 109,
+          "right": 996
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "sellers",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "sellers",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "sellers",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": []
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "seller-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 979,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 825,
+          "width": 758,
+          "height": 48,
+          "bottom": 873,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "seller-detail",
+      "position": "middle",
+      "scroll": 106,
+      "scrollHeight": 979,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 719,
+          "width": 758,
+          "height": 48,
+          "bottom": 767,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "seller-detail",
+      "position": "bottom",
+      "scroll": 211,
+      "scrollHeight": 979,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 614,
+          "width": 758,
+          "height": 48,
+          "bottom": 662,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "fabrics",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1309,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 1155,
+          "width": 758,
+          "height": 48,
+          "bottom": 1203,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "fabrics",
+      "position": "middle",
+      "scroll": 271,
+      "scrollHeight": 1309,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 884,
+          "width": 758,
+          "height": 48,
+          "bottom": 932,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "fabrics",
+      "position": "bottom",
+      "scroll": 541,
+      "scrollHeight": 1309,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 614,
+          "width": 758,
+          "height": 48,
+          "bottom": 662,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "approvals",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1175,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 263,
+        "y": 537,
+        "width": 232,
+        "height": 232,
+        "bottom": 769,
+        "right": 495
+      },
+      "reviewProduct": {
+        "x": 263,
+        "y": 537,
+        "width": 708,
+        "height": 248,
+        "bottom": 785,
+        "right": 971
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 996,
+          "width": 708,
+          "height": 48,
+          "bottom": 1044,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "approvals",
+      "position": "middle",
+      "scroll": 204,
+      "scrollHeight": 1175,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 263,
+        "y": 333,
+        "width": 232,
+        "height": 232,
+        "bottom": 565,
+        "right": 495
+      },
+      "reviewProduct": {
+        "x": 263,
+        "y": 333,
+        "width": 708,
+        "height": 248,
+        "bottom": 581,
+        "right": 971
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 792,
+          "width": 708,
+          "height": 48,
+          "bottom": 840,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "approvals",
+      "position": "bottom",
+      "scroll": 407,
+      "scrollHeight": 1175,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 263,
+        "y": 130,
+        "width": 232,
+        "height": 232,
+        "bottom": 362,
+        "right": 495
+      },
+      "reviewProduct": {
+        "x": 263,
+        "y": 130,
+        "width": 708,
+        "height": 248,
+        "bottom": 378,
+        "right": 971
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 589,
+          "width": 708,
+          "height": 48,
+          "bottom": 637,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "fabric-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1556,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 1402,
+          "width": 758,
+          "height": 48,
+          "bottom": 1450,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "fabric-detail",
+      "position": "middle",
+      "scroll": 394,
+      "scrollHeight": 1556,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 1008,
+          "width": 758,
+          "height": 48,
+          "bottom": 1056,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "fabric-detail",
+      "position": "bottom",
+      "scroll": 788,
+      "scrollHeight": 1556,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 614,
+          "width": 758,
+          "height": 48,
+          "bottom": 662,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "reject",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1268,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 1005,
+          "width": 708,
+          "height": 48,
+          "bottom": 1053,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "reject",
+      "position": "middle",
+      "scroll": 250,
+      "scrollHeight": 1268,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 755,
+          "width": 708,
+          "height": 48,
+          "bottom": 803,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "reject",
+      "position": "bottom",
+      "scroll": 500,
+      "scrollHeight": 1268,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 505,
+          "width": 708,
+          "height": 48,
+          "bottom": 553,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "approve",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1064,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 910,
+          "width": 758,
+          "height": 48,
+          "bottom": 958,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "approve",
+      "position": "middle",
+      "scroll": 148,
+      "scrollHeight": 1064,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 762,
+          "width": 758,
+          "height": 48,
+          "bottom": 810,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "approve",
+      "position": "bottom",
+      "scroll": 296,
+      "scrollHeight": 1064,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 614,
+          "width": 758,
+          "height": 48,
+          "bottom": 662,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "result",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1156,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 533,
+          "width": 708,
+          "height": 48,
+          "bottom": 581,
+          "right": 971
+        },
+        {
+          "x": 238,
+          "y": 1002,
+          "width": 758,
+          "height": 48,
+          "bottom": 1050,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "result",
+      "position": "middle",
+      "scroll": 194,
+      "scrollHeight": 1156,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 339,
+          "width": 708,
+          "height": 48,
+          "bottom": 387,
+          "right": 971
+        },
+        {
+          "x": 238,
+          "y": 808,
+          "width": 758,
+          "height": 48,
+          "bottom": 856,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "result",
+      "position": "bottom",
+      "scroll": 388,
+      "scrollHeight": 1156,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 708,
+          "scroll": 708
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 145,
+          "width": 708,
+          "height": 48,
+          "bottom": 193,
+          "right": 971
+        },
+        {
+          "x": 238,
+          "y": 614,
+          "width": 758,
+          "height": 48,
+          "bottom": 662,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "filter",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 401,
+          "width": 708,
+          "height": 48,
+          "bottom": 449,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "filter",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 401,
+          "width": 708,
+          "height": 48,
+          "bottom": 449,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "filter",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 263,
+          "y": 401,
+          "width": 708,
+          "height": 48,
+          "bottom": 449,
+          "right": 971
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "error",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 546,
+          "width": 758,
+          "height": 48,
+          "bottom": 594,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "error",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 546,
+          "width": 758,
+          "height": 48,
+          "bottom": 594,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "name": "error",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 768,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 210,
+        "height": 768,
+        "bottom": 768,
+        "right": 210
+      },
+      "actions": [
+        {
+          "x": 238,
+          "y": 546,
+          "width": 758,
+          "height": 48,
+          "bottom": 594,
+          "right": 996
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "dashboard",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1823,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [
+        {
+          "x": 20,
+          "y": 441,
+          "width": 169,
+          "height": 140,
+          "bottom": 581,
+          "right": 189
+        },
+        {
+          "x": 201,
+          "y": 441,
+          "width": 169,
+          "height": 140,
+          "bottom": 581,
+          "right": 370
+        },
+        {
+          "x": 20,
+          "y": 593,
+          "width": 169,
+          "height": 140,
+          "bottom": 733,
+          "right": 189
+        },
+        {
+          "x": 201,
+          "y": 593,
+          "width": 169,
+          "height": 140,
+          "bottom": 733,
+          "right": 370
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "dashboard",
+      "position": "middle",
+      "scroll": 490,
+      "scrollHeight": 1823,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [
+        {
+          "x": 20,
+          "y": -49,
+          "width": 169,
+          "height": 140,
+          "bottom": 91,
+          "right": 189
+        },
+        {
+          "x": 201,
+          "y": -49,
+          "width": 169,
+          "height": 140,
+          "bottom": 91,
+          "right": 370
+        },
+        {
+          "x": 20,
+          "y": 103,
+          "width": 169,
+          "height": 140,
+          "bottom": 243,
+          "right": 189
+        },
+        {
+          "x": 201,
+          "y": 103,
+          "width": 169,
+          "height": 140,
+          "bottom": 243,
+          "right": 370
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -490,
+        "width": 390,
+        "height": 255,
+        "bottom": -235,
+        "right": 390
+      },
+      "actions": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "dashboard",
+      "position": "bottom",
+      "scroll": 979,
+      "scrollHeight": 1823,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [
+        {
+          "x": 20,
+          "y": -538,
+          "width": 169,
+          "height": 140,
+          "bottom": -398,
+          "right": 189
+        },
+        {
+          "x": 201,
+          "y": -538,
+          "width": 169,
+          "height": 140,
+          "bottom": -398,
+          "right": 370
+        },
+        {
+          "x": 20,
+          "y": -386,
+          "width": 169,
+          "height": 140,
+          "bottom": -246,
+          "right": 189
+        },
+        {
+          "x": 201,
+          "y": -386,
+          "width": 169,
+          "height": 140,
+          "bottom": -246,
+          "right": 370
+        }
+      ],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -979,
+        "width": 390,
+        "height": 255,
+        "bottom": -724,
+        "right": 390
+      },
+      "actions": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "sellers",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 871,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "sellers",
+      "position": "middle",
+      "scroll": 14,
+      "scrollHeight": 871,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -14,
+        "width": 390,
+        "height": 255,
+        "bottom": 241,
+        "right": 390
+      },
+      "actions": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "sellers",
+      "position": "bottom",
+      "scroll": 27,
+      "scrollHeight": 871,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -27,
+        "width": 390,
+        "height": 255,
+        "bottom": 228,
+        "right": 390
+      },
+      "actions": []
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "seller-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1490,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1280,
+          "width": 350,
+          "height": 112,
+          "bottom": 1392,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "seller-detail",
+      "position": "middle",
+      "scroll": 323,
+      "scrollHeight": 1490,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -323,
+        "width": 390,
+        "height": 255,
+        "bottom": -68,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 957,
+          "width": 350,
+          "height": 112,
+          "bottom": 1069,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "seller-detail",
+      "position": "bottom",
+      "scroll": 646,
+      "scrollHeight": 1490,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -646,
+        "width": 390,
+        "height": 255,
+        "bottom": -391,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 634,
+          "width": 350,
+          "height": 112,
+          "bottom": 746,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "fabrics",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1539,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1393,
+          "width": 350,
+          "height": 48,
+          "bottom": 1441,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "fabrics",
+      "position": "middle",
+      "scroll": 348,
+      "scrollHeight": 1539,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -348,
+        "width": 390,
+        "height": 255,
+        "bottom": -93,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1045,
+          "width": 350,
+          "height": 48,
+          "bottom": 1093,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "fabrics",
+      "position": "bottom",
+      "scroll": 695,
+      "scrollHeight": 1539,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -695,
+        "width": 390,
+        "height": 255,
+        "bottom": -440,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 698,
+          "width": 350,
+          "height": 48,
+          "bottom": 746,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "approvals",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1658,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 41,
+        "y": 744,
+        "width": 308,
+        "height": 200,
+        "bottom": 944,
+        "right": 349
+      },
+      "reviewProduct": {
+        "x": 41,
+        "y": 744,
+        "width": 308,
+        "height": 488,
+        "bottom": 1232,
+        "right": 349
+      },
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 1491,
+          "width": 308,
+          "height": 48,
+          "bottom": 1539,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "approvals",
+      "position": "middle",
+      "scroll": 407,
+      "scrollHeight": 1658,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 41,
+        "y": 337,
+        "width": 308,
+        "height": 200,
+        "bottom": 537,
+        "right": 349
+      },
+      "reviewProduct": {
+        "x": 41,
+        "y": 337,
+        "width": 308,
+        "height": 488,
+        "bottom": 825,
+        "right": 349
+      },
+      "sidebar": {
+        "x": 0,
+        "y": -407,
+        "width": 390,
+        "height": 255,
+        "bottom": -152,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 1084,
+          "width": 308,
+          "height": 48,
+          "bottom": 1132,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "approvals",
+      "position": "bottom",
+      "scroll": 814,
+      "scrollHeight": 1658,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": {
+        "x": 41,
+        "y": -70,
+        "width": 308,
+        "height": 200,
+        "bottom": 130,
+        "right": 349
+      },
+      "reviewProduct": {
+        "x": 41,
+        "y": -70,
+        "width": 308,
+        "height": 488,
+        "bottom": 418,
+        "right": 349
+      },
+      "sidebar": {
+        "x": 0,
+        "y": -814,
+        "width": 390,
+        "height": 255,
+        "bottom": -559,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 677,
+          "width": 308,
+          "height": 48,
+          "bottom": 725,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "fabric-detail",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1985,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1775,
+          "width": 350,
+          "height": 112,
+          "bottom": 1887,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "fabric-detail",
+      "position": "middle",
+      "scroll": 571,
+      "scrollHeight": 1985,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -571,
+        "width": 390,
+        "height": 255,
+        "bottom": -316,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1204,
+          "width": 350,
+          "height": 112,
+          "bottom": 1316,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "fabric-detail",
+      "position": "bottom",
+      "scroll": 1141,
+      "scrollHeight": 1985,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -1141,
+        "width": 390,
+        "height": 255,
+        "bottom": -886,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 634,
+          "width": 350,
+          "height": 112,
+          "bottom": 746,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "reject",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1701,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 1434,
+          "width": 308,
+          "height": 48,
+          "bottom": 1482,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "reject",
+      "position": "middle",
+      "scroll": 429,
+      "scrollHeight": 1701,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -429,
+        "width": 390,
+        "height": 255,
+        "bottom": -174,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 1005,
+          "width": 308,
+          "height": 48,
+          "bottom": 1053,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "reject",
+      "position": "bottom",
+      "scroll": 857,
+      "scrollHeight": 1701,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -857,
+        "width": 390,
+        "height": 255,
+        "bottom": -602,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 577,
+          "width": 308,
+          "height": 48,
+          "bottom": 625,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "approve",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1461,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1315,
+          "width": 350,
+          "height": 48,
+          "bottom": 1363,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "approve",
+      "position": "middle",
+      "scroll": 309,
+      "scrollHeight": 1461,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -309,
+        "width": 390,
+        "height": 255,
+        "bottom": -54,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 1006,
+          "width": 350,
+          "height": 48,
+          "bottom": 1054,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "approve",
+      "position": "bottom",
+      "scroll": 617,
+      "scrollHeight": 1461,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -617,
+        "width": 390,
+        "height": 255,
+        "bottom": -362,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 698,
+          "width": 350,
+          "height": 48,
+          "bottom": 746,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "result",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1774,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 772,
+          "width": 308,
+          "height": 108,
+          "bottom": 880,
+          "right": 349
+        },
+        {
+          "x": 20,
+          "y": 1628,
+          "width": 350,
+          "height": 48,
+          "bottom": 1676,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "result",
+      "position": "middle",
+      "scroll": 465,
+      "scrollHeight": 1774,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -465,
+        "width": 390,
+        "height": 255,
+        "bottom": -210,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 307,
+          "width": 308,
+          "height": 108,
+          "bottom": 415,
+          "right": 349
+        },
+        {
+          "x": 20,
+          "y": 1163,
+          "width": 350,
+          "height": 48,
+          "bottom": 1211,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "result",
+      "position": "bottom",
+      "scroll": 930,
+      "scrollHeight": 1774,
+      "overflow": 0,
+      "tables": [
+        {
+          "client": 308,
+          "scroll": 308
+        }
+      ],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -930,
+        "width": 390,
+        "height": 255,
+        "bottom": -675,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": -158,
+          "width": 308,
+          "height": 108,
+          "bottom": -50,
+          "right": 349
+        },
+        {
+          "x": 20,
+          "y": 698,
+          "width": 350,
+          "height": 48,
+          "bottom": 746,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "filter",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 844,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 600,
+          "width": 308,
+          "height": 108,
+          "bottom": 708,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "filter",
+      "position": "middle",
+      "scroll": 0,
+      "scrollHeight": 844,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 600,
+          "width": 308,
+          "height": 108,
+          "bottom": 708,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "filter",
+      "position": "bottom",
+      "scroll": 0,
+      "scrollHeight": 844,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 41,
+          "y": 600,
+          "width": 308,
+          "height": 108,
+          "bottom": 708,
+          "right": 349
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "error",
+      "position": "top",
+      "scroll": 0,
+      "scrollHeight": 1019,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 255,
+        "bottom": 255,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 873,
+          "width": 350,
+          "height": 48,
+          "bottom": 921,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "error",
+      "position": "middle",
+      "scroll": 88,
+      "scrollHeight": 1019,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -88,
+        "width": 390,
+        "height": 255,
+        "bottom": 167,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 785,
+          "width": 350,
+          "height": 48,
+          "bottom": 833,
+          "right": 370
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "name": "error",
+      "position": "bottom",
+      "scroll": 175,
+      "scrollHeight": 1019,
+      "overflow": 0,
+      "tables": [],
+      "cards": [],
+      "reviewImage": null,
+      "reviewProduct": null,
+      "sidebar": {
+        "x": 0,
+        "y": -175,
+        "width": 390,
+        "height": 255,
+        "bottom": 80,
+        "right": 390
+      },
+      "actions": [
+        {
+          "x": 20,
+          "y": 698,
+          "width": 350,
+          "height": 48,
+          "bottom": 746,
+          "right": 370
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

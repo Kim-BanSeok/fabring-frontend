@@ -1,0 +1,1569 @@
+{
+  "results": [
+    {
+      "screen": "dashboard",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/dashboard?scenario=123%3A2473",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 1295,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 1213,
+          "height": 1120
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "예약 확인",
+            "top": 704,
+            "bottom": 752,
+            "left": 121,
+            "width": 179.328125,
+            "height": 48
+          },
+          {
+            "text": "문의 확인",
+            "top": 704,
+            "bottom": 752,
+            "left": 312.328125,
+            "width": 179.328125,
+            "height": 48
+          },
+          {
+            "text": "거절 사유",
+            "top": 704,
+            "bottom": 752,
+            "left": 503.65625,
+            "width": 179.328125,
+            "height": 48
+          },
+          {
+            "text": "‹",
+            "top": 610,
+            "bottom": 658,
+            "left": 1215,
+            "width": 44,
+            "height": 48
+          },
+          {
+            "text": "›",
+            "top": 610,
+            "bottom": 658,
+            "left": 1275,
+            "width": 44,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "method",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/register?scenario=123%3A3245",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 982,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 900,
+          "height": 807
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "approval",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/approval?scenario=209%3A8131",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 982,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 900,
+          "height": 807
+        },
+        "heading": {
+          "top": 311.5,
+          "bottom": 357.5
+        },
+        "buttons": [
+          {
+            "text": "매장 정보 확인",
+            "top": 517.5,
+            "bottom": 565.5,
+            "left": 96,
+            "width": 184,
+            "height": 48
+          },
+          {
+            "text": "승인 상태 다시 확인",
+            "top": 517.5,
+            "bottom": 565.5,
+            "left": 296,
+            "width": 184,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-partial",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/upload?scenario=210%3A8628",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 983,
+        "documentWidth": 1440,
+        "main": {
+          "top": 94,
+          "bottom": 901,
+          "height": 807
+        },
+        "heading": {
+          "top": 368,
+          "bottom": 414
+        },
+        "buttons": [
+          {
+            "text": "실패한 사진 다시 시도",
+            "top": 578,
+            "bottom": 626,
+            "left": 96,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "내 원단 목록 확인",
+            "top": 578,
+            "bottom": 626,
+            "left": 320,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-done",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/upload?scenario=127%3A6713",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 983,
+        "documentWidth": 1440,
+        "main": {
+          "top": 94,
+          "bottom": 901,
+          "height": 807
+        },
+        "heading": {
+          "top": 193,
+          "bottom": 239
+        },
+        "buttons": [
+          {
+            "text": "승인 대기 목록",
+            "top": 753,
+            "bottom": 801,
+            "left": 96,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "메인으로",
+            "top": 753,
+            "bottom": 801,
+            "left": 320,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "다른 원단 등록",
+            "top": 753,
+            "bottom": 801,
+            "left": 544,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "review",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/register/review?scenario=123%3A4153",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 1175,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 1093,
+          "height": 1000
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "profile",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/profile?scenario=123%3A4699",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 1157,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 1075,
+          "height": 982
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "로그아웃",
+            "top": 947,
+            "bottom": 995,
+            "left": 96,
+            "width": 140,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "reservation",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/reservations?status=PICKED_UP&id=reservation-scenario&scenario=127%3A7892",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 982,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 900,
+          "height": 807
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "변경된 재고 확인",
+            "top": 674,
+            "bottom": 722,
+            "left": 757,
+            "width": 275,
+            "height": 48
+          },
+          {
+            "text": "돌아가기",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "확인",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          }
+        ]
+      }
+    },
+    {
+      "screen": "inquiry",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/inquiries?scenario=123%3A4559",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 1097,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 1015,
+          "height": 922
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "manual",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "route": "/seller/register/manual?type=ROLL&scenario=123%3A3466",
+      "geometry": {
+        "width": 1440,
+        "height": 900,
+        "documentHeight": 2418,
+        "documentWidth": 1440,
+        "main": {
+          "top": 93,
+          "bottom": 2335.703125,
+          "height": 2242.703125
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "이전",
+            "top": 2127.703125,
+            "bottom": 2175.703125,
+            "left": 96,
+            "width": 140,
+            "height": 48
+          },
+          {
+            "text": "등록 내용 확인",
+            "top": 2127.703125,
+            "bottom": 2175.703125,
+            "left": 252,
+            "width": 140,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "dashboard",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/dashboard?scenario=123%3A2473",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 1295,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 1213,
+          "height": 1120
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "예약 확인",
+            "top": 704,
+            "bottom": 752,
+            "left": 116.0625,
+            "width": 168.640625,
+            "height": 48
+          },
+          {
+            "text": "문의 확인",
+            "top": 704,
+            "bottom": 752,
+            "left": 296.703125,
+            "width": 168.640625,
+            "height": 48
+          },
+          {
+            "text": "거절 사유",
+            "top": 704,
+            "bottom": 752,
+            "left": 477.34375,
+            "width": 168.640625,
+            "height": 48
+          },
+          {
+            "text": "‹",
+            "top": 610,
+            "bottom": 658,
+            "left": 1145.9375,
+            "width": 44,
+            "height": 48
+          },
+          {
+            "text": "›",
+            "top": 610,
+            "bottom": 658,
+            "left": 1205.9375,
+            "width": 44,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "method",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/register?scenario=123%3A3245",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 793,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 711,
+          "height": 618
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "approval",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/approval?scenario=209%3A8131",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 898,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 816,
+          "height": 723
+        },
+        "heading": {
+          "top": 311.5,
+          "bottom": 357.5
+        },
+        "buttons": [
+          {
+            "text": "매장 정보 확인",
+            "top": 517.5,
+            "bottom": 565.5,
+            "left": 91.0625,
+            "width": 184,
+            "height": 48
+          },
+          {
+            "text": "승인 상태 다시 확인",
+            "top": 517.5,
+            "bottom": 565.5,
+            "left": 291.0625,
+            "width": 184,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-partial",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/upload?scenario=210%3A8628",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 683,
+        "documentWidth": 1366,
+        "main": {
+          "top": 94,
+          "bottom": 601,
+          "height": 507
+        },
+        "heading": {
+          "top": 218,
+          "bottom": 264
+        },
+        "buttons": [
+          {
+            "text": "실패한 사진 다시 시도",
+            "top": 428,
+            "bottom": 476,
+            "left": 91.0625,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "내 원단 목록 확인",
+            "top": 428,
+            "bottom": 476,
+            "left": 315.0625,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-done",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/upload?scenario=127%3A6713",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 912,
+        "documentWidth": 1366,
+        "main": {
+          "top": 94,
+          "bottom": 830,
+          "height": 736
+        },
+        "heading": {
+          "top": 158,
+          "bottom": 204
+        },
+        "buttons": [
+          {
+            "text": "승인 대기 목록",
+            "top": 718,
+            "bottom": 766,
+            "left": 91.0625,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "메인으로",
+            "top": 718,
+            "bottom": 766,
+            "left": 315.0625,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "다른 원단 등록",
+            "top": 718,
+            "bottom": 766,
+            "left": 539.0625,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "review",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/register/review?scenario=123%3A4153",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 1175,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 1093,
+          "height": 1000
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "profile",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/profile?scenario=123%3A4699",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 1157,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 1075,
+          "height": 982
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "로그아웃",
+            "top": 947,
+            "bottom": 995,
+            "left": 91.0625,
+            "width": 140,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "reservation",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/reservations?status=PICKED_UP&id=reservation-scenario&scenario=127%3A7892",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 955,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 873,
+          "height": 780
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "변경된 재고 확인",
+            "top": 674,
+            "bottom": 722,
+            "left": 720,
+            "width": 258.96875,
+            "height": 48
+          },
+          {
+            "text": "돌아가기",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "확인",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          }
+        ]
+      }
+    },
+    {
+      "screen": "inquiry",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/inquiries?scenario=123%3A4559",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 1097,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 1015,
+          "height": 922
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "manual",
+      "viewport": {
+        "width": 1366,
+        "height": 600
+      },
+      "route": "/seller/register/manual?type=ROLL&scenario=123%3A3466",
+      "geometry": {
+        "width": 1366,
+        "height": 600,
+        "documentHeight": 2418,
+        "documentWidth": 1366,
+        "main": {
+          "top": 93,
+          "bottom": 2335.703125,
+          "height": 2242.703125
+        },
+        "heading": {
+          "top": 141,
+          "bottom": 187
+        },
+        "buttons": [
+          {
+            "text": "이전",
+            "top": 2127.703125,
+            "bottom": 2175.703125,
+            "left": 91.0625,
+            "width": 140,
+            "height": 48
+          },
+          {
+            "text": "등록 내용 확인",
+            "top": 2127.703125,
+            "bottom": 2175.703125,
+            "left": 247.0625,
+            "width": 140,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "dashboard",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/dashboard?scenario=123%3A2473",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 2207,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 2125,
+          "height": 1946
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "예약 확인",
+            "top": 922,
+            "bottom": 970,
+            "left": 41,
+            "width": 308,
+            "height": 48
+          },
+          {
+            "text": "문의 확인",
+            "top": 982,
+            "bottom": 1030,
+            "left": 41,
+            "width": 308,
+            "height": 48
+          },
+          {
+            "text": "거절 사유",
+            "top": 1042,
+            "bottom": 1090,
+            "left": 41,
+            "width": 308,
+            "height": 48
+          },
+          {
+            "text": "‹",
+            "top": 1526,
+            "bottom": 1574,
+            "left": 249,
+            "width": 44,
+            "height": 48
+          },
+          {
+            "text": "›",
+            "top": 1526,
+            "bottom": 1574,
+            "left": 305,
+            "width": 44,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "method",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/register?scenario=123%3A3245",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 1279,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 1197,
+          "height": 1018
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "approval",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/approval?scenario=209%3A8131",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 1012,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 930,
+          "height": 751
+        },
+        "heading": {
+          "top": 330,
+          "bottom": 368
+        },
+        "buttons": [
+          {
+            "text": "매장 정보 확인",
+            "top": 536,
+            "bottom": 584,
+            "left": 20,
+            "width": 135.125,
+            "height": 48
+          },
+          {
+            "text": "승인 상태 다시 확인",
+            "top": 536,
+            "bottom": 584,
+            "left": 167.125,
+            "width": 164.8125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-partial",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/upload?scenario=210%3A8628",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 926,
+        "documentWidth": 390,
+        "main": {
+          "top": 70,
+          "bottom": 844,
+          "height": 774
+        },
+        "heading": {
+          "top": 277,
+          "bottom": 353
+        },
+        "buttons": [
+          {
+            "text": "실패한 사진 다시 시도",
+            "top": 529,
+            "bottom": 577,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "내 원단 목록 확인",
+            "top": 589,
+            "bottom": 637,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-done",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/upload?scenario=127%3A6713",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 932,
+        "documentWidth": 390,
+        "main": {
+          "top": 70,
+          "bottom": 850,
+          "height": 780
+        },
+        "heading": {
+          "top": 98,
+          "bottom": 136
+        },
+        "buttons": [
+          {
+            "text": "승인 대기 목록",
+            "top": 654,
+            "bottom": 702,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "메인으로",
+            "top": 714,
+            "bottom": 762,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "다른 원단 등록",
+            "top": 774,
+            "bottom": 822,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "review",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/register/review?scenario=123%3A4153",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 1511,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 1429,
+          "height": 1250
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "profile",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/profile?scenario=123%3A4699",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 1695,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 1613,
+          "height": 1434
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "로그아웃",
+            "top": 1485,
+            "bottom": 1533,
+            "left": 20,
+            "width": 120,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "reservation",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/reservations?status=PICKED_UP&id=reservation-scenario&scenario=127%3A7892",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 1507,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 1425,
+          "height": 1246
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "변경된 재고 확인",
+            "top": 1276,
+            "bottom": 1324,
+            "left": 41,
+            "width": 148,
+            "height": 48
+          },
+          {
+            "text": "돌아가기",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "확인",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          }
+        ]
+      }
+    },
+    {
+      "screen": "inquiry",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/inquiries?scenario=123%3A4559",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 1369,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 1287,
+          "height": 1108
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "manual",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "route": "/seller/register/manual?type=ROLL&scenario=123%3A3466",
+      "geometry": {
+        "width": 390,
+        "height": 844,
+        "documentHeight": 2812,
+        "documentWidth": 390,
+        "main": {
+          "top": 179,
+          "bottom": 2729.703125,
+          "height": 2550.703125
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "이전",
+            "top": 2501.703125,
+            "bottom": 2549.703125,
+            "left": 20,
+            "width": 120,
+            "height": 48
+          },
+          {
+            "text": "등록 내용 확인",
+            "top": 2501.703125,
+            "bottom": 2549.703125,
+            "left": 152,
+            "width": 135.125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "dashboard",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/dashboard?scenario=123%3A2473",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 2287,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 2205,
+          "height": 2026
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "예약 확인",
+            "top": 1002,
+            "bottom": 1050,
+            "left": 41,
+            "width": 238,
+            "height": 48
+          },
+          {
+            "text": "문의 확인",
+            "top": 1062,
+            "bottom": 1110,
+            "left": 41,
+            "width": 238,
+            "height": 48
+          },
+          {
+            "text": "거절 사유",
+            "top": 1122,
+            "bottom": 1170,
+            "left": 41,
+            "width": 238,
+            "height": 48
+          },
+          {
+            "text": "‹",
+            "top": 1606,
+            "bottom": 1654,
+            "left": 179,
+            "width": 44,
+            "height": 48
+          },
+          {
+            "text": "›",
+            "top": 1606,
+            "bottom": 1654,
+            "left": 235,
+            "width": 44,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "method",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/register?scenario=123%3A3245",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 1371,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 1289,
+          "height": 1110
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "approval",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/approval?scenario=209%3A8131",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 1012,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 930,
+          "height": 751
+        },
+        "heading": {
+          "top": 281,
+          "bottom": 357
+        },
+        "buttons": [
+          {
+            "text": "매장 정보 확인",
+            "top": 525,
+            "bottom": 573,
+            "left": 20,
+            "width": 135.125,
+            "height": 48
+          },
+          {
+            "text": "승인 상태 다시 확인",
+            "top": 585,
+            "bottom": 633,
+            "left": 20,
+            "width": 164.8125,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-partial",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/upload?scenario=210%3A8628",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 926,
+        "documentWidth": 320,
+        "main": {
+          "top": 70,
+          "bottom": 844,
+          "height": 774
+        },
+        "heading": {
+          "top": 265,
+          "bottom": 341
+        },
+        "buttons": [
+          {
+            "text": "실패한 사진 다시 시도",
+            "top": 541,
+            "bottom": 589,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "내 원단 목록 확인",
+            "top": 601,
+            "bottom": 649,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "upload-done",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/upload?scenario=127%3A6713",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 980,
+        "documentWidth": 320,
+        "main": {
+          "top": 70,
+          "bottom": 898,
+          "height": 828
+        },
+        "heading": {
+          "top": 98,
+          "bottom": 136
+        },
+        "buttons": [
+          {
+            "text": "승인 대기 목록",
+            "top": 702,
+            "bottom": 750,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "메인으로",
+            "top": 762,
+            "bottom": 810,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          },
+          {
+            "text": "다른 원단 등록",
+            "top": 822,
+            "bottom": 870,
+            "left": 20,
+            "width": 208,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "review",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/register/review?scenario=123%3A4153",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 1559,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 1477,
+          "height": 1298
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "profile",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/profile?scenario=123%3A4699",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 1695,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 1613,
+          "height": 1434
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "로그아웃",
+            "top": 1485,
+            "bottom": 1533,
+            "left": 20,
+            "width": 120,
+            "height": 48
+          }
+        ]
+      }
+    },
+    {
+      "screen": "reservation",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/reservations?status=PICKED_UP&id=reservation-scenario&scenario=127%3A7892",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 1603,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 1521,
+          "height": 1342
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "변경된 재고 확인",
+            "top": 1348,
+            "bottom": 1420,
+            "left": 41,
+            "width": 120,
+            "height": 72
+          },
+          {
+            "text": "돌아가기",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          },
+          {
+            "text": "확인",
+            "top": 0,
+            "bottom": 0,
+            "left": 0,
+            "width": 0,
+            "height": 0
+          }
+        ]
+      }
+    },
+    {
+      "screen": "inquiry",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/inquiries?scenario=123%3A4559",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 1369,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 1287,
+          "height": 1108
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": []
+      }
+    },
+    {
+      "screen": "manual",
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "route": "/seller/register/manual?type=ROLL&scenario=123%3A3466",
+      "geometry": {
+        "width": 320,
+        "height": 844,
+        "documentHeight": 2936,
+        "documentWidth": 320,
+        "main": {
+          "top": 179,
+          "bottom": 2853.703125,
+          "height": 2674.703125
+        },
+        "heading": {
+          "top": 207,
+          "bottom": 245
+        },
+        "buttons": [
+          {
+            "text": "이전",
+            "top": 2605.703125,
+            "bottom": 2653.703125,
+            "left": 20,
+            "width": 120,
+            "height": 48
+          },
+          {
+            "text": "등록 내용 확인",
+            "top": 2605.703125,
+            "bottom": 2653.703125,
+            "left": 152,
+            "width": 135.125,
+            "height": 48
+          }
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

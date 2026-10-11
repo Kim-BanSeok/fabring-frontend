@@ -1,0 +1,343 @@
+{
+  "checks": [
+    {
+      "name": "tools-open-overlap",
+      "geometry": {
+        "form": {
+          "top": 540,
+          "bottom": 1046,
+          "left": 20,
+          "right": 370
+        },
+        "tools": {
+          "top": 213.40625,
+          "bottom": 832,
+          "left": 28,
+          "right": 378
+        },
+        "overlap": 99864
+      }
+    },
+    {
+      "name": "back-after-login-success",
+      "url": "http://127.0.0.1:5173/#/auth/buyer/processing",
+      "heading": "로그인 중입니다",
+      "mainActionCount": 0
+    },
+    {
+      "name": "signup-error-back-preservation",
+      "width": 390,
+      "disabledStates": [
+        true,
+        true,
+        false
+      ],
+      "nickname": "UX확인",
+      "email": "ux-check@example.com",
+      "passwordPreserved": true,
+      "terms": true,
+      "privacy": true
+    },
+    {
+      "name": "signup-error-back-preservation",
+      "width": 1440,
+      "disabledStates": [
+        true,
+        true,
+        false
+      ],
+      "nickname": "UX확인",
+      "email": "ux-check@example.com",
+      "passwordPreserved": true,
+      "terms": true,
+      "privacy": true
+    },
+    {
+      "name": "seller-first-login",
+      "email": "ux-seller@example.com",
+      "passwordEmpty": true,
+      "heading": "판매자 로그인",
+      "destination": "http://127.0.0.1:5173/#/seller/store"
+    },
+    {
+      "name": "back-after-login-error",
+      "url": "http://127.0.0.1:5173/#/auth/buyer/processing",
+      "heading": "로그인 중입니다",
+      "mainActionCount": 0
+    }
+  ],
+  "geometry": [
+    {
+      "width": 390,
+      "role": "buyer",
+      "view": "login",
+      "viewport": 844,
+      "brand": {
+        "top": 94,
+        "bottom": 516,
+        "height": 422
+      },
+      "form": {
+        "top": 540,
+        "bottom": 1046,
+        "height": 506
+      },
+      "submit": {
+        "top": 862,
+        "bottom": 910,
+        "height": 48
+      },
+      "tools": {
+        "top": 790,
+        "bottom": 832,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "role": "seller",
+      "view": "login",
+      "viewport": 844,
+      "brand": {
+        "top": 94,
+        "bottom": 560,
+        "height": 466
+      },
+      "form": {
+        "top": 584,
+        "bottom": 1090,
+        "height": 506
+      },
+      "submit": {
+        "top": 906,
+        "bottom": 954,
+        "height": 48
+      },
+      "tools": {
+        "top": 790,
+        "bottom": 832,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "role": "admin",
+      "view": "login",
+      "viewport": 844,
+      "brand": {
+        "top": 94,
+        "bottom": 492,
+        "height": 398
+      },
+      "form": {
+        "top": 516,
+        "bottom": 954,
+        "height": 438
+      },
+      "submit": {
+        "top": 838,
+        "bottom": 886,
+        "height": 48
+      },
+      "tools": {
+        "top": 790,
+        "bottom": 832,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "role": "buyer",
+      "view": "signup",
+      "viewport": 844,
+      "brand": {
+        "top": 94,
+        "bottom": 516,
+        "height": 422
+      },
+      "form": {
+        "top": 540,
+        "bottom": 1398,
+        "height": 858
+      },
+      "submit": {
+        "top": 1282,
+        "bottom": 1330,
+        "height": 48
+      },
+      "tools": {
+        "top": 790,
+        "bottom": 832,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 390,
+      "role": "seller",
+      "view": "signup",
+      "viewport": 844,
+      "brand": {
+        "top": 94,
+        "bottom": 560,
+        "height": 466
+      },
+      "form": {
+        "top": 584,
+        "bottom": 1502,
+        "height": 918
+      },
+      "submit": {
+        "top": 1386,
+        "bottom": 1434,
+        "height": 48
+      },
+      "tools": {
+        "top": 790,
+        "bottom": 832,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "buyer",
+      "view": "login",
+      "viewport": 1050,
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720
+      },
+      "form": {
+        "top": 158,
+        "bottom": 712,
+        "height": 554
+      },
+      "submit": {
+        "top": 508,
+        "bottom": 556,
+        "height": 48
+      },
+      "tools": {
+        "top": 992,
+        "bottom": 1034,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "seller",
+      "view": "login",
+      "viewport": 1050,
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720
+      },
+      "form": {
+        "top": 158,
+        "bottom": 712,
+        "height": 554
+      },
+      "submit": {
+        "top": 508,
+        "bottom": 556,
+        "height": 48
+      },
+      "tools": {
+        "top": 992,
+        "bottom": 1034,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "admin",
+      "view": "login",
+      "viewport": 1050,
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720
+      },
+      "form": {
+        "top": 158,
+        "bottom": 644,
+        "height": 486
+      },
+      "submit": {
+        "top": 508,
+        "bottom": 556,
+        "height": 48
+      },
+      "tools": {
+        "top": 992,
+        "bottom": 1034,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "buyer",
+      "view": "signup",
+      "viewport": 1050,
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720
+      },
+      "form": {
+        "top": 158,
+        "bottom": 1064,
+        "height": 906
+      },
+      "submit": {
+        "top": 928,
+        "bottom": 976,
+        "height": 48
+      },
+      "tools": {
+        "top": 992,
+        "bottom": 1034,
+        "height": 42
+      },
+      "overflow": 0
+    },
+    {
+      "width": 1440,
+      "role": "seller",
+      "view": "signup",
+      "viewport": 1050,
+      "brand": {
+        "top": 158,
+        "bottom": 878,
+        "height": 720
+      },
+      "form": {
+        "top": 158,
+        "bottom": 1104,
+        "height": 946
+      },
+      "submit": {
+        "top": 968,
+        "bottom": 1016,
+        "height": 48
+      },
+      "tools": {
+        "top": 992,
+        "bottom": 1034,
+        "height": 42
+      },
+      "overflow": 0
+    }
+  ],
+  "errors": [],
+  "passwordPersisted": false
+}

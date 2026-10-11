@@ -1,0 +1,312 @@
+[
+  {
+    "route": "/admin/fabrics?status=PENDING",
+    "position": "top",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 0,
+    "pageHeight": 1373,
+    "shell": {
+      "top": 0,
+      "bottom": 1291,
+      "height": 1291
+    },
+    "sidebar": {
+      "top": 0,
+      "bottom": 1291,
+      "height": 1291
+    },
+    "footer": {
+      "top": 1154,
+      "bottom": 1267,
+      "height": 113
+    },
+    "tools": {
+      "top": 1307,
+      "bottom": 1349,
+      "height": 42
+    },
+    "main": {
+      "top": 72,
+      "bottom": 1291,
+      "height": 1219
+    }
+  },
+  {
+    "route": "/admin/fabrics?status=PENDING",
+    "position": "bottom",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 448,
+    "pageHeight": 1373,
+    "shell": {
+      "top": -448,
+      "bottom": 843,
+      "height": 1291
+    },
+    "sidebar": {
+      "top": -448,
+      "bottom": 843,
+      "height": 1291
+    },
+    "footer": {
+      "top": 706,
+      "bottom": 819,
+      "height": 113
+    },
+    "tools": {
+      "top": 859,
+      "bottom": 901,
+      "height": 42
+    },
+    "main": {
+      "top": -376,
+      "bottom": 843,
+      "height": 1219
+    }
+  },
+  {
+    "route": "/admin/fabrics?status=SOLD_OUT",
+    "position": "top",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 0,
+    "pageHeight": 1068,
+    "shell": {
+      "top": 0,
+      "bottom": 986,
+      "height": 986
+    },
+    "sidebar": {
+      "top": 0,
+      "bottom": 986,
+      "height": 986
+    },
+    "footer": {
+      "top": 849,
+      "bottom": 962,
+      "height": 113
+    },
+    "tools": {
+      "top": 1002,
+      "bottom": 1044,
+      "height": 42
+    },
+    "main": {
+      "top": 72,
+      "bottom": 986,
+      "height": 914
+    }
+  },
+  {
+    "route": "/admin/fabrics?status=SOLD_OUT",
+    "position": "bottom",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 143,
+    "pageHeight": 1068,
+    "shell": {
+      "top": -143,
+      "bottom": 843,
+      "height": 986
+    },
+    "sidebar": {
+      "top": -143,
+      "bottom": 843,
+      "height": 986
+    },
+    "footer": {
+      "top": 706,
+      "bottom": 819,
+      "height": 113
+    },
+    "tools": {
+      "top": 859,
+      "bottom": 901,
+      "height": 42
+    },
+    "main": {
+      "top": -71,
+      "bottom": 843,
+      "height": 914
+    }
+  },
+  {
+    "route": "/admin/approvals",
+    "position": "top",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 0,
+    "pageHeight": 1135,
+    "shell": {
+      "top": 0,
+      "bottom": 1053,
+      "height": 1053
+    },
+    "sidebar": {
+      "top": 0,
+      "bottom": 1053,
+      "height": 1053
+    },
+    "footer": {
+      "top": 916,
+      "bottom": 1029,
+      "height": 113
+    },
+    "tools": {
+      "top": 1069,
+      "bottom": 1111,
+      "height": 42
+    },
+    "main": {
+      "top": 72,
+      "bottom": 1053,
+      "height": 981
+    }
+  },
+  {
+    "route": "/admin/approvals",
+    "position": "bottom",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 210,
+    "pageHeight": 1135,
+    "shell": {
+      "top": -210,
+      "bottom": 843,
+      "height": 1053
+    },
+    "sidebar": {
+      "top": -210,
+      "bottom": 843,
+      "height": 1053
+    },
+    "footer": {
+      "top": 706,
+      "bottom": 819,
+      "height": 113
+    },
+    "tools": {
+      "top": 859,
+      "bottom": 901,
+      "height": 42
+    },
+    "main": {
+      "top": -138,
+      "bottom": 843,
+      "height": 981
+    }
+  },
+  {
+    "route": "/auth/buyer/login",
+    "position": "top",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 0,
+    "pageHeight": 1024,
+    "shell": {
+      "top": 0,
+      "bottom": 942,
+      "height": 942
+    },
+    "tools": {
+      "top": 958,
+      "bottom": 1000,
+      "height": 42
+    },
+    "main": {
+      "top": 94,
+      "bottom": 942,
+      "height": 848
+    }
+  },
+  {
+    "route": "/auth/buyer/login",
+    "position": "bottom",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 99,
+    "pageHeight": 1024,
+    "shell": {
+      "top": -99,
+      "bottom": 843,
+      "height": 942
+    },
+    "tools": {
+      "top": 859,
+      "bottom": 901,
+      "height": 42
+    },
+    "main": {
+      "top": -5,
+      "bottom": 843,
+      "height": 848
+    }
+  },
+  {
+    "route": "/buyer/reservations",
+    "position": "top",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 0,
+    "pageHeight": 1007,
+    "shell": {
+      "top": 0,
+      "bottom": 925,
+      "height": 925
+    },
+    "tools": {
+      "top": 941,
+      "bottom": 983,
+      "height": 42
+    },
+    "main": {
+      "top": 93,
+      "bottom": 925,
+      "height": 832
+    }
+  },
+  {
+    "route": "/buyer/reservations",
+    "position": "bottom",
+    "viewport": [
+      1331,
+      925
+    ],
+    "scroll": 82,
+    "pageHeight": 1007,
+    "shell": {
+      "top": -82,
+      "bottom": 843,
+      "height": 925
+    },
+    "tools": {
+      "top": 859,
+      "bottom": 901,
+      "height": 42
+    },
+    "main": {
+      "top": 11,
+      "bottom": 843,
+      "height": 832
+    }
+  }
+]

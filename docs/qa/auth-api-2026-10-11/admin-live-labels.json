@@ -1,0 +1,42 @@
+{
+  "verification": "Contract stub, no actual backend account.",
+  "rows": [
+    {
+      "width": 390,
+      "route": "/admin/dashboard",
+      "overflow": false,
+      "unconnectedMessage": true
+    },
+    {
+      "width": 390,
+      "route": "/admin/sellers",
+      "overflow": false,
+      "unconnectedMessage": true
+    },
+    {
+      "width": 390,
+      "route": "/admin/fabrics",
+      "overflow": false,
+      "unconnectedMessage": true
+    },
+    {
+      "width": 1440,
+      "route": "/admin/dashboard",
+      "overflow": false,
+      "unconnectedMessage": true
+    },
+    {
+      "width": 1440,
+      "route": "/admin/sellers",
+      "overflow": false,
+      "unconnectedMessage": true
+    },
+    {
+      "width": 1440,
+      "route": "/admin/fabrics",
+      "overflow": false,
+      "unconnectedMessage": true
+    }
+  ],
+  "errors": []
+}

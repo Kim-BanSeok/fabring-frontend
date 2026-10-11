@@ -1,0 +1,18 @@
+Authentication HTML implementation — 2026-10-11
+
+Source: uYO6eu041WwmEBKAfA7a6Y, latest working page 122:12.
+All 23 assigned nodes were read through high-fidelity get_design_context with screenshots.
+auth-*.txt are the unmodified source context except this implementation note.
+
+Layout: 32px header, 64px content, two 572px columns with 72px gap; brand 48px padding / 720px minimum height, title 48/64; form 48px padding / 20px gap / 24px radius. At narrower widths columns shrink, then stack. Form controls/primary buttons compose the project's existing shared UI, adapting the source CodeConnect Input/Button slots to the expressly requested plain HTML entry (no compatible React design-library implementation is installed).
+Logo: existing local /assets/figma/logo.svg is reused by the root-owned auth shell at its intrinsic 28×28 dimensions. Canvas/denim decoration in the source is made of editable Figma rectangles, not image assets; shared fabricImage reproduces those exact primitive layers at the auth slot's 476×200 dimensions. No expiring asset URL is used by production code.
+
+Form behavior: required nickname/email/password/confirmation; nickname <=50 chars, email <=255, signup password 8–72 chars; exactly two separate required consents, button disabled unless both checked; confirmation mismatch routes to the matching error screen. First signup starts unchecked; consent query provides each Figma snapshot explicitly. Login/signup inputs survive error/back navigation in module memory, but no password or confirmation is passed to localStorage or sessionStorage. On successful completion these volatile fields are cleared. Example credentials/simulation explanation are outside the product forms in the root review tools.
+The mock service is deliberately a format-validating form simulation. No live authentication, token issuance, request to the backend or email transmission occurs.
+
+Processing preview: direct processing routes remain visible for review. A form submission starts a short local promise and navigates through processing to success/error. Leaving processing will not forcibly navigate the user back. demo=error simulates credential/email failure; demo=network simulates a connection failure; demo=session-expired opens the expiry state. These are review controls, not backend contract guarantees.
+Seller signup -> signup-done -> first-login (the simple Figma form) -> processing -> /seller/store when loginDemo.first_login is true. Signup never grants seller approval.
+
+Consent source naming: *-consent-terms.txt is the state where terms is unchecked and privacy checked, and *-consent-privacy.txt is the state where privacy is unchecked and terms checked. The numeric node IDs and manifest are authoritative.
+
+Verification: node --check pages/auth.js passed. docs/qa/auth.browser.mjs passed after visual fixes: all 23 assigned source annotations at desktop and 390px, three role login transitions, both signup journeys and first seller login, independent required consents, confirmation mismatch/input recovery, credential/network/expiry scenarios, no local/session storage password, no page/console errors, and loaded logo at 28×28. Desktop and mobile screenshots were inspected; the expiry view's duplicate shell padding was removed. Error scenario text is isolated so reviewing a normal credential error after a network failure does not retain the wrong notice. See docs/qa/auth-browser-results.json. This verifies the local simulation, not real authentication or server integration.

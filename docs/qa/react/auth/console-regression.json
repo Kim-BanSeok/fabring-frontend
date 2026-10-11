@@ -1,0 +1,11 @@
+{
+  "checks": [
+    "Network error recovery retains form values",
+    "Gallery service forms are isolated; returning to normal service restores its draft",
+    "Buyer consent combinations update disabled state and all four Figma annotations",
+    "Session expiry refresh keeps the recovery view visible"
+  ],
+  "pageErrors": [],
+  "consoleErrors": [],
+  "passed": true
+}

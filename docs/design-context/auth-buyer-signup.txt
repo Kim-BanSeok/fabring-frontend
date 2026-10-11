@@ -1,0 +1,204 @@
+const imgEllipse = "https://www.figma.com/api/mcp/asset/cb6eb88e-63f8-4e59-84ec-02032721af8e.svg";
+
+function FabricCanvas({ className }: { className?: string }) {
+  return (
+    <div className={className || "bg-[var(--loop-sand,#e7ddca)] h-[240px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] w-[320px]"} data-node-id="4:69" data-name="Fabric / Canvas">
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-0 opacity-8 top-0 w-px" data-node-id="4:70" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[20px] opacity-8 top-0 w-px" data-node-id="4:71" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[40px] opacity-8 top-0 w-px" data-node-id="4:72" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[60px] opacity-8 top-0 w-px" data-node-id="4:73" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[80px] opacity-8 top-0 w-px" data-node-id="4:74" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[100px] opacity-8 top-0 w-px" data-node-id="4:75" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[120px] opacity-8 top-0 w-px" data-node-id="4:76" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[140px] opacity-8 top-0 w-px" data-node-id="4:77" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[160px] opacity-8 top-0 w-px" data-node-id="4:78" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[180px] opacity-8 top-0 w-px" data-node-id="4:79" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[200px] opacity-8 top-0 w-px" data-node-id="4:80" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[220px] opacity-8 top-0 w-px" data-node-id="4:81" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[240px] opacity-8 top-0 w-px" data-node-id="4:82" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[260px] opacity-8 top-0 w-px" data-node-id="4:83" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[280px] opacity-8 top-0 w-px" data-node-id="4:84" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[300px] opacity-8 top-0 w-px" data-node-id="4:85" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[320px] opacity-8 top-0 w-px" data-node-id="4:86" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[340px] opacity-8 top-0 w-px" data-node-id="4:87" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-0 w-[320px]" data-node-id="4:88" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[20px] w-[320px]" data-node-id="4:89" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[40px] w-[320px]" data-node-id="4:90" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[60px] w-[320px]" data-node-id="4:91" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[80px] w-[320px]" data-node-id="4:92" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[100px] w-[320px]" data-node-id="4:93" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[120px] w-[320px]" data-node-id="4:94" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[140px] w-[320px]" data-node-id="4:95" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[160px] w-[320px]" data-node-id="4:96" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[180px] w-[320px]" data-node-id="4:97" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[200px] w-[320px]" data-node-id="4:98" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[220px] w-[320px]" data-node-id="4:99" data-name="Rectangle" />
+      <div className="absolute flex h-[307.971px] items-center justify-center left-[136.26px] top-[-22px] w-[213.282px]" data-node-id="4:100">
+        <div className="flex-none rotate-14">
+          <div className="bg-[var(--loop-white,white)] h-[280px] opacity-13 relative w-[150px]" data-name="Rectangle" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function FB02() {
+  return (
+    <div className="bg-[var(--loop-canvas,#f7f8f4)] content-stretch flex flex-col items-start relative size-full" data-node-id="123:189" data-name="F-B02 · 구매자 회원가입">
+      <div className="bg-[var(--loop-surface,white)] content-stretch flex items-start p-[var(--loop-space-32,32px)] relative shrink-0 w-[1440px]" data-node-id="123:190" data-name="Header">
+        <div className="content-stretch flex gap-[10px] items-start relative shrink-0 w-[220px]" data-node-id="123:191" data-name="Brand">
+          <div className="relative shrink-0 size-[28px]" data-node-id="123:192" data-name="Ellipse">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse} />
+          </div>
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="123:193">
+            섬유 루프
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex gap-[72px] items-start p-[var(--loop-space-64,64px)] relative shrink-0 w-[1440px]" data-node-id="123:194" data-name="Auth content">
+        <div className="bg-[var(--loop-brand,#214e3e)] content-stretch flex flex-col gap-[28px] items-start min-h-[720px] p-[var(--loop-space-48,48px)] relative rounded-[var(--loop-radius-24,24px)] shrink-0 w-[572px]" data-node-id="123:195" data-name="브랜드 소개">
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-white,white)] whitespace-nowrap" data-node-id="123:196">
+            YANGJU TEXTILE LOOP
+          </p>
+          <div className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[0] relative shrink-0 text-[48px] text-[color:var(--loop-white,white)] w-[476px]" data-node-id="123:197">
+            <p className="leading-[64px] mb-0">좋은 원단의</p>
+            <p className="leading-[64px]">새로운 시작.</p>
+          </div>
+          <div className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--loop-white,white)] w-[476px]" data-node-id="123:198">
+            <p className="leading-[24px] mb-0">양주에서 발견한 원단으로</p>
+            <p className="leading-[24px]">당신의 다음 작품을 만들어 보세요.</p>
+          </div>
+          <FabricCanvas className="bg-[var(--loop-sand,#e7ddca)] h-[200px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[476px]" />
+        </div>
+        <div className="bg-[var(--loop-surface,white)] content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-48,48px)] relative rounded-[var(--loop-radius-24,24px)] shrink-0 w-[572px]" data-node-id="123:200" data-name="Auth form">
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] whitespace-nowrap" data-node-id="123:201">
+            구매자 회원가입
+          </p>
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-muted,#68766f)] w-[476px]" data-node-id="123:202">
+            필요한 정보만 입력하고 시작하세요.
+          </p>
+          <div className="content-stretch flex gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[476px]" data-node-id="123:203" data-name="Tabs">
+            <div className="bg-[var(--loop-brand,#214e3e)] content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[100px]" data-node-id="123:204" data-name="Button / 구매자">
+              <CodeConnectSnippet data-node-id="I123:204;79:146" data-name="Control">
+                {/* Simple Design System component */}
+                <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="구매자" label="구매자" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+              </CodeConnectSnippet>
+            </div>
+            <a className="bg-[var(--loop-surface,white)] border border-[var(--loop-line,#dde5dd)] border-solid content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[100px]" data-node-id="123:205" data-name="Button / 판매자">
+              <CodeConnectSnippet data-node-id="I123:205;79:146" data-name="Control">
+                {/* Simple Design System component */}
+                <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자" label="판매자" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+              </CodeConnectSnippet>
+            </a>
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[476px]" data-node-id="123:206" data-name="Field / 닉네임">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-ink,#17362d)] w-[476px]" data-node-id="123:207">
+              닉네임
+            </p>
+            <CodeConnectSnippet data-node-id="123:208" data-name="Input / 이름">
+              {/* Simple Design System component */}
+              <InputField textDescription="Description" description="Description" booleanHasDescription={false} hasDescription={false} textValue="김루프" value="김루프" textError="Error" error="Error" textLabel="Label" label="Label" booleanHasError={false} hasError={false} booleanHasLabel={false} hasLabel={false} variantState="Default" state="Default" variantValueType="Default" valueType="Default" />
+            </CodeConnectSnippet>
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[476px]" data-node-id="123:209" data-name="Field / 이메일">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-ink,#17362d)] w-[476px]" data-node-id="123:210">
+              이메일
+            </p>
+            <CodeConnectSnippet data-node-id="123:211" data-name="Input / 이메일">
+              {/* Simple Design System component */}
+              <InputField textDescription="Description" description="Description" booleanHasDescription={false} hasDescription={false} textValue="loop@example.com" value="loop@example.com" textError="Error" error="Error" textLabel="Label" label="Label" booleanHasError={false} hasError={false} booleanHasLabel={false} hasLabel={false} variantState="Default" state="Default" variantValueType="Default" valueType="Default" />
+            </CodeConnectSnippet>
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[476px]" data-node-id="123:212" data-name="Field / 비밀번호">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-ink,#17362d)] w-[476px]" data-node-id="123:213">
+              비밀번호
+            </p>
+            <CodeConnectSnippet data-node-id="123:214" data-name="Input / 비밀번호">
+              {/* Simple Design System component */}
+              <InputField textDescription="Description" description="Description" booleanHasDescription={false} hasDescription={false} textValue="••••••••" value="••••••••" textError="Error" error="Error" textLabel="Label" label="Label" booleanHasError={false} hasError={false} booleanHasLabel={false} hasLabel={false} variantState="Default" state="Default" variantValueType="Default" valueType="Default" />
+            </CodeConnectSnippet>
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-8,8px)] items-start relative shrink-0 w-[476px]" data-node-id="123:215" data-name="Field / 비밀번호 확인">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-ink,#17362d)] w-[476px]" data-node-id="123:216">
+              비밀번호 확인
+            </p>
+            <CodeConnectSnippet data-node-id="123:217" data-name="Input / 비밀번호 확인">
+              {/* Simple Design System component */}
+              <InputField textDescription="Description" description="Description" booleanHasDescription={false} hasDescription={false} textValue="••••••••" value="••••••••" textError="Error" error="Error" textLabel="Label" label="Label" booleanHasError={false} hasError={false} booleanHasLabel={false} hasLabel={false} variantState="Default" state="Default" variantValueType="Default" valueType="Default" />
+            </CodeConnectSnippet>
+          </div>
+          <div className="content-stretch flex items-start relative shrink-0" data-node-id="123:218" data-name="이용약관 동의 (필수)">
+            <a className="content-stretch cursor-pointer flex gap-[var(--loop-space-12,12px)] h-[40px] items-center pl-[var(--loop-space-8,8px)] relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[476px]" data-node-id="142:7231" data-name="Loop UI / Checkbox">
+              <div className="bg-[var(--loop-action,#16794e)] border border-[var(--loop-action,#16794e)] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[4px] shrink-0 size-[20px]" data-node-id="I142:7231;79:278" data-name="Indicator">
+                <div className="content-stretch flex items-center justify-center relative shrink-0 size-[20px]" data-node-id="I142:7231;79:279" data-name="Icon">
+                  <CodeConnectSnippet data-node-id="I142:7231;79:279;77:146" data-name="Glyph">
+                    {/* Simple Design System component */}
+                    <Check variantSize="20" size="20" />
+                  </CodeConnectSnippet>
+                </div>
+              </div>
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] text-left w-[200px]" data-node-id="I142:7231;79:282">
+                이용약관 동의 (필수)
+              </p>
+            </a>
+          </div>
+          <div className="content-stretch flex items-start relative shrink-0" data-node-id="123:221" data-name="개인정보 수집·이용 동의 (필수)">
+            <a className="content-stretch cursor-pointer flex gap-[var(--loop-space-12,12px)] h-[40px] items-center pl-[var(--loop-space-8,8px)] relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[476px]" data-node-id="142:7240" data-name="Loop UI / Checkbox">
+              <div className="bg-[var(--loop-action,#16794e)] border border-[var(--loop-action,#16794e)] border-solid content-stretch flex flex-col items-center justify-center relative rounded-[4px] shrink-0 size-[20px]" data-node-id="I142:7240;79:278" data-name="Indicator">
+                <div className="content-stretch flex items-center justify-center relative shrink-0 size-[20px]" data-node-id="I142:7240;79:279" data-name="Icon">
+                  <CodeConnectSnippet data-node-id="I142:7240;79:279;77:146" data-name="Glyph">
+                    {/* Simple Design System component */}
+                    <Check variantSize="20" size="20" />
+                  </CodeConnectSnippet>
+                </div>
+              </div>
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] text-left w-[200px]" data-node-id="I142:7240;79:282">
+                개인정보 수집·이용 동의 (필수)
+              </p>
+            </a>
+          </div>
+          <a className="bg-[var(--loop-brand,#214e3e)] content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[476px]" data-node-id="123:224" data-name="Button / 가입하기">
+            <CodeConnectSnippet data-node-id="I123:224;79:102" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="가입하기" label="가입하기" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-muted,#68766f)] w-[476px] whitespace-pre-wrap" data-node-id="123:225">{`개인정보처리방침    ·    이용약관`}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Loop / h3: Font(family: "Noto Sans KR", style: Bold, size: 20, weight: 700, lineHeight: 30, letterSpacing: 0), Loop / label: Font(family: "Noto Sans KR", style: Medium, size: 12, weight: 500, lineHeight: 20, letterSpacing: 0), Loop / display: Font(family: "Noto Sans KR", style: Bold, size: 48, weight: 700, lineHeight: 64, letterSpacing: 0), Loop / body: Font(family: "Noto Sans KR", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0), Loop / h1: Font(family: "Noto Sans KR", style: Bold, size: 32, weight: 700, lineHeight: 46, letterSpacing: 0), Loop / small: Font(family: "Noto Sans KR", style: Regular, size: 12, weight: 400, lineHeight: 20, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Fabric / Canvas
+**Node ID:** 4:69
+
+원단 사진이 제공되기 전 사용하는 편집 가능한 질감 예시. 실제 상품 사진으로 교체할 수 있습니다.
+
+## Loop UI / Button
+**Node ID:** 80:226
+
+색상 기준: 주요 행동 action #16794E, Hover #12633F, Pressed #0E4E32. 보조 버튼은 흰색, 비활성은 기존 회색. Focus는 흰색 간격과 초록 외곽선. 거절 액션은 Kind=Danger: 적색 글자·테두리, Hover/Pressed에서 연적색 배경. Disabled/Loading은 동작을 막습니다.
+
+## Loop UI / Checkbox
+**Node ID:** 80:259
+
+독립적인 다중 선택. 라벨 포함 클릭. Mixed는 일부 선택이며 클릭하면 On. Disabled는 전환 없음.
+
+## Loop UI / Icon / Check
+**Node ID:** 77:145
+
+공통 Check 아이콘. 기본 20px, 버튼 클릭 영역 44px. 원본 Simple Design System 벡터 인스턴스를 재사용합니다.
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.
+

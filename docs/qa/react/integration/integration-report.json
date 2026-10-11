@@ -1,0 +1,64 @@
+{
+  "checks": [
+    "seller approval gate → administrator approval → validated local photo selection → create → partial upload → retry same fabric",
+    "new fabric publication → buyer request without stock hold → seller acceptance holds 180cm → pickup deducts physical stock once",
+    "unknown creation response offers list inspection, no resend",
+    "buyer inquiry → seller answer → buyer reads persisted answer",
+    "rejected fabric → replacement photo and edit → resubmitted pending",
+    "fabric deletion keeps history and removes public listing",
+    "screen-index scenario actions are interactive, isolated, and display updated status"
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "mobile": [
+    {
+      "path": "/seller/dashboard",
+      "body": 390,
+      "document": 390,
+      "viewport": 390
+    },
+    {
+      "path": "/seller/register/manual?type=ROLL",
+      "body": 390,
+      "document": 390,
+      "viewport": 390
+    },
+    {
+      "path": "/seller/register/manual?type=SCRAP",
+      "body": 390,
+      "document": 390,
+      "viewport": 390
+    },
+    {
+      "path": "/seller/store",
+      "body": 390,
+      "document": 390,
+      "viewport": 390
+    },
+    {
+      "path": "/seller/upload",
+      "body": 390,
+      "document": 390,
+      "viewport": 390
+    },
+    {
+      "path": "/seller/reservations?status=PICKED_UP",
+      "body": 390,
+      "document": 390,
+      "viewport": 390
+    }
+  ],
+  "assets": [
+    {
+      "src": "/assets/figma/logo.svg",
+      "natural": [
+        28,
+        28
+      ],
+      "box": [
+        28,
+        28
+      ]
+    }
+  ]
+}

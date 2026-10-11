@@ -1,0 +1,101 @@
+{
+  "rows": [
+    {
+      "name": "soldout",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "emptyHeight": 124,
+      "scrollHeight": 900
+    },
+    {
+      "name": "seller-empty",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "emptyHeight": 124,
+      "scrollHeight": 900
+    },
+    {
+      "name": "approval-empty",
+      "width": 1440,
+      "height": 900,
+      "overflow": 0,
+      "emptyHeight": 188,
+      "scrollHeight": 900
+    },
+    {
+      "name": "soldout",
+      "width": 1366,
+      "height": 600,
+      "overflow": 0,
+      "emptyHeight": 124,
+      "scrollHeight": 872
+    },
+    {
+      "name": "seller-empty",
+      "width": 1366,
+      "height": 600,
+      "overflow": 0,
+      "emptyHeight": 124,
+      "scrollHeight": 716
+    },
+    {
+      "name": "approval-empty",
+      "width": 1366,
+      "height": 600,
+      "overflow": 0,
+      "emptyHeight": 188,
+      "scrollHeight": 628
+    },
+    {
+      "name": "soldout",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "emptyHeight": 124,
+      "scrollHeight": 848
+    },
+    {
+      "name": "seller-empty",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "emptyHeight": 124,
+      "scrollHeight": 768
+    },
+    {
+      "name": "approval-empty",
+      "width": 1024,
+      "height": 768,
+      "overflow": 0,
+      "emptyHeight": 188,
+      "scrollHeight": 768
+    },
+    {
+      "name": "soldout",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "emptyHeight": 120,
+      "scrollHeight": 1007
+    },
+    {
+      "name": "seller-empty",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "emptyHeight": 120,
+      "scrollHeight": 883
+    },
+    {
+      "name": "approval-empty",
+      "width": 390,
+      "height": 844,
+      "overflow": 0,
+      "emptyHeight": 184,
+      "scrollHeight": 844
+    }
+  ],
+  "errors": []
+}

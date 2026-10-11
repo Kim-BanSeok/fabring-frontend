@@ -1,0 +1,3547 @@
+{
+  "comparisons": 354,
+  "exactMatches": 354,
+  "differences": [],
+  "results": [
+    {
+      "nodeId": "123:59",
+      "route": "/auth/buyer/login",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "123:59",
+      "route": "/auth/buyer/login",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "123:189",
+      "route": "/auth/buyer/signup?consent=11",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1040,
+      "afterHeight": 1040,
+      "changed": []
+    },
+    {
+      "nodeId": "123:189",
+      "route": "/auth/buyer/signup?consent=11",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 994,
+      "afterHeight": 994,
+      "changed": []
+    },
+    {
+      "nodeId": "123:482",
+      "route": "/buyer/home",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1098,
+      "afterHeight": 1098,
+      "changed": []
+    },
+    {
+      "nodeId": "123:482",
+      "route": "/buyer/home",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2474,
+      "afterHeight": 2474,
+      "changed": []
+    },
+    {
+      "nodeId": "123:855",
+      "route": "/buyer/fabrics",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2898,
+      "afterHeight": 2898,
+      "changed": []
+    },
+    {
+      "nodeId": "123:855",
+      "route": "/buyer/fabrics",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1794,
+      "afterHeight": 1794,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1201",
+      "route": "/buyer/fabrics/fabric-roll-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1290,
+      "afterHeight": 1290,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1493",
+      "route": "/buyer/pickup/fabric-roll-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1304,
+      "afterHeight": 1304,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1201",
+      "route": "/buyer/fabrics/fabric-roll-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2284,
+      "afterHeight": 2284,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1637",
+      "route": "/buyer/supplies",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1086,
+      "afterHeight": 1086,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1493",
+      "route": "/buyer/pickup/fabric-roll-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1816,
+      "afterHeight": 1816,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1637",
+      "route": "/buyer/supplies",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1336,
+      "afterHeight": 1336,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1806",
+      "route": "/buyer/reservations?status=REQUESTED&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1782,
+      "afterHeight": 1782,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1964",
+      "route": "/buyer/profile",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 946,
+      "afterHeight": 946,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2068",
+      "route": "/buyer/inquiries?status=ANSWERED&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2054,
+      "afterHeight": 2054,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2190",
+      "route": "/auth/seller/login?scenario=123%3A2190",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 762,
+      "afterHeight": 762,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2323",
+      "route": "/auth/seller/signup?consent=11&scenario=123%3A2323",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1134,
+      "afterHeight": 1134,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2473",
+      "route": "/seller/dashboard?scenario=123%3A2473",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1946,
+      "afterHeight": 1946,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2891",
+      "route": "/seller/fabrics?scenario=123%3A2891",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1130,
+      "afterHeight": 1130,
+      "changed": []
+    },
+    {
+      "nodeId": "123:3245",
+      "route": "/seller/register?scenario=123%3A3245",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1018,
+      "afterHeight": 1018,
+      "changed": []
+    },
+    {
+      "nodeId": "123:3466",
+      "route": "/seller/register/manual?type=ROLL&scenario=123%3A3466",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2550.7,
+      "afterHeight": 2550.7,
+      "changed": []
+    },
+    {
+      "nodeId": "123:3842",
+      "route": "/seller/register/ai?type=ROLL&scenario=123%3A3842",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1790,
+      "afterHeight": 1790,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4153",
+      "route": "/seller/register/review?scenario=123%3A4153",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1250,
+      "afterHeight": 1250,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1806",
+      "route": "/buyer/reservations?status=REQUESTED&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1034,
+      "afterHeight": 1034,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4387",
+      "route": "/seller/reservations?status=REQUESTED&scenario=123%3A4387",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1190,
+      "afterHeight": 1190,
+      "changed": []
+    },
+    {
+      "nodeId": "123:1964",
+      "route": "/buyer/profile",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4559",
+      "route": "/seller/inquiries?scenario=123%3A4559",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1108,
+      "afterHeight": 1108,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2068",
+      "route": "/buyer/inquiries?status=ANSWERED&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1602,
+      "afterHeight": 1602,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4699",
+      "route": "/seller/profile?scenario=123%3A4699",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1434,
+      "afterHeight": 1434,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2190",
+      "route": "/auth/seller/login?scenario=123%3A2190",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4835",
+      "route": "/auth/admin/login?scenario=123%3A4835",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2323",
+      "route": "/auth/seller/signup?consent=11&scenario=123%3A2323",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1034,
+      "afterHeight": 1034,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4955",
+      "route": "/admin/dashboard?scenario=123%3A4955",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1027,
+      "afterHeight": 1027,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2473",
+      "route": "/seller/dashboard?scenario=123%3A2473",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1120,
+      "afterHeight": 1120,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5138",
+      "route": "/admin/sellers?scenario=123%3A5138",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "123:2891",
+      "route": "/seller/fabrics?scenario=123%3A2891",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1126,
+      "afterHeight": 1126,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5272",
+      "route": "/admin/sellers/seller-1?scenario=123%3A5272",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1157,
+      "afterHeight": 1157,
+      "changed": []
+    },
+    {
+      "nodeId": "123:3245",
+      "route": "/seller/register?scenario=123%3A3245",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5566",
+      "route": "/admin/fabrics?scenario=123%3A5566",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1139,
+      "afterHeight": 1139,
+      "changed": []
+    },
+    {
+      "nodeId": "123:3466",
+      "route": "/seller/register/manual?type=ROLL&scenario=123%3A3466",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2242.7,
+      "afterHeight": 2242.7,
+      "changed": []
+    },
+    {
+      "nodeId": "123:3842",
+      "route": "/seller/register/ai?type=ROLL&scenario=123%3A3842",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1056,
+      "afterHeight": 1056,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4153",
+      "route": "/seller/register/review?scenario=123%3A4153",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1000,
+      "afterHeight": 1000,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5941",
+      "route": "/admin/approvals?scenario=123%3A5941",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1483,
+      "afterHeight": 1483,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4387",
+      "route": "/seller/reservations?status=REQUESTED&scenario=123%3A4387",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4559",
+      "route": "/seller/inquiries?scenario=123%3A4559",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 922,
+      "afterHeight": 922,
+      "changed": []
+    },
+    {
+      "nodeId": "123:6125",
+      "route": "/admin/approvals?status=POSTED&scenario=123%3A6125",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1335,
+      "afterHeight": 1335,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4699",
+      "route": "/seller/profile?scenario=123%3A4699",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 982,
+      "afterHeight": 982,
+      "changed": []
+    },
+    {
+      "nodeId": "123:6292",
+      "route": "/admin/approvals?status=REJECTED&sample=REJECTED&scenario=123%3A6292",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1425,
+      "afterHeight": 1425,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4835",
+      "route": "/auth/admin/login?scenario=123%3A4835",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2482",
+      "route": "/auth/buyer/error",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "123:4955",
+      "route": "/admin/dashboard?scenario=123%3A4955",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 971,
+      "afterHeight": 971,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2498",
+      "route": "/auth/buyer/processing?scenario=125%3A2498",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5138",
+      "route": "/admin/sellers?scenario=123%3A5138",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2508",
+      "route": "/auth/buyer/signup-done",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5272",
+      "route": "/admin/sellers/seller-1?scenario=123%3A5272",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2559",
+      "route": "/auth/buyer/signup-error",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5566",
+      "route": "/admin/fabrics?scenario=123%3A5566",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1219,
+      "afterHeight": 1219,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2514",
+      "route": "/auth/seller/error?scenario=127%3A2514",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2530",
+      "route": "/auth/seller/processing?scenario=127%3A2530",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2540",
+      "route": "/auth/seller/signup-done?scenario=127%3A2540",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2591",
+      "route": "/auth/seller/signup-error?scenario=127%3A2591",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2607",
+      "route": "/auth/admin/error?scenario=127%3A2607",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2623",
+      "route": "/auth/admin/processing?scenario=127%3A2623",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2633",
+      "route": "/auth/seller/first-login?scenario=127%3A2633",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2667",
+      "route": "/buyer/filters?sale_type=ROLL&material=면&thickness=중간+두께&color=내추럴",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1010,
+      "afterHeight": 1010,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2745",
+      "route": "/buyer/fabrics?sale_type=ROLL&view=search&material=면&color=내추럴",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 846,
+      "afterHeight": 846,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2823",
+      "route": "/buyer/fabrics?sale_type=SCRAP&collapsed=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1662,
+      "afterHeight": 1662,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2890",
+      "route": "/buyer/fabrics?sale_type=SCRAP&view=search&material=울&thickness=두꺼움&color=보라",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2936",
+      "route": "/buyer/pickup/fabric-roll-1?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2994",
+      "route": "/buyer/fabrics/fabric-scrap-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2260,
+      "afterHeight": 2260,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3092",
+      "route": "/buyer/pickup/fabric-scrap-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1736,
+      "afterHeight": 1736,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3190",
+      "route": "/buyer/pickup/fabric-scrap-1?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3248",
+      "route": "/buyer/fabrics/fabric-gauze",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2260,
+      "afterHeight": 2260,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3339",
+      "route": "/buyer/pickup/fabric-gauze",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1736,
+      "afterHeight": 1736,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3437",
+      "route": "/buyer/pickup/fabric-gauze?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3495",
+      "route": "/buyer/fabrics/fabric-check",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2284,
+      "afterHeight": 2284,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3586",
+      "route": "/buyer/pickup/fabric-check",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1816,
+      "afterHeight": 1816,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3684",
+      "route": "/buyer/pickup/fabric-check?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3742",
+      "route": "/buyer/fabrics/fabric-denim",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2260,
+      "afterHeight": 2260,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3833",
+      "route": "/buyer/pickup/fabric-denim",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1736,
+      "afterHeight": 1736,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3931",
+      "route": "/buyer/pickup/fabric-denim?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3989",
+      "route": "/buyer/fabrics/fabric-scrap-2",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2260,
+      "afterHeight": 2260,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4080",
+      "route": "/buyer/pickup/fabric-scrap-2",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1736,
+      "afterHeight": 1736,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4178",
+      "route": "/buyer/pickup/fabric-scrap-2?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "123:5941",
+      "route": "/admin/approvals?scenario=123%3A5941",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 981,
+      "afterHeight": 981,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4236",
+      "route": "/buyer/recommendations/fabric-roll-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 806,
+      "afterHeight": 806,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4299",
+      "route": "/buyer/patterns/pouch?fabric_id=fabric-roll-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1033,
+      "afterHeight": 1033,
+      "changed": []
+    },
+    {
+      "nodeId": "123:6125",
+      "route": "/admin/approvals?status=POSTED&scenario=123%3A6125",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 942,
+      "afterHeight": 942,
+      "changed": []
+    },
+    {
+      "nodeId": "123:6292",
+      "route": "/admin/approvals?status=REJECTED&sample=REJECTED&scenario=123%3A6292",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2482",
+      "route": "/auth/buyer/error",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4377",
+      "route": "/buyer/recommendations/fabric-scrap-2",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2498",
+      "route": "/auth/buyer/processing?scenario=125%3A2498",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4434",
+      "route": "/buyer/reservations/demo-roll?example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2508",
+      "route": "/auth/buyer/signup-done",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4492",
+      "route": "/buyer/reservations/demo-roll/cancel?example=1&status=REQUESTED",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "125:2559",
+      "route": "/auth/buyer/signup-error",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4541",
+      "route": "/buyer/reservations/demo-scrap?example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 778,
+      "afterHeight": 778,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2514",
+      "route": "/auth/seller/error?scenario=127%3A2514",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4599",
+      "route": "/buyer/reservations/demo-scrap/cancel?example=1&status=REQUESTED",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2530",
+      "route": "/auth/seller/processing?scenario=127%3A2530",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4648",
+      "route": "/buyer/reservations?status=ACCEPTED&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1250,
+      "afterHeight": 1250,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2540",
+      "route": "/auth/seller/signup-done?scenario=127%3A2540",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4756",
+      "route": "/buyer/reservations/demo-roll/cancel?example=1&status=ACCEPTED",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2591",
+      "route": "/auth/seller/signup-error?scenario=127%3A2591",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4808",
+      "route": "/buyer/reservations/demo-scrap/cancel?example=1&status=ACCEPTED",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2607",
+      "route": "/auth/admin/error?scenario=127%3A2607",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4860",
+      "route": "/buyer/reservations?status=PICKED_UP&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1202,
+      "afterHeight": 1202,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2623",
+      "route": "/auth/admin/processing?scenario=127%3A2623",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4960",
+      "route": "/buyer/reservations?status=REJECTED&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 898,
+      "afterHeight": 898,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2633",
+      "route": "/auth/seller/first-login?scenario=127%3A2633",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5025",
+      "route": "/buyer/reservations?status=CANCELED&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1346,
+      "afterHeight": 1346,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2667",
+      "route": "/buyer/filters?sale_type=ROLL&material=면&thickness=중간+두께&color=내추럴",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1014,
+      "afterHeight": 1014,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5133",
+      "route": "/buyer/inquiries?compose=1&fabric_id=fabric-roll-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 818,
+      "afterHeight": 818,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2745",
+      "route": "/buyer/fabrics?sale_type=ROLL&view=search&material=면&color=내추럴",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5197",
+      "route": "/buyer/inquiries?compose=1&fabric_id=fabric-scrap-1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 818,
+      "afterHeight": 818,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2823",
+      "route": "/buyer/fabrics?sale_type=SCRAP&collapsed=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1750,
+      "afterHeight": 1750,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5261",
+      "route": "/buyer/inquiries?state=DONE&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2890",
+      "route": "/buyer/fabrics?sale_type=SCRAP&view=search&material=울&thickness=두꺼움&color=보라",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5299",
+      "route": "/buyer/inquiries?status=WAITING&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 998,
+      "afterHeight": 998,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2936",
+      "route": "/buyer/pickup/fabric-roll-1?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5385",
+      "route": "/buyer/profile?edit=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:2994",
+      "route": "/buyer/fabrics/fabric-scrap-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1290,
+      "afterHeight": 1290,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5587",
+      "route": "/buyer/profile?state=SAVED&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3092",
+      "route": "/buyer/pickup/fabric-scrap-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1280,
+      "afterHeight": 1280,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5669",
+      "route": "/buyer/supplies/1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3190",
+      "route": "/buyer/pickup/fabric-scrap-1?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5731",
+      "route": "/buyer/supplies/2",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3248",
+      "route": "/buyer/fabrics/fabric-gauze",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1290,
+      "afterHeight": 1290,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5793",
+      "route": "/buyer/supplies/3",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3339",
+      "route": "/buyer/pickup/fabric-gauze",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1280,
+      "afterHeight": 1280,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5855",
+      "route": "/seller/store?scenario=127%3A5855",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1082,
+      "afterHeight": 1082,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3437",
+      "route": "/buyer/pickup/fabric-gauze?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5927",
+      "route": "/seller/profile/saved?scenario=127%3A5927",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3495",
+      "route": "/buyer/fabrics/fabric-check",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1290,
+      "afterHeight": 1290,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5978",
+      "route": "/seller/approval?scenario=127%3A5978",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3586",
+      "route": "/buyer/pickup/fabric-check",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1304,
+      "afterHeight": 1304,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6016",
+      "route": "/seller/register/type?scenario=127%3A6016",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 930,
+      "afterHeight": 930,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3684",
+      "route": "/buyer/pickup/fabric-check?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6105",
+      "route": "/seller/register/type?mode=ai&scenario=127%3A6105",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1030,
+      "afterHeight": 1030,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3742",
+      "route": "/buyer/fabrics/fabric-denim",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1290,
+      "afterHeight": 1290,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6196",
+      "route": "/seller/register/manual?type=SCRAP&scenario=127%3A6196",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2638.7,
+      "afterHeight": 2638.7,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3833",
+      "route": "/buyer/pickup/fabric-denim",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1280,
+      "afterHeight": 1280,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6325",
+      "route": "/seller/register/review?scenario=127%3A6325",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 812,
+      "afterHeight": 812,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3931",
+      "route": "/buyer/pickup/fabric-denim?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6410",
+      "route": "/seller/register/ai?type=SCRAP&scenario=127%3A6410",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1008,
+      "afterHeight": 1008,
+      "changed": []
+    },
+    {
+      "nodeId": "127:3989",
+      "route": "/buyer/fabrics/fabric-scrap-2",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1290,
+      "afterHeight": 1290,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6487",
+      "route": "/seller/register/ai?type=ROLL&step=processing&scenario=127%3A6487&sample=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4080",
+      "route": "/buyer/pickup/fabric-scrap-2",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1280,
+      "afterHeight": 1280,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6528",
+      "route": "/seller/register/ai?type=ROLL&step=result&scenario=127%3A6528",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 904,
+      "afterHeight": 904,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4178",
+      "route": "/buyer/pickup/fabric-scrap-2?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4236",
+      "route": "/buyer/recommendations/fabric-roll-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4299",
+      "route": "/buyer/patterns/pouch?fabric_id=fabric-roll-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 977,
+      "afterHeight": 977,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6588",
+      "route": "/seller/register/ai?type=ROLL&step=error&scenario=127%3A6588",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 806,
+      "afterHeight": 806,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6637",
+      "route": "/seller/register/photos?scenario=127%3A6637",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 776,
+      "afterHeight": 776,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4377",
+      "route": "/buyer/recommendations/fabric-scrap-2",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6713",
+      "route": "/seller/upload?scenario=127%3A6713",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 780,
+      "afterHeight": 780,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4434",
+      "route": "/buyer/reservations/demo-roll?example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6779",
+      "route": "/seller/fabrics?status=POSTED&scenario=127%3A6779",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2246,
+      "afterHeight": 2246,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4492",
+      "route": "/buyer/reservations/demo-roll/cancel?example=1&status=REQUESTED",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6879",
+      "route": "/seller/fabrics?status=PENDING&scenario=127%3A6879",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4541",
+      "route": "/buyer/reservations/demo-scrap?example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7011",
+      "route": "/seller/fabrics?status=REJECTED&scenario=127%3A7011",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4599",
+      "route": "/buyer/reservations/demo-scrap/cancel?example=1&status=REQUESTED",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7076",
+      "route": "/seller/fabrics?status=SOLD_OUT&scenario=127%3A7076",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 796,
+      "afterHeight": 796,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4648",
+      "route": "/buyer/reservations?status=ACCEPTED&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1082,
+      "afterHeight": 1082,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7149",
+      "route": "/seller/fabrics/detail?id=fabric-roll-1&scenario=127%3A7149",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1122,
+      "afterHeight": 1122,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4756",
+      "route": "/buyer/reservations/demo-roll/cancel?example=1&status=ACCEPTED",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7250",
+      "route": "/seller/fabrics/edit?id=fabric-roll-1&scenario=127%3A7250",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1208.2,
+      "afterHeight": 1208.2,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4808",
+      "route": "/buyer/reservations/demo-scrap/cancel?example=1&status=ACCEPTED",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7322",
+      "route": "/seller/fabrics/edit?id=fabric-pending-1&scenario=127%3A7322",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1914.2,
+      "afterHeight": 1914.2,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4860",
+      "route": "/buyer/reservations?status=PICKED_UP&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1082,
+      "afterHeight": 1082,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7402",
+      "route": "/seller/fabrics/delete?id=fabric-roll-1&scenario=127%3A7402",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:4960",
+      "route": "/buyer/reservations?status=REJECTED&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7448",
+      "route": "/seller/fabrics/delete?id=fabric-scrap-1&scenario=127%3A7448",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5025",
+      "route": "/buyer/reservations?status=CANCELED&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1162,
+      "afterHeight": 1162,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7497",
+      "route": "/seller/fabrics/deleted?scenario=127%3A7497",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 867,
+      "afterHeight": 867,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5133",
+      "route": "/buyer/inquiries?compose=1&fabric_id=fabric-roll-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7558",
+      "route": "/seller/reservations/confirm?action=ACCEPTED&scenario=127%3A7558&id=reservation-scenario",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 956,
+      "afterHeight": 956,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5197",
+      "route": "/buyer/inquiries?compose=1&fabric_id=fabric-scrap-1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7621",
+      "route": "/seller/reservations?status=ACCEPTED&scenario=127%3A7621",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1234,
+      "afterHeight": 1234,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5261",
+      "route": "/buyer/inquiries?state=DONE&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7692",
+      "route": "/seller/reservations/confirm?action=REJECTED&scenario=127%3A7692&id=reservation-scenario",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 762,
+      "afterHeight": 762,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5299",
+      "route": "/buyer/inquiries?status=WAITING&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1002,
+      "afterHeight": 1002,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7753",
+      "route": "/seller/reservations?status=REJECTED&scenario=127%3A7753",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1258,
+      "afterHeight": 1258,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5385",
+      "route": "/buyer/profile?edit=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7829",
+      "route": "/seller/reservations/confirm?action=PICKED_UP&scenario=127%3A7829&id=reservation-scenario",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 956,
+      "afterHeight": 956,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5587",
+      "route": "/buyer/profile?state=SAVED&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7892",
+      "route": "/seller/reservations?status=PICKED_UP&scenario=127%3A7892",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1246,
+      "afterHeight": 1246,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5669",
+      "route": "/buyer/supplies/1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7974",
+      "route": "/seller/reservations/confirm?action=CANCELED&scenario=127%3A7974&id=reservation-scenario",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5731",
+      "route": "/buyer/supplies/2",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:8022",
+      "route": "/seller/reservations?status=CANCELED&scenario=127%3A8022",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1186,
+      "afterHeight": 1186,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5793",
+      "route": "/buyer/supplies/3",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:8098",
+      "route": "/seller/inquiries/answered?scenario=127%3A8098&id=inquiry-scenario",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 786,
+      "afterHeight": 786,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5855",
+      "route": "/seller/store?scenario=127%3A5855",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1110,
+      "afterHeight": 1110,
+      "changed": []
+    },
+    {
+      "nodeId": "127:8297",
+      "route": "/seller/register/error?type=SCRAP&scenario=127%3A8297",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5927",
+      "route": "/seller/profile/saved?scenario=127%3A5927",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "129:5726",
+      "route": "/seller/fabrics/detail?id=fabric-roll-1&after=pickup&scenario=129%3A5726",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1014,
+      "afterHeight": 1014,
+      "changed": []
+    },
+    {
+      "nodeId": "127:5978",
+      "route": "/seller/approval?scenario=127%3A5978",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9059",
+      "route": "/admin/sellers/seller-2?scenario=131%3A9059",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 785,
+      "afterHeight": 785,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6016",
+      "route": "/seller/register/type?scenario=127%3A6016",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 938,
+      "afterHeight": 938,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9130",
+      "route": "/admin/sellers/seller-3?scenario=131%3A9130",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 785,
+      "afterHeight": 785,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6105",
+      "route": "/seller/register/type?mode=ai&scenario=127%3A6105",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1018,
+      "afterHeight": 1018,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9201",
+      "route": "/admin/sellers/seller-4?scenario=131%3A9201",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 785,
+      "afterHeight": 785,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6196",
+      "route": "/seller/register/manual?type=SCRAP&scenario=127%3A6196",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2530.7,
+      "afterHeight": 2530.7,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9272",
+      "route": "/admin/sellers/seller-5?scenario=131%3A9272",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 785,
+      "afterHeight": 785,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6325",
+      "route": "/seller/register/review?scenario=127%3A6325",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9343",
+      "route": "/admin/fabrics/filter?scenario=131%3A9343",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6410",
+      "route": "/seller/register/ai?type=SCRAP&scenario=127%3A6410",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 916,
+      "afterHeight": 916,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9429",
+      "route": "/admin/fabrics?status=PENDING&scenario=131%3A9429",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1139,
+      "afterHeight": 1139,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6487",
+      "route": "/seller/register/ai?type=ROLL&step=processing&scenario=127%3A6487&sample=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9520",
+      "route": "/admin/fabrics?status=PENDING&empty=1&scenario=131%3A9520",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 834,
+      "afterHeight": 834,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6528",
+      "route": "/seller/register/ai?type=ROLL&step=result&scenario=127%3A6528",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9584",
+      "route": "/admin/fabrics/fabric-pending-1?scenario=131%3A9584",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1652,
+      "afterHeight": 1652,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9697",
+      "route": "/admin/fabrics/fabric-pending-1?action=approve&scenario=131%3A9697",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1128,
+      "afterHeight": 1128,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9772",
+      "route": "/admin/fabrics/fabric-pending-1?result=POSTED&sample=POSTED&scenario=131%3A9772",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1086,
+      "afterHeight": 1086,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6588",
+      "route": "/seller/register/ai?type=ROLL&step=error&scenario=127%3A6588",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9893",
+      "route": "/admin/fabrics/fabric-pending-1?action=reject&scenario=131%3A9893",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1368,
+      "afterHeight": 1368,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6637",
+      "route": "/seller/register/photos?scenario=127%3A6637",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6713",
+      "route": "/seller/upload?scenario=127%3A6713",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6779",
+      "route": "/seller/fabrics?status=POSTED&scenario=127%3A6779",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 2282,
+      "afterHeight": 2282,
+      "changed": []
+    },
+    {
+      "nodeId": "127:6879",
+      "route": "/seller/fabrics?status=PENDING&scenario=127%3A6879",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9968",
+      "route": "/admin/fabrics/fabric-pending-1?action=reject&invalid=1&scenario=131%3A9968",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1444,
+      "afterHeight": 1444,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7011",
+      "route": "/seller/fabrics?status=REJECTED&scenario=127%3A7011",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10037",
+      "route": "/admin/fabrics/fabric-pending-1?result=REJECTED&sample=REJECTED&scenario=131%3A10037",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1450,
+      "afterHeight": 1450,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7076",
+      "route": "/seller/fabrics?status=SOLD_OUT&scenario=127%3A7076",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10168",
+      "route": "/admin/approvals?status=POSTED&scenario=131%3A10168",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1335,
+      "afterHeight": 1335,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7149",
+      "route": "/seller/fabrics/detail?id=fabric-roll-1&scenario=127%3A7149",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1110,
+      "afterHeight": 1110,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10248",
+      "route": "/admin/error?id=fabric-pending-1&scenario=131%3A10248",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7250",
+      "route": "/seller/fabrics/edit?id=fabric-roll-1&scenario=127%3A7250",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1156.2,
+      "afterHeight": 1156.2,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10309",
+      "route": "/admin/approvals?sample=POSTED&scenario=131%3A10309",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1483,
+      "afterHeight": 1483,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7322",
+      "route": "/seller/fabrics/edit?id=fabric-pending-1&scenario=127%3A7322",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1646.2,
+      "afterHeight": 1646.2,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10401",
+      "route": "/admin/approvals?sample=REJECTED&scenario=131%3A10401",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1483,
+      "afterHeight": 1483,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7402",
+      "route": "/seller/fabrics/delete?id=fabric-roll-1&scenario=127%3A7402",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10493",
+      "route": "/admin/approvals?status=REJECTED&sample=REJECTED&scenario=131%3A10493",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1425,
+      "afterHeight": 1425,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7448",
+      "route": "/seller/fabrics/delete?id=fabric-scrap-1&scenario=127%3A7448",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7497",
+      "route": "/seller/fabrics/deleted?scenario=127%3A7497",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 915,
+      "afterHeight": 915,
+      "changed": []
+    },
+    {
+      "nodeId": "133:6724",
+      "route": "/preview",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1730,
+      "afterHeight": 1730,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7558",
+      "route": "/seller/reservations/confirm?action=ACCEPTED&scenario=127%3A7558&id=reservation-scenario",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "133:6803",
+      "route": "/preview?role=buyer",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 7560,
+      "afterHeight": 7560,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7621",
+      "route": "/seller/reservations?status=ACCEPTED&scenario=127%3A7621",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "133:7124",
+      "route": "/preview?role=seller",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 6808,
+      "afterHeight": 6808,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7692",
+      "route": "/seller/reservations/confirm?action=REJECTED&scenario=127%3A7692&id=reservation-scenario",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "133:7415",
+      "route": "/preview?role=admin",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 3988,
+      "afterHeight": 3988,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7753",
+      "route": "/seller/reservations?status=REJECTED&scenario=127%3A7753",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "142:6789",
+      "route": "/seller/calendar?month=2026-09&scenario=142%3A6789",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1027,
+      "afterHeight": 1027,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7829",
+      "route": "/seller/reservations/confirm?action=PICKED_UP&scenario=127%3A7829&id=reservation-scenario",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "142:6919",
+      "route": "/seller/calendar?month=2026-10&scenario=142%3A6919",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1027,
+      "afterHeight": 1027,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7892",
+      "route": "/seller/reservations?status=PICKED_UP&scenario=127%3A7892",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "142:7090",
+      "route": "/seller/calendar?month=2026-11&scenario=142%3A7090",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1027,
+      "afterHeight": 1027,
+      "changed": []
+    },
+    {
+      "nodeId": "127:7974",
+      "route": "/seller/reservations/confirm?action=CANCELED&scenario=127%3A7974&id=reservation-scenario",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "144:6910",
+      "route": "/seller/dashboard?scenario=144%3A6910",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 842,
+      "afterHeight": 842,
+      "changed": []
+    },
+    {
+      "nodeId": "127:8022",
+      "route": "/seller/reservations?status=CANCELED&scenario=127%3A8022",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "152:6946",
+      "route": "/auth/buyer/signup?consent=00",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1080,
+      "afterHeight": 1080,
+      "changed": []
+    },
+    {
+      "nodeId": "127:8098",
+      "route": "/seller/inquiries/answered?scenario=127%3A8098&id=inquiry-scenario",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7054",
+      "route": "/auth/buyer/signup?consent=01",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1080,
+      "afterHeight": 1080,
+      "changed": []
+    },
+    {
+      "nodeId": "127:8297",
+      "route": "/seller/register/error?type=SCRAP&scenario=127%3A8297",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7162",
+      "route": "/auth/buyer/signup?consent=10",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1080,
+      "afterHeight": 1080,
+      "changed": []
+    },
+    {
+      "nodeId": "129:5726",
+      "route": "/seller/fabrics/detail?id=fabric-roll-1&after=pickup&scenario=129%3A5726",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 962,
+      "afterHeight": 962,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7312",
+      "route": "/auth/seller/signup?consent=00&scenario=152%3A7312",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1174,
+      "afterHeight": 1174,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9059",
+      "route": "/admin/sellers/seller-2?scenario=131%3A9059",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7421",
+      "route": "/auth/seller/signup?consent=01&scenario=152%3A7421",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1174,
+      "afterHeight": 1174,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9130",
+      "route": "/admin/sellers/seller-3?scenario=131%3A9130",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7530",
+      "route": "/auth/seller/signup?consent=10&scenario=152%3A7530",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1174,
+      "afterHeight": 1174,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9201",
+      "route": "/admin/sellers/seller-4?scenario=131%3A9201",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7368",
+      "route": "/buyer/reservations?status=REQUESTED&example=1&subset=canvas",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9272",
+      "route": "/admin/sellers/seller-5?scenario=131%3A9272",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7452",
+      "route": "/buyer/reservations?status=REQUESTED&example=1&subset=stripe",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9343",
+      "route": "/admin/fabrics/filter?scenario=131%3A9343",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7522",
+      "route": "/buyer/reservations?status=REQUESTED&example=1&subset=empty",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9429",
+      "route": "/admin/fabrics?status=PENDING&scenario=131%3A9429",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1219,
+      "afterHeight": 1219,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7566",
+      "route": "/buyer/reservations?status=CANCELED&example=1&subset=canvas",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 780,
+      "afterHeight": 780,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9520",
+      "route": "/admin/fabrics?status=PENDING&empty=1&scenario=131%3A9520",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9584",
+      "route": "/admin/fabrics/fabric-pending-1?scenario=131%3A9584",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1466,
+      "afterHeight": 1466,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7639",
+      "route": "/buyer/reservations?status=CANCELED&example=1&subset=stripe",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 780,
+      "afterHeight": 780,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9697",
+      "route": "/admin/fabrics/fabric-pending-1?action=approve&scenario=131%3A9697",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 974,
+      "afterHeight": 974,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7712",
+      "route": "/buyer/reservations?status=CANCELED&example=1&subset=empty",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9772",
+      "route": "/admin/fabrics/fabric-pending-1?result=POSTED&sample=POSTED&scenario=131%3A9772",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1066,
+      "afterHeight": 1066,
+      "changed": []
+    },
+    {
+      "nodeId": "156:9578",
+      "route": "/admin/fabrics?status=REJECTED&sample=REJECTED&scenario=156%3A9578",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9893",
+      "route": "/admin/fabrics/fabric-pending-1?action=reject&scenario=131%3A9893",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1178,
+      "afterHeight": 1178,
+      "changed": []
+    },
+    {
+      "nodeId": "202:7763",
+      "route": "/buyer/fabrics?sale_type=ROLL",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1898,
+      "afterHeight": 1898,
+      "changed": []
+    },
+    {
+      "nodeId": "202:7982",
+      "route": "/buyer/filters?sale_type=SCRAP",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1010,
+      "afterHeight": 1010,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8188",
+      "route": "/buyer/recommendations/fabric-roll-1?state=NEEDS_CHECK&example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 882,
+      "afterHeight": 882,
+      "changed": []
+    },
+    {
+      "nodeId": "131:9968",
+      "route": "/admin/fabrics/fabric-pending-1?action=reject&invalid=1&scenario=131%3A9968",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1254,
+      "afterHeight": 1254,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8252",
+      "route": "/buyer/errors/insufficient?example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10037",
+      "route": "/admin/fabrics/fabric-pending-1?result=REJECTED&sample=REJECTED&scenario=131%3A10037",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1274,
+      "afterHeight": 1274,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8295",
+      "route": "/buyer/errors/reserved?example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10168",
+      "route": "/admin/approvals?status=POSTED&scenario=131%3A10168",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 942,
+      "afterHeight": 942,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8338",
+      "route": "/buyer/errors/duplicate?example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10248",
+      "route": "/admin/error?id=fabric-pending-1&scenario=131%3A10248",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8381",
+      "route": "/buyer/errors/unavailable?example=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10309",
+      "route": "/admin/approvals?sample=POSTED&scenario=131%3A10309",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 981,
+      "afterHeight": 981,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8424",
+      "route": "/auth/buyer/session-expired",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10401",
+      "route": "/admin/approvals?sample=REJECTED&scenario=131%3A10401",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 981,
+      "afterHeight": 981,
+      "changed": []
+    },
+    {
+      "nodeId": "205:7988",
+      "route": "/admin/approvals?status=POSTED&empty=1&scenario=205%3A7988",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "131:10493",
+      "route": "/admin/approvals?status=REJECTED&sample=REJECTED&scenario=131%3A10493",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "205:8052",
+      "route": "/admin/approvals?status=REJECTED&empty=1&scenario=205%3A8052",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "133:6724",
+      "route": "/preview",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1146,
+      "afterHeight": 1146,
+      "changed": []
+    },
+    {
+      "nodeId": "209:8131",
+      "route": "/seller/approval?scenario=209%3A8131",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "133:6803",
+      "route": "/preview?role=buyer",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 5684,
+      "afterHeight": 5684,
+      "changed": []
+    },
+    {
+      "nodeId": "209:8167",
+      "route": "/seller/approval?scenario=209%3A8167",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "133:7124",
+      "route": "/preview?role=seller",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 5124,
+      "afterHeight": 5124,
+      "changed": []
+    },
+    {
+      "nodeId": "209:8203",
+      "route": "/seller/approval?scenario=209%3A8203",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 751,
+      "afterHeight": 751,
+      "changed": []
+    },
+    {
+      "nodeId": "133:7415",
+      "route": "/preview?role=admin",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 3024,
+      "afterHeight": 3024,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8074",
+      "route": "/admin/sellers?status=APPROVED&scenario=210%3A8074",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "142:6789",
+      "route": "/seller/calendar?month=2026-09&scenario=142%3A6789",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1098,
+      "afterHeight": 1098,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8185",
+      "route": "/admin/sellers?status=REJECTED&sample=SELLER_REJECTED&scenario=210%3A8185",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 772,
+      "afterHeight": 772,
+      "changed": []
+    },
+    {
+      "nodeId": "142:6919",
+      "route": "/seller/calendar?month=2026-10&scenario=142%3A6919",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1098,
+      "afterHeight": 1098,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8380",
+      "route": "/admin/sellers/seller-1?sample=APPROVED&scenario=210%3A8380",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1073,
+      "afterHeight": 1073,
+      "changed": []
+    },
+    {
+      "nodeId": "142:7090",
+      "route": "/seller/calendar?month=2026-11&scenario=142%3A7090",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1098,
+      "afterHeight": 1098,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8462",
+      "route": "/admin/sellers/seller-1?sample=SELLER_REJECTED&scenario=210%3A8462",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1073,
+      "afterHeight": 1073,
+      "changed": []
+    },
+    {
+      "nodeId": "144:6910",
+      "route": "/seller/dashboard?scenario=144%3A6910",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8608",
+      "route": "/seller/upload?scenario=210%3A8608&sample=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 774,
+      "afterHeight": 774,
+      "changed": []
+    },
+    {
+      "nodeId": "152:6946",
+      "route": "/auth/buyer/signup?consent=00",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1034,
+      "afterHeight": 1034,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8618",
+      "route": "/seller/upload?scenario=210%3A8618&sample=1",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 774,
+      "afterHeight": 774,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7054",
+      "route": "/auth/buyer/signup?consent=01",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1034,
+      "afterHeight": 1034,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8628",
+      "route": "/seller/upload?scenario=210%3A8628",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 774,
+      "afterHeight": 774,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7162",
+      "route": "/auth/buyer/signup?consent=10",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1034,
+      "afterHeight": 1034,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8638",
+      "route": "/seller/upload?scenario=210%3A8638",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 774,
+      "afterHeight": 774,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7312",
+      "route": "/auth/seller/signup?consent=00&scenario=152%3A7312",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1074,
+      "afterHeight": 1074,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8648",
+      "route": "/seller/upload?scenario=210%3A8648",
+      "width": 390,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 780,
+      "afterHeight": 780,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7421",
+      "route": "/auth/seller/signup?consent=01&scenario=152%3A7421",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1074,
+      "afterHeight": 1074,
+      "changed": []
+    },
+    {
+      "nodeId": "152:7530",
+      "route": "/auth/seller/signup?consent=10&scenario=152%3A7530",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1074,
+      "afterHeight": 1074,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7368",
+      "route": "/buyer/reservations?status=REQUESTED&example=1&subset=canvas",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7452",
+      "route": "/buyer/reservations?status=REQUESTED&example=1&subset=stripe",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7522",
+      "route": "/buyer/reservations?status=REQUESTED&example=1&subset=empty",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7566",
+      "route": "/buyer/reservations?status=CANCELED&example=1&subset=canvas",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7639",
+      "route": "/buyer/reservations?status=CANCELED&example=1&subset=stripe",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "154:7712",
+      "route": "/buyer/reservations?status=CANCELED&example=1&subset=empty",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "156:9578",
+      "route": "/admin/fabrics?status=REJECTED&sample=REJECTED&scenario=156%3A9578",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "202:7763",
+      "route": "/buyer/fabrics?sale_type=ROLL",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1246,
+      "afterHeight": 1246,
+      "changed": []
+    },
+    {
+      "nodeId": "202:7982",
+      "route": "/buyer/filters?sale_type=SCRAP",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 1014,
+      "afterHeight": 1014,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8188",
+      "route": "/buyer/recommendations/fabric-roll-1?state=NEEDS_CHECK&example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8252",
+      "route": "/buyer/errors/insufficient?example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8295",
+      "route": "/buyer/errors/reserved?example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8338",
+      "route": "/buyer/errors/duplicate?example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8381",
+      "route": "/buyer/errors/unavailable?example=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "202:8424",
+      "route": "/auth/buyer/session-expired",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "205:7988",
+      "route": "/admin/approvals?status=POSTED&empty=1&scenario=205%3A7988",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "205:8052",
+      "route": "/admin/approvals?status=REJECTED&empty=1&scenario=205%3A8052",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "209:8131",
+      "route": "/seller/approval?scenario=209%3A8131",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "209:8167",
+      "route": "/seller/approval?scenario=209%3A8167",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "209:8203",
+      "route": "/seller/approval?scenario=209%3A8203",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8074",
+      "route": "/admin/sellers?status=APPROVED&scenario=210%3A8074",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8185",
+      "route": "/admin/sellers?status=REJECTED&sample=SELLER_REJECTED&scenario=210%3A8185",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8380",
+      "route": "/admin/sellers/seller-1?sample=APPROVED&scenario=210%3A8380",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8462",
+      "route": "/admin/sellers/seller-1?sample=SELLER_REJECTED&scenario=210%3A8462",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 928,
+      "afterHeight": 928,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8608",
+      "route": "/seller/upload?scenario=210%3A8608&sample=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8618",
+      "route": "/seller/upload?scenario=210%3A8618&sample=1",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8628",
+      "route": "/seller/upload?scenario=210%3A8628",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8638",
+      "route": "/seller/upload?scenario=210%3A8638",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    },
+    {
+      "nodeId": "210:8648",
+      "route": "/seller/upload?scenario=210%3A8648",
+      "width": 1440,
+      "sameText": true,
+      "sameAnnotation": true,
+      "beforeHeight": 907,
+      "afterHeight": 907,
+      "changed": []
+    }
+  ]
+}

@@ -1,0 +1,673 @@
+{
+  "verification": "Playwright network route contract stubs only; no real API server was called.",
+  "startedAt": "2026-10-11T08:42:38.081Z",
+  "passed": [
+    "390: 가입 요청 필드 정확",
+    "390: 가입 payload 정규화와 필수 동의",
+    "390: StrictMode 가입 중복 HTTP 없음",
+    "390: 가입만으로 로그인 토큰 생성하지 않음",
+    "390px signup-success: 가로 넘침 없음",
+    "390: 가입 이메일 로그인 폼에 전달",
+    "390: 회원가입 계약과 StrictMode 단일 제출",
+    "390: 서버 409 오류 안내",
+    "390: 중복 가입 로그인 회복 행동",
+    "390: 409 뒤 입력과 동의 유지",
+    "390: 409 자동 재제출·세션 생성 없음",
+    "390: 가입 duplicate409",
+    "390: 서버 400 오류 안내",
+    "390: 400 뒤 입력과 동의 유지",
+    "390: 400 자동 재제출·세션 생성 없음",
+    "390px signup-field-error: 가로 넘침 없음",
+    "390: 가입 field400",
+    "390: 서버 429 오류 안내",
+    "390: 429 뒤 입력과 동의 유지",
+    "390: 429 자동 재제출·세션 생성 없음",
+    "390: 가입 rate429",
+    "390px login-network-error: 가로 넘침 없음",
+    "390: 네트워크 오류 후 이메일 유지",
+    "390: 명시 재시도 한 번 후 로그인 복구",
+    "390: 로그인 네트워크 오류 복구",
+    "390: 가입 결과 유실을 확정 실패로 안내하지 않음",
+    "390: 자동 중복 가입 없이 로그인 회복 제공",
+    "390: 가입 응답 유실 회복",
+    "390: 미등록 판매자는 예시 매장 없는 등록 화면",
+    "390: 로그인 요청에 폼 역할 전송하지 않음",
+    "390: 내 정보 조회 Bearer 전달",
+    "390: 실모드 역할 변경 도구 없음",
+    "390px server-role-seller-store: 가로 넘침 없음",
+    "390: 서버 역할 우선 신규 판매자 로그인",
+    "390: store_address/store_phone 화면 필드 매핑",
+    "390: 등록 매장 조회 한 번",
+    "390px seller-store-loaded: 가로 넘침 없음",
+    "390: 등록 판매자 매장 매핑",
+    "390: 실제 구매자 프로필만 표시",
+    "390px buyer-profile-live: 가로 넘침 없음",
+    "390: 미연동 저장은 성공 처리·HTTP 호출하지 않음",
+    "390: 새로고침 /users/me 복구 한 번",
+    "390: URL 역할 변경으로 관리자 진입 불가",
+    "390: 로그아웃 토큰 제거",
+    "390: 구매자 프로필·미연동 저장·복구·역할 가드",
+    "390: 401 세션 삭제와 재로그인 행동",
+    "390px session-expired401: 가로 넘침 없음",
+    "390: 401 만료 복구",
+    "390: 관리자 사이드바 하단 로그아웃 표시",
+    "390px admin-logout: 가로 넘침 없음",
+    "390: 관리자 로그아웃 토큰 제거",
+    "390: 관리자 하단 로그아웃",
+    "390: 이중 submit·StrictMode에도 로그인 요청 하나",
+    "390: 처리중 이탈한 응답은 로그인 세션으로 커밋하지 않음",
+    "390: 처리 중 이탈 취소 및 StrictMode 단일 요청",
+    "390: 시연 계정과 역할 도구 독립",
+    "390: 시연 로그인·역할 변경에서 실 HTTP·실토큰 없음",
+    "390: 실모드 복귀 시 예시 이메일 섞이지 않음",
+    "390: 시연 모드 실 HTTP 0회",
+    "1440: 가입 요청 필드 정확",
+    "1440: 가입 payload 정규화와 필수 동의",
+    "1440: StrictMode 가입 중복 HTTP 없음",
+    "1440: 가입만으로 로그인 토큰 생성하지 않음",
+    "1440px signup-success: 가로 넘침 없음",
+    "1440: 가입 이메일 로그인 폼에 전달",
+    "1440: 회원가입 계약과 StrictMode 단일 제출",
+    "1440: 서버 409 오류 안내",
+    "1440: 중복 가입 로그인 회복 행동",
+    "1440: 409 뒤 입력과 동의 유지",
+    "1440: 409 자동 재제출·세션 생성 없음",
+    "1440: 가입 duplicate409",
+    "1440: 서버 400 오류 안내",
+    "1440: 400 뒤 입력과 동의 유지",
+    "1440: 400 자동 재제출·세션 생성 없음",
+    "1440px signup-field-error: 가로 넘침 없음",
+    "1440: 가입 field400",
+    "1440: 서버 429 오류 안내",
+    "1440: 429 뒤 입력과 동의 유지",
+    "1440: 429 자동 재제출·세션 생성 없음",
+    "1440: 가입 rate429",
+    "1440px login-network-error: 가로 넘침 없음",
+    "1440: 네트워크 오류 후 이메일 유지",
+    "1440: 명시 재시도 한 번 후 로그인 복구",
+    "1440: 로그인 네트워크 오류 복구",
+    "1440: 가입 결과 유실을 확정 실패로 안내하지 않음",
+    "1440: 자동 중복 가입 없이 로그인 회복 제공",
+    "1440: 가입 응답 유실 회복",
+    "1440: 미등록 판매자는 예시 매장 없는 등록 화면",
+    "1440: 로그인 요청에 폼 역할 전송하지 않음",
+    "1440: 내 정보 조회 Bearer 전달",
+    "1440: 실모드 역할 변경 도구 없음",
+    "1440px server-role-seller-store: 가로 넘침 없음",
+    "1440: 서버 역할 우선 신규 판매자 로그인",
+    "1440: store_address/store_phone 화면 필드 매핑",
+    "1440: 등록 매장 조회 한 번",
+    "1440px seller-store-loaded: 가로 넘침 없음",
+    "1440: 등록 판매자 매장 매핑",
+    "1440: 실제 구매자 프로필만 표시",
+    "1440px buyer-profile-live: 가로 넘침 없음",
+    "1440: 미연동 저장은 성공 처리·HTTP 호출하지 않음",
+    "1440: 새로고침 /users/me 복구 한 번",
+    "1440: URL 역할 변경으로 관리자 진입 불가",
+    "1440: 로그아웃 토큰 제거",
+    "1440: 구매자 프로필·미연동 저장·복구·역할 가드",
+    "1440: 401 세션 삭제와 재로그인 행동",
+    "1440px session-expired401: 가로 넘침 없음",
+    "1440: 401 만료 복구",
+    "1440: 관리자 사이드바 하단 로그아웃 표시",
+    "1440px admin-logout: 가로 넘침 없음",
+    "1440: 관리자 로그아웃 토큰 제거",
+    "1440: 관리자 하단 로그아웃",
+    "1440: 이중 submit·StrictMode에도 로그인 요청 하나",
+    "1440: 처리중 이탈한 응답은 로그인 세션으로 커밋하지 않음",
+    "1440: 처리 중 이탈 취소 및 StrictMode 단일 요청",
+    "1440: 시연 계정과 역할 도구 독립",
+    "1440: 시연 로그인·역할 변경에서 실 HTTP·실토큰 없음",
+    "1440: 실모드 복귀 시 예시 이메일 섞이지 않음",
+    "1440: 시연 모드 실 HTTP 0회"
+  ],
+  "failed": [],
+  "browserErrors": [],
+  "screens": [
+    "signup-success-390.png",
+    "signup-field-error-390.png",
+    "login-network-error-390.png",
+    "server-role-seller-store-390.png",
+    "seller-store-loaded-390.png",
+    "buyer-profile-live-390.png",
+    "session-expired401-390.png",
+    "admin-logout-390.png",
+    "signup-success-1440.png",
+    "signup-field-error-1440.png",
+    "login-network-error-1440.png",
+    "server-role-seller-store-1440.png",
+    "seller-store-loaded-1440.png",
+    "buyer-profile-live-1440.png",
+    "session-expired401-1440.png",
+    "admin-logout-1440.png"
+  ],
+  "requestSummaries": [
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/stores/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "requests": []
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/signup",
+          "bodyKeys": [
+            "email",
+            "password",
+            "nickname",
+            "role",
+            "phone_number",
+            "terms_agreed",
+            "privacy_agreed"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/stores/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        },
+        {
+          "method": "GET",
+          "endpoint": "/api/v1/users/me",
+          "bodyKeys": [],
+          "bearerSent": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": [
+        {
+          "method": "POST",
+          "endpoint": "/api/v1/auth/login",
+          "bodyKeys": [
+            "email",
+            "password"
+          ],
+          "bearerSent": false
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "requests": []
+    }
+  ],
+  "finishedAt": "2026-10-11T08:42:57.379Z",
+  "summary": {
+    "passed": 118,
+    "failed": 0,
+    "browserErrors": 0,
+    "screenshots": 16
+  }
+}

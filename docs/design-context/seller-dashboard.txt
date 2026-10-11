@@ -1,0 +1,564 @@
+const imgEllipse = "https://www.figma.com/api/mcp/asset/0e46f22d-8b51-4c40-8459-0f5f549edfb9.svg";
+
+type LoopUiNavItemProps = {
+  className?: string;
+  label?: string;
+  state?: "Default" | "Selected";
+};
+
+function LoopUiNavItem({ className, label = "메뉴", state = "Default" }: LoopUiNavItemProps) {
+  const isSelected = state === "Selected";
+  return (
+    <div className={className || `content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] w-[120px] ${isSelected ? "bg-[var(--loop-selectedSoft,#dcefe2)] border-[var(--loop-action,#16794e)] border-b-3 border-solid" : "cursor-pointer"}`} id={isSelected ? "node-79_261" : "node-79_253"}>
+      {state === "Default" && (
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="79:254">
+          {label}
+        </p>
+      )}
+      {isSelected && (
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-brand,#214e3e)] text-center w-[96px]" data-node-id="79:262">
+          {label}
+        </p>
+      )}
+    </div>
+  );
+}
+
+type LoopUiLogoProps = {
+  className?: string;
+  theme?: "Light";
+};
+
+function LoopUiLogo({ className, theme = "Light" }: LoopUiLogoProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[10px] items-start relative w-[160px]"} data-node-id="77:364">
+      <div className="relative shrink-0 size-[28px]" data-node-id="77:362" data-name="Ellipse">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse} />
+      </div>
+      <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="77:363">
+        섬유 루프
+      </p>
+    </div>
+  );
+}
+
+export default function FS03() {
+  return (
+    <div className="bg-[var(--loop-canvasClear,#f2f5f3)] content-stretch flex flex-col items-start relative size-full" data-node-id="123:2473" data-name="F-S03 · 반가워요, 양주 원단상회">
+      <div className="bg-[var(--loop-surface,white)] border-[var(--loop-borderSubtle,#cdd8d0)] border-b border-solid content-stretch flex gap-[var(--loop-space-32,32px)] h-[93px] items-center px-[96px] py-[24px] relative shrink-0 w-full" data-node-id="123:2474" data-name="Navigation">
+        <LoopUiLogo className="content-stretch flex gap-[10px] h-[30px] items-start relative shrink-0 w-[160px]" />
+        <div className="content-stretch flex gap-[12px] items-start relative shrink-0 w-[930px]" data-node-id="I123:2474;82:511" data-name="Menu">
+          <LoopUiNavItem className="bg-[var(--loop-selectedSoft,#dcefe2)] border-[var(--loop-action,#16794e)] border-b-3 border-solid content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" label="홈" state="Selected" />
+          <button className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I123:2474;82:525" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I123:2474;82:525;79:254">
+              원단목록
+            </p>
+          </button>
+          <button className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I123:2474;82:527" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I123:2474;82:527;79:254">
+              원단등록
+            </p>
+          </button>
+          <button className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I123:2474;82:529" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I123:2474;82:529;79:254">
+              판매내역
+            </p>
+          </button>
+          <a className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I123:2474;82:531" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I123:2474;82:531;79:254">
+              문의내역
+            </p>
+          </a>
+          <a className="content-stretch cursor-pointer flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I123:2474;82:533" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I123:2474;82:533;79:254">
+              마이페이지
+            </p>
+          </a>
+        </div>
+        <div className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" data-node-id="I123:2474;82:518" data-name="Badge / 판매자">
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="I123:2474;82:518;4:198">
+            판매자
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[64px] pt-[48px] px-[96px] relative shrink-0 w-[1440px]" data-node-id="123:2475" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="123:2476">
+          반가워요, 양주 원단상회
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="123:2477">
+          오늘의 예약과 원단 판매 현황을 확인하세요.
+        </p>
+        <div className="[word-break:break-word] content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1248px]" data-node-id="123:2478" data-name="Overview">
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start min-h-[164px] p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[300px]" data-node-id="123:2479" data-name="예약 요청">
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2480">
+              예약 요청
+            </p>
+            <p className="font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[252px]" data-node-id="123:2481">
+              1건
+            </p>
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2482">
+              판매자 확인 대기
+            </p>
+          </div>
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start min-h-[164px] p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[300px]" data-node-id="123:2483" data-name="답변 대기">
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2484">
+              답변 대기
+            </p>
+            <p className="font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[252px]" data-node-id="123:2485">
+              2건
+            </p>
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2486">
+              구매자 문의
+            </p>
+          </div>
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start min-h-[164px] p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[300px]" data-node-id="123:2487" data-name="오늘 픽업">
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2488">
+              오늘 픽업
+            </p>
+            <p className="font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[252px]" data-node-id="123:2489">
+              0건
+            </p>
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2490">
+              수락된 예약
+            </p>
+          </div>
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start min-h-[164px] p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[300px]" data-node-id="123:2491" data-name="원단 승인">
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2492">
+              원단 승인
+            </p>
+            <p className="font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[252px]" data-node-id="123:2493">
+              대기 2 · 거절 1
+            </p>
+            <p className="font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[252px]" data-node-id="123:2494">
+              거절 사유를 확인하세요
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[1248px]" data-node-id="123:2495" data-name="업무와 일정">
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[612px]" data-node-id="123:2496" data-name="업무">
+            <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[612px]" data-node-id="123:2497" data-name="오늘 처리할 일">
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[564px]" data-node-id="123:2498">
+                오늘 처리할 일
+              </p>
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] whitespace-nowrap" data-node-id="123:2499">
+                예약 요청 1건 · 답변 대기 2건
+              </p>
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[564px]" data-node-id="123:2500">
+                <span className="leading-[24px]">{`승인 `}</span>
+                <span className="leading-[24px] text-[#aa473c]">거절된 원단 1건의 사유를 확인해 주세요.</span>
+              </p>
+              <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2501" data-name="바로가기">
+                <button className="bg-[var(--loop-brand,#214e3e)] content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[180px]" data-node-id="123:2502" data-name="Button / 예약 확인">
+                  <CodeConnectSnippet data-node-id="I123:2502;79:102" tabIndex="0" role="button" data-name="Control">
+                    {/* Simple Design System component */}
+                    <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="예약 확인" label="예약 확인" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                  </CodeConnectSnippet>
+                </button>
+                <a className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[180px]" data-node-id="123:2503" data-name="Button / 문의 확인">
+                  <CodeConnectSnippet data-node-id="I123:2503;79:146" data-name="Control">
+                    {/* Simple Design System component */}
+                    <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="문의 확인" label="문의 확인" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                  </CodeConnectSnippet>
+                </a>
+                <a className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[180px]" data-node-id="123:2504" data-name="Button / 거절 사유">
+                  <CodeConnectSnippet data-node-id="I123:2504;111:708" data-name="Control">
+                    {/* Simple Design System component */}
+                    <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="거절 사유" label="거절 사유" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                  </CodeConnectSnippet>
+                </a>
+              </div>
+            </div>
+            <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[612px]" data-node-id="123:2505" data-name="내 원단 현황">
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[564px]" data-node-id="123:2506">
+                내 원단 현황
+              </p>
+              <div className="[word-break:break-word] content-stretch flex flex-col font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-12,12px)] items-start relative shrink-0 text-[14px] w-[564px]" data-node-id="123:2507" data-name="Information">
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 w-[564px]" data-node-id="123:2508" data-name="게시 중">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="123:2509">
+                    게시 중
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[404px]" data-node-id="123:2510">
+                    8건
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 w-[564px]" data-node-id="123:2511" data-name="승인 대기">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="123:2512">
+                    승인 대기
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[404px]" data-node-id="123:2513">
+                    2건
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2514" data-name="승인 거절">
+                  <p className="leading-[0] relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="123:2515">
+                    <span className="leading-[24px]">{`승인 `}</span>
+                    <span className="leading-[24px] text-[#aa473c]">거절</span>
+                  </p>
+                  <p className="leading-[24px] relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[404px]" data-node-id="123:2516">
+                    1건
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 w-[564px]" data-node-id="123:2517" data-name="판매 완료">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="123:2518">
+                    판매 완료
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[404px]" data-node-id="123:2519">
+                    4건
+                  </p>
+                </div>
+              </div>
+              <button className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[220px]" data-node-id="123:2520" data-name="Button / 원단 목록 전체보기 →">
+                <CodeConnectSnippet data-node-id="I123:2520;79:146" tabIndex="0" role="button" data-name="Control">
+                  {/* Simple Design System component */}
+                  <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="원단 목록 전체보기 →" label="원단 목록 전체보기 →" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                </CodeConnectSnippet>
+              </button>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[612px]" data-node-id="123:2521" data-name="일정">
+            <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[612px]" data-node-id="123:2522" data-name="픽업 일정">
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[564px]" data-node-id="123:2523">
+                픽업 일정
+              </p>
+              <div className="content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2524" data-name="2026년 10월 달력">
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2525" data-name="Calendar header">
+                  <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-ink,#17362d)] w-[392px]" data-node-id="123:2526">
+                    2026년 10월
+                  </p>
+                  <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[104px]" data-node-id="142:7220" data-name="Calendar month controls">
+                    <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[44px]" data-node-id="142:7221" data-name="Button / ‹">
+                      <CodeConnectSnippet data-node-id="I142:7221;79:146" data-name="Control">
+                        {/* Simple Design System component */}
+                        <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="‹" label="‹" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                      </CodeConnectSnippet>
+                    </a>
+                    <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[44px]" data-node-id="142:7226" data-name="Button / ›">
+                      <CodeConnectSnippet data-node-id="I142:7226;79:146" data-name="Control">
+                        {/* Simple Design System component */}
+                        <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="›" label="›" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                      </CodeConnectSnippet>
+                    </a>
+                  </div>
+                </div>
+                <div className="[word-break:break-word] content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-4,4px)] items-start leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[564px]" data-node-id="123:2528" data-name="요일">
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2529">
+                    월
+                  </p>
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2530">
+                    화
+                  </p>
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2531">
+                    수
+                  </p>
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2532">
+                    목
+                  </p>
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2533">
+                    금
+                  </p>
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2534">
+                    토
+                  </p>
+                  <p className="relative shrink-0 w-[77.143px]" data-node-id="123:2535">
+                    일
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-4,4px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2536" data-name="Week 0">
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2537" data-name="Day -2">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2538">{` `}</p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2539" data-name="Day -1">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2540">{` `}</p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2541" data-name="Day 0">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2542">{` `}</p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2543" data-name="Day 1">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2544">
+                      1
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2545" data-name="Day 2">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2546">
+                      2
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2547" data-name="Day 3">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2548">
+                      3
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2549" data-name="Day 4">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2550">
+                      4
+                    </p>
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-4,4px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2551" data-name="Week 1">
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2552" data-name="Day 5">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2553">
+                      5
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2554" data-name="Day 6">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2555">
+                      6
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2556" data-name="Day 7">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2557">
+                      7
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2558" data-name="Day 8">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2559">
+                      8
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2560" data-name="Day 9">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2561">
+                      9
+                    </p>
+                  </div>
+                  <div className="bg-[var(--loop-brand,#214e3e)] content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2562" data-name="Day 10">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-white,white)] w-[61.143px]" data-node-id="123:2563">
+                      10
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2564" data-name="Day 11">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2565">
+                      11
+                    </p>
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-4,4px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2566" data-name="Week 2">
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2567" data-name="Day 12">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2568">
+                      12
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2569" data-name="Day 13">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2570">
+                      13
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2571" data-name="Day 14">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2572">
+                      14
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2573" data-name="Day 15">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2574">
+                      15
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2575" data-name="Day 16">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2576">
+                      16
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2577" data-name="Day 17">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2578">
+                      17
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2579" data-name="Day 18">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2580">
+                      18
+                    </p>
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-4,4px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2581" data-name="Week 3">
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2582" data-name="Day 19">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2583">
+                      19
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2584" data-name="Day 20">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2585">
+                      20
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2586" data-name="Day 21">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2587">
+                      21
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2588" data-name="Day 22">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2589">
+                      22
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2590" data-name="Day 23">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2591">
+                      23
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2592" data-name="Day 24">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2593">
+                      24
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2594" data-name="Day 25">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2595">
+                      25
+                    </p>
+                  </div>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-4,4px)] items-start relative shrink-0 w-[564px]" data-node-id="123:2596" data-name="Week 4">
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2597" data-name="Day 26">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2598">
+                      26
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2599" data-name="Day 27">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2600">
+                      27
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2601" data-name="Day 28">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2602">
+                      28
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2603" data-name="Day 29">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2604">
+                      29
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2605" data-name="Day 30">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2606">
+                      30
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2607" data-name="Day 31">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2608">
+                      31
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col h-[40px] items-start p-[var(--loop-space-8,8px)] relative rounded-[8px] shrink-0 w-[77.143px]" data-node-id="123:2609" data-name="Day 32">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[61.143px]" data-node-id="123:2610">{` `}</p>
+                  </div>
+                </div>
+              </div>
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-ink,#17362d)] whitespace-nowrap" data-node-id="123:2611">
+                10월 13일 (화) · 픽업 0건
+              </p>
+              <div className="content-stretch flex flex-col items-start relative shrink-0 w-[564px]" data-node-id="123:2612" data-name="Table">
+                <div className="bg-[var(--loop-canvasClear,#f2f5f3)] content-stretch flex items-start relative shrink-0 w-[564px]" data-node-id="123:2613" data-name="Table header">
+                  <div className="content-stretch flex flex-col items-start p-[var(--loop-space-12,12px)] relative shrink-0 w-[90px]" data-node-id="123:2614" data-name="시간">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[66px]" data-node-id="123:2615">
+                      시간
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col items-start p-[var(--loop-space-12,12px)] relative shrink-0 w-[340px]" data-node-id="123:2616" data-name="원단">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[316px]" data-node-id="123:2617">
+                      원단
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col items-start p-[var(--loop-space-12,12px)] relative shrink-0 w-[134px]" data-node-id="123:2618" data-name="상태">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[110px]" data-node-id="123:2619">
+                      상태
+                    </p>
+                  </div>
+                </div>
+                <div className="bg-[var(--loop-borderSubtle,#cdd8d0)] h-px relative shrink-0 w-[564px]" data-node-id="123:2620" data-name="Divider" />
+                <div className="bg-[var(--loop-surface,white)] content-stretch flex items-center relative shrink-0 w-[564px]" data-node-id="123:2621" data-name="Row 1">
+                  <div className="content-stretch flex flex-col items-start p-[var(--loop-space-12,12px)] relative shrink-0 w-[90px]" data-node-id="123:2622" data-name="시간">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-ink,#17362d)] w-[66px]" data-node-id="123:2623">
+                      14:00
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col items-start p-[var(--loop-space-12,12px)] relative shrink-0 w-[340px]" data-node-id="123:2624" data-name="원단">
+                    <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-ink,#17362d)] w-[316px]" data-node-id="123:2625">
+                      내추럴 코튼 캔버스 · 2마
+                    </p>
+                  </div>
+                  <div className="content-stretch flex flex-col items-start p-[var(--loop-space-12,12px)] relative shrink-0 w-[134px]" data-node-id="123:2626" data-name="상태">
+                    <div className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" data-node-id="123:2627" data-name="Badge / 수락됨">
+                      <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="I123:2627;100:670">
+                        요청됨
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button className="bg-[var(--loop-brand,#214e3e)] content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[612px]" data-node-id="123:2628" data-name="Button / + 새 원단 등록">
+              <CodeConnectSnippet data-node-id="I123:2628;79:102" tabIndex="0" role="button" data-name="Control">
+                {/* Simple Design System component */}
+                <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="+ 새 원단 등록" label="+ 새 원단 등록" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+              </CodeConnectSnippet>
+            </button>
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] whitespace-nowrap" data-node-id="123:2629">
+          표시된 건수와 일정은 예시입니다.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Loop / h3: Font(family: "Noto Sans KR", style: Bold, size: 20, weight: 700, lineHeight: 30, letterSpacing: 0), Loop / strong: Font(family: "Noto Sans KR", style: Medium, size: 16, weight: 500, lineHeight: 26, letterSpacing: 0), Loop / body: Font(family: "Noto Sans KR", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0), Loop / label: Font(family: "Noto Sans KR", style: Medium, size: 12, weight: 500, lineHeight: 20, letterSpacing: 0), Loop / h1: Font(family: "Noto Sans KR", style: Bold, size: 32, weight: 700, lineHeight: 46, letterSpacing: 0), Loop / small: Font(family: "Noto Sans KR", style: Regular, size: 12, weight: 400, lineHeight: 20, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Role=Seller
+**Node ID:** 82:507
+
+기존 메뉴 순서와 역할 배지 유지. 각 메뉴의 State를 Selected로 지정하고 해당 역할 화면으로 연결합니다.
+
+## Loop UI / Header
+**Node ID:** 83:513
+
+역할별 메뉴 순서를 유지한 공통 헤더. 구매자·판매자. 메뉴 이름과 State는 중첩 NavItem에서 설정합니다.
+
+## Theme=Light
+**Node ID:** 77:364
+
+기존 섬유 루프 심벌과 워드마크를 보존합니다. 클릭 시 현재 역할의 메인으로 이동하며 선택 상태는 유지하지 않습니다.
+
+## Loop UI / Logo
+**Node ID:** 80:305
+
+기존 심벌과 워드마크 유지 · Light/Dark · 역할별 홈 이동 · 선택 상태 없음
+
+## Loop UI / NavItem
+**Node ID:** 80:252
+
+현재 메뉴: selectedSoft 배경 + 브랜드 초록 글자 + 3px 하단 표시선. 색상과 형태를 함께 사용.
+
+## Badge / green
+**Node ID:** 4:197
+
+승인, 예약, 답변 상태를 짧게 표시합니다.
+
+## Loop UI / Button
+**Node ID:** 80:226
+
+색상 기준: 주요 행동 action #16794E, Hover #12633F, Pressed #0E4E32. 보조 버튼은 흰색, 비활성은 기존 회색. Focus는 흰색 간격과 초록 외곽선. 거절 액션은 Kind=Danger: 적색 글자·테두리, Hover/Pressed에서 연적색 배경. Disabled/Loading은 동작을 막습니다.
+
+## Status=Published
+**Node ID:** 100:669
+
+승인, 예약, 답변 상태를 짧게 표시합니다.
+
+## Loop UI / Badge
+**Node ID:** 100:677
+
+정보 표시용 상태 라벨. 신규 색상은 이 컴포넌트로 재사용하며 기존 Badge 마스터는 미적용 화면 보호를 위해 유지. Label로 문구 변경, Status로 게시·대기·거절·완료 구분. 클릭 동작 없음.
+
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

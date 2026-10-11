@@ -1,0 +1,9 @@
+/* Figma Loop tokens. Shared unchanged by the later React entry. */
+@font-face { font-family: 'Noto Sans KR'; src: url('/assets/fonts/NotoSansKR-VF.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+:root {
+  --loop-brand:#214e3e; --loop-action:#16794e; --loop-hover:#12633f; --loop-pressed:#0e4e32;
+  --loop-ink:#17362d; --loop-text-secondary:#52645a; --loop-muted:#68766f;
+  --loop-canvas:#f7f8f4; --loop-surface:#fff; --loop-line:#dde5dd; --loop-border:#cdd8d0;
+  --loop-soft:#e8f0e8; --loop-selected:#dcefe2; --loop-danger:#a43e36; --loop-amber:#9e6a19;
+  --loop-radius:16px; --loop-gap:28px; --loop-font:'Noto Sans KR',sans-serif;
+}

@@ -1,0 +1,162 @@
+[
+  {
+    "nodeId": "123:4955",
+    "route": "/admin/dashboard",
+    "mode": "page"
+  },
+  {
+    "nodeId": "123:5138",
+    "route": "/admin/sellers",
+    "mode": "page"
+  },
+  {
+    "nodeId": "123:5272",
+    "route": "/admin/sellers/seller-1",
+    "mode": "page"
+  },
+  {
+    "nodeId": "123:5566",
+    "route": "/admin/fabrics",
+    "mode": "page"
+  },
+  {
+    "nodeId": "123:5941",
+    "route": "/admin/approvals",
+    "mode": "page"
+  },
+  {
+    "nodeId": "123:6125",
+    "route": "/admin/approvals?status=POSTED",
+    "mode": "page"
+  },
+  {
+    "nodeId": "123:6292",
+    "route": "/admin/approvals?status=REJECTED&sample=REJECTED",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:9059",
+    "route": "/admin/sellers/seller-2",
+    "mode": "data"
+  },
+  {
+    "nodeId": "131:9130",
+    "route": "/admin/sellers/seller-3",
+    "mode": "data"
+  },
+  {
+    "nodeId": "131:9201",
+    "route": "/admin/sellers/seller-4",
+    "mode": "data"
+  },
+  {
+    "nodeId": "131:9272",
+    "route": "/admin/sellers/seller-5",
+    "mode": "data"
+  },
+  {
+    "nodeId": "131:9343",
+    "route": "/admin/fabrics/filter",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:9429",
+    "route": "/admin/fabrics?status=PENDING",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:9520",
+    "route": "/admin/fabrics?status=PENDING&empty=1",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:9584",
+    "route": "/admin/fabrics/fabric-pending-1",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:9697",
+    "route": "/admin/fabrics/fabric-pending-1?action=approve",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:9772",
+    "route": "/admin/fabrics/fabric-pending-1?result=POSTED&sample=POSTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:9893",
+    "route": "/admin/fabrics/fabric-pending-1?action=reject",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:9968",
+    "route": "/admin/fabrics/fabric-pending-1?action=reject&invalid=1",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:10037",
+    "route": "/admin/fabrics/fabric-pending-1?result=REJECTED&sample=REJECTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:10168",
+    "route": "/admin/approvals?status=POSTED",
+    "mode": "page"
+  },
+  {
+    "nodeId": "131:10248",
+    "route": "/admin/error?id=fabric-pending-1",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:10309",
+    "route": "/admin/approvals?sample=POSTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:10401",
+    "route": "/admin/approvals?sample=REJECTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "131:10493",
+    "route": "/admin/approvals?status=REJECTED&sample=REJECTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "156:9578",
+    "route": "/admin/fabrics?status=REJECTED&sample=REJECTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "205:7988",
+    "route": "/admin/approvals?status=POSTED&empty=1",
+    "mode": "state"
+  },
+  {
+    "nodeId": "205:8052",
+    "route": "/admin/approvals?status=REJECTED&empty=1",
+    "mode": "state"
+  },
+  {
+    "nodeId": "210:8074",
+    "route": "/admin/sellers?status=APPROVED",
+    "mode": "page"
+  },
+  {
+    "nodeId": "210:8185",
+    "route": "/admin/sellers?status=REJECTED&sample=SELLER_REJECTED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "210:8380",
+    "route": "/admin/sellers/seller-1?sample=APPROVED",
+    "mode": "state"
+  },
+  {
+    "nodeId": "210:8462",
+    "route": "/admin/sellers/seller-1?sample=SELLER_REJECTED",
+    "mode": "state"
+  }
+]

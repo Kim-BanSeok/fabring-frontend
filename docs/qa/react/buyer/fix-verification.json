@@ -1,0 +1,227 @@
+{
+  "passed": [
+    "픽업 뒤로가기: 수량·일시·메모 유지",
+    "검색 → 상세 → 픽업 → 상세 → 검색 조건 유지",
+    "다른 원단에 픽업 초안이 섞이지 않음",
+    "재고 오류 복구 시 작성 내용 유지",
+    "보존된 3마·16:30 요청 정상 접수",
+    "기존 내 요청은 중복 입력 대신 기존 예약 안내",
+    "성공 후 픽업 초안 삭제",
+    "문의 초안 복원과 HTML escaping",
+    "문의 글자수 복원",
+    "명시적 문의 취소 시 초안 삭제",
+    "문의 성공 후 초안 삭제",
+    "추천 판정 전 제작 가능 확정 표현 제거",
+    "부적합 원단 판정 유지",
+    "외부 return URL 거부",
+    "390px 판매처 선택 결과가 보이고 포커스 이동",
+    "지도 하단 중복 판매처 버튼 제거",
+    "도안 → 지도 선택 → 매장 상세 → 원래 원단 도안 복귀",
+    "320px detail 가로 넘침 없음",
+    "320px pickup 가로 넘침 없음",
+    "320px inquiry 가로 넘침 없음",
+    "320px supplies 가로 넘침 없음",
+    "320px pattern 가로 넘침 없음",
+    "390px detail 가로 넘침 없음",
+    "390px pickup 가로 넘침 없음",
+    "390px inquiry 가로 넘침 없음",
+    "390px supplies 가로 넘침 없음",
+    "390px pattern 가로 넘침 없음",
+    "1440px detail 가로 넘침 없음",
+    "1440px pickup 가로 넘침 없음",
+    "1440px inquiry 가로 넘침 없음",
+    "1440px supplies 가로 넘침 없음",
+    "1440px pattern 가로 넘침 없음",
+    "0마 상세: 요청 불가 표시 및 요청 링크 제거",
+    "1440px 0마 폼 대신 재고 안내와 복구 행동",
+    "1440px 0마 상태 가로 넘침 없음",
+    "390px 0마 폼 대신 재고 안내와 복구 행동",
+    "390px 0마 상태 가로 넘침 없음",
+    "320px 0마 폼 대신 재고 안내와 복구 행동",
+    "320px 0마 상태 가로 넘침 없음",
+    "로고 28×28 / 토트백 180×148 원본 크기 유지",
+    "브라우저 오류 없음"
+  ],
+  "screens": [
+    {
+      "name": "detail",
+      "width": 320,
+      "scroll": 320,
+      "heading": "내추럴 코튼 캔버스"
+    },
+    {
+      "name": "pickup",
+      "width": 320,
+      "scroll": 320,
+      "heading": "픽업 요청하기"
+    },
+    {
+      "name": "inquiry",
+      "width": 320,
+      "scroll": 320,
+      "heading": "판매자 문의"
+    },
+    {
+      "name": "supplies",
+      "width": 320,
+      "scroll": 320,
+      "heading": "부자재 둘러보기"
+    },
+    {
+      "name": "pattern",
+      "width": 320,
+      "scroll": 320,
+      "heading": "지퍼 파우치 도안 미리보기"
+    },
+    {
+      "name": "detail",
+      "width": 390,
+      "scroll": 390,
+      "heading": "내추럴 코튼 캔버스"
+    },
+    {
+      "name": "pickup",
+      "width": 390,
+      "scroll": 390,
+      "heading": "픽업 요청하기"
+    },
+    {
+      "name": "inquiry",
+      "width": 390,
+      "scroll": 390,
+      "heading": "판매자 문의"
+    },
+    {
+      "name": "supplies",
+      "width": 390,
+      "scroll": 390,
+      "heading": "부자재 둘러보기"
+    },
+    {
+      "name": "pattern",
+      "width": 390,
+      "scroll": 390,
+      "heading": "지퍼 파우치 도안 미리보기"
+    },
+    {
+      "name": "detail",
+      "width": 1440,
+      "scroll": 1440,
+      "heading": "내추럴 코튼 캔버스"
+    },
+    {
+      "name": "pickup",
+      "width": 1440,
+      "scroll": 1440,
+      "heading": "픽업 요청하기"
+    },
+    {
+      "name": "inquiry",
+      "width": 1440,
+      "scroll": 1440,
+      "heading": "판매자 문의"
+    },
+    {
+      "name": "supplies",
+      "width": 1440,
+      "scroll": 1440,
+      "heading": "부자재 둘러보기"
+    },
+    {
+      "name": "pattern",
+      "width": 1440,
+      "scroll": 1440,
+      "heading": "지퍼 파우치 도안 미리보기"
+    }
+  ],
+  "assets": [
+    {
+      "width": 320,
+      "images": [
+        {
+          "src": "/assets/figma/logo.svg",
+          "natural": [
+            28,
+            28
+          ],
+          "rendered": [
+            28,
+            28
+          ],
+          "complete": true
+        },
+        {
+          "src": "/assets/figma/tote.svg",
+          "natural": [
+            180,
+            148
+          ],
+          "rendered": [
+            180,
+            148
+          ],
+          "complete": true
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "images": [
+        {
+          "src": "/assets/figma/logo.svg",
+          "natural": [
+            28,
+            28
+          ],
+          "rendered": [
+            28,
+            28
+          ],
+          "complete": true
+        },
+        {
+          "src": "/assets/figma/tote.svg",
+          "natural": [
+            180,
+            148
+          ],
+          "rendered": [
+            180,
+            148
+          ],
+          "complete": true
+        }
+      ]
+    },
+    {
+      "width": 1440,
+      "images": [
+        {
+          "src": "/assets/figma/logo.svg",
+          "natural": [
+            28,
+            28
+          ],
+          "rendered": [
+            28,
+            28
+          ],
+          "complete": true
+        },
+        {
+          "src": "/assets/figma/tote.svg",
+          "natural": [
+            180,
+            148
+          ],
+          "rendered": [
+            180,
+            148
+          ],
+          "complete": true
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

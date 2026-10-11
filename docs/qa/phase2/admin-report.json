@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "approval result updates remaining pending records",
+    "rejection validation and full result with reason",
+    "failure does not mutate record and recovery reloads current state",
+    "7 mobile routes have no document overflow"
+  ],
+  "errors": []
+}

@@ -1,0 +1,43 @@
+Seller HTML implementation — phase 2, 2026-10-11
+
+Current Figma: file uYO6eu041WwmEBKAfA7a6Y, connected page122:12.
+Implementation: src/prototype/pages/seller.js and seller.css.
+Coverage: seller-coverage.json maps all55 active non-authentication seller nodes.
+Authentication belongs to the shared auth implementation. No HOLD frames restored.
+
+Scope: dashboard/new seller setup, monthly calendar, all fabric status lists,
+registration method and sale-type selection, roll/scrap forms and reviews,
+AI example conversation/processing/result/error with manual continuation,
+photo confirmation and validation state, create/upload/partial retry/unknown/done,
+profile/store/save result/approval states, fabric detail/edit/rejected correction,
+delete blocked/confirm/result, reservation request/accept/reject/pickup/cancel
+confirmation and state lists, inquiry answer/result, and inventory after pickup.
+
+State transitions use the parent shared mock service. Every registration path
+requires APPROVED plus hasStore. Store/profile save never approves a seller.
+REJECTED fabric correction becomes PENDING; POSTED editing stays POSTED;
+SOLD_OUT editing is blocked. REQUESTED/ACCEPTED reservations block deletion.
+Reservation states use the API spelling CANCELED. Cancel reason is not sent
+because no such request body exists in the current contract.
+
+AI is explicitly a fixed example; user messages are kept verbatim in draft
+metadata and can continue in manual form. No live AI or backend is contacted.
+Photo file names are selected/stored in local mock state; texture imagery is an
+explicit CSS illustration. Upload states never claim a remote upload happened.
+Unknown create does not expose create-again. Partial retry updates photos only.
+Sample=1 freezes AI/upload automatic processing transitions for review.
+
+Design evidence: initial10 contexts plus phase2 37 contexts with screenshots.
+No sparse context responses. Only common logo asset appears in these contexts;
+shared root logo is reused. Fabric images are editable texture shapes rendered
+with the existing shared fabricImage CSS, not screenshot assets.
+
+Verification: phase1 45 assertions, phase2 71 assertions, syntax check and
+seller.js lint pass. Phase2 covers all55 route mappings plus profile, AI,
+fabric edit, inquiry answer, accept/pickup, delete block, soft-delete/history,
+and escaped dynamic strings. Real browser clicks verified profile save/result,
+AI type/chat/processing/result and fabric edit/detail price update. Calendar
+and scrap AI views verified at390px with no horizontal document overflow;
+viewport reset. Parent runs combined role E2E, including file chooser with its
+separate test browser. This browser extension cannot automate file selection
+without changing its file-URL permission; the permission was not changed.

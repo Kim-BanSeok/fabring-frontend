@@ -1,0 +1,86 @@
+{
+  "pairs": 16,
+  "identical": 16,
+  "results": [
+    {
+      "reference": "123-1637-1440-html.png",
+      "react": "123-1637-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-1637-390-html.png",
+      "react": "123-1637-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-482-1440-html.png",
+      "react": "123-482-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-482-390-html.png",
+      "react": "123-482-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-5566-1440-html.png",
+      "react": "123-5566-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-5566-390-html.png",
+      "react": "123-5566-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-59-1440-html.png",
+      "react": "123-59-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-59-390-html.png",
+      "react": "123-59-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-5941-1440-html.png",
+      "react": "123-5941-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "123-5941-390-html.png",
+      "react": "123-5941-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "127-4299-1440-html.png",
+      "react": "127-4299-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "127-4299-390-html.png",
+      "react": "127-4299-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "127-6528-1440-html.png",
+      "react": "127-6528-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "127-6528-390-html.png",
+      "react": "127-6528-390-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "131-9893-1440-html.png",
+      "react": "131-9893-1440-react.png",
+      "identicalPng": true
+    },
+    {
+      "reference": "131-9893-390-html.png",
+      "react": "131-9893-390-react.png",
+      "identicalPng": true
+    }
+  ]
+}

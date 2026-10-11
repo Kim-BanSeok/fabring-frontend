@@ -1,0 +1,101 @@
+{
+  "observations": [
+    {
+      "issue": "direct-draft-loss",
+      "before": {
+        "title": "미저장 원단 이름",
+        "price": "7700"
+      },
+      "after": {
+        "title": "내추럴 코튼 캔버스",
+        "price": "5000"
+      },
+      "url": "http://127.0.0.1:5173/#/seller/register/manual?type=ROLL&scenario=123%3A3466"
+    },
+    {
+      "issue": "stale-edit-draft",
+      "photoSnapshotTitle": "내추럴 코튼 캔버스",
+      "savedDetailContainsFinal": true,
+      "savedDetailContainsPrice": true,
+      "reopened": {
+        "title": "내추럴 코튼 캔버스",
+        "price": "5000"
+      }
+    },
+    {
+      "issue": "mobile-form-length",
+      "geometry": {
+        "formTop": 341,
+        "formHeight": 2833,
+        "firstTextTop": 1778,
+        "submitTop": 3125.703125,
+        "viewport": 844,
+        "width": 390
+      },
+      "roll89Invalid": true,
+      "roll90Valid": true
+    },
+    {
+      "issue": "unknown-recovery",
+      "buttons": "내 원단 목록 확인"
+    }
+  ],
+  "checks": [
+    {
+      "name": "direct form previous + browser back keeps draft?",
+      "pass": true
+    },
+    {
+      "name": "rejected photo + subsequent edit saved/reopened",
+      "pass": true
+    },
+    {
+      "name": "requested -> accepted -> picked up",
+      "pass": false,
+      "error": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('heading', { name: '수령 완료 내역', exact: true }) to be visible\u001b[22m\n"
+    },
+    {
+      "name": "scrap boundaries",
+      "bounds": [
+        [
+          "29",
+          false
+        ],
+        [
+          "30",
+          true
+        ],
+        [
+          "90",
+          true
+        ],
+        [
+          "91",
+          false
+        ]
+      ]
+    },
+    {
+      "name": "mobile form geometry + required boundaries",
+      "pass": true
+    },
+    {
+      "name": "AI input -> sample result -> manual photos -> partial retry",
+      "pass": true
+    },
+    {
+      "name": "unknown create has no resend + inquiry answer completion",
+      "pass": true
+    },
+    {
+      "name": "pending seller store save never approves",
+      "pass": true
+    },
+    {
+      "name": "inquiry draft leave and return",
+      "pass": false,
+      "error": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.site-nav').getByRole('link', { name: '내 원단 목록', exact: true })\u001b[22m\n"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,42 @@
+{
+  "results": [
+    {
+      "name": "StrictMode upload timer invokes once",
+      "counts": {
+        "uploadPhotos": 1
+      }
+    },
+    {
+      "name": "upload timer cleanup on unmount",
+      "counts": {}
+    },
+    {
+      "name": "StrictMode AI processing navigates once",
+      "routes": [
+        "/seller/register/ai?type=ROLL&step=result"
+      ]
+    },
+    {
+      "name": "AI timer cleanup on unmount",
+      "routes": []
+    },
+    {
+      "name": "rapid duplicate create click creates/uploads once",
+      "counts": {
+        "createFabric": 1,
+        "uploadPhotos": 1
+      }
+    },
+    {
+      "name": "creation delay cleanup prevents create after unmount",
+      "counts": {}
+    },
+    {
+      "name": "unknown create response has no resend",
+      "counts": {
+        "createFabric": 1
+      }
+    }
+  ],
+  "errors": []
+}

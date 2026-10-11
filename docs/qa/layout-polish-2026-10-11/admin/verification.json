@@ -1,0 +1,40 @@
+{
+  "checks": [
+    "11 screen families × four viewports × top/middle/bottom: 132 captures, zero document overflow/page errors; mobile tables need no horizontal scrolling",
+    "Mobile product row → detail → approval confirmation → result works; remaining list retains accessible table headers",
+    "Mobile seller detail link and approval action remain visible and functional",
+    "1024px approval selector changes the selected fabric; image and detail remain in the same row"
+  ],
+  "errors": [],
+  "accessibility": [
+    {
+      "label": "dashboard",
+      "snapshot": "- table \"게시 승인을 기다리는 원단\":\n  - caption: 게시 승인을 기다리는 원단\n  - rowgroup:\n    - row \"원단명 판매자 신청일 상태\":\n      - columnheader \"원단명\"\n      - columnheader \"판매자\"\n      - columnheader \"신청일\"\n      - columnheader \"상태\"\n  - rowgroup:\n    - row \"내추럴 코튼 캔버스 판매자 양주 원단상회 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"내추럴 코튼 캔버스\":\n        - link \"내추럴 코튼 캔버스\":\n          - /url: \"#/admin/fabrics/fabric-pending-1\"\n      - cell \"판매자 양주 원단상회\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"아이보리 코튼 거즈 판매자 가온 패브릭 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"아이보리 코튼 거즈\":\n        - link \"아이보리 코튼 거즈\":\n          - /url: \"#/admin/fabrics/fabric-pending-2\"\n      - cell \"판매자 가온 패브릭\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"네이비 옥스퍼드 판매자 누리 원단점 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"네이비 옥스퍼드\":\n        - link \"네이비 옥스퍼드\":\n          - /url: \"#/admin/fabrics/fabric-pending-3\"\n      - cell \"판매자 누리 원단점\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"베이지 린넨 혼방 판매자 마루 텍스타일 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"베이지 린넨 혼방\":\n        - link \"베이지 린넨 혼방\":\n          - /url: \"#/admin/fabrics/fabric-pending-4\"\n      - cell \"판매자 마루 텍스타일\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"블루 스트라이프 면 판매자 다온 원단상점 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"블루 스트라이프 면\":\n        - link \"블루 스트라이프 면\":\n          - /url: \"#/admin/fabrics/fabric-pending-5\"\n      - cell \"판매자 다온 원단상점\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\""
+    },
+    {
+      "label": "fabrics",
+      "snapshot": "- table \"승인 대기 원단 목록\":\n  - caption: 승인 대기 원단 목록\n  - rowgroup:\n    - row \"원단 사진 원단 종류 판매자 등록 상태\":\n      - columnheader \"원단 사진\"\n      - columnheader \"원단 종류\"\n      - columnheader \"판매자\"\n      - columnheader \"등록 상태\"\n  - rowgroup:\n    - row \"내추럴 코튼 캔버스 질감 예시 내추럴 코튼 캔버스 면 · 내추럴 판매자 양주 원단상회 등록 상태 승인 대기\":\n      - cell \"내추럴 코튼 캔버스 질감 예시\":\n        - img \"내추럴 코튼 캔버스 질감 예시\"\n      - cell \"내추럴 코튼 캔버스 면 · 내추럴\":\n        - link \"내추럴 코튼 캔버스\":\n          - /url: \"#/admin/fabrics/fabric-pending-1\"\n        - text: 면 · 내추럴\n      - cell \"판매자 양주 원단상회\"\n      - cell \"등록 상태 승인 대기\"\n    - row \"아이보리 코튼 거즈 질감 예시 아이보리 코튼 거즈 면 · 아이보리 판매자 가온 패브릭 등록 상태 승인 대기\":\n      - cell \"아이보리 코튼 거즈 질감 예시\":\n        - img \"아이보리 코튼 거즈 질감 예시\"\n      - cell \"아이보리 코튼 거즈 면 · 아이보리\":\n        - link \"아이보리 코튼 거즈\":\n          - /url: \"#/admin/fabrics/fabric-pending-2\"\n        - text: 면 · 아이보리\n      - cell \"판매자 가온 패브릭\"\n      - cell \"등록 상태 승인 대기\"\n    - row \"네이비 옥스퍼드 질감 예시 네이비 옥스퍼드 면 · 네이비 판매자 누리 원단점 등록 상태 승인 대기\":\n      - cell \"네이비 옥스퍼드 질감 예시\":\n        - img \"네이비 옥스퍼드 질감 예시\"\n      - cell \"네이비 옥스퍼드 면 · 네이비\":\n        - link \"네이비 옥스퍼드\":\n          - /url: \"#/admin/fabrics/fabric-pending-3\"\n        - text: 면 · 네이비\n      - cell \"판매자 누리 원단점\"\n      - cell \"등록 상태 승인 대기\"\n    - row \"베이지 린넨 혼방 질감 예시 베이지 린넨 혼방 혼방 · 베이지 판매자 마루 텍스타일 등록 상태 승인 대기\":\n      - cell \"베이지 린넨 혼방 질감 예시\":\n        - img \"베이지 린넨 혼방 질감 예시\"\n      - cell \"베이지 린넨 혼방 혼방 · 베이지\":\n        - link \"베이지 린넨 혼방\":\n          - /url: \"#/admin/fabrics/fabric-pending-4\"\n        - text: 혼방 · 베이지\n      - cell \"판매자 마루 텍스타일\"\n      - cell \"등록 상태 승인 대기\"\n    - row \"블루 스트라이프 면 질감 예시 블루 스트라이프 면 면 · 블루 판매자 다온 원단상점 등록 상태 승인 대기\":\n      - cell \"블루 스트라이프 면 질감 예시\":\n        - img \"블루 스트라이프 면 질감 예시\"\n      - cell \"블루 스트라이프 면 면 · 블루\":\n        - link \"블루 스트라이프 면\":\n          - /url: \"#/admin/fabrics/fabric-pending-5\"\n        - text: 면 · 블루\n      - cell \"판매자 다온 원단상점\"\n      - cell \"등록 상태 승인 대기\""
+    },
+    {
+      "label": "approval result",
+      "snapshot": "- table \"남은 승인 대기 원단\":\n  - caption: 남은 승인 대기 원단\n  - rowgroup:\n    - row \"원단명 판매자 신청일 상태\":\n      - columnheader \"원단명\"\n      - columnheader \"판매자\"\n      - columnheader \"신청일\"\n      - columnheader \"상태\"\n  - rowgroup:\n    - row \"아이보리 코튼 거즈 판매자 가온 패브릭 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"아이보리 코튼 거즈\":\n        - link \"아이보리 코튼 거즈\":\n          - /url: \"#/admin/approvals?id=fabric-pending-2\"\n      - cell \"판매자 가온 패브릭\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"네이비 옥스퍼드 판매자 누리 원단점 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"네이비 옥스퍼드\":\n        - link \"네이비 옥스퍼드\":\n          - /url: \"#/admin/approvals?id=fabric-pending-3\"\n      - cell \"판매자 누리 원단점\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"베이지 린넨 혼방 판매자 마루 텍스타일 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"베이지 린넨 혼방\":\n        - link \"베이지 린넨 혼방\":\n          - /url: \"#/admin/approvals?id=fabric-pending-4\"\n      - cell \"판매자 마루 텍스타일\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\"\n    - row \"블루 스트라이프 면 판매자 다온 원단상점 신청일 2026.10.11 상태 승인 대기\":\n      - cell \"블루 스트라이프 면\":\n        - link \"블루 스트라이프 면\":\n          - /url: \"#/admin/approvals?id=fabric-pending-5\"\n      - cell \"판매자 다온 원단상점\"\n      - cell \"신청일 2026.10.11\"\n      - cell \"상태 승인 대기\""
+    },
+    {
+      "label": "sellers",
+      "snapshot": "- table \"승인 대기 판매자 1명\":\n  - caption: 승인 대기 판매자 1명\n  - rowgroup:\n    - row \"닉네임 승인 상태 상세보기\":\n      - columnheader \"닉네임\"\n      - columnheader \"승인 상태\"\n      - columnheader \"상세보기\"\n  - rowgroup:\n    - row \"닉네임 이정원 승인 상태 승인 대기 상세보기 이정원 판매자 상세보기\":\n      - cell \"닉네임 이정원\"\n      - cell \"승인 상태 승인 대기\"\n      - cell \"상세보기 이정원 판매자 상세보기\":\n        - text: 상세보기\n        - link \"이정원 판매자 상세보기\":\n          - /url: \"#/admin/sellers/seller-1\"\n          - text: 상세보기 →"
+    }
+  ],
+  "approvalsHeight": {
+    "before": 1363,
+    "after": 1175
+  },
+  "dashboardHeight": {
+    "before": 1257,
+    "after": 1241
+  },
+  "fabricsHeight": {
+    "before": 1325,
+    "after": 1309
+  },
+  "passed": true
+}

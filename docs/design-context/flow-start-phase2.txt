@@ -1,0 +1,204 @@
+const imgEllipse = "https://www.figma.com/api/mcp/asset/622cd5c0-eae5-4947-a132-3f9c46e81321.svg";
+
+type FlowUiNoticeProps = {
+  className?: string;
+  message?: string;
+  tone?: "gray";
+};
+
+function FlowUiNotice({ className, message = "상태에 맞는 안내 메시지", tone = "gray" }: FlowUiNoticeProps) {
+  return (
+    <div className={className || "bg-[var(--loop-slateBg,#edf0f5)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] w-[1000px]"} data-node-id="124:2497">
+      <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textCompleted,#526174)] w-full" data-node-id="124:2498">
+        {message}
+      </p>
+    </div>
+  );
+}
+
+type LoopUiLogoProps = {
+  className?: string;
+  theme?: "Light";
+};
+
+function LoopUiLogo({ className, theme = "Light" }: LoopUiLogoProps) {
+  return (
+    <div className={className || "content-stretch flex gap-[10px] items-start relative w-[160px]"} data-node-id="77:364">
+      <div className="relative shrink-0 size-[28px]" data-node-id="77:362" data-name="Ellipse">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse} />
+      </div>
+      <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="77:363">
+        섬유 루프
+      </p>
+    </div>
+  );
+}
+
+export default function FlowStart() {
+  return (
+    <div className="bg-[var(--loop-canvasClear,#f2f5f3)] content-stretch flex flex-col items-start relative size-full" data-node-id="133:6724" data-name="FLOW_START · 전체 흐름 · 연결 작업본">
+      <div className="bg-[var(--loop-surface,white)] content-stretch flex items-start p-[var(--loop-space-32,32px)] relative shrink-0 w-[1440px]" data-node-id="133:6725" data-name="Auth header">
+        <LoopUiLogo className="content-stretch flex gap-[10px] items-start relative shrink-0 w-[160px]" />
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start px-[var(--loop-space-96,96px)] py-[var(--loop-space-64,64px)] relative shrink-0 w-[1440px]" data-node-id="133:6729" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="133:6730">
+          전체 흐름 · 연결 작업본
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="133:6731">
+          구매자 · 판매자 · 관리자 / 원본 화면을 보존한 검토용 프로토타입
+        </p>
+        <FlowUiNotice className="bg-[var(--loop-slateBg,#edf0f5)] content-stretch flex flex-col items-start p-[var(--loop-space-16,16px)] relative rounded-[var(--loop-space-12,12px)] shrink-0 w-[1248px]" message="화면 안의 버튼을 눌러 다음 단계와 결과를 확인하세요. 입력값·주문·재고는 정해진 Mock 시나리오이며 실제 저장되지 않습니다." />
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[1248px]" data-node-id="133:6734" data-name="회원가입과 첫 진입">
+          <p className="font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[1200px]" data-node-id="133:6735">
+            회원가입과 첫 진입
+          </p>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6736" data-name="구매자">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6737">
+              구매자
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6738">
+              회원가입 → 가입 완료 → 로그인 → 메인
+            </p>
+          </div>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6739" data-name="판매자">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6740">
+              판매자
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6741">
+              가입 → 매장 등록 → 판매자 승인 → 원단 등록
+            </p>
+          </div>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6742" data-name="관리자">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6743">
+              관리자
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6744">
+              발급받은 계정으로 로그인 → 대시보드 · 회원가입 없음
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1248px]" data-node-id="133:6745" data-name="Actions">
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="133:6746" data-name="Button / 구매자 시작">
+            <CodeConnectSnippet data-node-id="I133:6746;79:102" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="구매자 시작" label="구매자 시작" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="133:6751" data-name="Button / 판매자 시작">
+            <CodeConnectSnippet data-node-id="I133:6751;79:102" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자 시작" label="판매자 시작" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="133:6756" data-name="Button / 관리자 시작">
+            <CodeConnectSnippet data-node-id="I133:6756;79:102" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="관리자 시작" label="관리자 시작" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+        </div>
+        <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1248px]" data-node-id="133:6761" data-name="Actions">
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="133:6762" data-name="Button / 구매자 회원가입">
+            <CodeConnectSnippet data-node-id="I133:6762;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="구매자 회원가입" label="구매자 회원가입" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="133:6767" data-name="Button / 판매자 회원가입">
+            <CodeConnectSnippet data-node-id="I133:6767;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자 회원가입" label="판매자 회원가입" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+        </div>
+        <div className="[word-break:break-word] bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[1248px]" data-node-id="133:6772" data-name="연결된 핵심 과정">
+          <p className="font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[1200px]" data-node-id="133:6773">
+            연결된 핵심 과정
+          </p>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6774" data-name="원단 등록">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6775">
+              원단 등록
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6776">
+              등록 방법 → 직접/AI 입력 → 검토 → 등록·사진 업로드 → 승인 대기
+            </p>
+          </div>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6777" data-name="픽업 거래">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6778">
+              픽업 거래
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6779">
+              요청 → 판매자 수락 → 예약 확보 → 판매자 수령 확인 / 취소 시 확보 해제
+            </p>
+          </div>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6780" data-name="판매 단위">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6781">
+              판매 단위
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6782">
+              자투리 1장 전체 / 롤 90cm(1마) 단위 · 상품별 치수·단가 표시
+            </p>
+          </div>
+          <div className="content-stretch flex font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-16,16px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1200px]" data-node-id="133:6783" data-name="운영 검수">
+            <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[184px]" data-node-id="133:6784">
+              운영 검수
+            </p>
+            <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[1000px]" data-node-id="133:6785">
+              판매자 승인과 원단 게시 승인을 각각 검토·처리
+            </p>
+          </div>
+        </div>
+        <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1248px]" data-node-id="133:6786" data-name="Actions">
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[208px]" data-node-id="133:6787" data-name="Button / 구매자 화면·상태 목록">
+            <CodeConnectSnippet data-node-id="I133:6787;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="구매자 화면·상태 목록" label="구매자 화면·상태 목록" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[208px]" data-node-id="133:6792" data-name="Button / 판매자 화면·상태 목록">
+            <CodeConnectSnippet data-node-id="I133:6792;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자 화면·상태 목록" label="판매자 화면·상태 목록" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[208px]" data-node-id="133:6797" data-name="Button / 관리자 화면·상태 목록">
+            <CodeConnectSnippet data-node-id="I133:6797;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="관리자 화면·상태 목록" label="관리자 화면·상태 목록" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+        </div>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1248px]" data-node-id="133:6802">
+          검토 범위: 고정 입력 상태, 버튼 이동, 처리 중·오류·빈 결과. 인증·파일 업로드·AI 응답·지도·실제 API는 연동 전입니다. 메뉴로 기본 화면에 돌아가면 해당 시나리오가 초기화될 수 있습니다.
+        </p>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Loop / h3: Font(family: "Noto Sans KR", style: Bold, size: 20, weight: 700, lineHeight: 30, letterSpacing: 0), Loop / h1: Font(family: "Noto Sans KR", style: Bold, size: 32, weight: 700, lineHeight: 46, letterSpacing: 0), Loop / body: Font(family: "Noto Sans KR", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Theme=Light
+**Node ID:** 77:364
+
+기존 섬유 루프 심벌과 워드마크를 보존합니다. 클릭 시 현재 역할의 메인으로 이동하며 선택 상태는 유지하지 않습니다.
+
+## Loop UI / Logo
+**Node ID:** 80:305
+
+기존 심벌과 워드마크 유지 · Light/Dark · 역할별 홈 이동 · 선택 상태 없음
+
+## Loop UI / Button
+**Node ID:** 80:226
+
+색상 기준: 주요 행동 action #16794E, Hover #12633F, Pressed #0E4E32. 보조 버튼은 흰색, 비활성은 기존 회색. Focus는 흰색 간격과 초록 외곽선. 거절 액션은 Kind=Danger: 적색 글자·테두리, Hover/Pressed에서 연적색 배경. Disabled/Loading은 동작을 막습니다.
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

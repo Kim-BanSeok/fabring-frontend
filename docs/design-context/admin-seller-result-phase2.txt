@@ -1,0 +1,206 @@
+const imgEllipse = "https://www.figma.com/api/mcp/asset/2845bca9-133d-4dcc-b025-5cb62870e4ae.svg";
+
+export default function AfSellerApproved() {
+  return (
+    <div className="bg-[var(--loop-canvasClear,#f2f5f3)] content-stretch flex flex-col items-start relative size-full" data-node-id="210:8380" data-name="AF_SELLER_APPROVED · 판매자 승인 완료">
+      <div className="content-stretch flex items-start min-h-[800px] relative shrink-0 w-[1440px]" data-node-id="210:8381" data-name="Admin workspace">
+        <div className="bg-[var(--loop-brand,#214e3e)] content-stretch flex flex-col gap-[20px] items-start min-h-[800px] p-[var(--loop-space-24,24px)] relative self-stretch shrink-0 w-[248px]" data-node-id="210:8382" data-name="Sidebar">
+          <div className="content-stretch flex gap-[10px] items-start relative shrink-0 w-[200px]" data-node-id="I210:8382;11:2768" data-name="Brand">
+            <div className="relative shrink-0 size-[28px]" data-node-id="I210:8382;11:2769" data-name="Ellipse">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse} />
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-white,white)] whitespace-nowrap" data-node-id="I210:8382;11:2770">
+              섬유 루프
+            </p>
+          </div>
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-white,white)] w-[200px]" data-node-id="I210:8382;11:2771">
+            관리자 워크스페이스
+          </p>
+          <div className="h-[20px] relative shrink-0 w-px" data-node-id="I210:8382;11:2772" data-name="Space 20" />
+          <a className="bg-[var(--loop-brand,#214e3e)] content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[200px]" data-node-id="I210:8382;11:2773" data-name="Button / 대시보드 홈">
+            <CodeConnectSnippet data-node-id="I210:8382;11:2773;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="대시보드 홈" label="대시보드 홈" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="bg-[var(--loop-selectedSoft,#dcefe2)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[200px]" data-node-id="I210:8382;11:2774" data-name="Button / 회원목록">
+            <CodeConnectSnippet data-node-id="I210:8382;11:2774;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자 승인" label="판매자 승인" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <button className="bg-[var(--loop-brand,#214e3e)] content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[200px]" data-node-id="I210:8382;11:2775" data-name="Button / 상품목록">
+            <CodeConnectSnippet data-node-id="I210:8382;11:2775;79:146" tabIndex="0" role="button" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="상품목록" label="상품목록" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </button>
+          <button className="bg-[var(--loop-brand,#214e3e)] content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[200px]" data-node-id="I210:8382;11:2776" data-name="Button / 승인관리">
+            <CodeConnectSnippet data-node-id="I210:8382;11:2776;79:146" tabIndex="0" role="button" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="원단 게시 승인" label="원단 게시 승인" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </button>
+          <div className="flex-[1_0_0] min-h-px relative w-px" data-node-id="I210:8382;11:2777" data-name="Space 300" />
+          <div className="bg-[var(--loop-borderSubtle,#cdd8d0)] h-px relative shrink-0 w-[200px]" data-node-id="I210:8382;11:2778" data-name="Divider" />
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-white,white)] w-[200px]" data-node-id="I210:8382;11:2779">
+            MY · 운영 관리자
+          </p>
+          <a className="bg-[var(--loop-selectedSoft,#dcefe2)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[200px]" data-node-id="I210:8382;11:2780" data-name="Button / 로그아웃">
+            <CodeConnectSnippet data-node-id="I210:8382;11:2780;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="로그아웃" label="로그아웃" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+        </div>
+        <div className="content-stretch flex flex-col items-start relative shrink-0 w-[1192px]" data-node-id="210:8383" data-name="Admin content">
+          <div className="bg-[var(--loop-surface,white)] content-stretch flex gap-[var(--loop-space-16,16px)] items-start p-[var(--loop-space-24,24px)] relative shrink-0 w-[1192px]" data-node-id="210:8384" data-name="Top bar">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[840px]" data-node-id="210:8385">
+              양주 섬유 루프 / 운영 관리
+            </p>
+            <div className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" data-node-id="210:8386" data-name="Badge / ADMIN">
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="I210:8386;100:670">
+                ADMIN
+              </p>
+            </div>
+          </div>
+          <div className="content-stretch flex flex-col gap-[28px] items-start p-[var(--loop-space-64,64px)] relative shrink-0 w-[1192px]" data-node-id="210:8387" data-name="Main">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1064px]" data-node-id="210:8388">
+              판매자 승인 완료
+            </p>
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] w-[1064px]" data-node-id="210:8389">
+              이정원 · 판매자 계정과 매장 정보를 확인하세요.
+            </p>
+            <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-borderSubtle,#cdd8d0)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[1064px]" data-node-id="210:8390" data-name="회원정보">
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[1016px]" data-node-id="210:8391">
+                회원정보
+              </p>
+              <div className="content-stretch flex gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8392" data-name="회원 요약">
+                <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[36px] relative shrink-0 text-[24px] text-[color:var(--loop-ink,#17362d)] w-[130px]" data-node-id="210:8393">
+                  이정원
+                </p>
+                <div className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" data-node-id="210:8394" data-name="Badge / 판매자">
+                  <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="I210:8394;100:670">
+                    판매자
+                  </p>
+                </div>
+              </div>
+              <div className="[word-break:break-word] content-stretch flex flex-col font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-12,12px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1016px]" data-node-id="210:8395" data-name="Information">
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8396" data-name="이름">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8397">
+                    닉네임
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8398">
+                    이정원
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8399" data-name="연락처">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8400">
+                    연락처
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8401">
+                    010-0000-0000
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8402" data-name="이메일">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8403">
+                    이메일
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8404">
+                    seller@example.com
+                  </p>
+                </div>
+              </div>
+              <div className="bg-[var(--loop-borderSubtle,#cdd8d0)] h-px relative shrink-0 w-[1016px]" data-node-id="210:8405" data-name="Divider" />
+              <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[1016px]" data-node-id="210:8406">
+                매장 정보
+              </p>
+              <div className="[word-break:break-word] content-stretch flex flex-col font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-12,12px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[1016px]" data-node-id="210:8407" data-name="Information">
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8408" data-name="매장명">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8409">
+                    매장명
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8410">
+                    양주 원단상회
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8411" data-name="픽업 주소">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8412">
+                    픽업 주소
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8413">
+                    경기도 양주시 · 예시 매장 주소
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8414" data-name="매장 연락처">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8415">
+                    매장 연락처
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8416">
+                    031-000-0000
+                  </p>
+                </div>
+                <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1016px]" data-node-id="210:8417" data-name="픽업 가능 시간">
+                  <p className="relative shrink-0 text-[color:var(--loop-textSecondary,#52645a)] w-[144px]" data-node-id="210:8418">
+                    픽업 가능 시간
+                  </p>
+                  <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[856px]" data-node-id="210:8419">
+                    월–금 10:00–18:00
+                  </p>
+                </div>
+              </div>
+            </div>
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-textSecondary,#52645a)] w-[1064px]" data-node-id="210:8420">
+              승인 완료 · 이미 승인된 계정은 다시 승인하거나 거절할 수 없습니다.
+            </p>
+            <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1064px]" data-node-id="210:8421" data-name="Actions">
+              <a className="content-stretch cursor-pointer flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[208px]" data-node-id="210:8565" data-name="API / return list">
+                <CodeConnectSnippet data-node-id="I210:8565;79:146" data-name="Control">
+                  {/* Simple Design System component */}
+                  <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자 목록으로" label="판매자 목록으로" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                </CodeConnectSnippet>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+These styles are contained in the design: Loop / h3: Font(family: "Noto Sans KR", style: Bold, size: 20, weight: 700, lineHeight: 30, letterSpacing: 0), Loop / small: Font(family: "Noto Sans KR", style: Regular, size: 12, weight: 400, lineHeight: 20, letterSpacing: 0), Loop / body: Font(family: "Noto Sans KR", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0), Loop / label: Font(family: "Noto Sans KR", style: Medium, size: 12, weight: 500, lineHeight: 20, letterSpacing: 0), Loop / h1: Font(family: "Noto Sans KR", style: Bold, size: 32, weight: 700, lineHeight: 46, letterSpacing: 0), Loop / h2: Font(family: "Noto Sans KR", style: Bold, size: 24, weight: 700, lineHeight: 36, letterSpacing: 0).
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Active=회원목록
+**Node ID:** 11:2781
+
+공통 admin 내비게이션. 화면별 활성 메뉴를 Variant로 선택합니다.
+
+## Navigation / admin
+**Node ID:** 11:3031
+
+최종 와이어프레임의 역할별 내비게이션. Active 옵션으로 현재 메뉴를 표시합니다.
+
+## Loop UI / Button
+**Node ID:** 80:226
+
+색상 기준: 주요 행동 action #16794E, Hover #12633F, Pressed #0E4E32. 보조 버튼은 흰색, 비활성은 기존 회색. Focus는 흰색 간격과 초록 외곽선. 거절 액션은 Kind=Danger: 적색 글자·테두리, Hover/Pressed에서 연적색 배경. Disabled/Loading은 동작을 막습니다.
+
+## Status=Published
+**Node ID:** 100:669
+
+승인, 예약, 답변 상태를 짧게 표시합니다.
+
+## Loop UI / Badge
+**Node ID:** 100:677
+
+정보 표시용 상태 라벨. 신규 색상은 이 컴포넌트로 재사용하며 기존 Badge 마스터는 미적용 화면 보호를 위해 유지. Label로 문구 변경, Status로 게시·대기·거절·완료 구분. 클릭 동작 없음.
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

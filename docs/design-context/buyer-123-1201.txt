@@ -1,0 +1,429 @@
+const imgEllipse = "https://www.figma.com/api/mcp/asset/345cc1a8-825a-4564-b072-6123bdfabedf.svg";
+const imgTote = "https://www.figma.com/api/mcp/asset/235575d8-8a30-4db2-98c3-47c83ef4b14b.svg";
+
+type BadgeGreenProps = {
+  className?: string;
+  label?: string;
+};
+
+function BadgeGreen({ className, label = "게시 중" }: BadgeGreenProps) {
+  return (
+    <div className={className || "bg-[var(--loop-soft,#e8f0e8)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)]"} data-node-id="4:197" data-name="Badge / green">
+      <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="4:198">
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function FabricGingham({ className }: { className?: string }) {
+  return (
+    <div className={className || "bg-[var(--loop-soft,#e8f0e8)] h-[240px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] w-[320px]"} data-node-id="4:133" data-name="Fabric / Gingham">
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-0 opacity-13 top-0 w-[10px]" data-node-id="4:134" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[20px] opacity-13 top-0 w-[10px]" data-node-id="4:135" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[40px] opacity-13 top-0 w-[10px]" data-node-id="4:136" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[60px] opacity-13 top-0 w-[10px]" data-node-id="4:137" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[80px] opacity-13 top-0 w-[10px]" data-node-id="4:138" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[100px] opacity-13 top-0 w-[10px]" data-node-id="4:139" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[120px] opacity-13 top-0 w-[10px]" data-node-id="4:140" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[140px] opacity-13 top-0 w-[10px]" data-node-id="4:141" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[160px] opacity-13 top-0 w-[10px]" data-node-id="4:142" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[180px] opacity-13 top-0 w-[10px]" data-node-id="4:143" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[200px] opacity-13 top-0 w-[10px]" data-node-id="4:144" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[220px] opacity-13 top-0 w-[10px]" data-node-id="4:145" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[240px] opacity-13 top-0 w-[10px]" data-node-id="4:146" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[260px] opacity-13 top-0 w-[10px]" data-node-id="4:147" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[280px] opacity-13 top-0 w-[10px]" data-node-id="4:148" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[300px] opacity-13 top-0 w-[10px]" data-node-id="4:149" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[320px] opacity-13 top-0 w-[10px]" data-node-id="4:150" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[340px] opacity-13 top-0 w-[10px]" data-node-id="4:151" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-0 w-[320px]" data-node-id="4:152" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[20px] w-[320px]" data-node-id="4:153" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[40px] w-[320px]" data-node-id="4:154" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[60px] w-[320px]" data-node-id="4:155" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[80px] w-[320px]" data-node-id="4:156" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[100px] w-[320px]" data-node-id="4:157" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[120px] w-[320px]" data-node-id="4:158" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[140px] w-[320px]" data-node-id="4:159" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[160px] w-[320px]" data-node-id="4:160" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[180px] w-[320px]" data-node-id="4:161" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[200px] w-[320px]" data-node-id="4:162" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[10px] left-0 opacity-13 top-[220px] w-[320px]" data-node-id="4:163" data-name="Rectangle" />
+      <div className="absolute flex h-[307.971px] items-center justify-center left-[136.26px] top-[-22px] w-[213.282px]" data-node-id="4:164">
+        <div className="flex-none rotate-14">
+          <div className="bg-[var(--loop-white,white)] h-[280px] opacity-13 relative w-[150px]" data-name="Rectangle" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FabricLinen({ className }: { className?: string }) {
+  return (
+    <div className={className || "bg-[var(--loop-linen,#c7bba5)] h-[240px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] w-[320px]"} data-node-id="4:101" data-name="Fabric / Linen">
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-0 opacity-8 top-0 w-px" data-node-id="4:102" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[20px] opacity-8 top-0 w-px" data-node-id="4:103" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[40px] opacity-8 top-0 w-px" data-node-id="4:104" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[60px] opacity-8 top-0 w-px" data-node-id="4:105" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[80px] opacity-8 top-0 w-px" data-node-id="4:106" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[100px] opacity-8 top-0 w-px" data-node-id="4:107" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[120px] opacity-8 top-0 w-px" data-node-id="4:108" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[140px] opacity-8 top-0 w-px" data-node-id="4:109" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[160px] opacity-8 top-0 w-px" data-node-id="4:110" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[180px] opacity-8 top-0 w-px" data-node-id="4:111" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[200px] opacity-8 top-0 w-px" data-node-id="4:112" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[220px] opacity-8 top-0 w-px" data-node-id="4:113" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[240px] opacity-8 top-0 w-px" data-node-id="4:114" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[260px] opacity-8 top-0 w-px" data-node-id="4:115" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[280px] opacity-8 top-0 w-px" data-node-id="4:116" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[300px] opacity-8 top-0 w-px" data-node-id="4:117" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[320px] opacity-8 top-0 w-px" data-node-id="4:118" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[340px] opacity-8 top-0 w-px" data-node-id="4:119" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-0 w-[320px]" data-node-id="4:120" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[20px] w-[320px]" data-node-id="4:121" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[40px] w-[320px]" data-node-id="4:122" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[60px] w-[320px]" data-node-id="4:123" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[80px] w-[320px]" data-node-id="4:124" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[100px] w-[320px]" data-node-id="4:125" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[120px] w-[320px]" data-node-id="4:126" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[140px] w-[320px]" data-node-id="4:127" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[160px] w-[320px]" data-node-id="4:128" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[180px] w-[320px]" data-node-id="4:129" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[200px] w-[320px]" data-node-id="4:130" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[220px] w-[320px]" data-node-id="4:131" data-name="Rectangle" />
+      <div className="absolute flex h-[307.971px] items-center justify-center left-[136.26px] top-[-22px] w-[213.282px]" data-node-id="4:132">
+        <div className="flex-none rotate-14">
+          <div className="bg-[var(--loop-white,white)] h-[280px] opacity-13 relative w-[150px]" data-name="Rectangle" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function FabricCanvas({ className }: { className?: string }) {
+  return (
+    <div className={className || "bg-[var(--loop-sand,#e7ddca)] h-[240px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] w-[320px]"} data-node-id="4:69" data-name="Fabric / Canvas">
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-0 opacity-8 top-0 w-px" data-node-id="4:70" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[20px] opacity-8 top-0 w-px" data-node-id="4:71" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[40px] opacity-8 top-0 w-px" data-node-id="4:72" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[60px] opacity-8 top-0 w-px" data-node-id="4:73" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[80px] opacity-8 top-0 w-px" data-node-id="4:74" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[100px] opacity-8 top-0 w-px" data-node-id="4:75" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[120px] opacity-8 top-0 w-px" data-node-id="4:76" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[140px] opacity-8 top-0 w-px" data-node-id="4:77" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[160px] opacity-8 top-0 w-px" data-node-id="4:78" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[180px] opacity-8 top-0 w-px" data-node-id="4:79" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[200px] opacity-8 top-0 w-px" data-node-id="4:80" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[220px] opacity-8 top-0 w-px" data-node-id="4:81" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[240px] opacity-8 top-0 w-px" data-node-id="4:82" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[260px] opacity-8 top-0 w-px" data-node-id="4:83" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[280px] opacity-8 top-0 w-px" data-node-id="4:84" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[300px] opacity-8 top-0 w-px" data-node-id="4:85" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[320px] opacity-8 top-0 w-px" data-node-id="4:86" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[240px] left-[340px] opacity-8 top-0 w-px" data-node-id="4:87" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-0 w-[320px]" data-node-id="4:88" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[20px] w-[320px]" data-node-id="4:89" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[40px] w-[320px]" data-node-id="4:90" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[60px] w-[320px]" data-node-id="4:91" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[80px] w-[320px]" data-node-id="4:92" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[100px] w-[320px]" data-node-id="4:93" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[120px] w-[320px]" data-node-id="4:94" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[140px] w-[320px]" data-node-id="4:95" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[160px] w-[320px]" data-node-id="4:96" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[180px] w-[320px]" data-node-id="4:97" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[200px] w-[320px]" data-node-id="4:98" data-name="Rectangle" />
+      <div className="absolute bg-[var(--loop-brand,#214e3e)] h-px left-0 opacity-8 top-[220px] w-[320px]" data-node-id="4:99" data-name="Rectangle" />
+      <div className="absolute flex h-[307.971px] items-center justify-center left-[136.26px] top-[-22px] w-[213.282px]" data-node-id="4:100">
+        <div className="flex-none rotate-14">
+          <div className="bg-[var(--loop-white,white)] h-[280px] opacity-13 relative w-[150px]" data-name="Rectangle" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function FB05() {
+  return (
+    <div className="bg-[var(--loop-canvas,#f7f8f4)] content-stretch flex flex-col items-start relative size-full" data-node-id="123:1201" data-name="F-B05 · 내추럴 코튼 캔버스">
+      <div className="bg-[var(--loop-surface,white)] border-[var(--loop-borderSubtle,#cdd8d0)] border-b border-solid content-stretch flex gap-[var(--loop-space-32,32px)] items-center px-[96px] py-[24px] relative shrink-0 w-[1440px]" data-node-id="130:8816" data-name="Navigation">
+        <a className="content-stretch cursor-pointer flex gap-[10px] h-[30px] items-start relative shrink-0 w-[160px]" data-node-id="I130:8816;82:492" data-name="Logo">
+          <div className="relative shrink-0 size-[28px]" data-node-id="I130:8816;82:492;77:362" data-name="Ellipse">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgEllipse} />
+          </div>
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-brand,#214e3e)] text-left whitespace-nowrap" data-node-id="I130:8816;82:492;77:363">
+            섬유 루프
+          </p>
+        </a>
+        <div className="content-stretch cursor-pointer flex gap-[12px] items-start relative shrink-0 w-[930px]" data-node-id="I130:8816;82:483" data-name="Menu">
+          <a className="content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I130:8816;82:495" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I130:8816;82:495;79:254">
+              홈
+            </p>
+          </a>
+          <a className="bg-[var(--loop-selectedSoft,#dcefe2)] border-[var(--loop-action,#16794e)] border-b-3 border-solid content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I130:8816;82:497" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-brand,#214e3e)] text-center w-[96px]" data-node-id="I130:8816;82:497;79:262">
+              원단목록
+            </p>
+          </a>
+          <a className="content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I130:8816;82:499" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I130:8816;82:499;79:254">
+              부자재 찾기
+            </p>
+          </a>
+          <button className="content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I130:8816;82:501" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I130:8816;82:501;79:254">
+              구매내역
+            </p>
+          </button>
+          <a className="content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I130:8816;82:503" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I130:8816;82:503;79:254">
+              문의내역
+            </p>
+          </a>
+          <a className="content-stretch flex h-[44px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[140px]" data-node-id="I130:8816;82:505" data-name="NavItem">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-textSecondary,#52645a)] text-center w-[96px]" data-node-id="I130:8816;82:505;79:254">
+              마이페이지
+            </p>
+          </a>
+        </div>
+        <div className="bg-[var(--loop-selectedSoft,#dcefe2)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" data-node-id="I130:8816;82:490" data-name="Badge / 구매자">
+          <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[20px] relative shrink-0 text-[12px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="I130:8816;82:490;4:198">
+            구매자
+          </p>
+        </div>
+      </div>
+      <div className="content-stretch flex flex-col gap-[28px] items-start pb-[64px] pt-[48px] px-[96px] relative shrink-0 w-[1440px]" data-node-id="123:1203" data-name="Main">
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-ink,#17362d)] w-[1248px]" data-node-id="123:1204">
+          내추럴 코튼 캔버스
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-muted,#68766f)] w-[1248px]" data-node-id="123:1205">
+          원단목록 / 원단 상세
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[1248px]" data-node-id="123:1206" data-name="원단 상세 상단">
+          <div className="content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[600px]" data-node-id="123:1207" data-name="원단 사진">
+            <FabricCanvas className="bg-[var(--loop-sand,#e7ddca)] h-[440px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[600px]" />
+            <div className="content-stretch flex gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[600px]" data-node-id="123:1209" data-name="추가 사진">
+              <FabricCanvas className="bg-[var(--loop-sand,#e7ddca)] h-[116px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[192px]" />
+              <FabricLinen className="bg-[var(--loop-linen,#c7bba5)] h-[116px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[192px]" />
+              <FabricGingham className="bg-[var(--loop-soft,#e8f0e8)] h-[116px] overflow-clip relative rounded-[var(--loop-radius-12,12px)] shrink-0 w-[192px]" />
+            </div>
+          </div>
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-line,#dde5dd)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[624px]" data-node-id="123:1213" data-name="원단 상세 정보">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[576px]" data-node-id="123:1214">
+              원단 상세 정보
+            </p>
+            <BadgeGreen className="bg-[var(--loop-soft,#e8f0e8)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" label="거래 가능" />
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[36px] relative shrink-0 text-[24px] text-[color:var(--loop-ink,#17362d)] whitespace-nowrap" data-node-id="123:1216">
+              내추럴 코튼 캔버스
+            </p>
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[46px] relative shrink-0 text-[32px] text-[color:var(--loop-brand,#214e3e)] whitespace-nowrap" data-node-id="123:1217">
+              5,000원 / 마
+            </p>
+            <div className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--loop-muted,#68766f)] w-[576px]" data-node-id="123:1218">
+              <p className="leading-[24px] mb-0">자연스러운 크림색의 탄탄한 면 원단입니다.</p>
+              <p className="leading-[24px]">파우치나 가벼운 토트백 제작에 활용할 수 있어요.</p>
+            </div>
+            <div className="[word-break:break-word] content-stretch flex flex-col font-['Noto_Sans_KR:Regular'] font-normal gap-[var(--loop-space-12,12px)] items-start leading-[24px] relative shrink-0 text-[14px] w-[576px]" data-node-id="123:1219" data-name="Information">
+              <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[576px]" data-node-id="123:1220" data-name="소재 / 색상">
+                <p className="relative shrink-0 text-[color:var(--loop-muted,#68766f)] w-[144px]" data-node-id="123:1221">
+                  소재 / 색상
+                </p>
+                <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[416px]" data-node-id="123:1222">
+                  면 / 내추럴
+                </p>
+              </div>
+              <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[576px]" data-node-id="123:1223" data-name="두께">
+                <p className="relative shrink-0 text-[color:var(--loop-muted,#68766f)] w-[144px]" data-node-id="123:1224">
+                  두께
+                </p>
+                <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[416px]" data-node-id="123:1225">
+                  중간
+                </p>
+              </div>
+              <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[576px]" data-node-id="123:1226" data-name="사용 가능 치수">
+                <p className="relative shrink-0 text-[color:var(--loop-muted,#68766f)] w-[144px]" data-node-id="123:1227">
+                  구매 가능 치수
+                </p>
+                <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[416px]" data-node-id="123:1228">
+                  폭 150cm · 구매 가능 5마(450cm)
+                </p>
+              </div>
+              <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[576px]" data-node-id="123:1229" data-name="하자">
+                <p className="relative shrink-0 text-[color:var(--loop-muted,#68766f)] w-[144px]" data-node-id="123:1230">
+                  하자
+                </p>
+                <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[416px]" data-node-id="123:1231">
+                  등록된 하자 없음
+                </p>
+              </div>
+              <div className="content-stretch flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[576px]" data-node-id="123:1232" data-name="판매처">
+                <p className="relative shrink-0 text-[color:var(--loop-muted,#68766f)] w-[144px]" data-node-id="123:1233">
+                  판매처
+                </p>
+                <p className="relative shrink-0 text-[color:var(--loop-ink,#17362d)] w-[416px]" data-node-id="123:1234">
+                  양주 원단상회 · 양주시
+                </p>
+              </div>
+            </div>
+            <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[576px]" data-node-id="123:1235" data-name="상품 주요 동작">
+              <a className="bg-[var(--loop-brand,#214e3e)] content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[352px]" data-node-id="123:1236" data-name="Button / 픽업 요청하기">
+                <CodeConnectSnippet data-node-id="I123:1236;79:102" data-name="Control">
+                  {/* Simple Design System component */}
+                  <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="픽업 요청하기" label="픽업 요청하기" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                </CodeConnectSnippet>
+              </a>
+              <a className="bg-[var(--loop-surface,white)] border border-[var(--loop-line,#dde5dd)] border-solid content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[208px]" data-node-id="123:1237" data-name="Button / 판매자 문의">
+                <CodeConnectSnippet data-node-id="I123:1237;79:146" data-name="Control">
+                  {/* Simple Design System component */}
+                  <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="판매자 문의" label="판매자 문의" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+                </CodeConnectSnippet>
+              </a>
+            </div>
+          </div>
+        </div>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[36px] relative shrink-0 text-[24px] text-[color:var(--loop-ink,#17362d)] whitespace-nowrap" data-node-id="123:1238">
+          이 원단으로 만들 수 있어요
+        </p>
+        <p className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[24px] relative shrink-0 text-[14px] text-[color:var(--loop-muted,#68766f)] whitespace-nowrap" data-node-id="123:1239">
+          원단의 소재와 치수를 바탕으로 살펴보는 추천 제품
+        </p>
+        <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[1248px]" data-node-id="123:1240" data-name="추천 제품 2개">
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-line,#dde5dd)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[612px]" data-node-id="123:1241" data-name="지퍼 파우치">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[564px]" data-node-id="123:1242">
+              지퍼 파우치
+            </p>
+            <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[564px]" data-node-id="123:1243" data-name="추천 사진과 요약">
+              <div className="bg-[var(--loop-soft,#e8f0e8)] h-[148px] overflow-clip relative rounded-[12px] shrink-0 w-[180px]" data-node-id="123:1244" data-name="제품 모양 예시 / pouch">
+                <div className="absolute bg-[var(--loop-sand,#e7ddca)] h-[74px] left-[36px] rounded-[18px] top-[39.96px] w-[108px]" data-node-id="123:1245" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-brand,#214e3e)] h-[5px] left-[37.8px] rounded-[2px] top-[44.4px] w-[104.4px]" data-node-id="123:1246" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-clay,#b9795d)] h-[14px] left-[111.6px] rounded-[2px] top-[48.84px] w-[4px]" data-node-id="123:1247" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[43.2px] top-[56.24px] w-px" data-node-id="123:1248" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[52.2px] top-[56.24px] w-px" data-node-id="123:1249" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[61.2px] top-[56.24px] w-px" data-node-id="123:1250" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[70.2px] top-[56.24px] w-px" data-node-id="123:1251" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[79.2px] top-[56.24px] w-px" data-node-id="123:1252" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[88.2px] top-[56.24px] w-px" data-node-id="123:1253" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[97.2px] top-[56.24px] w-px" data-node-id="123:1254" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[106.2px] top-[56.24px] w-px" data-node-id="123:1255" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[115.2px] top-[56.24px] w-px" data-node-id="123:1256" data-name="Rectangle" />
+                <div className="absolute bg-[var(--loop-linen,#c7bba5)] h-[45.88px] left-[124.2px] top-[56.24px] w-px" data-node-id="123:1257" data-name="Rectangle" />
+              </div>
+              <div className="content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[360px]" data-node-id="123:1258" data-name="추천 제품 요약">
+                <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-ink,#17362d)] w-[360px]" data-node-id="123:1259">
+                  작은 소지품을 담기 좋은 기본형 파우치
+                </p>
+                <div className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--loop-muted,#68766f)] w-[360px]" data-node-id="123:1260">
+                  <p className="leading-[24px] mb-0">예상 사용 치수를 확인하고</p>
+                  <p className="leading-[24px]">만들기를 준비해 보세요.</p>
+                </div>
+                <BadgeGreen className="bg-[var(--loop-soft,#e8f0e8)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" label="추천 활용 예시" />
+              </div>
+            </div>
+          </div>
+          <div className="bg-[var(--loop-surface,white)] border border-[var(--loop-line,#dde5dd)] border-solid content-stretch flex flex-col gap-[20px] items-start p-[var(--loop-space-24,24px)] relative rounded-[var(--loop-radius-16,16px)] shrink-0 w-[612px]" data-node-id="123:1262" data-name="데일리 토트백">
+            <p className="[word-break:break-word] font-['Noto_Sans_KR:Bold'] font-bold leading-[30px] relative shrink-0 text-[20px] text-[color:var(--loop-ink,#17362d)] w-[564px]" data-node-id="123:1263">
+              데일리 토트백
+            </p>
+            <div className="content-stretch flex gap-[var(--loop-space-24,24px)] items-start relative shrink-0 w-[564px]" data-node-id="123:1264" data-name="추천 사진과 요약">
+              <div className="h-[148px] relative shrink-0 w-[180px]" data-node-id="123:1265" data-name="제품 모양 예시 / tote">
+                <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgTote} />
+              </div>
+              <div className="content-stretch flex flex-col gap-[var(--loop-space-12,12px)] items-start relative shrink-0 w-[360px]" data-node-id="123:1269" data-name="추천 제품 요약">
+                <p className="[word-break:break-word] font-['Noto_Sans_KR:Medium'] font-medium leading-[26px] relative shrink-0 text-[16px] text-[color:var(--loop-ink,#17362d)] w-[360px]" data-node-id="123:1270">
+                  가볍게 들기 좋은 실용적인 토트백
+                </p>
+                <div className="[word-break:break-word] font-['Noto_Sans_KR:Regular'] font-normal leading-[0] relative shrink-0 text-[14px] text-[color:var(--loop-muted,#68766f)] w-[360px]" data-node-id="123:1271">
+                  <p className="leading-[24px] mb-0">예상 사용 치수를 확인하고</p>
+                  <p className="leading-[24px]">만들기를 준비해 보세요.</p>
+                </div>
+                <BadgeGreen className="bg-[var(--loop-soft,#e8f0e8)] content-stretch flex items-start px-[var(--loop-space-12,12px)] py-[var(--loop-space-4,4px)] relative rounded-[var(--loop-radius-999,999px)] shrink-0" label="추천 활용 예시" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-stretch cursor-pointer flex gap-[var(--loop-space-16,16px)] items-start relative shrink-0 w-[1248px]" data-node-id="131:5854" data-name="Actions">
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="131:5855" data-name="Button / 제작 조건 확인">
+            <CodeConnectSnippet data-node-id="I131:5855;79:102" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="제작 조건 확인" label="제작 조건 확인" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+          <a className="content-stretch flex h-[48px] items-center justify-center relative rounded-[var(--loop-radius-8,8px)] shrink-0 w-[184px]" data-node-id="131:5860" data-name="Button / 도안 미리보기">
+            <CodeConnectSnippet data-node-id="I131:5860;79:146" data-name="Control">
+              {/* Simple Design System component */}
+              <Button instanceSwapIconStart="5:9" iconStart="5:9" booleanHasIconStart={false} hasIconStart={false} booleanHasIconEnd={false} hasIconEnd={false} instanceSwapIconEnd="5:7" iconEnd="5:7" textLabel="도안 미리보기" label="도안 미리보기" variantVariant="Primary" variant="Primary" variantState="Default" state="Default" variantSize="Medium" size="Medium" />
+            </CodeConnectSnippet>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+SUPER CRITICAL: The generated React+Tailwind code MUST be converted to match the target project's technology stack and styling system.
+1. Analyze the target codebase to identify: technology stack, styling approach, component patterns, and design tokens
+2. Convert React syntax to the target framework/library
+3. Transform all Tailwind classes to the target styling system while preserving exact visual design
+4. Follow the project's existing patterns and conventions
+DO NOT install any Tailwind as a dependency unless the user instructs you to do so.
+
+
+Node ids have been added to the code as data attributes, e.g. `data-node-id="1:2"`.
+
+These styles are contained in the design: Loop / h3: Font(family: "Noto Sans KR", style: Bold, size: 20, weight: 700, lineHeight: 30, letterSpacing: 0), Loop / body: Font(family: "Noto Sans KR", style: Regular, size: 14, weight: 400, lineHeight: 24, letterSpacing: 0), Loop / strong: Font(family: "Noto Sans KR", style: Medium, size: 16, weight: 500, lineHeight: 26, letterSpacing: 0), Loop / label: Font(family: "Noto Sans KR", style: Medium, size: 12, weight: 500, lineHeight: 20, letterSpacing: 0), Loop / h1: Font(family: "Noto Sans KR", style: Bold, size: 32, weight: 700, lineHeight: 46, letterSpacing: 0), Loop / h2: Font(family: "Noto Sans KR", style: Bold, size: 24, weight: 700, lineHeight: 36, letterSpacing: 0).
+
+If the node is connected to a code component in the users codebase via Code Connect, the connected component will be included in the final markup wrapped in a CodeConnectSnippet element, with relevant imports at the top of the file. There are two formats: 1. Single snippet: <CodeConnectSnippet data-snippet-language="React"><TitleComponent>Hello World</TitleComponent></CodeConnectSnippet> 2. Multiple options: <CodeConnectSnippet data-snippet-language="React" options={[<Button variant="primary" />, <Button variant="secondary" />]} /> IMPORTANT: the CodeConnectSnippet wrapper element should not be part of the final code. For the options format, choose the single most appropriate option to use in your implementation. The source of the code component will be in the import path, e.g. import {ComponentName } from 'path/to/component'; IMPORTANT: the import path may not be relative/may point to a URL, so you should search for the component in the codebase and MUST use it if possible.
+
+Component descriptions: The following components have usage descriptions or documentation links defined in Figma. These descriptions provide important context about the intended usage, best practices, and any constraints for each component. Follow these guidelines when implementing or using these components.
+
+## Role=Buyer
+**Node ID:** 82:479
+
+기존 메뉴 순서와 역할 배지 유지. 각 메뉴의 State를 Selected로 지정하고 해당 역할 화면으로 연결합니다.
+
+## Loop UI / Header
+**Node ID:** 83:513
+
+역할별 메뉴 순서를 유지한 공통 헤더. 구매자·판매자. 메뉴 이름과 State는 중첩 NavItem에서 설정합니다.
+
+## Theme=Light
+**Node ID:** 77:364
+
+기존 섬유 루프 심벌과 워드마크를 보존합니다. 클릭 시 현재 역할의 메인으로 이동하며 선택 상태는 유지하지 않습니다.
+
+## Loop UI / Logo
+**Node ID:** 80:305
+
+기존 심벌과 워드마크 유지 · Light/Dark · 역할별 홈 이동 · 선택 상태 없음
+
+## Loop UI / NavItem
+**Node ID:** 80:252
+
+현재 메뉴: selectedSoft 배경 + 브랜드 초록 글자 + 3px 하단 표시선. 색상과 형태를 함께 사용.
+
+## Badge / green
+**Node ID:** 4:197
+
+승인, 예약, 답변 상태를 짧게 표시합니다.
+
+## Fabric / Canvas
+**Node ID:** 4:69
+
+원단 사진이 제공되기 전 사용하는 편집 가능한 질감 예시. 실제 상품 사진으로 교체할 수 있습니다.
+
+## Fabric / Linen
+**Node ID:** 4:101
+
+원단 사진이 제공되기 전 사용하는 편집 가능한 질감 예시. 실제 상품 사진으로 교체할 수 있습니다.
+
+## Fabric / Gingham
+**Node ID:** 4:133
+
+원단 사진이 제공되기 전 사용하는 편집 가능한 질감 예시. 실제 상품 사진으로 교체할 수 있습니다.
+
+## Loop UI / Button
+**Node ID:** 80:226
+
+색상 기준: 주요 행동 action #16794E, Hover #12633F, Pressed #0E4E32. 보조 버튼은 흰색, 비활성은 기존 회색. Focus는 흰색 간격과 초록 외곽선. 거절 액션은 Kind=Danger: 적색 글자·테두리, Hover/Pressed에서 연적색 배경. Disabled/Loading은 동작을 막습니다.
+
+Images and SVGs will be stored as constants, e.g. const image = 'https://www.figma.com/api/mcp/asset/550e8400-e29b-41d4-a716-446655440000.png'. These constants will be used in the code as the source for the image, ex: <img src={image} />. Image assets are stored on a remote server for 7 days and can be fetched using the provided URLs until they expire.

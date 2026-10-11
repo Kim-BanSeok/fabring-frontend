@@ -1,0 +1,67 @@
+{
+  "scope": "Read-only buyer UX audit before React migration. No application source files changed. Isolated headless browser context, local mock data only.",
+  "viewports": [{ "width": 1440, "height": 1000 }, { "width": 390, "height": 844 }],
+  "resultsFile": "audit-results.json",
+  "findings": [
+    {
+      "id": "BUYER-UX-01",
+      "priority": "P1",
+      "title": "예약 가능한 길이가 0인데 요청 가능 표시와 수량 입력이 남음",
+      "reproduction": "롤 5마 요청 → 판매자 수락 → 구매자 상세 → 픽업 요청",
+      "observed": "available_length_cm=0, 상세 거래 가능 badge/픽업 링크 유지. 폼 value=1/max=0, 예상 금액 5,000원, 전송만 비활성. 기존 예약·다른 원단 복구 링크 0개.",
+      "proposal": "목록·상세·픽업이 같은 구매 가능 상태를 사용. 가능한 롤 길이가 90cm 미만이면 수량 입력 대신 현재 상태와 기존 예약/다른 원단 행동 표시. 기존 내 요청이 있으면 요청 재작성 대신 해당 요청 확인 제공.",
+      "files": ["src/prototype/pages/buyer.js:78", "src/prototype/pages/buyer.js:140", "src/prototype/pages/buyer.js:154"],
+      "evidence": ["07-zero-available-detail-desktop.png", "08-zero-available-pickup-desktop.png"],
+      "figmaReference": ["123:1201", "123:1493", "202:8252"]
+    },
+    {
+      "id": "BUYER-UX-02",
+      "priority": "P1",
+      "title": "원단 확인 후 돌아오면 작성 중 입력이 사라짐",
+      "reproduction": "픽업 3마/16:30/메모 입력 → 원단 상세로 돌아가기 → 브라우저 뒤로. 문의 입력 → 원단목록 → 브라우저 뒤로.",
+      "observed": "픽업이 2마/14:00/빈 메모로 초기화. 문의 내용도 빈 문자열.",
+      "proposal": "원단 ID별 픽업·문의 초안을 세션 내에서 유지하고 재진입 시 복원. 성공·명시적 작성 취소 시 초안 삭제. 재고 변경 시 수량만 재검증하고 시간·메모는 보존. React 전환 전 별도 백엔드 필드 추가 불필요.",
+      "files": ["src/prototype/pages/buyer.js:154", "src/prototype/pages/buyer.js:239", "src/prototype/pages/buyer.js:375", "src/prototype/pages/buyer.js:448"],
+      "evidence": ["03-pickup-draft-before-desktop.png", "04-pickup-draft-lost-desktop.png", "audit-results.json"],
+      "figmaReference": ["123:1493", "127:5133", "127:5197"]
+    },
+    {
+      "id": "BUYER-UX-03",
+      "priority": "P2",
+      "title": "상세의 원단목록 링크가 검색 조건을 초기화함",
+      "reproduction": "롤/내추럴 검색 → 내추럴 캔버스 상세 → 원단목록 breadcrumb",
+      "observed": "sale_type=ROLL&color=내추럴&view=search에서 sale_type=ROLL만 남음. 색상 select가 전체로 바뀜.",
+      "proposal": "상세 진입 시 목록의 내부 return 경로를 전달하고 '검색 결과로'로 복귀. 검색 조건·결과 뷰 유지. 외부 URL은 return 대상으로 허용하지 않음. 상세→픽업→상세에서도 탐색 맥락 유지.",
+      "files": ["src/prototype/pages/buyer.js:78", "src/prototype/pages/buyer.js:92", "src/prototype/pages/buyer.js:140"],
+      "evidence": ["01-filtered-results-desktop.png", "02-search-return-cleared-desktop.png"],
+      "figmaReference": ["127:2745", "123:1201"]
+    },
+    {
+      "id": "BUYER-UX-04",
+      "priority": "P2",
+      "title": "상세의 확정적인 제작 가능 문구와 다음 화면의 판정이 충돌",
+      "reproduction": "올리브 자투리 상세 → 제작 조건 확인",
+      "observed": "상세에는 '이 원단으로 만들 수 있어요'와 파우치/토트백이 표시되지만, 조건 화면은 '추천할 수 있는 도안이 없어요'.",
+      "proposal": "기존 두 제품 그림은 활용 예시로 유지하되 제목·설명을 '활용 아이디어/제작 가능 여부는 조건 확인'으로 완화. 정식 적합 판정과 구별하고 동일 원단 조건으로 확인 버튼 연결. 신규 추천 API나 도안 추가 없이 문구 중심 변경.",
+      "files": ["src/prototype/pages/buyer.js:134", "src/prototype/pages/buyer.js:260"],
+      "evidence": ["05-recommendation-claim-desktop.png", "06-recommendation-no-result-desktop.png"],
+      "figmaReference": ["127:3989", "127:4377"],
+      "designNote": "기존 Figma 상세 문구를 그대로 구현한 결과이므로 구현 불일치가 아닌 UX 개선 제안. 디자인에도 같은 문구 조정 필요."
+    },
+    {
+      "id": "BUYER-UX-05",
+      "priority": "P2",
+      "title": "모바일 부자재 선택 결과가 화면 밖으로 밀리고 도안 복귀 경로가 없음",
+      "reproduction": "390px 부자재 판매처 목록에서 3번 선택. 별도로 그린 체크 도안 → 부자재 둘러보기.",
+      "observed": "판매처 선택 뒤 scrollY=0, h1에 포커스. 선택한 카드 top=1055로 높이844인 화면 밖. 도안에서 이동 시 fabric_id 소실 및 도안/제작조건 복귀 링크 0개.",
+      "proposal": "판매처 선택은 선택 카드로 스크롤/포커스하거나 현재 위치를 보존하면서 결과를 알림. 도안에서 진입한 경우 내부 return 경로를 지도·매장 상세까지 유지하고 제작 조건/도안으로 돌아가기 추가.",
+      "files": ["src/prototype/pages/buyer.js:276", "src/prototype/pages/buyer.js:289", "src/prototype/pages/buyer.js:340"],
+      "sharedCoordination": "main.js hashchange의 무조건 scrollTo(0,0)/h1 focus와 조정 필요. 공통 코드 수정은 root 담당.",
+      "evidence": ["09-mobile-store-selection-full.png", "10-mobile-store-selection-viewport.png", "audit-results.json"],
+      "figmaReference": ["127:4299", "123:1637", "127:5669"]
+    }
+  ],
+  "passed": ["픽업 요청→접수→상세 이동", "실제 수락 예약 취소 후 구매 가능 길이450cm 복원", "도안→부자재→판매처 상세 연결", "390px 픽업/예약/문의/도안/오류 화면 가로 넘침 없음", "브라우저 pageerror 0"],
+  "spacingConclusion": "완료·오류 화면의 빈 공간은 내용이 짧은 상태를 화면 높이 안에서 배치한 의도된 여백. 우선 수정할 과도한 빈 프레임은 확인되지 않음. 모바일 픽업1951px은 이미지/재고/매장/일시/계정/메모가 순차 표시되어 길어진 것이며 빈 공간 문제와 구분.",
+  "sharedObservation": "휴대폰에서 고정 HTML 미리보기 도구와 toast가 본문 일부를 덮음. root의 공통 shell/CSS 검토 범위이며 buyer 파일에서 별도 수정하지 않음."
+}
