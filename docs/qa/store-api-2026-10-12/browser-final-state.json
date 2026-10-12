@@ -1,0 +1,229 @@
+{
+  "checkedAt": "2026-10-12T08:34:24.047Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Read-only HTTP GET and database SELECT after browser and adapter actions; no mutation requests",
+  "checks": [
+    {
+      "name": "browserNew: saved store values match submitted form",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserNew: fresh profile hasStore and original approval",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserNew: public read matches owner read",
+      "method": "GET",
+      "path": "/stores/11",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserNew: exactly one persisted store belongs to authenticated user",
+      "passed": true
+    },
+    {
+      "name": "browserExisting: saved store values match submitted form",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserExisting: fresh profile hasStore and original approval",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserExisting: public read matches owner read",
+      "method": "GET",
+      "path": "/stores/7",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserExisting: exactly one persisted store belongs to authenticated user",
+      "passed": true
+    },
+    {
+      "name": "adapter: saved store values match submitted form",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "adapter: fresh profile hasStore and original approval",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "adapter: public read matches owner read",
+      "method": "GET",
+      "path": "/stores/12",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "adapter: exactly one persisted store belongs to authenticated user",
+      "passed": true
+    },
+    {
+      "name": "browserNew: account name, email, personal phone, approval and all other original fields unchanged",
+      "passed": true
+    },
+    {
+      "name": "browserExisting: account name, email, personal phone, approval and all other original fields unchanged",
+      "passed": true
+    },
+    {
+      "name": "All pre-existing rows across eleven models remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend remains healthy",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "stores": {
+    "browserNew": {
+      "storeId": 11,
+      "userId": 29,
+      "persistedStoreCount": 1,
+      "expectedFieldsMatched": true,
+      "requiredFieldsMatched": {
+        "store_name": true,
+        "store_address": true,
+        "store_phone": true
+      },
+      "optionalFields": {
+        "closed_days": "matches",
+        "pickup_guide": "matches"
+      }
+    },
+    "browserExisting": {
+      "storeId": 7,
+      "userId": 30,
+      "persistedStoreCount": 1,
+      "expectedFieldsMatched": true,
+      "requiredFieldsMatched": {
+        "store_name": true,
+        "store_address": true,
+        "store_phone": true
+      },
+      "optionalFields": {
+        "closed_days": "null",
+        "pickup_guide": "null"
+      }
+    },
+    "adapter": {
+      "storeId": 12,
+      "userId": 31,
+      "persistedStoreCount": 1,
+      "expectedFieldsMatched": true,
+      "requiredFieldsMatched": {
+        "store_name": true,
+        "store_address": true,
+        "store_phone": true
+      },
+      "optionalFields": {
+        "closed_days": "null",
+        "pickup_guide": "null"
+      }
+    }
+  },
+  "accounts": {
+    "browserNew": {
+      "userId": 29,
+      "role": "SELLER",
+      "hasStore": true,
+      "seller_approval_status": "PENDING",
+      "allOriginalAccountFieldsUnchanged": true
+    },
+    "browserExisting": {
+      "userId": 30,
+      "role": "SELLER",
+      "hasStore": true,
+      "seller_approval_status": "APPROVED",
+      "allOriginalAccountFieldsUnchanged": true
+    },
+    "adapter": {
+      "userId": 31,
+      "role": "SELLER",
+      "hasStore": true,
+      "seller_approval_status": "PENDING"
+    }
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 21,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "health": {
+    "backendReady": true,
+    "frontendReady": true
+  },
+  "passed": 17
+}

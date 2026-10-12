@@ -1,0 +1,699 @@
+{
+  "checkedAt": "2026-10-12T08:25:34.489Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Actual HTTP requests against isolated local QA accounts; additive fixture setup via database; no existing rows changed",
+  "checks": [
+    {
+      "name": "Pending seller initially has no store",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "POST store requires authentication",
+      "method": "POST",
+      "path": "/stores",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "POST store rejects httpBuyer",
+      "method": "POST",
+      "path": "/stores",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST store rejects httpAdmin",
+      "method": "POST",
+      "path": "/stores",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "GET store requires authentication",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "GET store rejects httpBuyer",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "GET store rejects httpAdmin",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "PATCH store requires authentication",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "PATCH store rejects httpBuyer",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "PATCH store rejects httpAdmin",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Missing store read returns 404",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Missing store patch returns 404",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Create rejects missing name",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects blank name",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects long name",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects name wrong type",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects name null",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects blank address",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects long address",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects blank phone",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects long phone",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects long closed days",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects long guide",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects closed days wrong type",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Create rejects guide wrong type",
+      "method": "POST",
+      "path": "/stores",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pending seller creates one minimal store; unknown owner fields ignored",
+      "method": "POST",
+      "path": "/stores",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Created store readback has six fields and omitted optionals null",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Store creation refreshes hasStore and retains pending approval",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Duplicate create returns 409 instead of replacing existing store",
+      "method": "POST",
+      "path": "/stores",
+      "status": 409,
+      "errorCode": "STORE_ALREADY_EXISTS",
+      "passed": true
+    },
+    {
+      "name": "Created store recovered by GET after repeated create",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pending seller can update own store without approval",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pending seller update preserves approval and hasStore",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Rejected seller initially has no store",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Rejected seller can create own store",
+      "method": "POST",
+      "path": "/stores",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Rejected seller create retains rejected approval",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Rejected seller can update own store",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Three concurrent creates produce one store and two conflicts",
+      "method": "POST",
+      "path": "/stores",
+      "statuses": [
+        201,
+        409,
+        409
+      ],
+      "persistedStoreCount": 1,
+      "passed": true
+    },
+    {
+      "name": "Concurrent create refreshes pending account store flag",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Approved seller reads original store",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Partial patch changes only supplied field",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Clearing both optional fields persists null",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Null optional clear confirmed by fresh GET",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Blank optional strings are trimmed but remain empty strings",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Maximum lengths accepted without additional phone format constraint",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Patch rejects empty patch",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects foreign user key",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects foreign store key",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects mixed valid and unknown fields",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects blank name",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects long name",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects name wrong type",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects name null",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects blank address",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects long address",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects blank phone",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects long phone",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects long closed days",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects long guide",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects closed days wrong type",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Patch rejects guide wrong type",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Rejected patches do not change stored maximum-length values",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Restore readable synthetic QA values via PATCH",
+      "method": "PATCH",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Approved seller update retains approved state",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Anonymous public store read has only six documented fields",
+      "method": "GET",
+      "path": "/stores/8",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer can read public store",
+      "method": "GET",
+      "path": "/stores/8",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Invalid optional-auth token returns 401 on public store",
+      "method": "GET",
+      "path": "/stores/8",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Missing public store returns 404",
+      "method": "GET",
+      "path": "/stores/999999",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Public store rejects invalid id abc",
+      "method": "GET",
+      "path": "/stores/abc",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Public store rejects invalid id 0",
+      "method": "GET",
+      "path": "/stores/0",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Public store rejects invalid id -1",
+      "method": "GET",
+      "path": "/stores/-1",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Public store rejects invalid id 1.5",
+      "method": "GET",
+      "path": "/stores/1.5",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Public store rejects invalid id 9007199254740992",
+      "method": "GET",
+      "path": "/stores/9007199254740992",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Untouched missing-store account still has no store",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Patching approved store did not alter another seller store",
+      "passed": true
+    },
+    {
+      "name": "All pre-existing rows across eleven models remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend remains healthy",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "expectedContract": {
+    "storeDtoFields": [
+      "closed_days",
+      "pickup_guide",
+      "storeId",
+      "store_address",
+      "store_name",
+      "store_phone"
+    ],
+    "requiredMaxLengths": {
+      "store_name": 100,
+      "store_address": 255,
+      "store_phone": 20
+    },
+    "optionalMaxLengths": {
+      "closed_days": 100,
+      "pickup_guide": 5000
+    },
+    "approvalRequiredForStore": false,
+    "patchUnknownFieldsRejected": true,
+    "explicitNullClearsOptional": true,
+    "blankOptionalRemainsEmptyString": true
+  },
+  "userStateTransitions": {
+    "pending": {
+      "userId": 22,
+      "before": {
+        "hasStore": false,
+        "approval": "PENDING"
+      },
+      "after": {
+        "hasStore": true,
+        "approval": "PENDING"
+      },
+      "storeId": 8
+    },
+    "rejected": {
+      "userId": 24,
+      "before": {
+        "hasStore": false,
+        "approval": "REJECTED"
+      },
+      "after": {
+        "hasStore": true,
+        "approval": "REJECTED"
+      },
+      "storeId": 9
+    }
+  },
+  "stores": {
+    "pendingCreated": 8,
+    "rejectedCreated": 9,
+    "concurrentCreated": 10,
+    "approvedPatched": 6
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 21,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "browserAccountsExcludedFromMutation": true,
+  "health": {
+    "backendReady": true,
+    "frontendReady": true
+  },
+  "passed": 77
+}

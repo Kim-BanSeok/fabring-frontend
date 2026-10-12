@@ -30,13 +30,13 @@ export default function AppShell({ ctx, children, footer }) {
   const { path, query, role, logout } = ctx;
   const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations'].includes(path)
     || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/'].some(prefix => path.startsWith(prefix));
-  const sellerConnectedPage = ['/seller', '/seller/dashboard', '/seller/calendar', '/seller/reservations', '/seller/fabrics', '/seller/register', '/seller/upload'].includes(path)
+  const sellerConnectedPage = ['/seller', '/seller/dashboard', '/seller/calendar', '/seller/reservations', '/seller/fabrics', '/seller/register', '/seller/upload', '/seller/store', '/seller/profile', '/seller/profile/saved', '/seller/approval'].includes(path)
     || ['/seller/reservations/', '/seller/fabrics/', '/seller/register/'].some(prefix => path.startsWith(prefix));
   const showConnectionScope = ctx.mode === 'live' && !path.startsWith('/auth/') && path !== '/preview' && !buyerConnectedPage && !sellerConnectedPage;
   const scopeMessage = role === 'BUYER'
     ? '원단 조회와 픽업 예약 요청·내역·취소는 연결되어 있어요. 문의와 회원 정보 수정은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
     : role === 'SELLER'
-      ? '계정·매장 조회, 직접 원단 등록·관리, 예약 처리, 대시보드 통계와 픽업 달력은 연결되어 있어요. 문의 답변·매장 저장·AI 등록은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
+      ? '계정 조회·매장 등록·수정, 직접 원단 등록·관리, 예약 처리, 대시보드 통계와 픽업 달력은 연결되어 있어요. 개인 프로필 수정·문의 답변·AI 등록은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
       : '계정·매장 조회는 연결되어 있어요. 이 관리 화면의 원단 목록과 수치는 아직 실제 조회 결과가 아니며, 업무 처리는 저장되지 않습니다.';
   const showStoreError = ctx.mode === 'live' && role === 'SELLER' && !path.startsWith('/auth/') && ctx.state.storeError;
   const main = <main className="main-content" id="main-content">{showConnectionScope || showStoreError ? <div className="stack">{showConnectionScope && <Notice>{scopeMessage}</Notice>}{showStoreError && <Notice tone="error">{ctx.state.storeError}</Notice>}{children}</div> : children}</main>;

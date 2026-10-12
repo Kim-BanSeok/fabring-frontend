@@ -4,6 +4,7 @@ import { reservationQuery, reservationPage, reservationDetail, reservationIdenti
   receivedReservationQuery, receivedReservationPage, acceptReservationInput, rejectReservationInput } from './reservation-contract.js';
 import { SELLER_FABRIC_STATUSES, SELLER_INQUIRY_STATUSES, sellerStatusCount, collectSellerPickups } from './seller-dashboard-contract.js';
 import { ownFabricQuery, ownFabricPage, ownFabricDetail, sellerFabricInput, fabricMutation, fabricDeletion, imageUploadBody, fabricImage } from './seller-fabric-contract.js';
+import { storeInput, storeDetail, storeCreated } from './store-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -14,7 +15,7 @@ const cancelled = () => new DOMException('Aborted', 'AbortError');
 // This adapter contains no demo fixtures. Unconnected business operations never report success.
 export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs } = {}) {
   let credential = null, user = null, store = {}, storeError = '', restorePromise, revision = 0;
-  let status = 'anonymous', error = '', expiryTimer;
+  let status = 'anonymous', error = '', expiryTimer, storeVersion = 0;
   const listeners = new Set();
   try {
     const saved = JSON.parse(storage?.getItem(AUTH_STORAGE_KEY) || 'null');
@@ -54,12 +55,10 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     let ownStore = {}, ownStoreError = '';
     if (profile.role === 'SELLER' && profile.hasStore) {
       try {
-        const result = await request('/stores/me', { token, signal, authenticated });
-        if (!result || result.storeId == null) throw new ApiError('INVALID_RESPONSE', '매장 정보를 확인하지 못했어요.');
-        ownStore = { id: result.storeId, store_name: result.store_name, address: result.store_address, phone_number: result.store_phone, closed_days: result.closed_days, pickup_guide: result.pickup_guide };
+        ownStore = storeDetail(await request('/stores/me', { token, signal, authenticated }));
       } catch (failure) {
         if (signal?.aborted || failure.status === 401) throw failure;
-        ownStoreError = '매장 정보를 불러오지 못했어요. 다시 로그인하면 정보를 다시 확인합니다.';
+        ownStoreError = '매장 정보를 불러오지 못했어요. 마이페이지에서 다시 조회해 주세요.';
       }
     }
     return { user: profile, store: ownStore, storeError: ownStoreError };
@@ -124,11 +123,77 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       throw failure;
     }
   }
+  async function sellerStoreRequest(path, { signal, body, method = 'GET', decode }) {
+    requireSession(['SELLER']);
+    const version = revision;
+    try {
+      const result = await request(path, { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return decode(result);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version) throw cancelled();
+      if (method !== 'GET' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '매장 저장 결과를 확인하지 못했어요. 다시 보내기 전에 현재 매장 정보를 조회해 주세요.';
+      }
+      throw failure;
+    }
+  }
   const api = {
     mode: 'live',
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async refreshSellerProfile({ signal } = {}) {
+      requireSession(['SELLER']);
+      const version = storeVersion;
+      const result = await sellerStoreRequest('/users/me', { signal, decode: raw => {
+        if (!validUser(raw) || raw.role !== 'SELLER' || raw.userId !== user.userId || typeof raw.email !== 'string'
+          || !['PENDING', 'APPROVED', 'REJECTED'].includes(raw.seller_approval_status)) throw new ApiError('INVALID_RESPONSE', '판매자 계정 정보를 확인하지 못했어요. 다시 조회해 주세요.');
+        return raw;
+      } });
+      if (storeVersion !== version) throw cancelled();
+      user = result;
+      if (!user.hasStore) { store = {}; storeError = ''; }
+      emit();
+      return { ...structuredClone(user), id: user.userId };
+    },
+    async getMyStore({ signal } = {}) {
+      const version = storeVersion;
+      let result;
+      try { result = await sellerStoreRequest('/stores/me', { signal, decode: storeDetail }); }
+      catch (failure) {
+        if (failure.status !== 404 || failure.code !== 'NOT_FOUND') throw failure;
+        result = null;
+      }
+      if (storeVersion !== version) throw cancelled();
+      store = result || {}; storeError = ''; user = { ...user, hasStore: Boolean(result) };
+      emit();
+      return result ? structuredClone(result) : null;
+    },
+    async createStore(input, { signal } = {}) {
+      requireSession(['SELLER']);
+      const body = storeInput(input); storeVersion++;
+      const result = await sellerStoreRequest('/stores', { signal, method: 'POST', body, decode: storeCreated });
+      storeVersion++;
+      user = { ...user, hasStore: true };
+      storeError = '';
+      emit();
+      return result;
+    },
+    async updateStore(input, { signal } = {}) {
+      requireSession(['SELLER']);
+      const body = storeInput(input, { partial: true }), expectedId = store.id; storeVersion++;
+      const result = await sellerStoreRequest('/stores/me', { signal, method: 'PATCH', body, decode: raw => {
+        const next = storeDetail(raw);
+        if (expectedId && next.id !== expectedId) throw new ApiError('INVALID_RESPONSE', '변경된 매장 정보를 확인하지 못했어요. 다시 조회해 주세요.');
+        return next;
+      } });
+      storeVersion++;
+      store = result; storeError = ''; user = { ...user, hasStore: true };
+      emit();
+      return structuredClone(result);
+    },
     async listMyFabrics(filters = {}, { signal } = {}) {
       requireSession(['SELLER']);
       return sellerFabricRequest(`/sellers/me/fabrics?${ownFabricQuery(filters)}`, { signal, decode: ownFabricPage });

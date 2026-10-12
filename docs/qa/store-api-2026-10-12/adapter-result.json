@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-12T08:28:06.865Z",
+  "passed": 8,
+  "storeId": 12,
+  "checks": [
+    "fresh seller profile and missing store",
+    "POST acknowledgment and hasStore update",
+    "server profile preserves PENDING after registration",
+    "GET maps persisted store fields",
+    "PATCH preserves omitted fields and clears optional values",
+    "shared store snapshot updates without relogin",
+    "GET confirms final saved values",
+    "session restoration loads saved store"
+  ],
+  "credentialsIncluded": false
+}

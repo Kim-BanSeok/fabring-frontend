@@ -157,6 +157,7 @@
 .seller-reservation-failure { display: flex; flex-direction: column; gap: 16px; }
 .seller-overview-failure { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
 .seller-live-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+.seller-store-text { white-space: pre-wrap; overflow-wrap: anywhere; }
 .seller-live-fieldset:disabled { opacity: .8; }
 .seller-fabric-table .seller-thumb.fabric-art--empty { padding: 4px; }
 .seller-fabric-table .seller-thumb.fabric-art--empty p { margin: 0; font-size: 11px; line-height: 1.4; }

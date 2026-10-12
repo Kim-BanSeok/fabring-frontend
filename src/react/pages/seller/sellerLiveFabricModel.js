@@ -61,7 +61,7 @@ export function liveFabricFailure(error) {
     INSUFFICIENT_LENGTH: '수락된 예약이 확보한 길이보다 적게 줄일 수 없어요. 현재 재고와 예약을 다시 확인해 주세요.',
     INVALID_STATUS: '원단 상태가 바뀌었어요. 현재 원단 정보를 다시 확인해 주세요.',
     SELLER_NOT_APPROVED: '판매자 승인이 완료되어야 원단을 등록할 수 있어요.',
-    STORE_REQUIRED: '원단 등록 전에 매장 정보가 필요해요. 매장 정보 저장 연결은 준비 중입니다.',
+    STORE_REQUIRED: '원단 등록 전에 매장 정보가 필요해요. 마이페이지에서 매장 정보를 등록해 주세요.',
     IMAGE_LIMIT_EXCEEDED: '사진은 원단당 최대 3장이에요. 현재 등록된 사진을 다시 확인해 주세요.',
   };
   return { locked: ['INVALID_STATUS', 'NOT_FOUND', 'FORBIDDEN', 'SELLER_NOT_APPROVED', 'STORE_REQUIRED'].includes(error.code), message: messages[error.code] || error.message || '처리하지 못했어요. 입력 내용과 현재 상태를 확인해 주세요.' };
