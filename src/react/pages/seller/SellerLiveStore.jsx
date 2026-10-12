@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Badge, Button, Field, Notice, PageHeading } from '../../components/ui.jsx';
 import useReservationMutation from '../../hooks/useReservationMutation.js';
+import { ProfileAccountForm } from '../LiveProfilePage.jsx';
 import {
   SELLER_APPROVAL_LABELS, SELLER_STORE_DRAFT_KEY, SELLER_STORE_OPERATION_KEY,
   sellerStoreDraft, readSellerStoreForm, sellerStoreFailure, startSellerStoreRead, saveSellerStore,
@@ -67,15 +68,17 @@ function StoreForm({ ctx, seller, store, retry }) {
       {serverChecked ? store ? <StoreDetails store={store} /> : <p>방금 조회한 서버에는 등록된 매장이 없어요. 이미 전송한 요청이 늦게 처리될 수 있으므로 자동으로 다시 등록하지 않습니다.</p> : <p>저장 요청 이후의 상태를 아직 조회하지 않았어요.</p>}
       <div className="actions"><Button onClick={retry}>서버 매장 다시 조회</Button><Button onClick={clearUncertain} disabled={!serverChecked || mutation.busy}>{store ? '서버 정보를 확인했어요 · 수정 계속' : '등록 여부를 확인했어요 · 작성 계속'}</Button></div>
     </section>}
-    <form ref={form} id={profile ? 'seller-profile-form' : 'seller-store-form'} className="stack" onSubmit={submit} onInput={remember} onChange={remember}>
+    <div className={profile ? 'seller-columns' : 'stack'}>
+    {profile && <ProfileAccountForm ctx={ctx} user={seller} />}
+    <form ref={form} id="seller-store-form" className="stack" onSubmit={submit} onInput={remember} onChange={remember}>
       <fieldset className="seller-live-fieldset stack" disabled={mutation.busy || uncertain}>
-        <div className={profile ? 'seller-columns' : 'stack'}>
-          {profile && <section className="panel seller-panel"><h2>계정 정보</h2><Field label="닉네임" name="personal_nickname" value={seller.nickname || ''} readOnly /><Field label="로그인 이메일 · 변경 불가" name="personal_email" value={seller.email || ''} readOnly /><Field label="개인 연락처" name="personal_phone" value={seller.phone_number || ''} type="tel" readOnly /><Notice>개인 닉네임·전화번호 수정은 아직 연결하지 않았어요. 아래 저장 버튼은 매장 정보만 저장합니다.</Notice><Badge tone={approvalTone(seller.seller_approval_status)}>{SELLER_APPROVAL_LABELS[seller.seller_approval_status] || '상태 확인 필요'}</Badge><Link path="/seller/approval">판매자 승인 상태 확인</Link></section>}
+        <div className="stack">
           <section className="panel seller-panel"><h2>{store ? '매장 / 픽업 정보' : '매장 정보 등록'}</h2><StoreFields initial={draft} /><Notice>매장 정보를 저장해도 판매자 승인 상태는 바뀌지 않아요. 휴무일과 픽업 안내를 비우면 기존 내용이 삭제됩니다.</Notice></section>
         </div>
         <div className="panel seller-profile-save"><p>매장 / 픽업 정보만 {store ? '수정' : '등록'}해요.</p><Button type="submit" tone="primary">{mutation.busy ? '저장 중' : store ? '매장 변경사항 저장' : '매장 정보 등록'}</Button></div>
       </fieldset>
     </form>
+    </div>
     <div className="actions"><Button onClick={retry} disabled={mutation.busy}>계정·매장 새로 조회</Button><Link path={profile ? '/seller/dashboard' : '/seller/profile'}>{profile ? '메인으로' : '마이페이지로 돌아가기'}</Link>{profile && <Button onClick={() => ctx.logout()} disabled={mutation.busy}>로그아웃</Button>}</div>
     <p className="muted">작성 중인 내용은 이 탭에서만 임시로 보관해요. 새로고침하면 저장하지 않은 입력은 사라집니다.</p>
   </section>;

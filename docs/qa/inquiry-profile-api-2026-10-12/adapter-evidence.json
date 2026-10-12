@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-10-12T12:10:27.158Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Production frontend adapter against real isolated loopback Express/PostgreSQL test backend; controlled client-side ACK-loss/delay injections clearly identified; no main DB writes",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Production adapter creates trimmed private inquiry with string id",
+      "passed": true
+    },
+    {
+      "name": "Author and seller pages normalize string ids and preserve private contents",
+      "passed": true
+    },
+    {
+      "name": "Anonymous and other buyer receive backend-masked private content",
+      "passed": true
+    },
+    {
+      "name": "Owner answer and answer edit observed by author through real API",
+      "passed": true
+    },
+    {
+      "name": "Answered private entry stays masked for unauthorized viewer",
+      "passed": true
+    },
+    {
+      "name": "Received WAITING filter excludes answered item and ANSWERED includes it",
+      "passed": true
+    },
+    {
+      "name": "Real page size1 and outside page preserve totals without guessed rows",
+      "passed": true
+    },
+    {
+      "name": "Wrong-role and malformed inputs rejected before HTTP",
+      "passed": true
+    },
+    {
+      "name": "Real backend404 and forbidden ownership remain known errors",
+      "passed": true
+    },
+    {
+      "name": "Profile GET and PATCH update current adapter session nickname and phone",
+      "passed": true
+    },
+    {
+      "name": "Empty phone becomes null, nickname remains same on partial write",
+      "passed": true
+    },
+    {
+      "name": "Seller profile save preserves approved status and separate store fields",
+      "passed": true
+    },
+    {
+      "name": "Profile unsupported fields and limits blocked before HTTP",
+      "passed": true
+    },
+    {
+      "name": "Controlled lost create ACK is unknown, never automatically retried",
+      "passed": true
+    },
+    {
+      "name": "GET after lost create ACK finds exactly one server-created inquiry",
+      "passed": true
+    },
+    {
+      "name": "Controlled lost answer ACK keeps uncertainty then GET recovers answer once",
+      "passed": true
+    },
+    {
+      "name": "Controlled lost profile ACK does not optimistically update current session",
+      "passed": true
+    },
+    {
+      "name": "Profile GET recovers server-applied update after lost ACK without resending",
+      "passed": true
+    },
+    {
+      "name": "Delayed pre-save profile GET cannot overwrite newer successful PATCH",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry response arriving after logout is discarded, anonymous requery masked",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 20
+}

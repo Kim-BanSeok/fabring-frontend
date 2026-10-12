@@ -51,6 +51,25 @@ test('StrictMode cleanup skips its request and a late profile cannot start a sto
   assert.equal(profileCalls, 1); assert.equal(storeCalls, 0); assert.deepEqual(results, []);
 });
 
+test('active store/profile read invalidated by a write shows a retryable error instead of loading forever', async () => {
+  for (const staleStage of ['profile', 'store']) {
+    const results = [], errors = []; let stale = true;
+    const read = stage => {
+      if (stale && staleStage === stage) throw new DOMException('Aborted', 'AbortError');
+      return stage === 'profile' ? seller('APPROVED') : null;
+    };
+    const api = { refreshSellerProfile: async () => read('profile'), getMyStore: async () => read('store') };
+    const stop = startSellerStoreRead(api, false, value => results.push(value), error => errors.push(error));
+    await settle(); stop();
+    assert.equal(errors.length, 1); assert.equal(errors[0].code, 'STALE_STORE_READ');
+    assert.match(errors[0].message, /다시 조회/); assert.deepEqual(results, []);
+    stale = false;
+    const retry = startSellerStoreRead(api, false, value => results.push(value), error => errors.push(error));
+    await settle(); retry();
+    assert.equal(results.length, 1); assert.equal(results[0].store, null); assert.equal(errors.length, 1);
+  }
+});
+
 test('pending/rejected sellers may register; UI uses explicit create only and stores acknowledgement before later reads', async () => {
   for (const approval of ['PENDING', 'REJECTED']) {
     const user = seller(approval), operations = [], calls = [];

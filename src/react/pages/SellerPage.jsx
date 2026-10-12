@@ -7,12 +7,14 @@ import SellerReservations from './seller/SellerReservations.jsx';
 import SellerLiveOverview from './seller/SellerLiveOverview.jsx';
 import SellerLiveFabrics from './seller/SellerLiveFabrics.jsx';
 import SellerLiveStore from './seller/SellerLiveStore.jsx';
+import { SellerLiveInquiries } from './InquiryPages.jsx';
 
 const PHOTO_ORDER = ['FULL', 'ZOOM', 'DEFECT'];
 const fabricRoute = fabric => `/seller/fabrics/detail?id=${encodeURIComponent(fabric.id)}`;
 const formValues = form => Object.fromEntries([...new FormData(form)].map(([key, value]) => [key, String(value).trim()]));
 
 export default function SellerPage({ ctx }) {
+  if (ctx.mode === 'live' && ['/seller/inquiries', '/seller/inquiries/answered'].includes(ctx.path)) return <SellerLiveInquiries ctx={ctx} />;
   if (ctx.mode === 'live' && ['/seller/store', '/seller/profile', '/seller/profile/saved', '/seller/approval'].includes(ctx.path)) return <SellerLiveStore ctx={ctx} />;
   if (ctx.mode === 'live' && ['/seller/reservations', '/seller/reservations/confirm'].includes(ctx.path)) return <SellerReservations ctx={ctx} />;
   if (ctx.mode === 'live' && ['/seller', '/seller/dashboard', '/seller/calendar'].includes(ctx.path)) return <SellerLiveOverview ctx={ctx} />;

@@ -1,0 +1,170 @@
+{
+  "checkedAt": "2026-10-12T12:08:30.883Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Actual HTTP against unmodified Express app on loopback3002 and separate task-only PostgreSQL test database; no main or previous shared test database writes",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Real credential login for isolated buyer",
+      "passed": true
+    },
+    {
+      "name": "Real credential login for isolated otherBuyer",
+      "passed": true
+    },
+    {
+      "name": "Real credential login for isolated seller",
+      "passed": true
+    },
+    {
+      "name": "Real credential login for isolated otherSeller",
+      "passed": true
+    },
+    {
+      "name": "Real credential login for isolated admin",
+      "passed": true
+    },
+    {
+      "name": "BUYER creates trimmed public inquiry and receives201 WAITING",
+      "passed": true
+    },
+    {
+      "name": "BUYER creates private inquiry and receives201 WAITING",
+      "passed": true
+    },
+    {
+      "name": "Public inquiry exposes no account ID, phone, email or token fields",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry masks content and answer for anonymous",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry masks content and answer for otherBuyer",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry masks content and answer for otherSeller",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry content readable by authorized buyer",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry content readable by authorized seller",
+      "passed": true
+    },
+    {
+      "name": "Private inquiry content readable by authorized admin",
+      "passed": true
+    },
+    {
+      "name": "Inquiry creation rejects nonbuyer anonymous",
+      "passed": true
+    },
+    {
+      "name": "Inquiry creation rejects nonbuyer seller",
+      "passed": true
+    },
+    {
+      "name": "Inquiry creation rejects nonbuyer admin",
+      "passed": true
+    },
+    {
+      "name": "Create input rejects blank",
+      "passed": true
+    },
+    {
+      "name": "Create input rejects over1000",
+      "passed": true
+    },
+    {
+      "name": "Create input rejects stringprivacy",
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot write or view PENDING fabric inquiries",
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot write or view SOLD_OUT fabric inquiries",
+      "passed": true
+    },
+    {
+      "name": "Seller WAITING list includes public and private questions with full contents",
+      "passed": true
+    },
+    {
+      "name": "Other seller received list excludes owner questions",
+      "passed": true
+    },
+    {
+      "name": "Received list filters and pagination use actual totals",
+      "passed": true
+    },
+    {
+      "name": "Invalid ANSWER status filter and page size are rejected",
+      "passed": true
+    },
+    {
+      "name": "Foreign seller cannot answer owner inquiry",
+      "passed": true
+    },
+    {
+      "name": "Owner answers private inquiry with trimmed text",
+      "passed": true
+    },
+    {
+      "name": "Buyer sees answer and KST timestamp; stranger still sees masked content",
+      "passed": true
+    },
+    {
+      "name": "Answer edit replaces answer without creating another inquiry",
+      "passed": true
+    },
+    {
+      "name": "Answer completion updates server WAITING and ANSWERED totals",
+      "passed": true
+    },
+    {
+      "name": "Answer blank and over1000 rejected without changing stored answer",
+      "passed": true
+    },
+    {
+      "name": "Profile update for buyer preserves account identity, email, role, approval and store flag",
+      "passed": true
+    },
+    {
+      "name": "Profile update for seller preserves account identity, email, role, approval and store flag",
+      "passed": true
+    },
+    {
+      "name": "Profile update for admin preserves account identity, email, role, approval and store flag",
+      "passed": true
+    },
+    {
+      "name": "Partial nickname update preserves phone and null clears phone",
+      "passed": true
+    },
+    {
+      "name": "Profile update never modifies seller store contact or store name",
+      "passed": true
+    },
+    {
+      "name": "Profile rejects empty, blank nickname, long nickname or phone and unauthorized fields",
+      "passed": true
+    },
+    {
+      "name": "Anonymous and invalid-token profile writes rejected",
+      "passed": true
+    },
+    {
+      "name": "Profile maximum lengths50 and20 accepted and can restore safe QA labels",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 40
+}

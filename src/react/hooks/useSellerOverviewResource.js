@@ -13,7 +13,10 @@ export function startSellerOverviewRequest(api, kind, onSuccess, onError) {
   let active = true;
   Promise.resolve().then(() => active ? requests[kind](api, { signal: controller.signal }) : undefined)
     .then(data => { if (active) onSuccess(data); }, error => {
-      if (active && !controller.signal.aborted && error?.name !== 'AbortError') onError(error);
+      if (!active || controller.signal.aborted) return;
+      onError(error?.name === 'AbortError'
+        ? Object.assign(new Error('처리 중인 정보가 변경되어 최신 현황을 다시 조회해야 해요.'), { code: 'STALE_OVERVIEW_READ' })
+        : error);
     });
   return () => { active = false; controller.abort(); };
 }

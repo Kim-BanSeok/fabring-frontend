@@ -8,6 +8,8 @@ import { storeInput, storeDetail, storeCreated } from './store-contract.js';
 import { ADMIN_FABRIC_STATUSES, ADMIN_SELLER_STATUSES, adminQuery, adminPage, adminReview, adminReviewResult, findAdminSeller } from './admin-contract.js';
 import { patternQuery, patternPage, patternDetail, patternIdentifier, recommendationResult } from './recommendation-contract.js';
 import { aiSessionIdentifier, aiAnswerInput, aiSession, aiAborted } from './ai-contract.js';
+import { inquiryIdentifier, inquiryQuery, inquiryInput, inquiryPage, inquiryMutation } from './inquiry-contract.js';
+import { profileInput, profileDetail } from './profile-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -19,6 +21,7 @@ const cancelled = () => new DOMException('Aborted', 'AbortError');
 export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs, aiTimeoutMs = 45000 } = {}) {
   let credential = null, user = null, store = {}, storeError = '', restorePromise, revision = 0;
   let status = 'anonymous', error = '', expiryTimer, storeVersion = 0, adminVersion = 0;
+  let inquiryVersion = 0, profileVersion = 0, profileWriteSequence = 0;
   const listeners = new Set();
   const aiVersions = new Map();
   try {
@@ -183,11 +186,86 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       throw failure;
     } finally { if (method !== 'GET' && revision === version) bump(); }
   }
+  async function inquiryRequest(path, { signal, body, method = 'GET', decode }) {
+    const version = revision;
+    if (method !== 'GET') inquiryVersion++;
+    const readVersion = inquiryVersion;
+    try {
+      const raw = await request(path, { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== inquiryVersion)) throw cancelled();
+      return decode(raw);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== inquiryVersion)) throw cancelled();
+      if (method !== 'GET' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '처리 결과를 확인하지 못했어요. 문의 목록에서 저장된 내용을 확인한 뒤 계속해 주세요.';
+      }
+      throw failure;
+    } finally { if (method !== 'GET' && revision === version) inquiryVersion++; }
+  }
+  async function profileRequest({ signal, body, method = 'GET', submitted }) {
+    requireSession(roles);
+    const version = revision, identity = { ...user };
+    try {
+      const raw = await request('/users/me', { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return profileDetail(raw, identity, submitted);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version) throw cancelled();
+      if (method !== 'GET' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '계정 정보 저장 결과를 확인하지 못했어요. 현재 정보를 다시 조회해 확인해 주세요.';
+      }
+      throw failure;
+    }
+  }
   const api = {
     mode: 'live',
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async listFabricInquiries(fabricId, input = {}, { signal } = {}) {
+      const identifier = inquiryIdentifier(fabricId), query = inquiryQuery(input);
+      return inquiryRequest(`/fabrics/${identifier}/inquiries?${query}`, { signal, decode: raw => inquiryPage(raw, query, { fabricId: identifier }) });
+    },
+    async listSellerInquiries(input = {}, { signal } = {}) {
+      requireSession(['SELLER']);
+      const query = inquiryQuery(input, { seller: true });
+      return inquiryRequest(`/sellers/me/inquiries?${query}`, { signal, decode: raw => inquiryPage(raw, query) });
+    },
+    async createInquiry(fabricId, input, { signal } = {}) {
+      requireSession(['BUYER']);
+      const identifier = inquiryIdentifier(fabricId), body = inquiryInput(input);
+      return inquiryRequest(`/fabrics/${identifier}/inquiries`, { signal, body, method: 'POST', decode: raw => inquiryMutation(raw, 'WAITING') });
+    },
+    async answerInquiry(id, input, { signal } = {}) {
+      requireSession(['SELLER']);
+      const identifier = inquiryIdentifier(id), body = inquiryInput(input, { answer: true });
+      return inquiryRequest(`/inquiries/${identifier}/answer`, { signal, body, method: 'POST', decode: raw => inquiryMutation(raw, 'ANSWERED', identifier) });
+    },
+    async getMyProfile({ signal } = {}) {
+      const readVersion = profileVersion, stores = storeVersion;
+      const result = await profileRequest({ signal });
+      if (readVersion !== profileVersion || stores !== storeVersion) throw cancelled();
+      user = result;
+      if (!user.hasStore) { store = {}; storeError = ''; }
+      emit();
+      return structuredClone(user);
+    },
+    async updateProfile(input, { signal } = {}) {
+      requireSession(roles);
+      const body = profileInput(input), version = revision, stores = storeVersion, write = ++profileWriteSequence;
+      profileVersion++;
+      try {
+        const result = await profileRequest({ signal, body, method: 'PATCH', submitted: body });
+        if (write !== profileWriteSequence) throw cancelled();
+        // A simultaneous store save may have already updated hasStore locally.
+        user = { ...result, ...(stores !== storeVersion ? { hasStore: user.hasStore } : {}) };
+        if (!user.hasStore) { store = {}; storeError = ''; }
+        emit();
+        return structuredClone(user);
+      } finally { if (revision === version) profileVersion++; }
+    },
     async startAiSession({ signal } = {}) {
       return aiRequest('/ai-sessions', { method: 'POST', signal, decode: raw => aiSession(raw, { open: true }) });
     },
@@ -254,13 +332,13 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async refreshSellerProfile({ signal } = {}) {
       requireSession(['SELLER']);
-      const version = storeVersion;
+      const version = storeVersion, profileReadVersion = profileVersion;
       const result = await sellerStoreRequest('/users/me', { signal, decode: raw => {
         if (!validUser(raw) || raw.role !== 'SELLER' || raw.userId !== user.userId || typeof raw.email !== 'string'
           || !['PENDING', 'APPROVED', 'REJECTED'].includes(raw.seller_approval_status)) throw new ApiError('INVALID_RESPONSE', '판매자 계정 정보를 확인하지 못했어요. 다시 조회해 주세요.');
         return raw;
       } });
-      if (storeVersion !== version) throw cancelled();
+      if (storeVersion !== version || profileVersion !== profileReadVersion) throw cancelled();
       user = result;
       if (!user.hasStore) { store = {}; storeError = ''; }
       emit();
@@ -347,11 +425,11 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async getSellerInquiryCounts({ signal } = {}) {
       requireSession(['SELLER']);
-      const version = revision;
+      const version = revision, readVersion = inquiryVersion;
       const counts = await Promise.all(SELLER_INQUIRY_STATUSES.map(async status => [status, await reservationRequest(`/sellers/me/inquiries?status=${status}&page=0&size=1`, {
         signal, decode: raw => sellerStatusCount(raw, status, 'inquiry'),
       })]));
-      if (revision !== version || signal?.aborted) throw cancelled();
+      if (revision !== version || signal?.aborted || readVersion !== inquiryVersion) throw cancelled();
       return { ...Object.fromEntries(counts), total: counts.reduce((sum, [, count]) => sum + count, 0) };
     },
     async getSellerPickupCalendar({ signal } = {}) {
@@ -478,7 +556,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async logout() { clearSession(); },
   };
-  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos']) {
+  for (const name of ['updateSellerProfile', 'saveStore', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos']) {
     api[name] = async () => { throw new ApiError('NOT_CONNECTED', '이 기능은 아직 서버와 연결되지 않았어요. 전체 화면 미리보기에서 흐름을 확인할 수 있어요.'); };
   }
   return api;

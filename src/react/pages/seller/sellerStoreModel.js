@@ -46,7 +46,14 @@ export function startSellerStoreRead(api, profileOnly, onSuccess, onFailure) {
     if (!active) return;
     const store = profileOnly ? null : await api.getMyStore({ signal: controller.signal });
     if (active) onSuccess({ seller, store });
-  }).catch(error => { if (active && !controller.signal.aborted && error?.name !== 'AbortError') onFailure(error); });
+  }).catch(error => {
+    if (!active || controller.signal.aborted) return;
+    if (error?.name === 'AbortError') {
+      const failure = new Error('조회 중 계정 또는 매장 정보가 변경되었어요. 현재 정보를 다시 조회해 주세요.');
+      failure.code = 'STALE_STORE_READ';
+      onFailure(failure);
+    } else onFailure(error);
+  });
   return () => { active = false; controller.abort(); };
 }
 

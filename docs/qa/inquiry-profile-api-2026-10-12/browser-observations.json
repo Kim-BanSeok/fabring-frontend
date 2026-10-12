@@ -1,0 +1,22 @@
+{
+  "checkedOn": "2026-10-12",
+  "environment": "Separate Vite 5174 -> loopback Express 3002 -> task-only isolated PostgreSQL test database",
+  "mainEnvironmentModified": false,
+  "observedFlows": [
+    "Buyer profile nickname and phone save, phone cleared and saved as null, then verified after relogin.",
+    "Public and private inquiry creation on the isolated posted fabric; both appear in actual server list.",
+    "Current-tab inquiry target shortcuts clearly distinguished from an unavailable all-fabrics own-inquiry API.",
+    "Seller receives both questions, answers both and updates the private answer from 10:00 to 11:00.",
+    "Author reads the final private answer after reload; a different buyer sees masked private content and no private answer, while public inquiry remains readable.",
+    "Seller nickname and personal phone save independently of unchanged store name, store phone and approval.",
+    "Desktop seller profile preserves two equal 535 px content columns at a 1280 px viewport.",
+    "Mobile buyer inquiry and seller profile DOM measurements: viewport 390 px; document width 375 px accounting for scrollbar; no page-level horizontal overflow.",
+    "The final mobile buyer inquiry screenshot shows a different buyer and therefore private contents/answers are masked; it is not the author's final-answer view.",
+    "Final mobile seller inquiry measurement: viewport390 px, document client375/scroll375 px, table client293/scroll293 px, three status tabs aligned. Neither page nor inquiry table has horizontal overflow."
+  ],
+  "latestConsole": { "errors": 0, "warnings": 0, "scope": "After successful reload of the final page" },
+  "developmentObservation": "One temporary Vite HMR error occurred while a new scoped inquiry CSS file was being created. The file was completed, reload succeeded, and the final build and latest console check passed. It was not observed as an application runtime error.",
+  "readOnlyServerProof": "final-readonly.json",
+  "mainDataProof": "main-data-unchanged.json",
+  "sensitiveValuesIncluded": false
+}

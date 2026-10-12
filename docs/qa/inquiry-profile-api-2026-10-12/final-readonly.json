@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-10-12T12:19:13.664Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Final read-only SQL and HTTP GET against separate task-only database after browser actions; generated read tokens kept in memory and never recorded",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Browser created both public and private inquiry records in isolated DB",
+      "passed": true
+    },
+    {
+      "name": "Browser inquiries belong to intended buyer, seller and posted fabric",
+      "passed": true
+    },
+    {
+      "name": "Private browser question has actual persisted seller answer and timestamp",
+      "passed": true
+    },
+    {
+      "name": "Public browser question retained nonempty trimmed content",
+      "passed": true
+    },
+    {
+      "name": "Both browser inquiries are answered and private answer includes final edited pickup time",
+      "passed": true
+    },
+    {
+      "name": "Buyer browser nickname and cleared null phone persisted exactly",
+      "passed": true
+    },
+    {
+      "name": "Seller browser nickname and personal phone persisted exactly",
+      "passed": true
+    },
+    {
+      "name": "browserBuyer nickname changed from seeded value without changing identity or email",
+      "passed": true
+    },
+    {
+      "name": "browserBuyer profile GET matches persisted nickname and nullable phone",
+      "passed": true
+    },
+    {
+      "name": "browserSeller nickname changed from seeded value without changing identity or email",
+      "passed": true
+    },
+    {
+      "name": "browserSeller profile GET matches persisted nickname and nullable phone",
+      "passed": true
+    },
+    {
+      "name": "Seller profile changes preserve approval, store ownership and store contact",
+      "passed": true
+    },
+    {
+      "name": "Browser author sees all actual stored question contents and answers",
+      "passed": true
+    },
+    {
+      "name": "Anonymous GET hides private contents and answers but retains public inquiry",
+      "passed": true
+    },
+    {
+      "name": "Browser seller received list exposes own private content and stored answer",
+      "passed": true
+    },
+    {
+      "name": "Seller WAITING and ANSWERED totals match actual isolated records",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 16,
+  "browserInquiryCount": 2
+}

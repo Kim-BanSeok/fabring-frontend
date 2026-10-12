@@ -114,3 +114,14 @@ test('returning to the calendar starts a fresh read instead of reusing a complet
   await settle(); second();
   assert.equal(values[0].totalElements, 1); assert.equal(values[1].totalElements, 0); assert.equal(calls, 2);
 });
+
+test('a count read invalidated by an overlapping inquiry answer offers retry instead of hanging loading', async () => {
+  const effects = [], stale = Object.assign(new Error('changed while reading'), { name: 'AbortError' });
+  const api = { getSellerInquiryCounts: async () => { throw stale; } };
+  const stop = startSellerOverviewRequest(api, 'inquiries', assert.fail, error => effects.push(error));
+  await settle();
+  assert.equal(effects.length, 1); assert.equal(effects[0].code, 'STALE_OVERVIEW_READ');
+  assert.match(effects[0].message, /다시 조회/); stop();
+  const canceled = startSellerOverviewRequest(api, 'inquiries', assert.fail, error => effects.push(error));
+  canceled(); await settle(); assert.equal(effects.length, 1);
+});

@@ -4,6 +4,8 @@ import useFabricResource from '../hooks/useFabricResource.js';
 import useReservationResource from '../hooks/useReservationResource.js';
 import useReservationMutation from '../hooks/useReservationMutation.js';
 import BuyerLivePatterns, { LiveRecommendationsPreview, LivePatternPickup } from './BuyerLivePatterns.jsx';
+import { BuyerLiveInquiries } from './InquiryPages.jsx';
+import LiveProfilePage from './LiveProfilePage.jsx';
 import { isPatternRoute, recommendedPickupIssue, patternDetailPath } from './buyer-pattern-model.js';
 import { pickupAtKst } from '../services/reservation-contract.js';
 import { validDateKst, reservationListReturn, reservationResourceRequest, reservationListPagePath, reservationPriceText, reservationPreviewFabric, submittedReservationKey, submittedReservationMatches } from './buyer-model.js';
@@ -95,6 +97,8 @@ function UnknownReservationOutcome({ failure, item }) {
 
 export default function BuyerPage({ ctx }) {
   if (ctx.mode !== 'live') return <BuyerScreens ctx={ctx} />;
+  if (ctx.path === '/buyer/inquiries') return <BuyerLiveInquiries ctx={ctx} />;
+  if (ctx.path === '/buyer/profile') return <LiveProfilePage ctx={ctx} />;
   if (isPatternRoute(ctx.path)) return <BuyerLivePatterns ctx={ctx} />;
   const reservationRequest = reservationResourceRequest(ctx);
   return reservationRequest ? <LiveReservationPage ctx={ctx} request={reservationRequest} /> : <LiveBuyerPage ctx={ctx} />;
@@ -213,7 +217,7 @@ function FabricDetail({ ctx }) {
   if (!fabric) return <MissingFabric />;
   const stock = availability(ctx, fabric);
   const store = currentPickupStore(ctx.state, fabric);
-  return <Page node={fabricNode(fabric, 0)}><p className="buyer-breadcrumb"><a href={href(listPath(ctx, fabric))}>{listReturn(ctx)?.includes('view=search') ? '검색 결과로' : '원단 목록으로'}</a> / 원단 상세</p><PageHeading title={fabric.title} /><div className="buyer-detail-grid"><FabricGallery fabric={fabric} /><section className="panel buyer-detail-panel buyer-detail-summary"><h2 className="buyer-panel-heading">구매 정보</h2><Badge tone={stock.canRequest ? 'green' : 'amber'}>{stock.label}</Badge><p className="buyer-price">{priceText(fabric)}</p><p>{fabric.sale_type === 'ROLL' ? `1마(90cm) 단위 · ${dimensions(fabric)}` : `자투리 한 장 전체 · ${dimensions(fabric)}`}</p><p className="buyer-small buyer-muted">{fabric.store_name}{store?.address ? ` · ${store.address}` : ' · 방문 주소 확인 필요'}</p>{!stock.canRequest && <StockRecovery ctx={ctx} fabric={fabric} stock={stock} />}<div className="buyer-detail-actions">{stock.canRequest && <LinkButton path={pickupPath(ctx, fabric)} tone="primary">픽업 요청하기</LinkButton>}<LinkButton path={keepList(ctx, `/buyer/inquiries?fabric_id=${encodeURIComponent(fabric.id)}&compose=1`)}>판매자 문의</LinkButton></div></section><section className="panel buyer-detail-facts"><h2 className="buyer-panel-heading">원단과 방문 안내</h2>{fabric.description && <p className="buyer-muted">{fabric.description}</p>}<Info rows={[[ '소재 / 색상', `${fabric.material} / ${fabric.color}`], ['두께', fabric.thickness], ['하자', defectText(fabric)], ['판매처', fabric.store_name], ['픽업 주소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.'], ['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['방문 안내', store?.pickup_guide || '방문 전 판매자에게 일정을 확인해 주세요.']]} /></section></div><RecommendationsPreview ctx={ctx} fabric={fabric} /></Page>;
+  return <Page node={fabricNode(fabric, 0)}><p className="buyer-breadcrumb"><a href={href(listPath(ctx, fabric))}>{listReturn(ctx)?.includes('view=search') ? '검색 결과로' : '원단 목록으로'}</a> / 원단 상세</p><PageHeading title={fabric.title} /><div className="buyer-detail-grid"><FabricGallery fabric={fabric} /><section className="panel buyer-detail-panel buyer-detail-summary"><h2 className="buyer-panel-heading">구매 정보</h2><Badge tone={stock.canRequest ? 'green' : 'amber'}>{stock.label}</Badge><p className="buyer-price">{priceText(fabric)}</p><p>{fabric.sale_type === 'ROLL' ? `1마(90cm) 단위 · ${dimensions(fabric)}` : `자투리 한 장 전체 · ${dimensions(fabric)}`}</p><p className="buyer-small buyer-muted">{fabric.store_name}{store?.address ? ` · ${store.address}` : ' · 방문 주소 확인 필요'}</p>{!stock.canRequest && <StockRecovery ctx={ctx} fabric={fabric} stock={stock} />}<div className="buyer-detail-actions">{stock.canRequest && <LinkButton path={pickupPath(ctx, fabric)} tone="primary">픽업 요청하기</LinkButton>}<LinkButton path={keepList(ctx, `/buyer/inquiries?fabric_id=${encodeURIComponent(fabric.id)}&compose=1`)}>판매자 문의</LinkButton>{ctx.mode === 'live' && <LinkButton path={`/buyer/inquiries?fabric_id=${encodeURIComponent(fabric.id)}`}>문의·답변 보기</LinkButton>}</div></section><section className="panel buyer-detail-facts"><h2 className="buyer-panel-heading">원단과 방문 안내</h2>{fabric.description && <p className="buyer-muted">{fabric.description}</p>}<Info rows={[[ '소재 / 색상', `${fabric.material} / ${fabric.color}`], ['두께', fabric.thickness], ['하자', defectText(fabric)], ['판매처', fabric.store_name], ['픽업 주소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.'], ['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['방문 안내', store?.pickup_guide || '방문 전 판매자에게 일정을 확인해 주세요.']]} /></section></div><RecommendationsPreview ctx={ctx} fabric={fabric} /></Page>;
 }
 
 function Pickup({ ctx }) {

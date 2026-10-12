@@ -1,0 +1,9 @@
+{
+  "checkedOn": "2026-10-12",
+  "completed": true,
+  "unitTests": { "passed": 362, "failed": 0, "command": "npm test" },
+  "lint": { "passed": true, "command": "npm run lint" },
+  "build": { "passed": true, "command": "npm run build", "appJavaScriptKb": 697.02, "remainingWarning": "Application chunk remains above the build tool's 500 kB recommendation." },
+  "repairDuringVerification": "The first full-suite run found one old authentication test that still expected the newly connected inquiry/profile methods to be NOT_CONNECTED. The assertion was updated to check only the remaining legacy operations; the final full suite passed.",
+  "sensitiveValuesIncluded": false
+}

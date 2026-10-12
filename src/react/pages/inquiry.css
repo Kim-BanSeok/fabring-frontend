@@ -1,0 +1,12 @@
+/* Keep the inquiry subject and answer status visible together on small screens. */
+@media (max-width: 700px) {
+  .live-inquiry-page .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .live-inquiry-page .tabs .button { min-width: 0; padding-inline: 4px; font-size: 14px; }
+  .live-inquiry-page .data-table { min-width: 0; table-layout: fixed; }
+  .live-inquiry-page .data-table th,
+  .live-inquiry-page .data-table td { padding: 12px 6px; overflow-wrap: anywhere; }
+  .live-inquiry-page .data-table th:first-child { width: 86px; }
+  .live-inquiry-page .data-table th:last-child { width: 76px; }
+  .live-inquiry-page .data-table .badge { padding-inline: 5px; font-size: 12px; }
+  .live-inquiry-page .data-table a { display: inline-block; padding-block: 6px; }
+}

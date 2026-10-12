@@ -1,0 +1,7 @@
+{
+  "checkedAt": "2026-10-12T12:18:38.047Z",
+  "completed": true,
+  "unchangedModels": 11,
+  "verification": "Read-only SHA256 of all rows in all 11 main database models, including soft-deleted records; no main DB writes made during this task",
+  "sensitiveValuesIncluded": false
+}
