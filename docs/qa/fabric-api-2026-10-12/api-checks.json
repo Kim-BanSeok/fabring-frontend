@@ -1,0 +1,141 @@
+{
+  "checkedAt": "2026-10-12T06:23:52.298Z",
+  "backendRevision": "7dc28c7",
+  "passed": 19,
+  "note": "Local QA fixtures only. Response bodies and credentials excluded.",
+  "checks": [
+    {
+      "name": "public default SCRAP page, 22 items total",
+      "status": 200,
+      "path": "/fabrics",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "second page retains remaining two items",
+      "status": 200,
+      "path": "/fabrics?page=1",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "ROLL list and remaining inventory",
+      "status": 200,
+      "path": "/fabrics?sale_type=ROLL",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "ascending price sort",
+      "status": 200,
+      "path": "/fabrics?sort=price_asc",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "descending price sort",
+      "status": 200,
+      "path": "/fabrics?sort=price_desc",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "combined material/thickness/color filters",
+      "status": 200,
+      "path": "/fabrics?material=COTTON&thickness=THIN&color_family=BLUE",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "CSV material filter",
+      "status": 200,
+      "path": "/fabrics?material=COTTON,LINEN",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "title keyword filter",
+      "status": 200,
+      "path": "/fabrics?keyword=%EC%9E%90%ED%88%AC%EB%A6%AC+01",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "empty results",
+      "status": 200,
+      "path": "/fabrics?keyword=NO_MATCH_QA_20261012",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "page beyond end has empty content, original total retained",
+      "status": 200,
+      "path": "/fabrics?page=10",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "public detail includes uploaded image and store fields",
+      "status": 200,
+      "path": "/fabrics/1",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "reserved scrap detail",
+      "status": 200,
+      "path": "/fabrics/22",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "limited roll detail",
+      "status": 200,
+      "path": "/fabrics/24",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "unpublished item stays private",
+      "status": 404,
+      "path": "/fabrics/25",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "missing detail is not found",
+      "status": 404,
+      "path": "/fabrics/99999999",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "invalid material is validation error",
+      "status": 400,
+      "path": "/fabrics?material=INVALID_QA",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "health is ready",
+      "status": 200,
+      "path": "/health",
+      "contentType": null,
+      "corp": null
+    },
+    {
+      "name": "uploaded original image HTTP and cross-origin header",
+      "status": 200,
+      "path": null,
+      "contentType": "image/png",
+      "corp": "cross-origin"
+    },
+    {
+      "name": "uploaded thumbnail image HTTP and cross-origin header",
+      "status": 200,
+      "path": null,
+      "contentType": "image/webp",
+      "corp": "cross-origin"
+    }
+  ]
+}

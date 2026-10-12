@@ -1,4 +1,5 @@
 import { ApiError, createHttpClient } from './http-client.js';
+import { fabricQuery, fabricPage, fabricDetail, fabricIdentifier } from './fabric-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -86,6 +87,20 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async listFabrics(filters = {}, { signal } = {}) {
+      const version = revision;
+      const result = await request(`/fabrics?${fabricQuery(filters)}`, { signal, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return fabricPage(result);
+    },
+    async getFabric(id, { signal } = {}) {
+      const identifier = fabricIdentifier(id), version = revision;
+      const result = await request(`/fabrics/${identifier}`, { signal, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      const fabric = fabricDetail(result);
+      if (fabric.id !== identifier) throw new ApiError('INVALID_RESPONSE', '선택한 원단 정보를 확인하지 못했어요. 목록에서 다시 선택해 주세요.');
+      return fabric;
+    },
     getState() {
       const profile = user ? { ...user, id: user.userId } : blankProfile();
       return {

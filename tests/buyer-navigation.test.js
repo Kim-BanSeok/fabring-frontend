@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { filterEditPath, filterCancelPath, filterSummary, detailPath, listPath, reservationPrimaryAction, reservationPath, currentPickupStore, storeAddress } from '../src/react/pages/buyer-model.js';
+import { filterEditPath, filterCancelPath, filterSummary, detailPath, listPath, reservationPrimaryAction, reservationPath, currentPickupStore, storeAddress, availability, defectText, fabricResourceRequest, fabricListPagePath, applyFilterPath, isExample } from '../src/react/pages/buyer-model.js';
 
 const context = route => {
   const [path, query] = route.split('?');
@@ -66,4 +66,59 @@ test('pickup address is used only for the fabric’s associated store', () => {
   assert.equal(currentPickupStore(state, {}), null);
   assert.equal(storeAddress(state.store), '양주시 예시로 10 1층');
   assert.equal(storeAddress(null), '');
+});
+
+
+test('live list requests forward supported query fields without demo or return parameters', () => {
+  const ctx = context('/buyer/fabrics?sale_type=ROLL&material=COTTON&color_family=BLUE&keyword=코튼&sort=price_desc&page=2&size=10&example=1&return=/preview');
+  assert.deepEqual(fabricResourceRequest(ctx), { kind: 'list', query: { sale_type: 'ROLL', material: 'COTTON', color_family: 'BLUE', keyword: '코튼', sort: 'price_desc', page: '2', size: '10' } });
+  assert.deepEqual(fabricResourceRequest(context('/buyer/home')), { kind: 'list', query: { sale_type: 'SCRAP', sort: 'latest', page: 0, size: 4 } });
+  assert.equal(fabricResourceRequest(context('/buyer/filters?material=면')), null);
+});
+
+test('detail and every fabric-dependent direct route request their own fabric ID', () => {
+  for (const route of ['/buyer/fabrics/17', '/buyer/pickup/17', '/buyer/recommendations/17', '/buyer/patterns/pouch?fabric_id=17', '/buyer/inquiries?compose=1&fabric_id=17']) {
+    assert.deepEqual(fabricResourceRequest(context(route)), { kind: 'detail', id: '17' });
+  }
+  assert.deepEqual(fabricResourceRequest(context('/buyer/patterns')), { kind: 'detail', id: '' });
+  assert.equal(fabricResourceRequest(context('/buyer/inquiries')), null);
+});
+
+test('server page, keyword, and sort survive result → detail → list and filter cancellation', () => {
+  const original = '/buyer/fabrics?sale_type=ROLL&material=COTTON&color_family=BLUE&keyword=코튼&sort=price_desc&page=2&size=10&view=search';
+  const next = context(fabricListPagePath(context(original), 3));
+  assert.equal(next.query.get('page'), '3');
+  assert.equal(next.query.get('keyword'), '코튼');
+  assert.equal(next.query.get('sort'), 'price_desc');
+  assert.equal(next.query.get('size'), '10');
+  assert.equal(next.query.get('color_family'), 'BLUE');
+  const fabric = { id: '17', sale_type: 'ROLL' };
+  assert.deepEqual(routeValue(listPath(context(detailPath(context(original), fabric)), fabric)), routeValue(original));
+  assert.deepEqual(routeValue(filterCancelPath(context(filterEditPath(context(original))))), routeValue(original));
+});
+
+test('applying edited filters starts page zero and retains keyword, sort, and size', () => {
+  const ctx = context('/buyer/filters?sale_type=ROLL&material=COTTON&color_family=BLUE&keyword=코튼&sort=price_asc&page=3&size=10');
+  const result = context(applyFilterPath(ctx, { material: '면', color: '', thickness: '중간 두께' }));
+  assert.deepEqual(Object.fromEntries(result.query), { sale_type: 'ROLL', view: 'search', keyword: '코튼', sort: 'price_asc', size: '10', material: '면', thickness: '중간 두께', page: '0' });
+  assert.deepEqual(filterSummary(ctx.query), ['롤', '면', '전체 두께', '블루', '검색어: 코튼', '낮은 가격순']);
+});
+
+test('live availability uses server reserved/available values instead of empty local reservation arrays', () => {
+  const ctx = { mode: 'live', state: { reservations: [], buyer: { id: 'buyer-1' } } };
+  const scrap = { source: 'api', status: 'POSTED', sale_type: 'SCRAP', is_reserved: true };
+  assert.deepEqual(availability(ctx, scrap), { own: null, canRequest: false, label: '예약 중' });
+  assert.equal(availability(ctx, { ...scrap, is_reserved: false }).canRequest, true);
+  assert.equal(availability(ctx, { ...scrap, status: 'SOLD_OUT', is_reserved: false }).canRequest, false);
+  assert.equal(availability(ctx, { ...scrap, sale_type: 'ROLL', available_length_cm: 50 }).canRequest, false);
+  assert.equal(availability(ctx, { ...scrap, sale_type: 'ROLL', available_length_cm: 720 }).canRequest, true);
+});
+
+test('live detail uses its embedded public store and never assigns the logged-in seller’s store', () => {
+  const state = { store: { id: '1', address: '로그인한 매장' }, seller: { id: '1' } };
+  const store = { id: '2', address: '실제 원단의 판매처' };
+  assert.equal(currentPickupStore(state, { source: 'api', seller_id: '1', store_id: '1' }), null);
+  assert.equal(currentPickupStore(state, { source: 'api', store }), store);
+  assert.equal(defectText({ has_defect: true, defect_note: null }), '하자가 있어요. 등록된 하자 설명은 없습니다.');
+  assert.equal(isExample({ mode: 'live', query: new URLSearchParams('example=1') }), false);
 });

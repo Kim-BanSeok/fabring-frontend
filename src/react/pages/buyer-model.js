@@ -1,4 +1,5 @@
 import { formatPrice } from '../lib/format.js';
+import { fabricFilterLabel } from '../services/fabric-contract.js';
 
 export const STATUS = { REQUESTED: '요청됨', ACCEPTED: '수락됨', PICKED_UP: '수령 완료', CANCELED: '취소', REJECTED: '거절' };
 export const STATUS_DESCRIPTION = {
@@ -7,7 +8,7 @@ export const STATUS_DESCRIPTION = {
   PICKED_UP: '원단 수령이 완료되었어요.', CANCELED: '예약이 취소되었어요.', REJECTED: '판매자가 이 요청을 수락하지 못했어요.',
 };
 export const price = value => formatPrice(Number(value) || 0);
-export const routeId = ctx => { try { return decodeURIComponent(ctx.path.split('/')[3] || ''); } catch { return ''; } };
+export const routeId = ctx => { try { return ctx.resolvedFabricId || decodeURIComponent(ctx.path.split('/')[3] || ''); } catch { return ''; } };
 export const href = path => `#${path}`;
 export const fabricRoute = id => `/buyer/fabrics/${encodeURIComponent(id)}`;
 export const quantityText = cm => Number(cm) % 90 === 0 ? `${Number(cm) / 90}마(${Number(cm)}cm)` : `${Number(cm)}cm`;
@@ -28,7 +29,7 @@ const FABRIC_NODES = {
 };
 export const fabricNode = (fabric, index) => FABRIC_NODES[fabric.id]?.[index] || FABRIC_NODES['fabric-roll-1'][index];
 export const statusTone = status => status === 'REQUESTED' ? 'amber' : status === 'REJECTED' ? 'red' : ['CANCELED', 'PICKED_UP'].includes(status) ? 'gray' : 'green';
-export const isExample = ctx => ctx.query.get('example') === '1';
+export const isExample = ctx => ctx.mode !== 'live' && ctx.query.get('example') === '1';
 export const exampleQuery = ctx => isExample(ctx) ? '&example=1' : '';
 export const reservationPath = (item, suffix = '') => `/buyer/reservations/${encodeURIComponent(item.id)}${suffix}${item.example ? `?status=${item.status}&example=1&fabric_id=${encodeURIComponent(item.fabric_id)}${item.viewSubset ? `&subset=${encodeURIComponent(item.viewSubset)}` : ''}` : ''}`;
 export const reservationQuantity = item => item.sale_type === 'ROLL' ? quantityText(item.requested_length_cm) : '자투리 한 장 전체';
@@ -50,9 +51,26 @@ export const detailPath = (ctx, fabric) => keepList(ctx, fabricRoute(fabric.id))
 export const pickupPath = (ctx, fabric) => keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}`);
 export const listPath = (ctx, fabric) => listReturn(ctx) || `/buyer/fabrics?sale_type=${fabric.sale_type}`;
 export const FILTER_NAMES = ['material', 'thickness', 'color'];
+const LIST_QUERY_NAMES = ['sale_type', ...FILTER_NAMES, 'color_family', 'keyword', 'sort', 'page', 'size'];
+const FILTER_QUERY_NAMES = [...FILTER_NAMES, 'color_family', 'keyword', 'sort', 'page', 'size'];
+export function fabricResourceRequest(ctx) {
+  if (ctx.path === '/buyer/home') return { kind: 'list', query: { sale_type: 'SCRAP', sort: 'latest', page: 0, size: 4 } };
+  if (['/buyer', '/buyer/fabrics'].includes(ctx.path)) return { kind: 'list', query: Object.fromEntries(LIST_QUERY_NAMES.filter(name => ctx.query.has(name)).map(name => [name, ctx.query.get(name)])) };
+  if (['/buyer/fabrics/', '/buyer/pickup/', '/buyer/recommendations/'].some(prefix => ctx.path.startsWith(prefix))) return { kind: 'detail', id: routeId(ctx) };
+  if (['/buyer/patterns', '/buyer/patterns/pouch'].includes(ctx.path) || (ctx.path === '/buyer/inquiries' && ctx.query.get('compose') === '1')) return { kind: 'detail', id: ctx.query.get('fabric_id') || '' };
+  return null;
+}
+export const fabricListPagePath = (ctx, page) => addQuery(`/buyer/fabrics${ctx.query.size ? `?${ctx.query}` : ''}`, 'page', String(page));
+export function applyFilterPath(ctx, filters) {
+  const query = new URLSearchParams({ sale_type: ctx.query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP', view: 'search' });
+  for (const name of ['keyword', 'sort', 'size']) if (ctx.query.get(name)) query.set(name, ctx.query.get(name));
+  for (const name of FILTER_NAMES) if (filters[name]) query.set(name, filters[name]);
+  query.set('page', '0');
+  return `/buyer/fabrics?${query}`;
+}
 export function filterResultPath(query) {
   const applied = new URLSearchParams({ sale_type: query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP' });
-  for (const name of FILTER_NAMES) if (query.get(name)) applied.set(name, query.get(name));
+  for (const name of FILTER_QUERY_NAMES) if (query.get(name)) applied.set(name, query.get(name));
   applied.set('view', 'search');
   return `/buyer/fabrics?${applied}`;
 }
@@ -60,11 +78,13 @@ export function filterResultPath(query) {
 export const filterCancelPath = ctx => internalReturn(ctx.query.get('return'), 'list') || filterResultPath(ctx.query);
 export const filterEditPath = ctx => {
   const query = new URLSearchParams({ sale_type: ctx.query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP' });
-  for (const name of FILTER_NAMES) if (ctx.query.get(name)) query.set(name, ctx.query.get(name));
+  for (const name of FILTER_QUERY_NAMES) if (ctx.query.get(name)) query.set(name, ctx.query.get(name));
   return addQuery(`/buyer/filters?${query}`, 'return', listReturn(ctx));
 };
-export const filterSummary = query => [query.get('sale_type') === 'ROLL' ? '롤' : '자투리', ...FILTER_NAMES.map((name, i) => query.get(name) || ['전체 소재', '전체 두께', '전체 색상'][i])];
+export const filterValue = (query, name) => query.get(name) || (name === 'color' ? query.get('color_family') : '') || '';
+export const filterSummary = query => [query.get('sale_type') === 'ROLL' ? '롤' : '자투리', ...FILTER_NAMES.map((name, i) => fabricFilterLabel(name, filterValue(query, name)) || ['전체 소재', '전체 두께', '전체 색상'][i]), ...(query.get('keyword') ? [`검색어: ${query.get('keyword')}`] : []), ...(query.get('sort') && query.get('sort') !== 'latest' ? [{ price_asc: '낮은 가격순', price_desc: '높은 가격순' }[query.get('sort')] || '정렬 조건 확인 필요'] : [])];
 export function currentPickupStore(state, fabric) {
+  if (fabric?.source === 'api') return fabric.store || null;
   if (!fabric || !state.store) return null;
   // The demo has one managed store. Do not attach its address to another seller's fabric.
   const matches = fabric.store_id ? fabric.store_id === state.store.id : fabric.seller_id && fabric.seller_id === state.seller?.id;
@@ -73,11 +93,16 @@ export function currentPickupStore(state, fabric) {
 export const storeAddress = store => [store?.address, store?.detail_address].filter(Boolean).join(' ');
 export const reservationPrimaryAction = item => ({ path: reservationPath(item), label: item.status === 'ACCEPTED' ? '픽업 정보 보기' : '상세 보기' });
 export function availability(ctx, fabric) {
+  if (ctx.mode === 'live' || fabric.source === 'api') {
+    const available = fabric.status === 'POSTED' && (fabric.sale_type === 'ROLL' ? Number(fabric.available_length_cm) >= 90 : fabric.is_reserved === false);
+    return { own: null, canRequest: available, label: available ? '거래 가능' : fabric.is_reserved ? '예약 중' : '현재 요청 불가' };
+  }
   const active = ctx.state.reservations.filter(item => item.fabric_id === fabric.id && ['REQUESTED', 'ACCEPTED'].includes(item.status));
   const own = active.find(item => item.buyer_id === ctx.state.buyer.id);
   const stockAvailable = fabric.sale_type === 'ROLL' ? Number(fabric.available_length_cm) >= 90 : !active.some(item => item.status === 'ACCEPTED');
   return { own, canRequest: stockAvailable && !own, label: own ? '내 예약 진행 중' : stockAvailable ? '거래 가능' : '현재 요청 불가' };
 }
+export const defectText = fabric => fabric.defect_note || (fabric.has_defect ? '하자가 있어요. 등록된 하자 설명은 없습니다.' : '등록된 하자 없음');
 export function exampleReservation(ctx, id = 'demo-roll', fabricId) {
   const fabric = ctx.state.fabrics.find(f => f.id === (fabricId || (id.includes('scrap') ? 'fabric-scrap-1' : 'fabric-roll-1')));
   if (!fabric) return null;

@@ -24,6 +24,12 @@
 .buyer-page .actions .button { min-width: 140px; }
 .buyer-results { display: flex; flex-direction: column; gap: 28px; }
 .buyer-result-count { font-size: 16px; font-weight: 500; }
+.buyer-pagination { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px; }
+.buyer-pagination p { color: var(--loop-muted, #68766f); font-size: 14px; }
+.buyer-resource-feedback { width: 100%; }
+.buyer-resource-feedback .notice { display: flex; flex-direction: column; gap: 8px; }
+.fabric-art.fabric-art--empty { display: grid; place-items: center; padding: 20px; background: var(--loop-soft, #e8f0e8); color: var(--loop-muted, #68766f); text-align: center; }
+.fabric-art.fabric-art--empty p { margin: 0; font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
 .buyer-home-banner { display: grid; grid-template-columns: minmax(0, 636fr) minmax(0, 500fr); gap: 32px; padding: 32px; background: var(--loop-selected, #dcefe2); align-items: center; border-radius: 16px; }
 .buyer-home-banner-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
 .buyer-home-banner-copy h1 { font-size: 36px; line-height: 1.4; }
@@ -58,6 +64,8 @@
 .buyer-gallery-thumbs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .buyer-gallery-thumbs button { padding: 0; border: 0; border-radius: 12px; background: transparent; cursor: pointer; }
 .buyer-gallery-thumbs .buyer-fabric-art { height: 116px; }
+.buyer-gallery-thumbs .buyer-fabric-art { display: block; width: 100%; }
+.buyer-gallery-thumbs .fabric-art--empty { display: grid; padding: 8px; }
 .buyer-gallery-thumbs button[aria-pressed="true"] { outline: 2px solid var(--loop-action, #16794e); outline-offset: 3px; }
 .buyer-detail-panel .buyer-price { color: var(--loop-brand, #214e3e); font-size: 32px; line-height: 46px; }
 .buyer-detail-panel .badge { align-self: flex-start; }
@@ -192,6 +200,7 @@
   .buyer-detail-facts { order: 2; }
   .buyer-gallery-main { height: 180px; }
   .buyer-gallery-thumbs .buyer-fabric-art { height: 84px; }
+  .buyer-gallery-thumbs .fabric-art--empty p { font-size: 12px; }
   .buyer-recommend-body { flex-wrap: wrap; gap: 16px; }
   .buyer-reservation-actions { grid-column: auto; }
   .buyer-profile-title { align-items: flex-start; flex-wrap: wrap; }
