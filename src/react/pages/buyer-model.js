@@ -13,7 +13,7 @@ export const href = path => `#${path}`;
 export const fabricRoute = id => `/buyer/fabrics/${encodeURIComponent(id)}`;
 export const quantityText = cm => Number(cm) % 90 === 0 ? `${Number(cm) / 90}마(${Number(cm)}cm)` : `${Number(cm)}cm`;
 export const dimensions = fabric => fabric.sale_type === 'ROLL' ? `폭 ${fabric.width_cm}cm · 구매 가능 ${quantityText(fabric.available_length_cm ?? 0)}` : `폭 ${fabric.width_cm}cm × 길이 ${fabric.length_cm}cm`;
-export const priceText = fabric => `${price(fabric.price)}${fabric.sale_type === 'ROLL' ? ' / 마' : ''}`;
+export const priceText = fabric => `${price(fabric.price)} / ${fabric.sale_type === 'ROLL' ? '1마(90cm)' : '한 장'}`;
 export const dateText = value => String(value || '').replaceAll('-', '.');
 export const validDate = offset => {
   const date = new Date(); date.setDate(date.getDate() + offset);
@@ -77,6 +77,26 @@ export const detailPath = (ctx, fabric) => keepList(ctx, fabricRoute(fabric.id))
 export const pickupPath = (ctx, fabric) => keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}`);
 export const listPath = (ctx, fabric) => listReturn(ctx) || `/buyer/fabrics?sale_type=${fabric.sale_type}`;
 export const FILTER_NAMES = ['material', 'thickness', 'color'];
+export function fabricSaleTypePath(ctx, saleType) {
+  return fabricSearchPath({ query: new URLSearchParams({ ...Object.fromEntries(ctx.query), sale_type: saleType === 'ROLL' ? 'ROLL' : 'SCRAP' }) }, ctx.query.get('keyword') || '');
+}
+export function fabricSearchPath(ctx, keyword, sort) {
+  const query = new URLSearchParams(ctx.query);
+  query.set('sale_type', query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP');
+  query.set('page', '0'); query.delete('view'); query.delete('collapsed');
+  if (keyword.trim()) query.set('keyword', keyword.trim()); else query.delete('keyword');
+  if (sort) query.set('sort', sort);
+  return `/buyer/fabrics?${query}`;
+}
+export function filterDemoFabrics(items, query) {
+  const keyword = (query.get('keyword') || '').trim().toLocaleLowerCase('ko-KR');
+  const selected = items.filter(fabric => FILTER_NAMES.every(name => {
+    const value = fabricFilterLabel(name, filterValue(query, name));
+    return !value || fabric[name] === value;
+  }) && (!keyword || [fabric.title, fabric.material, fabric.color].filter(Boolean).join(' ').toLocaleLowerCase('ko-KR').includes(keyword)));
+  const sort = query.get('sort');
+  return selected.sort((a, b) => sort === 'price_asc' ? a.price - b.price : sort === 'price_desc' ? b.price - a.price : String(b.created_at).localeCompare(String(a.created_at)));
+}
 const LIST_QUERY_NAMES = ['sale_type', ...FILTER_NAMES, 'color_family', 'keyword', 'sort', 'page', 'size'];
 const FILTER_QUERY_NAMES = [...FILTER_NAMES, 'color_family', 'keyword', 'sort', 'page', 'size'];
 export function fabricResourceRequest(ctx) {

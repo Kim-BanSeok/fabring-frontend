@@ -23,14 +23,17 @@ export function FavoriteButton({ api, targetType, targetId, noun }) {
   const [state, setState] = useState({ loading: true, saved: null, busy: false, error: '' });
   const reload = useCallback(() => {
     const controller = new AbortController();
-    setState(current => ({ ...current, loading: true, error: '' }));
-    findSaved(api, targetType, targetId, controller.signal).then(
-      saved => setState({ loading: false, saved, busy: false, error: '' }),
-      error => {
-        if (controller.signal.aborted) return;
-        setState({ loading: false, saved: null, busy: false, error: error.message || '관심 상태를 확인하지 못했어요.' });
-      },
-    );
+    queueMicrotask(() => {
+      if (controller.signal.aborted) return;
+      setState(current => ({ ...current, loading: true, error: '' }));
+      findSaved(api, targetType, targetId, controller.signal).then(
+        saved => { if (!controller.signal.aborted) setState({ loading: false, saved, busy: false, error: '' }); },
+        error => {
+          if (controller.signal.aborted) return;
+          setState({ loading: false, saved: null, busy: false, error: error.message || '관심 상태를 확인하지 못했어요.' });
+        },
+      );
+    });
     return () => controller.abort();
   }, [api, targetType, targetId]);
   useEffect(() => reload(), [reload]);

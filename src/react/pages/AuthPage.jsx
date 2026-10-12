@@ -33,7 +33,7 @@ function Brand({ role }) {
       ? ['더 좋은 순환을\n만드는 곳.', '원단과 사람을 잇는 플랫폼을\n함께 관리합니다.', 'canvas']
       : ['좋은 원단의\n새로운 시작.', '양주에서 발견한 원단으로\n당신의 다음 작품을 만들어 보세요.', 'canvas'];
   return <aside className="auth-brand-panel">
-    <p className="auth-kicker">YANGJU TEXTILE LOOP</p>
+    <p className="auth-kicker">패브링 · 원단의 새로운 쓰임</p>
     <p className="auth-display">{copy[0]}</p>
     <p className="auth-brand-description">{copy[1]}</p>
     <FabricImage fabric={{ title: role === 'seller' ? '블루 데님' : '내추럴 캔버스', texture: copy[2] }} className="auth-fabric" exampleLabel={false} />
@@ -198,7 +198,7 @@ export default function AuthPage({ ctx }) {
       <Brand role={role} />
       <form className="auth-form" data-auth-form={kind} aria-labelledby="auth-title" onSubmit={onSubmit}>
         <h1 id="auth-title" tabIndex={-1}>{names[role]} {signup ? '회원가입' : '로그인'}</h1>
-        <p className="auth-subtitle">{signup ? '필요한 정보만 입력하고 시작하세요.' : role === 'admin' ? '발급받은 계정으로 로그인하세요.' : '이메일로 섬유 루프를 시작하세요.'}</p>
+        <p className="auth-subtitle">{signup ? '필요한 정보만 입력하고 시작하세요.' : role === 'admin' ? '발급받은 계정으로 로그인하세요.' : '이메일로 패브링을 시작하세요.'}</p>
         {role !== 'admin' && <nav className="auth-role-tabs" aria-label={signup ? '가입할 계정 선택' : '로그인할 계정 선택'}>
           {['buyer', 'seller'].map(item => <a key={item} href={`#${url(item, signup ? 'signup' : 'login')}`} aria-current={item === role ? 'page' : undefined}>{names[item]}</a>)}
         </nav>}
@@ -248,7 +248,7 @@ export default function AuthPage({ ctx }) {
     content = <>
       <Heading title="회원가입이 완료되었어요" description={`${names[role]} 계정이 준비되었습니다.`} />
       <section className="panel auth-done-card">
-        <Badge>가입 완료</Badge><h2>섬유 루프에 오신 것을 환영해요</h2><p className="muted">{names[role]} 계정</p>
+        <Badge>가입 완료</Badge><h2>패브링에 오신 것을 환영해요</h2><p className="muted">{names[role]} 계정</p>
         <p>가입한 이메일로 로그인해 주세요.{role === 'seller' ? ' 로그인 후 매장 정보를 등록하고 운영팀 승인을 기다려 주세요.' : ''}</p>
         <Button href={url(role, role === 'seller' ? 'first-login' : 'login')} tone="primary">로그인하기</Button>
       </section>

@@ -1,0 +1,103 @@
+{
+  "checks": [
+    {
+      "branch": "main",
+      "name": "buyer-home",
+      "route": "#/buyer/home?mode=demo",
+      "pass": true
+    },
+    {
+      "branch": "main",
+      "name": "buyer-list",
+      "route": "#/buyer/fabrics?mode=demo",
+      "heading": "원단 둘러보기",
+      "pass": true
+    },
+    {
+      "branch": "main",
+      "name": "buyer-detail",
+      "route": "#/buyer/fabrics/fabric-roll-1?mode=demo",
+      "heading": "내추럴 코튼 캔버스",
+      "pass": true
+    },
+    {
+      "branch": "main",
+      "name": "seller-dashboard",
+      "route": "#/seller/dashboard?scenario=123%3A2473&mode=demo",
+      "heading": "오늘 처리할 일",
+      "pass": true
+    },
+    {
+      "branch": "main",
+      "name": "admin-dashboard",
+      "route": "#/admin/dashboard?scenario=123%3A4955&mode=demo",
+      "heading": "관리자 대시보드",
+      "pass": true
+    },
+    {
+      "branch": "main",
+      "name": "admin-review",
+      "route": "#/admin/fabrics/fabric-pending-1?scenario=131%3A9584&mode=demo",
+      "heading": "등록 원단 상세",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "buyer-home",
+      "route": "#/buyer/home?mode=demo",
+      "heading": "원단을 다시 고르고,\n쓰임을 새로 만들다.",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "buyer-list",
+      "route": "#/buyer/fabrics?mode=demo",
+      "heading": "원단 둘러보기",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "buyer-detail",
+      "route": "#/buyer/fabrics/fabric-roll-1?mode=demo",
+      "heading": "내추럴 코튼 캔버스",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "seller-dashboard",
+      "route": "#/seller/dashboard?scenario=123%3A2473&mode=demo",
+      "heading": "오늘 처리할 일",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "admin-dashboard",
+      "route": "#/admin/dashboard?scenario=123%3A4955&mode=demo",
+      "heading": "관리자 대시보드",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "admin-review",
+      "route": "#/admin/fabrics/fabric-pending-1?scenario=131%3A9584&mode=demo",
+      "heading": "등록 원단 상세",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "admin-mobile-menu",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "buyer-mobile-menu",
+      "pass": true
+    },
+    {
+      "branch": "deploy/team-shared",
+      "name": "seller-mobile-menu",
+      "pass": true
+    }
+  ],
+  "consoleErrors": []
+}

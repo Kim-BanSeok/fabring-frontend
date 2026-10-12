@@ -1,3 +1,4 @@
+import RegistrationSteps from '../../components/RegistrationSteps.jsx';
 import { SellerRuntime } from './SellerRuntime.js';
 import { PHOTO_SLOTS, ownFabrics, fabricByQuery, draftFor, validateSellerDraft } from './sellerModel.js';
 import { inquiryDraft, selectedPhotos, uploadPhotoSummary, sellerCalendar, stockAfterReservation } from './sellerUx.js';
@@ -90,44 +91,20 @@ function approvalView(ctx, storeRequired = false) {
   return wrap(storeRequired ? '127:5978' : status === 'APPROVED' ? '209:8203' : status === 'REJECTED' ? '209:8167' : '209:8131', <>{pageHeading(title, description)}{notice(message, status === 'APPROVED' && !storeRequired ? 'info' : 'warning')}<div className={"actions"}>{go(status === 'APPROVED' && !storeRequired ? '원단 등록' : '매장 정보 확인', status === 'APPROVED' && !storeRequired ? '/seller/register' : '/seller/store', 'primary')}{action('승인 상태 다시 확인', 'refresh-approval')}</div></>, 'seller-state');
 }
 function dashboardView(ctx) {
-  const fabrics = ownFabrics(ctx.state),
-    reservations = ownReservations(ctx.state);
+  const fabrics = ownFabrics(ctx.state), reservations = ownReservations(ctx.state);
   if (!ctx.state.seller.hasStore || !fabrics.length && ctx.query.get('view') === 'new') return newDashboardView(ctx);
-  const requested = reservations.filter(r => r.status === 'REQUESTED').length;
-  const inquiries = ctx.state.inquiries.filter(i => fabrics.some(f => f.id === i.fabric_id) && !i.answer).length;
-  const pending = fabrics.filter(f => f.status === 'PENDING').length,
-    rejected = fabrics.filter(f => f.status === 'REJECTED').length;
-  const today = new Date(),
-    todayIso = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
-  const monthQuery = ctx.query.get('month'),
-    validMonth = /^\d{4}-(0[1-9]|1[0-2])$/.test(monthQuery || '') ? monthQuery : todayIso.slice(0, 7);
-  const [year, month] = validMonth.split('-').map(Number);
-  const selectedDate = sellerCalendar(validMonth, ctx.query.get('date')).selected || (todayIso.startsWith(validMonth) ? todayIso : `${validMonth}-01`);
-  const pickups = reservations.filter(r => r.pickup_date === selectedDate && r.status === 'ACCEPTED');
-  const monthLink = shift => {
-    const date = new Date(year, month - 1 + shift, 1);
-    return `/seller/dashboard?month=${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`;
-  };
-  const offset = (new Date(year, month - 1, 1).getDay() + 6) % 7;
-  const days = keyed(Array.from({
-    length: new Date(year, month, 0).getDate()
-  }, (_, i) => {
-    const iso = `${validMonth}-${String(i + 1).padStart(2, '0')}`;
-    const hasPickup = reservations.some(r => r.pickup_date === iso && r.status === 'ACCEPTED');
-    return <><a href={href(`/seller/dashboard?month=${validMonth}&date=${iso}`)} onClick={event => { event.preventDefault(); ctx.navigate(`/seller/dashboard?month=${validMonth}&date=${iso}`, { preserveScroll: true }); }} className={"" + "seller-calendar-day " + (iso === selectedDate ? 'is-selected' : '') + " " + (hasPickup ? 'has-pickup' : '')} aria-label={"" + year + "년 " + month + "월 " + (i + 1) + "일" + (hasPickup ? ', 픽업 있음' : '')} {...iso === selectedDate ? {
-        "aria-current": "date"
-      } : {}}>{i + 1}</a></>;
-  }));
-  return wrap('123:2473', <>{pageHeading(`반가워요, ${ctx.state.store?.store_name || ctx.state.seller.nickname}`, '오늘의 예약과 원단 판매 현황을 확인하세요.')}{"\n    "}<div className={"stat-grid seller-stats"}>{keyed([['예약 요청', `${requested}건`, '판매자 확인 대기'], ['답변 대기', `${inquiries}건`, '구매자 문의'], ['오늘 픽업', `${reservations.filter(r => r.pickup_date === todayIso && r.status === 'ACCEPTED').length}건`, '수락된 예약'], ['원단 승인', `대기 ${pending} · 거절 ${rejected}`, rejected ? '거절 사유를 확인하세요' : pending ? '운영팀 승인을 기다리고 있어요' : '확인이 필요한 원단이 없어요']].map(([label, value, note]) => <><div className={"panel stat-card"}><p className={"muted"}>{label}</p><strong className={"seller-stat-value"}>{value}</strong><small className={"muted"}>{note}</small></div></>))}</div>{"\n    "}<div className={"seller-columns"}><div className={"stack"}><section className={"panel seller-panel"}><h2>{"오늘 처리할 일"}</h2><h3>{"예약 요청 "}{requested}{"건 · 답변 대기 "}{inquiries}{"건"}</h3><p className={"muted"}>{rejected ? `승인 거절된 원단 ${rejected}건의 사유를 확인해 주세요.` : '예약과 문의를 확인하고 구매자를 맞이해 주세요.'}</p><div className={"actions seller-task-actions"}>{go('예약 확인', '/seller/reservations', 'primary')}{go('문의 확인', '/seller/inquiries')}{rejected ? go('거절 사유', '/seller/fabrics?status=REJECTED', 'danger') : go('원단 현황', '/seller/fabrics')}</div></section>{"\n    "}<section className={"panel seller-panel"}><h2>{"내 원단 현황"}</h2>{details(Object.entries(FABRIC_STATUS).map(([key, label]) => [label, `${fabrics.filter(f => f.status === key).length}건`]))}{go('원단 목록 전체보기 →', '/seller/fabrics')}</section></div>{"\n    "}<div className={"stack"}><section className={"panel seller-panel"}><div className="seller-section-heading"><h2>{"픽업 일정"}</h2>{go('월별 픽업 일정 보기', `/seller/calendar?month=${validMonth}`)}</div><div className={"seller-calendar-head"}><strong>{year}{"년 "}{month}{"월"}</strong><div className={"actions"}>{button('‹', {
-                href: href(monthLink(-1)),
-                "aria-label": "이전 달"
-              })}{button('›', {
-                href: href(monthLink(1)),
-                "aria-label": "다음 달"
-              })}</div></div><div className={"seller-calendar"} aria-label={"픽업 달력"}>{keyed(['월', '화', '수', '목', '금', '토', '일'].map(d => <><span className={"seller-calendar-weekday"}>{d}</span></>))}{Array.from({
-              length: offset
-            }, (_, index) => <span key={index} aria-hidden="true" />)}{days}</div><h3>{formatDate(selectedDate)}{" · 픽업 "}{pickups.length}{"건"}</h3>{pickups.length ? <><div className={"table-wrapper"}><table className={"data-table"}><thead><tr><th>{"시간"}</th><th>{"원단"}</th><th>{"상태"}</th></tr></thead><tbody>{keyed(pickups.map(r => <><tr><td>{r.pickup_time}</td><td><a href={href(`/seller/reservations?status=ACCEPTED&id=${encodeURIComponent(r.id)}`)}>{r.fabric_title}</a></td><td>{badge('수락됨')}</td></tr></>))}</tbody></table></div></> : <><p className={"muted"}>{"선택한 날짜에 수락된 픽업이 없어요."}</p></>}</section>{go('+ 새 원단 등록', '/seller/register', 'primary')}</div></div></>);
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Seoul' });
+  const pickups = reservations.filter(r => r.pickup_date === today && r.status === 'ACCEPTED').toSorted((a,b) => a.pickup_time.localeCompare(b.pickup_time));
+  const requests = reservations.filter(r => r.status === 'REQUESTED');
+  const inquiries = ctx.state.inquiries.filter(i => fabrics.some(f => f.id === i.fabric_id) && !i.answer);
+  const title = item => item.fabric_title || fabrics.find(f => f.id === item.fabric_id)?.title || '원단 정보 확인 필요';
+  return wrap('123:2473', <>{pageHeading('오늘 처리할 일', `${ctx.state.store?.store_name || ctx.state.seller.nickname} · 픽업 일정과 확인할 요청부터 살펴보세요.`)}<div className="actions">{go('원단 등록','/seller/register','primary')}</div>
+    <div className="seller-overview-work"><section className="panel seller-panel"><div className="seller-section-heading"><h2>오늘의 픽업 · {pickups.length}건</h2>{go('일정 보기','/seller/calendar')}</div><p className="muted">{formatDate(today)} · 실제 전달 후 수령 완료로 처리하세요.</p>{pickups.length ? <ul className="seller-today-list">{pickups.map(r => <li key={r.id}><time>{r.pickup_time}</time><div><strong>{title(r)}</strong><small>예약 #{r.id} · 수락됨</small></div>{go('예약 확인',`/seller/reservations?status=ACCEPTED&id=${encodeURIComponent(r.id)}`)}</li>)}</ul> : notice('오늘 예정된 픽업이 없습니다.')}</section>
+    <div className="stack"><section className="panel seller-panel"><h2>새 예약 요청 · {requests.length}건</h2>{requests.length ? <ul className="seller-today-list">{requests.map(r => <li key={r.id}><div><strong>{title(r)}</strong><small>{formatDate(r.pickup_date)} · {r.pickup_time}</small></div>{go('요청 검토',`/seller/reservations?status=REQUESTED&id=${encodeURIComponent(r.id)}`)}</li>)}</ul> : notice('확인할 새 요청이 없습니다.')}<p className="muted">요청 단계에서는 재고가 확보되지 않습니다.</p></section><section className="panel seller-panel"><h2>답변을 기다리는 문의 · {inquiries.length}건</h2>{inquiries.length ? <ul className="seller-today-list">{inquiries.map(i => <li key={i.id}><div><strong>{title(i)}</strong><small>{i.content || i.question}</small></div>{go('답변 작성',`/seller/inquiries?id=${encodeURIComponent(i.id)}`)}</li>)}</ul> : notice('미답변 문의가 없습니다.')}</section></div></div>
+    <section className="panel seller-panel"><h2>내 원단 현황</h2>{details(Object.entries(FABRIC_STATUS).map(([key,label]) => [label,`${fabrics.filter(f => f.status === key).length}건`]))}{go('원단 관리','/seller/fabrics')}</section>
+  </>);
 }
+
 function fabricsView(ctx) {
   const status = ctx.query.get('status') || 'ALL',
     all = ownFabrics(ctx.state),
@@ -166,7 +143,7 @@ function photosFields(draft) {
 function manualView(ctx) {
   const draft = draftFor(ctx),
     scrap = draft.sale_type === 'SCRAP';
-  return wrap(scrap ? '127:6196' : '123:3466', <>{pageHeading(scrap ? '자투리 원단 입력' : '원단 등록 · 직접 입력', scrap ? '1장 그대로 판매 · 직접 입력 또는 AI 초안 확인' : '원단 정보를 입력한 뒤 등록 내용을 확인해 주세요.')}<nav className={"tabs seller-tabs"} aria-label={"판매 형태"}><a className={"" + "button " + (!scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=ROLL"}>{"롤 원단"}</a><a className={"" + "button " + (scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=SCRAP"}>{"자투리 원단"}</a></nav>{scrap ? notice('하자를 피해 사용할 수 있는 가장 큰 직사각형을 기준으로 재주세요. 길이는 30~90cm예요.', 'warning') : ''}{"\n    "}<form id={"seller-fabric-form"} className={"stack"} data-sale-type={draft.sale_type} onSubmit={ctx.runtime.fabricSubmit} ref={ctx.runtime.fabricForm} onInput={ctx.runtime.rememberInput} onChange={ctx.runtime.photoChange}><p className="muted seller-form-progress">기본 정보 → 치수·가격 → 하자 → 사진 → 등록 내용 확인</p>{ctx.query.get('from') === 'ai' ? notice('AI 예시 초안을 가져왔어요. 입력 내용은 유지되어 있으며 사진과 세부 항목을 이어서 보완할 수 있어요.') : null}<section className={"panel seller-panel"}><h2>{"기본 정보"}</h2>{field('원단 이름', 'title', {
+  return wrap(scrap ? '127:6196' : '123:3466', <>{pageHeading(scrap ? '자투리 원단 입력' : '원단 등록 · 직접 입력', scrap ? '1장 그대로 판매 · 직접 입력 또는 AI 초안 확인' : '원단 정보를 입력한 뒤 등록 내용을 확인해 주세요.')}<RegistrationSteps stage={1} /><nav className={"tabs seller-tabs"} aria-label={"판매 형태"}><a className={"" + "button " + (!scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=ROLL"}>{"롤 원단"}</a><a className={"" + "button " + (scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=SCRAP"}>{"자투리 원단"}</a></nav>{scrap ? notice('하자를 피해 사용할 수 있는 가장 큰 직사각형을 기준으로 재주세요. 길이는 30~90cm예요.', 'warning') : ''}{"\n    "}<form id={"seller-fabric-form"} className={"stack"} data-sale-type={draft.sale_type} onSubmit={ctx.runtime.fabricSubmit} ref={ctx.runtime.fabricForm} onInput={ctx.runtime.rememberInput} onChange={ctx.runtime.photoChange}><p className="muted seller-form-progress">기본 정보 → 치수·가격 → 하자 → 사진 → 등록 내용 확인</p>{ctx.query.get('from') === 'ai' ? notice('AI 예시 초안을 가져왔어요. 입력 내용은 유지되어 있으며 사진과 세부 항목을 이어서 보완할 수 있어요.') : null}<section className={"panel seller-panel"}><h2>{"기본 정보"}</h2>{field('원단 이름', 'title', {
           value: draft.title,
           required: true,
           "maxLength": "100"
@@ -217,7 +194,7 @@ function reviewView(ctx) {
   const draft = ctx.state.draft;
   if (!draft || draft.editing_id) return wrap('123:4153', emptyState('작성 중인 원단이 없어요', '원단 정보를 입력한 뒤 등록 내용을 확인해 주세요.', go('원단 입력하기', '/seller/register/type', 'primary')));
   const scrap = draft.sale_type === 'SCRAP';
-  return wrap(scrap ? '127:6325' : '123:4153', <>{pageHeading(scrap ? '자투리 등록 내용 확인' : '등록 내용 확인', '사진과 정보를 확인한 후 승인 신청을 보내 주세요.')}<div className="seller-review">
+  return wrap(scrap ? '127:6325' : '123:4153', <>{pageHeading(scrap ? '자투리 등록 내용 확인' : '등록 내용 확인', '사진과 정보를 확인한 후 승인 신청을 보내 주세요.')}<RegistrationSteps stage={3} /><div className="seller-review">
     <section className="panel seller-panel"><h2>선택한 사진 {selectedPhotos(draft).length}장</h2>{photoGallery(draft)}</section>
     <section className="panel seller-panel"><h2>원단 정보</h2>{badge('승인 신청 전', 'gray')}<h3 className="seller-review-title">{draft.title}</h3>{details(fabricRows(draft))}<div className="actions">{action('확인 후 승인 신청', 'submit-fabric', 'primary')}{go('내용 수정', `/seller/register/manual?type=${draft.sale_type}`)}</div></section>
   </div></>);
@@ -398,7 +375,7 @@ function aiView(ctx) {
   const message = (ctx.state.ai?.sale_type === draft.sale_type ? ctx.state.ai.message : '') || draft.ai_request || '';
   const example = scrap ? '아이보리 면 거즈예요. 가로 110cm, 세로 80cm이고 얇아요. 하자는 없고 한 장에 8,000원이에요.' : '내추럴 색상의 면 캔버스예요. 폭은 150cm이고 5마 남았어요. 두께는 보통이고 하자는 없어요. 1마당 5,000원입니다.';
   const disclosure = notice('예시 AI 대화예요. 입력한 설명을 보관하고 정해진 예시 초안을 보여줘요. 실제 AI 요청은 보내지 않아요.');
-  if (step === 'processing') return wrap('127:6487', <>{pageHeading('답변을 정리하고 있어요', 'AI 등록 도우미 · 예시 처리 중')}{disclosure}{record('보낸 답변', <><p>{message || '입력한 답변을 확인하고 있어요.'}</p></>)}<div className={"seller-progress"} role={"status"}><span className={"seller-spinner"} aria-hidden={"true"}></span>{"예시 초안을 준비하고 있어요."}</div><div className={"actions"}>{go('직접 입력으로 계속', manual)}</div></>);
+  if (step === 'processing') return wrap('127:6487', <>{pageHeading('답변을 정리하고 있어요', 'AI 등록 도우미 · 예시 처리 중')}<RegistrationSteps stage={1} mode="AI" />{disclosure}{record('보낸 답변', <><p>{message || '입력한 답변을 확인하고 있어요.'}</p></>)}<div className={"seller-progress"} role={"status"}><span className={"seller-spinner"} aria-hidden={"true"}></span>{"예시 초안을 준비하고 있어요."}</div><div className={"actions"}>{go('직접 입력으로 계속', manual)}</div></>);
   if (step === 'error') return wrap('127:6588', <>{pageHeading('응답을 받지 못했어요', 'AI 응답 실패 예시')}{notice('지금까지 입력한 내용은 유지했어요. 직접 입력에서 이어서 확인해 주세요.', 'error')}{record('유지된 항목', details(fabricRows(draft)))}{record('보낸 답변', <><p>{message || '아직 입력한 답변이 없어요.'}</p></>)}<div className={"actions"}>{go('직접 입력으로 계속', manual, 'primary')}{go('등록 방식으로', '/seller/register')}</div></>);
   if (step === 'result') return wrap('127:6528', <>{pageHeading('AI가 정리한 내용을 확인해 주세요', '예시 초안 · 판매자 확인 전에는 게시되지 않아요.')}{disclosure}{record('정리된 등록 항목', details(fabricRows(draft)))}{message ? record('입력한 설명', <><p>{message}</p></>) : ''}<div className={"actions"}>{go('등록 내용 확인', '/seller/register/review', 'primary')}{go('항목 직접 수정', manual)}{go('사진 추가·내용 보완', photoManual)}</div></>);
   const form = <><form id={"seller-ai-form"} className={"panel seller-panel"} data-sale-type={draft.sale_type} onSubmit={ctx.runtime.aiSubmit} ref={ctx.runtime.aiForm}><h2>{"판매자 답변"}</h2><label className={"field"}><span>{"메시지"}</span><textarea name={"ai_request"} rows={"3"} required={true} maxLength={"1000"} placeholder={"원단에 대해 알려주세요."} defaultValue={message || example}></textarea></label><div className={"actions"}>{button(scrap ? '답변 정리하기' : '보내기', {
@@ -426,7 +403,7 @@ function aiView(ctx) {
 }
 function photoView(ctx) {
   const d = draftFor(ctx), photos = selectedPhotos(d);
-  return wrap('127:6637', <>{pageHeading('선택한 사진을 확인해 주세요', `사진 ${photos.length}장 선택 · 아직 업로드 전`)}<section className="panel seller-panel">{photoGallery(d)}<p className="muted">사진은 원단 상세에 표시돼요. 치수·혼용률을 자동으로 판별하지 않아요.</p><div className="actions">{action('등록 내용 확인', 'photos-to-review', 'primary')}{action('입력하던 곳으로 돌아가기', 'photos-back')}</div></section></>);
+  return wrap('127:6637', <>{pageHeading('선택한 사진을 확인해 주세요', `사진 ${photos.length}장 선택 · 아직 업로드 전`)}<RegistrationSteps stage={2} /><section className="panel seller-panel">{photoGallery(d)}<p className="muted">사진은 원단 상세에 표시돼요. 치수·혼용률을 자동으로 판별하지 않아요.</p><div className="actions">{action('등록 내용 확인', 'photos-to-review', 'primary')}{action('입력하던 곳으로 돌아가기', 'photos-back')}</div></section></>);
 }
 function inputErrorView(ctx) {
   const d = draftFor(ctx),

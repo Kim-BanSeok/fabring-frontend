@@ -1,13 +1,33 @@
-import { Component, useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
+import { Component, lazy, Suspense, useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
 import AppShell from './react/components/AppShell.jsx';
 import ReviewTools from './react/components/ReviewTools.jsx';
 import { Button, EmptyState } from './react/components/ui.jsx';
-import PreviewPage from './react/pages/PreviewPage.jsx';
-import AuthPage from './react/pages/AuthPage.jsx';
-import BuyerPage from './react/pages/BuyerPage.jsx';
-import SellerPage from './react/pages/SellerPage.jsx';
-import AdminPage from './react/pages/AdminPage.jsx';
 import { NAVIGATION_FOCUS_TARGETS } from './react/app/store.js';
+
+// Load the current role's screens without downloading every role's UI at entry.
+const loadPage = factory => lazy(async () => {
+  const { default: Page } = await factory();
+  return { default: function LoadedPage({ ctx }) {
+    const entered = useRef(false);
+    useLayoutEffect(() => {
+      const heading = document.querySelector('#main-content h1, #main-content .empty-state h2');
+      document.title = `${heading?.textContent || '패브링'} · 패브링`;
+      if (!entered.current) {
+        entered.current = true;
+        const restore = ctx.scrollRestoration?.hash === window.location.hash ? ctx.scrollRestoration : null;
+        const selector = NAVIGATION_FOCUS_TARGETS[restore?.focusTarget];
+        const target = selector ? document.querySelector('#main-content')?.querySelector(selector) : null;
+        (target || heading)?.focus({ preventScroll: true });
+      }
+    });
+    return <Page ctx={ctx} />;
+  } };
+});
+const PreviewPage = loadPage(() => import('./react/pages/PreviewPage.jsx'));
+const AuthPage = loadPage(() => import('./react/pages/AuthPage.jsx'));
+const BuyerPage = loadPage(() => import('./react/pages/BuyerPage.jsx'));
+const SellerPage = loadPage(() => import('./react/pages/SellerPage.jsx'));
+const AdminPage = loadPage(() => import('./react/pages/AdminPage.jsx'));
 
 class PageErrorBoundary extends Component {
   state = { error: null };
@@ -45,7 +65,7 @@ export default function App({ store }) {
   useEffect(() => store.connect(), [store]);
   useLayoutEffect(() => {
     const heading = document.querySelector('#main-content h1');
-    document.title = `${heading?.textContent || '섬유 루프'} · 섬유 루프`;
+    document.title = `${heading?.textContent || '패브링'} · 패브링`;
     if (lastRoute.current !== routeKey) {
       const restore = snapshot.scrollRestoration?.hash === window.location.hash ? snapshot.scrollRestoration : null;
       window.scrollTo(0, restore?.top || 0);
@@ -59,7 +79,7 @@ export default function App({ store }) {
   });
   return <>
     <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); const main = document.getElementById('main-content'); main.tabIndex = -1; main.focus(); }}>본문으로 바로가기</a>
-    <AppShell ctx={ctx} footer={import.meta.env.DEV || snapshot.mode === 'demo' ? <ReviewTools ctx={ctx} onReset={store.reset} /> : null}><PageErrorBoundary key={routeKey}><RoutePage ctx={ctx} /></PageErrorBoundary></AppShell>
+    <AppShell ctx={ctx} footer={import.meta.env.DEV || snapshot.mode === 'demo' ? <ReviewTools ctx={ctx} onReset={store.reset} /> : null}><PageErrorBoundary key={routeKey}><Suspense fallback={<section className="panel" role="status" aria-live="polite">화면을 불러오고 있어요…</section>}><RoutePage ctx={ctx} /></Suspense></PageErrorBoundary></AppShell>
     <div className="toast" id="feedback" role="status" aria-live="polite">{snapshot.toast}</div>
   </>;
 }

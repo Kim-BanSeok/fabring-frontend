@@ -72,7 +72,7 @@ export default function LiveProfilePage({ ctx }) {
   useEffect(() => {
     if (resource.loading) return;
     const heading = root.current?.querySelector('h1');
-    if (heading) { document.title = `${heading.textContent} · 섬유 루프`; if (document.activeElement === document.body) heading.focus({ preventScroll: true }); }
+    if (heading) { document.title = `${heading.textContent} · 패브링`; if (document.activeElement === document.body) heading.focus({ preventScroll: true }); }
   }, [resource.loading]);
   if (!user) return <div className="buyer-page" ref={root}><PageHeading title={editing ? '회원 정보 수정' : '마이페이지'} />{resource.loading ? <Notice role="status">회원 정보를 불러오고 있어요.</Notice> : <><Notice tone="error">{resource.error?.message || '회원 정보를 불러오지 못했어요.'}</Notice><Button onClick={resource.retry} tone="primary">회원 정보 다시 조회</Button></>}</div>;
   if (editing) return <div className="buyer-page" ref={root} data-figma-node="127:5385"><PageHeading title="회원 정보 수정" description="닉네임과 연락처를 수정할 수 있어요. 저장한 후 적용됩니다." /><ProfileAccountForm ctx={ctx} user={user} /></div>;

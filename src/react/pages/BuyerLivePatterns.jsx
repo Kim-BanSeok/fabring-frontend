@@ -22,7 +22,7 @@ function useReadHeading(resource) {
       document.addEventListener('focusin', track);
       return () => document.removeEventListener('focusin', track);
     }
-    document.title = `${heading?.textContent || '도안 정보'} · 섬유 루프`;
+    document.title = `${heading?.textContent || '도안 정보'} · 패브링`;
     if (owned.current && heading && (document.activeElement === document.body || document.activeElement === heading)) heading.focus({ preventScroll: true });
     owned.current = false;
     return undefined;

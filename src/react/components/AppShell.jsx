@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { HOME } from '../app/store.js';
 
 const buyerLinks = [['홈', '/buyer/home'], ['원단목록', '/buyer/fabrics'], ['부자재 찾기', '/buyer/supplies'], ['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
-const sellerLinks = [['홈', '/seller/dashboard'], ['내 원단', '/seller/fabrics'], ['원단 등록', '/seller/register'], ['픽업 예약', '/seller/reservations'], ['문의내역', '/seller/inquiries'], ['마이페이지', '/seller/profile']];
+const sellerLinks = [['홈', '/seller/dashboard'], ['내 원단', '/seller/fabrics'], ['원단 등록', '/seller/register'], ['픽업 예약', '/seller/reservations'], ['픽업 일정', '/seller/calendar'], ['문의내역', '/seller/inquiries'], ['매장 관리', '/seller/store'], ['마이페이지', '/seller/profile']];
 const adminLinks = [['대시보드 홈', '/admin/dashboard'], ['판매자 승인', '/admin/sellers'], ['상품목록', '/admin/fabrics'], ['원단 게시 승인', '/admin/approvals']];
 
 function MobileMenu({ links, activePath, routeKey, label, logout }) {
@@ -20,9 +20,9 @@ function MobileMenu({ links, activePath, routeKey, label, logout }) {
   </details>;
 }
 
-export function Logo({ role, dark = false }) {
-  return <a className="brand" href={`#${HOME[role]}`} aria-label={`섬유 루프 ${role === 'SELLER' ? '판매자' : role === 'ADMIN' ? '관리자' : '구매자'} 홈`}>
-    <img src={`/assets/figma/${dark ? 'logo-light' : 'logo'}.svg`} width="28" height="28" alt="" /><span>섬유 루프</span>
+export function Logo({ role }) {
+  return <a className="brand" href={`#${HOME[role]}`} aria-label={`패브링 ${role === 'SELLER' ? '판매자' : role === 'ADMIN' ? '관리자' : '구매자'} 홈`}>
+    <img src="/assets/brand/fabring-mark.svg" width="32" height="32" alt="" /><span>패브링</span>
   </a>;
 }
 
@@ -52,8 +52,13 @@ export default function AppShell({ ctx, children, footer }) {
       <MobileMenu links={adminLinks} activePath={activePath} routeKey={`${path}?${query}`} label="관리자" logout={logout} />
       <nav className="admin-nav" aria-label="관리자 메뉴">{adminLinks.map(([label, href]) => <a key={href} className="button" href={`#${href}`} aria-current={activePath.startsWith(href) ? 'page' : undefined}>{label}</a>)}</nav>
       <div className="admin-sidebar-footer"><small>MY · 운영 관리자</small><Button data-logout="ADMIN" onClick={logout}>로그아웃</Button></div>
-    </aside><div className="admin-workspace"><header className="admin-topbar"><span>양주 섬유 루프 / 운영 관리</span><Badge>ADMIN</Badge></header>{main}{footer}</div></div>;
+    </aside><div className="admin-workspace"><header className="admin-topbar"><span>패브링 / 운영 관리</span><Badge>관리자</Badge></header>{main}{footer}</div></div>;
   }
+  if (role === 'SELLER') return <div className="shell app-shell seller-shell"><aside className="seller-sidebar"><Logo role={role} /><small>판매자 공간</small>
+    <MobileMenu links={sellerLinks} activePath={path} routeKey={`${path}?${query}`} label="판매자" logout={logout} />
+    <nav className="seller-side-nav" aria-label="판매자 메뉴">{sellerLinks.map(([label, destination]) => <a key={destination} href={`#${destination}`} aria-current={path.startsWith(destination) ? 'page' : undefined}>{label}</a>)}</nav>
+    <div className="seller-sidebar-account"><strong>{ctx.state.store?.store_name || ctx.state.seller?.nickname || '내 판매자 계정'}</strong><Button onClick={logout}>로그아웃</Button></div>
+  </aside><div className="seller-workspace"><header className="seller-topbar"><span>판매자 공간 / {sellerLinks.find(([, destination]) => path.startsWith(destination))?.[0] || '원단 관리'}</span><Badge>판매자</Badge></header>{main}{footer}</div></div>;
   const links = role === 'SELLER' ? sellerLinks : buyerLinks;
   return <div className="shell app-shell"><header className="site-header"><Logo role={role} /><nav className="site-nav" aria-label={`${role === 'SELLER' ? '판매자' : '구매자'} 메뉴`}>
     {links.map(([label, href]) => <a key={href} href={`#${href}`} aria-current={path.startsWith(href) ? 'page' : undefined}>{label}</a>)}

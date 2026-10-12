@@ -1,3 +1,4 @@
+import AdminWorkQueue from '../components/AdminWorkQueue.jsx';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Badge, Button, EmptyState, FabricImage, Notice, PageHeading, SelectField } from '../components/ui.jsx';
 import { formatLength, formatPrice } from '../lib/format.js';
@@ -76,9 +77,9 @@ function PendingTable({ items }) {
 function Dashboard({ ctx }) {
   const resource = useAdminResource(ctx.api, { type: 'dashboard' }), data = resource.data;
   const cards = data ? [['원단 게시 대기', data.fabricCounts.PENDING, '확인이 필요한 원단', '/admin/fabrics?status=PENDING'], ['승인 완료 판매자', data.sellerCounts.APPROVED, '승인이 완료된 판매자', '/admin/sellers?status=APPROVED'], ['판매자 승인 대기', data.sellerCounts.PENDING, '승인 확인 대기 판매자', '/admin/sellers?status=PENDING'], ['등록된 원단수', Object.values(data.fabricCounts).reduce((sum, count) => sum + count, 0), '전체 상태 합계 · 상태별 목록에서 조회', null]] : [];
-  return <section className="admin-page admin-dashboard stack" data-figma-node="123:4955"><PageHeading title="관리자 대시보드" description="새롭게 등록된 원단과 서비스 현황을 확인하세요." />
+  return <section className="admin-page admin-dashboard stack" data-figma-node="123:4955"><PageHeading title="관리자 대시보드" description="승인 대기 업무를 먼저 처리하고 서비스 현황을 확인하세요." />
     <AsyncState resource={resource} title="관리 목록과 통계를 확인하고 있어요." />
-    {data && <><section className="panel admin-panel admin-dashboard-work"><div className="admin-list-heading"><h2>원단 게시 승인 대기 · {data.fabricCounts.PENDING}건</h2><Button href="/admin/approvals" tone="primary">대기 원단 검토</Button></div><div className="admin-dashboard-preview"><PendingTable items={data.pendingFabrics.slice(0, 3)} /></div>{data.fabricCounts.PENDING > 3 && <Button href="/admin/approvals">대기 {data.fabricCounts.PENDING}건 모두 보기 →</Button>}</section>
+    {data && <><AdminWorkQueue fabrics={data.fabricCounts.PENDING} sellers={data.sellerCounts.PENDING} /><section className="panel admin-panel admin-dashboard-work"><div className="admin-list-heading"><h2>원단 게시 승인 대기 · {data.fabricCounts.PENDING}건</h2><Button href="/admin/approvals" tone="primary">대기 원단 검토</Button></div><div className="admin-dashboard-preview"><PendingTable items={data.pendingFabrics.slice(0, 3)} /></div>{data.fabricCounts.PENDING > 3 && <Button href="/admin/approvals">대기 {data.fabricCounts.PENDING}건 모두 보기 →</Button>}</section>
       <div className="stat-grid admin-stats" aria-label="서비스 현황">{cards.map(([title, count, hint, path]) => { const content = <><span>{title}</span><strong>{count}</strong><small>{hint}</small></>; return path ? <a key={title} className="stat-card admin-stat" href={'#' + path}>{content}</a> : <div key={title} className="stat-card admin-stat admin-stat--summary">{content}</div>; })}</div><div className="actions"><Button onClick={resource.retry}>최신 현황 조회</Button></div></>}
   </section>;
 }
@@ -212,7 +213,7 @@ export default function AdminLivePage({ ctx }) {
   const section = useRef(null);
   useEffect(() => {
     const target = section.current;
-    const update = () => { const h1 = target?.querySelector('h1'); if (h1) document.title = h1.textContent + ' · 섬유 루프'; };
+    const update = () => { const h1 = target?.querySelector('h1'); if (h1) document.title = h1.textContent + ' · 패브링'; };
     update(); const observer = new MutationObserver(update); if (target) observer.observe(target, { childList: true, subtree: true, characterData: true });
     return () => observer.disconnect();
   }, []);

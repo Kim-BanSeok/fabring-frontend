@@ -132,7 +132,7 @@ function BuyerInquiryForFabric({ ctx, id }) {
     if (resource.loading) return;
     const heading = document.querySelector('#main-content h1');
     if (!heading) return;
-    document.title = `${heading.textContent} · 섬유 루프`;
+    document.title = `${heading.textContent} · 패브링`;
     // The loading heading was removed. Restore focus only if the reader has
     // not moved to a field or another control while the request was pending.
     if (document.activeElement === document.body) heading.focus({ preventScroll: true });

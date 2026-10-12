@@ -69,27 +69,28 @@ export default function SellerLiveOverview({ ctx }) {
     : <Dashboard ctx={ctx} calendar={calendar} />;
 }
 
+function TodayPickups({ calendar }) {
+  const [today] = useState(() => sellerToday(Date.now()));
+  const schedule = calendar.data ? sellerPickupSchedule(calendar.data.content, today.slice(0, 7), today) : null;
+  return <section className="panel seller-panel"><div className="seller-section-heading"><h2>오늘의 픽업</h2><Link path="/seller/calendar">일정 보기 →</Link></div><p className="muted">{formatDate(today)} · 수락한 예약의 방문 시간을 확인하세요.</p>
+    {calendar.loading ? <p role="status">픽업 일정을 확인하고 있어요.</p> : calendar.error ? <OverviewFailure resource={calendar} label="픽업 일정" /> : <>{schedule.visible.length ? <ul className="seller-today-list">{schedule.visible.map(item => <li key={item.id}><time dateTime={item.pickup_at}>{item.pickup_time}</time><div><strong>{item.fabric_title}</strong><small>{item.buyer_nickname || '구매자 이름 미제공'} · 예약 #{item.id}</small></div><Link path={sellerCalendarReservationPath(item.id)}>예약 확인</Link></li>)}</ul> : <Notice>오늘 예정된 픽업이 없습니다.</Notice>}<small className="muted">실제 전달 후 예약 상세에서 수령 완료로 처리하세요.</small></>}
+  </section>;
+}
+
 function Dashboard({ ctx, calendar }) {
   const requested = useSellerOverviewResource(ctx.api, 'requested');
   const fabrics = useSellerOverviewResource(ctx.api, 'fabrics');
   const inquiries = useSellerOverviewResource(ctx.api, 'inquiries');
   const busy = [requested, fabrics, inquiries, calendar].some(resource => resource.loading);
   const retryAll = () => { for (const resource of [requested, fabrics, inquiries, calendar]) resource.retry(); };
-  return <section className="seller-page stack" data-figma-node="123:2473"><PageHeading title={`반가워요, ${ctx.state.store?.store_name || ctx.state.seller.nickname}`} description="받은 예약과 픽업 진행 상태를 확인하세요." />
-    <div className="actions"><Button onClick={retryAll} disabled={busy}>{busy ? '현황 조회 중' : '전체 현황 새로 조회'}</Button></div>
-    <div className="stat-grid seller-stats">
-      <Stat label="예약 요청" resource={requested} note="판매자 확인 대기" />
-      <Stat label="답변 대기" resource={inquiries} countKey="WAITING" note={inquiries.data ? `답변 완료 ${inquiries.data.ANSWERED.toLocaleString('ko-KR')}건` : '받은 문의 현황'} />
-      <Stat label="수락된 예약" resource={calendar} note="전체 날짜의 수락 내역" />
-      <Stat label="원단 승인 대기" resource={fabrics} countKey="PENDING" note={fabrics.data ? `전체 원단 ${fabrics.data.total.toLocaleString('ko-KR')}건` : '내 원단 현황'} />
-    </div>
-    <div className="seller-columns"><div className="stack">
-      <section className="panel seller-panel"><h2>오늘 처리할 일</h2><h3>받은 픽업 예약 확인</h3><p className="muted">요청을 수락하거나 거절하고, 전달한 원단은 수령 완료로 처리하세요.</p>{requested.error && <OverviewFailure resource={requested} label="예약 요청 현황" />}<div className="actions"><Link path="/seller/reservations" tone="primary">예약 확인</Link><Link path="/seller/reservations?status=ACCEPTED">수락된 예약</Link></div></section>
-      <section className="panel seller-panel"><h2>내 원단 현황</h2>
-        {fabrics.loading ? <p role="status" className="muted">원단 현황을 조회하고 있어요.</p> : fabrics.error ? <OverviewFailure resource={fabrics} label="원단 현황" /> : <dl className="seller-overview-counts">{SELLER_FABRIC_COUNT_LABELS.map(([key, label]) => <div key={key}><dt>{label}</dt><dd>{sellerOverviewCount(fabrics, key)}</dd></div>)}</dl>}
-        <h3>문의 현황</h3>{inquiries.loading ? <p role="status" className="muted">문의 현황을 조회하고 있어요.</p> : inquiries.error ? <OverviewFailure resource={inquiries} label="문의 현황" /> : <dl className="seller-overview-counts"><div><dt>답변 대기</dt><dd>{sellerOverviewCount(inquiries, 'WAITING')}</dd></div><div><dt>답변 완료</dt><dd>{sellerOverviewCount(inquiries, 'ANSWERED')}</dd></div></dl>}
-        <Notice>원단 관리에서 등록 내역을 수정하고, 문의 내역에서 구매자의 질문을 확인하고 답변할 수 있어요.</Notice><div className="actions"><Link path="/seller/fabrics">원단 관리</Link><Link path="/seller/inquiries">문의 확인·답변</Link></div>
-      </section>
-    </div><Calendar ctx={ctx} resource={calendar} compact /></div>
+  return <section className="seller-page stack" data-figma-node="123:2473"><PageHeading title="오늘 처리할 일" description={`${ctx.state.store?.store_name || ctx.state.seller.nickname} · 픽업 일정과 확인할 요청부터 살펴보세요.`} />
+    <div className="actions"><Link path="/seller/register" tone="primary">원단 등록</Link><Button onClick={retryAll} disabled={busy}>{busy ? '현황 조회 중' : '전체 현황 새로 조회'}</Button></div>
+    <div className="seller-overview-work"><TodayPickups calendar={calendar} /><div className="stack">
+      <section className="panel seller-panel"><h2>새 예약 요청 · {sellerOverviewCount(requested)}</h2><p className="muted">재고와 방문 가능한 시간을 확인한 뒤 수락하세요. 요청 단계에서는 재고가 확보되지 않습니다.</p>{requested.error && <OverviewFailure resource={requested} label="예약 요청 현황" />}<Link path="/seller/reservations?status=REQUESTED" tone="primary">요청 검토하기</Link></section>
+      <section className="panel seller-panel"><h2>답변을 기다리는 문의 · {sellerOverviewCount(inquiries, 'WAITING')}</h2><p className="muted">원단과 픽업에 대한 구매자의 질문을 확인하세요.</p>{inquiries.error && <OverviewFailure resource={inquiries} label="문의 현황" />}<Link path="/seller/inquiries?status=WAITING">문의 확인·답변</Link></section>
+    </div></div>
+    <section className="panel seller-panel"><h2>내 원단 현황</h2>{fabrics.loading ? <p role="status">원단 현황을 조회하고 있어요.</p> : fabrics.error ? <OverviewFailure resource={fabrics} label="원단 현황" /> : <dl className="seller-overview-counts">{SELLER_FABRIC_COUNT_LABELS.map(([key, label]) => <div key={key}><dt>{label}</dt><dd>{sellerOverviewCount(fabrics, key)}</dd></div>)}</dl>}<Link path="/seller/fabrics">원단 관리</Link></section>
+    <div className="stat-grid seller-stats"><Stat label="예약 요청" resource={requested} note="판매자 확인 대기" /><Stat label="답변 대기" resource={inquiries} countKey="WAITING" note="받은 문의 현황" /><Stat label="수락된 예약" resource={calendar} note="전체 날짜의 수락 내역" /><Stat label="원단 승인 대기" resource={fabrics} countKey="PENDING" note="내 원단 현황" /></div>
+    <details open={ctx.query.has('month') || ctx.query.has('date')}><summary>월별 픽업 일정 펼치기</summary><Calendar ctx={ctx} resource={calendar} compact /></details>
   </section>;
 }

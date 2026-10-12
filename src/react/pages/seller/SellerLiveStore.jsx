@@ -99,7 +99,7 @@ export default function SellerLiveStore({ ctx }) {
   useEffect(() => {
     if (!resource.data) return;
     const heading = root.current?.querySelector('h1');
-    if (heading) { document.title = `${heading.textContent} · 섬유 루프`; if (document.activeElement === document.body) heading.focus({ preventScroll: true }); }
+    if (heading) { document.title = `${heading.textContent} · 패브링`; if (document.activeElement === document.body) heading.focus({ preventScroll: true }); }
   }, [resource.data]);
   let content;
   if (resource.loading || resource.error) content = <section className="seller-page stack"><PageHeading title={confirmed && ctx.path === '/seller/profile/saved' ? '매장 정보 저장은 완료됐어요' : baseTitle} />

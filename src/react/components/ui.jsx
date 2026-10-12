@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Shared presentation primitives. Native input/link props pass through unchanged.
 
@@ -17,6 +17,12 @@ export function Notice({ children, tone = 'info', ...props }) {
   return <div className={`notice notice--${tone}`} role={tone === 'error' ? 'alert' : undefined} {...props}>{children}</div>;
 }
 
+export function SubmissionAlert({ children }) {
+  const alert = useRef(null);
+  useEffect(() => { alert.current?.focus(); }, [children]);
+  return <Notice ref={alert} tone="error" tabIndex={-1}>{children}</Notice>;
+}
+
 export function PageHeading({ title, description = '' }) {
   return <header className="page-heading"><h1 tabIndex={-1}>{title}</h1>{description && <p>{description}</p>}</header>;
 }
@@ -31,16 +37,19 @@ export function FabricImage({ fabric, className = '', exampleLabel = true, compa
   const texture = /블루.*스트라이프|스트라이프.*블루/.test(`${fabric.title} ${fabric.color || ''}`) ? 'stripe'
     : ['linen', 'gingham', 'canvas', 'denim', 'stripe'].includes(fabric.texture) ? fabric.texture : 'canvas';
   if (source && (fabric.source !== 'api' || source !== failedUrl)) {
-    return <img className={`fabric-art ${className}`} src={source} alt={fabric.title} onError={fabric.source === 'api' ? () => setFailedUrl(source) : undefined} />;
+    return <img className={`fabric-art ${className}`} src={source} alt={fabric.title} loading="lazy" decoding="async" onError={fabric.source === 'api' ? () => setFailedUrl(source) : undefined} />;
   }
   if (fabric.source === 'api') return <div className={`fabric-art fabric-art--empty ${className}`} role="img" aria-label={`${fabric.title} · ${source ? '사진을 불러오지 못했어요' : '등록된 사진이 없어요'}`}><p aria-hidden="true">{compact ? (source ? '로드 실패' : '사진 없음') : (source ? '사진을 불러오지 못했어요' : '등록된 사진이 없어요')}</p></div>;
+  const sample = /데님/.test(fabric.title) ? [0, 0] : /캔버스/.test(fabric.title) ? [2, 0] : /거즈/.test(fabric.title) ? [2, 1] : /린넨/.test(fabric.title) ? [0, 1] : null;
+  if (sample) return <div className={`fabric-art fabric-art--photo ${className}`} role="img" aria-label={`${fabric.title} 생성 소재 사진 예시`} style={{ '--fabric-x': sample[0], '--fabric-y': sample[1] }}><img src="/assets/brand/fabric-swatches.webp" alt="" loading="lazy" decoding="async" />{exampleLabel && <em className="fabric-example-label" aria-hidden="true">생성 사진 예시</em>}</div>;
   return <div className={`fabric-art fabric-art--${texture} ${className}`} role="img" aria-label={`${fabric.title} 질감 예시`}><span aria-hidden="true" />{exampleLabel && <em className="fabric-example-label" aria-hidden="true">질감 예시</em>}</div>;
 }
 
 export function Field({ label, name, type = 'text', required = false, readOnly = false, hint = '', id = `field-${name}`, ...props }) {
+  const unit = type === 'number' ? ['width_cm', 'length_cm'].includes(name) ? 'cm' : name === 'price' ? '원' : '' : '';
   return <div className="field">
     <label htmlFor={id}>{label}{required && <> <span aria-hidden="true">*</span></>}</label>
-    <input id={id} name={name} type={type} required={required} readOnly={readOnly} aria-describedby={hint ? `${id}-hint` : undefined} {...props} />
+    <div className={`field-control${unit ? ' field-control--unit' : ''}`}><input id={id} name={name} type={type} required={required} readOnly={readOnly} aria-describedby={hint ? `${id}-hint` : undefined} {...props} />{unit && <span aria-hidden="true">{unit}</span>}</div>
     {hint && <p id={`${id}-hint`} className="field-hint">{hint}</p>}
   </div>;
 }

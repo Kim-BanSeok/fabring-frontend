@@ -9,6 +9,7 @@ import './prototype/pages/seller.css';
 import './prototype/pages/admin.css';
 import './prototype/pages/auth.css';
 import './react/app/layout.css';
+import './react/app/fabring.css';
 
 const liveApi = createLiveApi({ baseUrl: import.meta.env.VITE_API_BASE_URL || '/api/v1' });
 const store = createAppStore({ liveApi });

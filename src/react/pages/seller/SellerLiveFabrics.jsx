@@ -86,7 +86,7 @@ function FabricResourcePage({ ctx, api }) {
   useEffect(() => {
     if (!resource.data) return;
     const heading = root.current?.querySelector('h1');
-    if (heading) { document.title = `${heading.textContent} · 섬유 루프`; if (document.activeElement === document.body) heading.focus({ preventScroll: true }); }
+    if (heading) { document.title = `${heading.textContent} · 패브링`; if (document.activeElement === document.body) heading.focus({ preventScroll: true }); }
   }, [resource.data]);
   const ack = ctx.drafts.get(acknowledgeKey(id));
   if (!id) return <EmptyState title="원단을 선택해 주세요" description="내 원단 목록에서 항목을 선택할 수 있어요."><FabricLink path={liveFabricListPath(ctx)}>원단 목록</FabricLink></EmptyState>;
