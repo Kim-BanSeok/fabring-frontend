@@ -1,0 +1,132 @@
+{
+  "checkedAt": "2026-10-12T07:11:12.221Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "method": "Read-only database SELECT and HTTP GET verification after browser actions",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Browser request accepted then picked up, length 270cm and price 15000 retained",
+      "passed": true
+    },
+    {
+      "name": "Roll pickup reduced 1800cm to 1530cm and cleared secured stock",
+      "passed": true
+    },
+    {
+      "name": "Browser reject reason saved exactly",
+      "passed": true
+    },
+    {
+      "name": "Accepted reservation canceled by seller",
+      "passed": true
+    },
+    {
+      "name": "Canceled accepted scrap is available again",
+      "passed": true
+    },
+    {
+      "name": "All pre-task rows preserved across all eleven models, including original 32 reservations",
+      "passed": true
+    },
+    {
+      "name": "Backend and frontend remain healthy",
+      "passed": true
+    }
+  ],
+  "reservations": {
+    "64": {
+      "reservationId": 64,
+      "fabricId": 43,
+      "status": "REJECTED",
+      "reject_reason": "요청하신 시간에는 매장 방문이 어려워요. 다른 일정으로 다시 요청해 주세요."
+    },
+    "65": {
+      "reservationId": 65,
+      "fabricId": 44,
+      "status": "CANCELED",
+      "canceled_by": "SELLER",
+      "canceled_at": "2026-10-12T16:09:37+09:00"
+    },
+    "66": {
+      "reservationId": 66,
+      "fabricId": 45,
+      "status": "PICKED_UP",
+      "requested_length_cm": 270,
+      "estimated_price": 15000,
+      "pickup_at": "2026-10-14T14:00:00+09:00",
+      "accepted_at": "2026-10-12T16:06:48+09:00",
+      "picked_up_at": "2026-10-12T16:07:56+09:00"
+    }
+  },
+  "fabrics": {
+    "44": {
+      "fabricId": 44,
+      "status": "POSTED",
+      "is_reserved": false
+    },
+    "45": {
+      "fabricId": 45,
+      "status": "POSTED",
+      "remaining_length_cm": 1530,
+      "reserved_length_cm": 0,
+      "available_length_cm": 1530
+    }
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 9,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 2,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 33,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 33,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 1,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 32,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "health": {
+    "backend": {
+      "status": 200,
+      "ready": true
+    },
+    "frontend": {
+      "status": 200,
+      "ready": true
+    }
+  },
+  "passed": 7
+}

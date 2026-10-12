@@ -3,12 +3,20 @@ import { SellerScreen, UploadState } from './seller/SellerViews.jsx';
 import { SellerRuntime } from './seller/SellerRuntime.js';
 import { draftFor, formDraft, unfinishedDraft, validateSellerDraft, canRegister } from './seller/sellerModel.js';
 import { inquiryDraftKey, submitInquiryDraft } from './seller/sellerUx.js';
+import SellerReservations from './seller/SellerReservations.jsx';
+import SellerLiveOverview from './seller/SellerLiveOverview.jsx';
 
 const PHOTO_ORDER = ['FULL', 'ZOOM', 'DEFECT'];
 const fabricRoute = fabric => `/seller/fabrics/detail?id=${encodeURIComponent(fabric.id)}`;
 const formValues = form => Object.fromEntries([...new FormData(form)].map(([key, value]) => [key, String(value).trim()]));
 
 export default function SellerPage({ ctx }) {
+  if (ctx.mode === 'live' && ['/seller/reservations', '/seller/reservations/confirm'].includes(ctx.path)) return <SellerReservations ctx={ctx} />;
+  if (ctx.mode === 'live' && ['/seller', '/seller/dashboard', '/seller/calendar'].includes(ctx.path)) return <SellerLiveOverview ctx={ctx} />;
+  return <SellerWorkbench ctx={ctx} />;
+}
+
+function SellerWorkbench({ ctx }) {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [creating, setCreating] = useState(false);

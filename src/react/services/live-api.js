@@ -1,6 +1,7 @@
 import { ApiError, createHttpClient } from './http-client.js';
 import { fabricQuery, fabricPage, fabricDetail, fabricIdentifier } from './fabric-contract.js';
-import { reservationQuery, reservationPage, reservationDetail, reservationIdentifier, reservationInput, reservationMutation } from './reservation-contract.js';
+import { reservationQuery, reservationPage, reservationDetail, reservationIdentifier, reservationInput, reservationMutation,
+  receivedReservationQuery, receivedReservationPage, acceptReservationInput, rejectReservationInput } from './reservation-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -98,7 +99,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       if (signal?.aborted || revision !== version) throw cancelled();
       if (method === 'POST' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
         failure.outcomeUnknown = true;
-        failure.message = '처리 결과를 확인하지 못했어요. 다시 보내기 전에 예약 내역에서 접수·취소 여부를 확인해 주세요.';
+        failure.message = '처리 결과를 확인하지 못했어요. 다시 보내기 전에 예약 내역에서 현재 상태를 확인해 주세요.';
       }
       throw failure;
     }
@@ -111,6 +112,25 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     async listReservations(filters = {}, { signal } = {}) {
       requireSession(['BUYER']);
       return reservationRequest(`/reservations/me?${reservationQuery(filters)}`, { signal, decode: reservationPage });
+    },
+    async listReceivedReservations(filters = {}, { signal } = {}) {
+      requireSession(['SELLER']);
+      return reservationRequest(`/sellers/me/reservations?${receivedReservationQuery(filters)}`, { signal, decode: receivedReservationPage });
+    },
+    async acceptReservation(id, input = {}, { signal } = {}) {
+      requireSession(['SELLER']);
+      const identifier = reservationIdentifier(id), body = acceptReservationInput(input, now());
+      return reservationRequest(`/reservations/${identifier}/accept`, { signal, body, method: 'POST', decode: raw => reservationMutation(raw, 'ACCEPTED', { id: identifier }) });
+    },
+    async rejectReservation(id, reason, { signal } = {}) {
+      requireSession(['SELLER']);
+      const identifier = reservationIdentifier(id), body = rejectReservationInput(reason);
+      return reservationRequest(`/reservations/${identifier}/reject`, { signal, body, method: 'POST', decode: raw => reservationMutation(raw, 'REJECTED', { id: identifier }) });
+    },
+    async confirmPickup(id, { signal } = {}) {
+      requireSession(['SELLER']);
+      const identifier = reservationIdentifier(id);
+      return reservationRequest(`/reservations/${identifier}/pickup`, { signal, method: 'POST', decode: raw => reservationMutation(raw, 'PICKED_UP', { id: identifier }) });
     },
     async getReservation(id, { signal } = {}) {
       requireSession();

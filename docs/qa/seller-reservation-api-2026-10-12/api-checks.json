@@ -1,0 +1,1015 @@
+{
+  "checkedAt": "2026-10-12T07:03:15.716Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "passed": 109,
+  "note": "109개는 페이지 검증용 반복 데이터 생성과 로그인·health 확인을 포함한 실제 HTTP 호출 수입니다. 응답 본문·인증 정보는 제외했습니다.",
+  "checks": [
+    {
+      "name": "backend health",
+      "method": "GET",
+      "path": "/health",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "frontend health",
+      "actualStatus": 200,
+      "passed": true
+    },
+    {
+      "name": "QA seller login",
+      "actualStatus": 200,
+      "passed": true
+    },
+    {
+      "name": "QA buyer login",
+      "actualStatus": 200,
+      "passed": true
+    },
+    {
+      "name": "QA stranger login",
+      "actualStatus": 200,
+      "passed": true
+    },
+    {
+      "name": "QA buyer2 login",
+      "actualStatus": 200,
+      "passed": true
+    },
+    {
+      "name": "seller list needs authentication",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 401,
+      "actualStatus": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "buyer cannot open seller list",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "create scrapPickup",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "seller detail contains original buyer memo",
+      "method": "GET",
+      "path": "/reservations/33",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "received list supports status and fabric filter",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REQUESTED&fabric_id=34",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "other seller cannot read detail",
+      "method": "GET",
+      "path": "/reservations/33",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "other seller cannot accept",
+      "method": "POST",
+      "path": "/reservations/33/accept",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "other seller cannot reject",
+      "method": "POST",
+      "path": "/reservations/33/reject",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "other seller cannot pickup",
+      "method": "POST",
+      "path": "/reservations/33/pickup",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "buyer cannot accept reservation",
+      "method": "POST",
+      "path": "/reservations/33/accept",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "past pickup adjustment rejected",
+      "method": "POST",
+      "path": "/reservations/33/accept",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "malformed pickup adjustment rejected",
+      "method": "POST",
+      "path": "/reservations/33/accept",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "pickup requires accepted state",
+      "method": "POST",
+      "path": "/reservations/33/pickup",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "accept scrap with revised Korean pickup time",
+      "method": "POST",
+      "path": "/reservations/33/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "adjusted time retained and original memo unchanged",
+      "method": "GET",
+      "path": "/reservations/33",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "repeated accept is rejected",
+      "method": "POST",
+      "path": "/reservations/33/accept",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "scrap pickup completes sale",
+      "method": "POST",
+      "path": "/reservations/33/pickup",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "seller history remains accessible after sold-out",
+      "method": "GET",
+      "path": "/reservations/33",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "repeated pickup is rejected",
+      "method": "POST",
+      "path": "/reservations/33/pickup",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "create rollPickup",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "roll request does not reserve stock",
+      "method": "GET",
+      "path": "/fabrics/35",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "accept roll without changing pickup time",
+      "method": "POST",
+      "path": "/reservations/34/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "roll accept secures requested stock",
+      "method": "GET",
+      "path": "/fabrics/35",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "roll pickup consumes stock",
+      "method": "POST",
+      "path": "/reservations/34/pickup",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "remaining roll below one unit becomes sold out",
+      "method": "GET",
+      "path": "/fabrics/35",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create rejectScrap",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "invalid reject reason length 0",
+      "method": "POST",
+      "path": "/reservations/35/reject",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "invalid reject reason length 3",
+      "method": "POST",
+      "path": "/reservations/35/reject",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "invalid reject reason length 256",
+      "method": "POST",
+      "path": "/reservations/35/reject",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "reject request with trimmed reason",
+      "method": "POST",
+      "path": "/reservations/35/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "buyer sees saved reject reason",
+      "method": "GET",
+      "path": "/reservations/35",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "repeated reject is invalid",
+      "method": "POST",
+      "path": "/reservations/35/reject",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "create scrapFirst",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create scrapSecond",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "accept first competing scrap request",
+      "method": "POST",
+      "path": "/reservations/36/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "second scrap accept sees reserved conflict",
+      "method": "POST",
+      "path": "/reservations/37/accept",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "SCRAP_ALREADY_RESERVED",
+      "passed": true
+    },
+    {
+      "name": "pickup first scrap and close competing request",
+      "method": "POST",
+      "path": "/reservations/36/pickup",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "competing scrap request automatically rejected",
+      "method": "GET",
+      "path": "/reservations/37",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create rollFirst",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create rollSecond",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "accept first competing roll request",
+      "method": "POST",
+      "path": "/reservations/38/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "second roll accept detects insufficient stock",
+      "method": "POST",
+      "path": "/reservations/39/accept",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INSUFFICIENT_LENGTH",
+      "passed": true
+    },
+    {
+      "name": "cancel accepted roll releases stock",
+      "method": "POST",
+      "path": "/reservations/38/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "canceled stock is available again",
+      "method": "GET",
+      "path": "/fabrics/38",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "accept previously insufficient roll after release",
+      "method": "POST",
+      "path": "/reservations/39/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "pickup roll while full remaining unit stays posted",
+      "method": "POST",
+      "path": "/reservations/39/pickup",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "remaining 90cm roll stays posted",
+      "method": "GET",
+      "path": "/fabrics/38",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history01",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history01 without changing stock",
+      "method": "POST",
+      "path": "/reservations/40/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history02",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history02 without changing stock",
+      "method": "POST",
+      "path": "/reservations/41/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history03",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history03 without changing stock",
+      "method": "POST",
+      "path": "/reservations/42/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history04",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history04 without changing stock",
+      "method": "POST",
+      "path": "/reservations/43/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history05",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history05 without changing stock",
+      "method": "POST",
+      "path": "/reservations/44/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history06",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history06 without changing stock",
+      "method": "POST",
+      "path": "/reservations/45/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history07",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history07 without changing stock",
+      "method": "POST",
+      "path": "/reservations/46/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history08",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history08 without changing stock",
+      "method": "POST",
+      "path": "/reservations/47/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history09",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history09 without changing stock",
+      "method": "POST",
+      "path": "/reservations/48/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history10",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history10 without changing stock",
+      "method": "POST",
+      "path": "/reservations/49/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history11",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history11 without changing stock",
+      "method": "POST",
+      "path": "/reservations/50/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history12",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history12 without changing stock",
+      "method": "POST",
+      "path": "/reservations/51/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history13",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history13 without changing stock",
+      "method": "POST",
+      "path": "/reservations/52/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history14",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history14 without changing stock",
+      "method": "POST",
+      "path": "/reservations/53/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history15",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history15 without changing stock",
+      "method": "POST",
+      "path": "/reservations/54/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history16",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history16 without changing stock",
+      "method": "POST",
+      "path": "/reservations/55/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history17",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history17 without changing stock",
+      "method": "POST",
+      "path": "/reservations/56/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history18",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history18 without changing stock",
+      "method": "POST",
+      "path": "/reservations/57/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history19",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history19 without changing stock",
+      "method": "POST",
+      "path": "/reservations/58/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history20",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history20 without changing stock",
+      "method": "POST",
+      "path": "/reservations/59/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create history21",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reject history21 without changing stock",
+      "method": "POST",
+      "path": "/reservations/60/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create browserScrapA",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create browserScrapB",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create browserRollA",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create browserRollB",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create browserAccepted",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "leave accepted reservation for browser pickup",
+      "method": "POST",
+      "path": "/reservations/65/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "received reservations first page twenty",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "received reservations second page thirteen",
+      "method": "GET",
+      "path": "/sellers/me/reservations?page=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "requested status contains four browser fixtures",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REQUESTED",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "rejected status contains twenty-three entries",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REJECTED&size=50",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabric filter limits seller history to one fabric",
+      "method": "GET",
+      "path": "/sellers/me/reservations?fabric_id=39&size=50",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "invalid seller status filter returns 400",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=INVALID",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "other seller sees no unrelated reservations",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "missing reservation returns 404",
+      "method": "GET",
+      "path": "/reservations/999999999",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    }
+  ],
+  "preservation": {
+    "User": {
+      "originalRows": 9,
+      "unchanged": true
+    },
+    "Store": {
+      "originalRows": 2,
+      "unchanged": true
+    },
+    "Fabric": {
+      "originalRows": 33,
+      "unchanged": true
+    },
+    "FabricDetail": {
+      "originalRows": 33,
+      "unchanged": true
+    },
+    "FabricImage": {
+      "originalRows": 1,
+      "unchanged": true
+    },
+    "Reservation": {
+      "originalRows": 32,
+      "unchanged": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "unchanged": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "unchanged": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "unchanged": true
+    },
+    "Inquiry": {
+      "originalRows": 0,
+      "unchanged": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "unchanged": true
+    }
+  }
+}

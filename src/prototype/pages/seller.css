@@ -150,6 +150,11 @@
 .seller-calendar-day.is-selected .seller-calendar-pickup { color: inherit; }
 .seller-confirm .seller-details > div { grid-template-columns: minmax(110px, 30%) minmax(0, 1fr); }
 .seller-form-progress { font-size: 14px; line-height: 24px; }
+.seller-reservation-filter { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+.seller-reservation-filter .field { flex: 1 1 220px; max-width: 380px; }
+.seller-reservation-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.seller-reservation-pagination { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px; }
+.seller-reservation-failure { display: flex; flex-direction: column; gap: 16px; }
 @media (max-width: 640px) {
   .seller-photo-slot > .seller-photo { height: 100px; }
   .seller-photo-preview > .fabric-art { min-height: 100px; }

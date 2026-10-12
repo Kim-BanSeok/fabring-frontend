@@ -57,6 +57,25 @@ export function reservationQuery(input = {}) {
   return query;
 }
 
+export function receivedReservationQuery(input = {}) {
+  const query = reservationQuery(input);
+  const fabricId = input instanceof URLSearchParams ? input.get('fabric_id') : input.fabric_id;
+  if (fabricId != null && fabricId !== '') query.set('fabric_id', reservationIdentifier(fabricId));
+  return query;
+}
+
+export function acceptReservationInput(input = {}, now = Date.now()) {
+  if (!record(input)) validation('수락할 예약 내용을 확인해 주세요.');
+  // Keeping the requested time requires no body, even when that original time has passed.
+  if (input.pickup_date === undefined && input.pickup_time === undefined) return undefined;
+  return { pickup_at: pickupAtKst(input.pickup_date, input.pickup_time, now) };
+}
+
+export function rejectReservationInput(reason) {
+  if (!text(reason) || !reason.trim() || reason.trim().length > 255) validation('거절 사유를 1~255자로 입력해 주세요.');
+  return { reason: reason.trim() };
+}
+
 function baseReservation(raw) {
   if (!record(raw) || !integer(raw.reservationId, 1) || !RESERVATION_STATUSES.includes(raw.status) || !isoDate(raw.pickup_at)
     || !nullableText(raw.reject_reason)) invalid();
@@ -80,12 +99,24 @@ export function reservationSummary(raw) {
     store: item.status === 'ACCEPTED' ? { store_name: raw.store_name, address: raw.store_address, pickup_guide: raw.pickup_guide } : null };
 }
 
-export function reservationPage(raw) {
+function pageWith(raw, toItem) {
   if (!record(raw) || !Array.isArray(raw.content) || !integer(raw.page) || !integer(raw.size, 1) || raw.size > 50
     || !integer(raw.totalElements) || !integer(raw.totalPages) || raw.totalPages !== Math.ceil(raw.totalElements / raw.size)
     || raw.content.length > raw.size || raw.content.length > raw.totalElements) invalid();
-  return { content: raw.content.map(reservationSummary), page: raw.page, size: raw.size, totalElements: raw.totalElements, totalPages: raw.totalPages };
+  return { content: raw.content.map(toItem), page: raw.page, size: raw.size, totalElements: raw.totalElements, totalPages: raw.totalPages };
 }
+
+export function reservationPage(raw) { return pageWith(raw, reservationSummary); }
+
+export function receivedReservationSummary(raw) {
+  if (!record(raw) || !integer(raw.fabricId, 1) || !text(raw.title) || !text(raw.buyer_nickname) || !nullableText(raw.memo)) invalid();
+  // API 27 has neither rejection reason nor photo/store fields. Read the detail for those.
+  const item = baseReservation({ ...raw, reject_reason: null });
+  return { ...item, fabric_id: String(raw.fabricId), fabric_title: raw.title, buyer_nickname: raw.buyer_nickname, memo: raw.memo,
+    image_url: null, store_name: null, store: null };
+}
+
+export function receivedReservationPage(raw) { return pageWith(raw, receivedReservationSummary); }
 
 export function reservationDetail(raw) {
   const item = baseReservation(raw), fabric = raw.fabric, store = raw.store;
