@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "fabricId": "123",
+  "imageId": "2",
+  "checks": [
+    "actual adapter create PENDING",
+    "own detail fields",
+    "multipart upload and saved photo",
+    "partial patch persisted",
+    "own status-filtered list",
+    "image deletion and detail refresh",
+    "fabric soft deletion and 404"
+  ],
+  "credentialsIncluded": false
+}

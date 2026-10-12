@@ -5,6 +5,7 @@ import { draftFor, formDraft, unfinishedDraft, validateSellerDraft, canRegister 
 import { inquiryDraftKey, submitInquiryDraft } from './seller/sellerUx.js';
 import SellerReservations from './seller/SellerReservations.jsx';
 import SellerLiveOverview from './seller/SellerLiveOverview.jsx';
+import SellerLiveFabrics from './seller/SellerLiveFabrics.jsx';
 
 const PHOTO_ORDER = ['FULL', 'ZOOM', 'DEFECT'];
 const fabricRoute = fabric => `/seller/fabrics/detail?id=${encodeURIComponent(fabric.id)}`;
@@ -13,6 +14,7 @@ const formValues = form => Object.fromEntries([...new FormData(form)].map(([key,
 export default function SellerPage({ ctx }) {
   if (ctx.mode === 'live' && ['/seller/reservations', '/seller/reservations/confirm'].includes(ctx.path)) return <SellerReservations ctx={ctx} />;
   if (ctx.mode === 'live' && ['/seller', '/seller/dashboard', '/seller/calendar'].includes(ctx.path)) return <SellerLiveOverview ctx={ctx} />;
+  if (ctx.mode === 'live' && (ctx.path.startsWith('/seller/fabrics') || ctx.path.startsWith('/seller/register') || ctx.path === '/seller/upload')) return <SellerLiveFabrics ctx={ctx} />;
   return <SellerWorkbench ctx={ctx} />;
 }
 

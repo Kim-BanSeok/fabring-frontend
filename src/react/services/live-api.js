@@ -3,6 +3,7 @@ import { fabricQuery, fabricPage, fabricDetail, fabricIdentifier } from './fabri
 import { reservationQuery, reservationPage, reservationDetail, reservationIdentifier, reservationInput, reservationMutation,
   receivedReservationQuery, receivedReservationPage, acceptReservationInput, rejectReservationInput } from './reservation-contract.js';
 import { SELLER_FABRIC_STATUSES, SELLER_INQUIRY_STATUSES, sellerStatusCount, collectSellerPickups } from './seller-dashboard-contract.js';
+import { ownFabricQuery, ownFabricPage, ownFabricDetail, sellerFabricInput, fabricMutation, fabricDeletion, imageUploadBody, fabricImage } from './seller-fabric-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -88,7 +89,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
   function requireSession(allowed = ['BUYER', 'SELLER']) {
     checkExpiry();
     if (status !== 'authenticated' || !credential) throw new ApiError('UNAUTHORIZED', '다시 로그인해 주세요.', { status: 401 });
-    if (!allowed.includes(user?.role)) throw new ApiError('FORBIDDEN', '이 계정에서는 예약을 처리할 수 없어요.', { status: 403 });
+    if (!allowed.includes(user?.role)) throw new ApiError('FORBIDDEN', '이 계정에서는 이 기능을 사용할 수 없어요.', { status: 403 });
   }
   async function reservationRequest(path, { signal, body, method = 'GET', decode }) {
     const version = revision;
@@ -105,11 +106,63 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       throw failure;
     }
   }
+  async function sellerFabricRequest(path, { signal, body, method = 'GET', decode, photo = false }) {
+    requireSession(['SELLER']);
+    const version = revision;
+    try {
+      const result = await request(path, { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return decode(result);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version) throw cancelled();
+      if (method !== 'GET' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = photo
+          ? '사진 처리 결과를 확인하지 못했어요. 다시 보내기 전에 원단 상세의 저장된 사진을 확인해 주세요.'
+          : '원단 처리 결과를 확인하지 못했어요. 다시 보내기 전에 내 원단 목록과 상세에서 최신 상태를 확인해 주세요.';
+      }
+      throw failure;
+    }
+  }
   const api = {
     mode: 'live',
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async listMyFabrics(filters = {}, { signal } = {}) {
+      requireSession(['SELLER']);
+      return sellerFabricRequest(`/sellers/me/fabrics?${ownFabricQuery(filters)}`, { signal, decode: ownFabricPage });
+    },
+    async getSellerFabric(id, { signal } = {}) {
+      requireSession(['SELLER']);
+      const identifier = fabricIdentifier(id);
+      return sellerFabricRequest(`/fabrics/${identifier}`, { signal, decode: raw => {
+        const fabric = ownFabricDetail(raw);
+        if (fabric.id !== identifier) throw new ApiError('INVALID_RESPONSE', '선택한 원단 정보를 확인하지 못했어요. 내 원단에서 다시 선택해 주세요.');
+        return fabric;
+      } });
+    },
+    async createFabric(input, { signal } = {}) {
+      requireSession(['SELLER']);
+      return sellerFabricRequest('/fabrics', { signal, method: 'POST', body: sellerFabricInput(input), decode: raw => fabricMutation(raw, { created: true }) });
+    },
+    async updateFabric(id, input, { signal } = {}) {
+      requireSession(['SELLER']);
+      const identifier = fabricIdentifier(id);
+      return sellerFabricRequest(`/fabrics/${identifier}`, { signal, method: 'PATCH', body: sellerFabricInput(input, { partial: true }), decode: raw => fabricMutation(raw, { id: identifier }) });
+    },
+    async deleteFabric(id, { signal } = {}) {
+      requireSession(['SELLER']);
+      return sellerFabricRequest(`/fabrics/${fabricIdentifier(id)}`, { signal, method: 'DELETE', decode: fabricDeletion });
+    },
+    async uploadFabricImage(id, file, imageType, { signal } = {}) {
+      requireSession(['SELLER']);
+      return sellerFabricRequest(`/fabrics/${fabricIdentifier(id)}/images`, { signal, method: 'POST', body: imageUploadBody(file, imageType), photo: true, decode: raw => fabricImage(raw, imageType) });
+    },
+    async deleteFabricImage(id, imageId, { signal } = {}) {
+      requireSession(['SELLER']);
+      return sellerFabricRequest(`/fabrics/${fabricIdentifier(id)}/images/${fabricIdentifier(imageId)}`, { signal, method: 'DELETE', photo: true, decode: fabricDeletion });
+    },
     async getSellerFabricCounts({ signal } = {}) {
       requireSession(['SELLER']);
       const version = revision;
@@ -232,7 +285,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async logout() { clearSession(); },
   };
-  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'updateFabric', 'deleteFabric', 'prepareAiDraft', 'saveDraft', 'createFabric', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric']) {
+  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric']) {
     api[name] = async () => { throw new ApiError('NOT_CONNECTED', '이 기능은 아직 서버와 연결되지 않았어요. 전체 화면 미리보기에서 흐름을 확인할 수 있어요.'); };
   }
   return api;

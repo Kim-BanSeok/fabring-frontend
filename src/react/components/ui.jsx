@@ -25,7 +25,7 @@ export function EmptyState({ title, description = '', children }) {
   return <section className="empty-state"><h2>{title}</h2><p>{description}</p>{children && <div className="actions">{children}</div>}</section>;
 }
 
-export function FabricImage({ fabric, className = '', exampleLabel = true }) {
+export function FabricImage({ fabric, className = '', exampleLabel = true, compact = false }) {
   const [failedUrl, setFailedUrl] = useState(null);
   const source = fabric.image_url && /^(https?:|blob:|\/)/.test(fabric.image_url) ? fabric.image_url : null;
   const texture = /블루.*스트라이프|스트라이프.*블루/.test(`${fabric.title} ${fabric.color || ''}`) ? 'stripe'
@@ -33,7 +33,7 @@ export function FabricImage({ fabric, className = '', exampleLabel = true }) {
   if (source && (fabric.source !== 'api' || source !== failedUrl)) {
     return <img className={`fabric-art ${className}`} src={source} alt={fabric.title} onError={fabric.source === 'api' ? () => setFailedUrl(source) : undefined} />;
   }
-  if (fabric.source === 'api') return <div className={`fabric-art fabric-art--empty ${className}`} role="img" aria-label={`${fabric.title} · ${source ? '사진을 불러오지 못했어요' : '등록된 사진이 없어요'}`}><p aria-hidden="true">{source ? '사진을 불러오지 못했어요' : '등록된 사진이 없어요'}</p></div>;
+  if (fabric.source === 'api') return <div className={`fabric-art fabric-art--empty ${className}`} role="img" aria-label={`${fabric.title} · ${source ? '사진을 불러오지 못했어요' : '등록된 사진이 없어요'}`}><p aria-hidden="true">{compact ? (source ? '로드 실패' : '사진 없음') : (source ? '사진을 불러오지 못했어요' : '등록된 사진이 없어요')}</p></div>;
   return <div className={`fabric-art fabric-art--${texture} ${className}`} role="img" aria-label={`${fabric.title} 질감 예시`}><span aria-hidden="true" />{exampleLabel && <em className="fabric-example-label" aria-hidden="true">질감 예시</em>}</div>;
 }
 

@@ -8,6 +8,11 @@ const labels = {
 };
 export const FABRIC_FILTER_OPTIONS = Object.fromEntries(Object.entries(labels).map(([key, values]) => [key, Object.values(values).map(label => ({ value: label, label }))]));
 export const fabricFilterLabel = (name, value) => String(value || '').split(',').map(code => labels[name]?.[code.trim()] || code.trim()).join(',');
+export function fabricWireCode(name, value) {
+  const code = Object.keys(labels[name] || {}).find(key => key === value || labels[name][key] === value);
+  if (!code) throw new ApiError('VALIDATION_ERROR', '원단의 소재·두께·색상을 다시 선택해 주세요.', { status: 400 });
+  return code;
+}
 const invalid = () => { throw new ApiError('INVALID_RESPONSE', '원단 정보를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.'); };
 const validation = message => { throw new ApiError('VALIDATION_ERROR', message, { status: 400 }); };
 const record = value => value && typeof value === 'object' && !Array.isArray(value);

@@ -16,11 +16,12 @@ export function createHttpClient({ baseUrl = '/api/v1', fetchImpl = globalThis.f
     let timedOut = false;
     const timer = setTimeout(() => { timedOut = true; controller.abort(); }, timeoutMs);
     const accessToken = token ?? (authenticated ? getToken() : null);
+    const multipart = typeof FormData !== 'undefined' && body instanceof FormData;
     try {
       const response = await fetchImpl(`${base}${path}`, {
         method, signal: controller.signal, credentials: 'omit', cache: 'no-store',
-        headers: { Accept: 'application/json', ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}), ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}) },
-        ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
+        headers: { Accept: 'application/json', ...(body !== undefined && !multipart ? { 'Content-Type': 'application/json' } : {}), ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}) },
+        ...(body !== undefined ? { body: multipart ? body : JSON.stringify(body) } : {}),
       });
       if (response.status === 401 && authenticated) onUnauthorized(accessToken);
       let payload;

@@ -355,7 +355,7 @@ test('two validated login attempts cannot both commit the same revision', async 
 
 test('all unconnected business mutations reject without fake success, fetching, or state changes', async () => {
   const f = fixture([]); const before = f.api.getState();
-  const operations = ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'updateFabric', 'deleteFabric', 'prepareAiDraft', 'saveDraft', 'createFabric', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric'];
+  const operations = ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric'];
   for (const name of operations) {
     assert.equal(typeof f.api[name], 'function', name);
     await assert.rejects(f.api[name]({}), expectCode('NOT_CONNECTED'));

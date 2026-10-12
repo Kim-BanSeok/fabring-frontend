@@ -1,0 +1,542 @@
+{
+  "checkedAt": "2026-10-12T07:44:21.499Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "passed": 60,
+  "checks": [
+    {
+      "name": "backend health",
+      "method": "GET",
+      "path": "/health",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create guard anonymous",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 401,
+      "actualStatus": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "create guard buyer",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "create guard pending",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "SELLER_NOT_APPROVED",
+      "passed": true
+    },
+    {
+      "name": "create guard stranger",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "STORE_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "invalid scrap length29",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "SCRAP_LENGTH_OUT_OF_RANGE",
+      "passed": true
+    },
+    {
+      "name": "invalid roll length89",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "ROLL_LENGTH_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "invalid missing defect note",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "DEFECT_NOTE_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "invalid zero price",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "invalid width1001",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "create scrap",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create roll",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "create minimal",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "owner can read pending detail and default nullable fields",
+      "method": "GET",
+      "path": "/fabrics/126",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "pending fabric hidden from public",
+      "method": "GET",
+      "path": "/fabrics/124",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "owner list is paginated and includes pending",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=PENDING&size=2",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "partial pending patch changes only sent fields",
+      "method": "PATCH",
+      "path": "/fabrics/124",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "patch preserves price and dimensions, clears nullable text",
+      "method": "GET",
+      "path": "/fabrics/124",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "empty patch is rejected",
+      "method": "PATCH",
+      "path": "/fabrics/124",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sale type cannot change",
+      "method": "PATCH",
+      "path": "/fabrics/124",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "other seller cannot update",
+      "method": "PATCH",
+      "path": "/fabrics/124",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "posted patch remains posted",
+      "method": "PATCH",
+      "path": "/fabrics/114",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "rejected patch resubmits",
+      "method": "PATCH",
+      "path": "/fabrics/115",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "resubmission clears reject reason",
+      "method": "GET",
+      "path": "/fabrics/115",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "sold-out edit is blocked",
+      "method": "PATCH",
+      "path": "/fabrics/116",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "roll stock cannot shrink below secured length",
+      "method": "PATCH",
+      "path": "/fabrics/118",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "INSUFFICIENT_LENGTH",
+      "passed": true
+    },
+    {
+      "name": "roll stock may equal secured length",
+      "method": "PATCH",
+      "path": "/fabrics/118",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "roll equal-boundary stock is reflected",
+      "method": "GET",
+      "path": "/fabrics/118",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "requestedProtected active reservation prevents deletion",
+      "method": "DELETE",
+      "path": "/fabrics/117",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "FABRIC_HAS_ACTIVE_RESERVATION",
+      "passed": true
+    },
+    {
+      "name": "reservedRoll active reservation prevents deletion",
+      "method": "DELETE",
+      "path": "/fabrics/118",
+      "expectedStatus": 409,
+      "actualStatus": 409,
+      "errorCode": "FABRIC_HAS_ACTIVE_RESERVATION",
+      "passed": true
+    },
+    {
+      "name": "other seller cannot delete",
+      "method": "DELETE",
+      "path": "/fabrics/125",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "soft-delete success is data null",
+      "method": "DELETE",
+      "path": "/fabrics/126",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "deleted detail is not found",
+      "method": "GET",
+      "path": "/fabrics/126",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "repeat deleted fabric returns404",
+      "method": "DELETE",
+      "path": "/fabrics/126",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "create partialUpload",
+      "method": "POST",
+      "path": "/fabrics",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "image upload needs authentication",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 401,
+      "actualStatus": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "image upload rejects other seller",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "missing image file rejected",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "wrong multipart file field rejected",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "invalid image type rejected",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "over 5MiB file rejected",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "IMAGE_TOO_LARGE",
+      "passed": true
+    },
+    {
+      "name": "batch file A succeeds",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "batch file B corrupt image fails without rolling back A",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "IMAGE_TOO_LARGE",
+      "passed": true
+    },
+    {
+      "name": "batch file C succeeds after B failure",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "readback retains exactly two successful uploads",
+      "method": "GET",
+      "path": "/fabrics/127",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "retry only corrected failed file B",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "retry recovery does not duplicate successful files",
+      "method": "GET",
+      "path": "/fabrics/127",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fourth image fails at three-image limit",
+      "method": "POST",
+      "path": "/fabrics/127/images",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "IMAGE_LIMIT_EXCEEDED",
+      "passed": true
+    },
+    {
+      "name": "uploaded original URL renders cross-origin",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "uploaded thumbnail URL renders cross-origin",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "other seller cannot remove image",
+      "method": "DELETE",
+      "path": "/fabrics/127/images/3",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "image from another fabric cannot be deleted",
+      "method": "DELETE",
+      "path": "/fabrics/124/images/3",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "remove cover returns data null",
+      "method": "DELETE",
+      "path": "/fabrics/127/images/3",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "cover deletion resequences remaining images",
+      "method": "GET",
+      "path": "/fabrics/127",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "repeated image deletion returns404",
+      "method": "DELETE",
+      "path": "/fabrics/127/images/3",
+      "expectedStatus": 404,
+      "actualStatus": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "posted fabric accepts image",
+      "method": "POST",
+      "path": "/fabrics/114/images",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "last posted image removal is allowed by current backend",
+      "method": "DELETE",
+      "path": "/fabrics/114/images/6",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "photo deletion does not change posted status",
+      "method": "GET",
+      "path": "/fabrics/114",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "sold-out owner image upload is currently allowed",
+      "method": "POST",
+      "path": "/fabrics/116/images",
+      "expectedStatus": 201,
+      "actualStatus": 201,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "sold-out owner image deletion is currently allowed",
+      "method": "DELETE",
+      "path": "/fabrics/116/images/7",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    }
+  ]
+}

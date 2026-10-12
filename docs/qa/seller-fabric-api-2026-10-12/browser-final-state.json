@@ -1,0 +1,325 @@
+{
+  "checkedAt": "2026-10-12T08:10:19.562Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Read-only HTTP GET and database SELECT after browser actions; no mutation requests",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Browser created scrap and uploaded one image",
+      "method": "GET",
+      "path": "/fabrics/128",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Browser edited posted price and description",
+      "method": "GET",
+      "path": "/fabrics/119",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Browser rejected edit resubmits pending and clears reason",
+      "method": "GET",
+      "path": "/fabrics/120",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Browser deleted fabric is not readable",
+      "method": "GET",
+      "path": "/fabrics/121",
+      "status": 404,
+      "passed": true
+    },
+    {
+      "name": "Active-request fabric remains present after blocked delete",
+      "method": "GET",
+      "path": "/fabrics/117",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Secured roll inventory remains 360/360/0",
+      "method": "GET",
+      "path": "/fabrics/118",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Sold-out status remains unchanged",
+      "method": "GET",
+      "path": "/fabrics/116",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Browser existing-fabric FULL image upload persisted",
+      "method": "GET",
+      "path": "/fabrics/122",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Fabric 128 original image is served",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Fabric 128 thumbnail image is served",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Fabric 122 original image is served",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Fabric 122 thumbnail image is served",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Owner list reflects browser creation/edit/deletion",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "All original rows preserved across eleven models",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend remains healthy",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "fabrics": {
+    "116": {
+      "fabricId": 116,
+      "status": "SOLD_OUT",
+      "sale_type": "SCRAP",
+      "price": 3000,
+      "remaining_length_cm": null,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": null,
+        "reserved_length_cm": null
+      },
+      "images": []
+    },
+    "117": {
+      "fabricId": 117,
+      "status": "POSTED",
+      "sale_type": "SCRAP",
+      "price": 3000,
+      "remaining_length_cm": null,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": null,
+        "reserved_length_cm": null
+      },
+      "images": [],
+      "softDeleted": false,
+      "activeReservationId": 127,
+      "activeReservationStatus": "REQUESTED"
+    },
+    "118": {
+      "fabricId": 118,
+      "status": "POSTED",
+      "sale_type": "ROLL",
+      "price": 5000,
+      "remaining_length_cm": 360,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": 0,
+        "reserved_length_cm": 360
+      },
+      "images": []
+    },
+    "119": {
+      "fabricId": 119,
+      "status": "POSTED",
+      "sale_type": "SCRAP",
+      "price": 4200,
+      "remaining_length_cm": null,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": null,
+        "reserved_length_cm": null
+      },
+      "images": [],
+      "descriptionChanged": true,
+      "descriptionLength": 21
+    },
+    "120": {
+      "fabricId": 120,
+      "status": "PENDING",
+      "sale_type": "SCRAP",
+      "price": 3000,
+      "remaining_length_cm": null,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": null,
+        "reserved_length_cm": null
+      },
+      "images": [],
+      "descriptionChanged": true,
+      "descriptionLength": 30
+    },
+    "121": {
+      "fabricId": 121,
+      "detailHttpStatus": 404,
+      "softDeleted": true,
+      "deleted_at": "2026-10-12T07:58:01.297Z"
+    },
+    "122": {
+      "fabricId": 122,
+      "status": "PENDING",
+      "sale_type": "SCRAP",
+      "price": 3000,
+      "remaining_length_cm": null,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": null,
+        "reserved_length_cm": null
+      },
+      "images": [
+        {
+          "imageId": 9,
+          "image_type": "FULL",
+          "sort_order": 0
+        }
+      ]
+    },
+    "128": {
+      "fabricId": 128,
+      "status": "PENDING",
+      "sale_type": "SCRAP",
+      "price": 8000,
+      "remaining_length_cm": null,
+      "reject_reason": null,
+      "availability": {
+        "is_reserved": false,
+        "available_length_cm": null,
+        "reserved_length_cm": null
+      },
+      "images": [
+        {
+          "imageId": 8,
+          "image_type": "FULL",
+          "sort_order": 0
+        }
+      ]
+    }
+  },
+  "imageResponses": [
+    {
+      "fabricId": 128,
+      "imageId": 8,
+      "type": "original",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 8593,
+      "crossOriginResourcePolicy": "cross-origin"
+    },
+    {
+      "fabricId": 128,
+      "imageId": 8,
+      "type": "thumbnail",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 294,
+      "crossOriginResourcePolicy": "cross-origin"
+    },
+    {
+      "fabricId": 122,
+      "imageId": 9,
+      "type": "original",
+      "status": 200,
+      "contentType": "image/png",
+      "bytes": 8593,
+      "crossOriginResourcePolicy": "cross-origin"
+    },
+    {
+      "fabricId": 122,
+      "imageId": 9,
+      "type": "thumbnail",
+      "status": 200,
+      "contentType": "image/webp",
+      "bytes": 294,
+      "crossOriginResourcePolicy": "cross-origin"
+    }
+  ],
+  "existingData": {
+    "User": {
+      "originalRows": 17,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 4,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 113,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 113,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 1,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 126,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "health": {
+    "backendReady": true,
+    "frontendReady": true
+  },
+  "passed": 16
+}
