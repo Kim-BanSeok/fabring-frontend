@@ -19,6 +19,11 @@ export const validDate = offset => {
   const date = new Date(); date.setDate(date.getDate() + offset);
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 };
+export const validDateKst = (offset, now = Date.now()) => {
+  const date = new Date(now + 9 * 3600000);
+  date.setUTCDate(date.getUTCDate() + offset);
+  return date.toISOString().slice(0, 10);
+};
 const FABRIC_NODES = {
   'fabric-roll-1': ['123:1201', '123:1493', '127:2936'],
   'fabric-scrap-1': ['127:2994', '127:3092', '127:3190'],
@@ -31,8 +36,29 @@ export const fabricNode = (fabric, index) => FABRIC_NODES[fabric.id]?.[index] ||
 export const statusTone = status => status === 'REQUESTED' ? 'amber' : status === 'REJECTED' ? 'red' : ['CANCELED', 'PICKED_UP'].includes(status) ? 'gray' : 'green';
 export const isExample = ctx => ctx.mode !== 'live' && ctx.query.get('example') === '1';
 export const exampleQuery = ctx => isExample(ctx) ? '&example=1' : '';
-export const reservationPath = (item, suffix = '') => `/buyer/reservations/${encodeURIComponent(item.id)}${suffix}${item.example ? `?status=${item.status}&example=1&fabric_id=${encodeURIComponent(item.fabric_id)}${item.viewSubset ? `&subset=${encodeURIComponent(item.viewSubset)}` : ''}` : ''}`;
+const safeReservationReturn = value => value && !/[\\#\r\n]/.test(value) && value.split('?')[0] === '/buyer/reservations' ? value : '';
+export const reservationListReturn = ctx => ctx.path === '/buyer/reservations' ? currentRoute(ctx) : safeReservationReturn(ctx.query.get('return'));
+export const reservationPath = (item, suffix = '') => addQuery(`/buyer/reservations/${encodeURIComponent(item.id)}${suffix}${item.example ? `?status=${item.status}&example=1&fabric_id=${encodeURIComponent(item.fabric_id)}${item.viewSubset ? `&subset=${encodeURIComponent(item.viewSubset)}` : ''}` : ''}`, 'return', safeReservationReturn(item.list_return));
 export const reservationQuantity = item => item.sale_type === 'ROLL' ? quantityText(item.requested_length_cm) : '자투리 한 장 전체';
+export const reservationPriceText = item => item.display_price == null ? '예약 금액 정보 없음' : price(item.display_price);
+export const submittedReservationKey = id => `buyer:submitted:${id}`;
+export function reservationResourceRequest(ctx) {
+  if (ctx.path === '/buyer/reservations') {
+    const query = { status: ctx.query.get('status') || 'REQUESTED' };
+    for (const name of ['page', 'size']) if (ctx.query.has(name)) query[name] = ctx.query.get(name);
+    return { kind: 'list', query };
+  }
+  if (ctx.path.startsWith('/buyer/reservations/')) return { kind: 'detail', id: routeId(ctx) };
+  if (ctx.path.startsWith('/buyer/pickup/') && ctx.query.has('submitted')) return { kind: 'detail', id: ctx.query.get('submitted') };
+  return null;
+}
+export const reservationListPagePath = (ctx, page) => addQuery(`/buyer/reservations${ctx.query.size ? `?${ctx.query}` : ''}`, 'page', String(page));
+export const submittedReservationMatches = (ctx, item) => /^\d+$/.test(routeId(ctx)) && String(Number(routeId(ctx))) === item.fabric_id;
+export const reservationPreviewFabric = (item, state) => item.fabric || (item.source === 'api'
+  // API 26 omits dimensions and sale_type. Its adapter infers SCRAP only from
+  // a null requested_length_cm. Never borrow demo dimensions or a current price.
+  ? { source: 'api', id: item.fabric_id, title: item.fabric_title, sale_type: item.sale_type, image_url: item.image_url, store_name: item.store_name, store: item.store }
+  : state.fabrics.find(fabric => fabric.id === item.fabric_id));
 export const draftKey = (kind, id) => `buyer:${kind}:${id}`;
 export const currentRoute = ctx => `${ctx.path}${ctx.query.size ? `?${ctx.query}` : ''}`;
 export const addQuery = (path, key, value) => {
@@ -54,6 +80,7 @@ export const FILTER_NAMES = ['material', 'thickness', 'color'];
 const LIST_QUERY_NAMES = ['sale_type', ...FILTER_NAMES, 'color_family', 'keyword', 'sort', 'page', 'size'];
 const FILTER_QUERY_NAMES = [...FILTER_NAMES, 'color_family', 'keyword', 'sort', 'page', 'size'];
 export function fabricResourceRequest(ctx) {
+  if (ctx.path.startsWith('/buyer/pickup/') && ctx.query.has('submitted')) return null;
   if (ctx.path === '/buyer/home') return { kind: 'list', query: { sale_type: 'SCRAP', sort: 'latest', page: 0, size: 4 } };
   if (['/buyer', '/buyer/fabrics'].includes(ctx.path)) return { kind: 'list', query: Object.fromEntries(LIST_QUERY_NAMES.filter(name => ctx.query.has(name)).map(name => [name, ctx.query.get(name)])) };
   if (['/buyer/fabrics/', '/buyer/pickup/', '/buyer/recommendations/'].some(prefix => ctx.path.startsWith(prefix))) return { kind: 'detail', id: routeId(ctx) };
@@ -111,6 +138,7 @@ export function exampleReservation(ctx, id = 'demo-roll', fabricId) {
   return { id, example: true, viewSubset: ['canvas', 'stripe'].includes(ctx.query.get('subset')) ? ctx.query.get('subset') : null, status, fabric_id: fabric.id, fabric_title: fabric.title, sale_type: fabric.sale_type, requested_length_cm: fabric.sale_type === 'ROLL' ? 180 : null, display_price: fabric.price * (fabric.sale_type === 'ROLL' ? 2 : 1), pickup_date: validDate(2), pickup_time: '14:00', memo: '', rejection_reason: '요청하신 시간에는 매장 방문 응대가 어렵습니다. 다른 일시로 다시 요청해 주세요.' };
 }
 export function selectedReservation(ctx) {
+  if (ctx.reservationItem) return ctx.reservationItem;
   const id = routeId(ctx);
   return ctx.state.reservations.find(item => item.id === id) || (isExample(ctx) && ['demo-roll', 'demo-scrap'].includes(id) ? exampleReservation(ctx, id, ctx.query.get('fabric_id')) : null);
 }

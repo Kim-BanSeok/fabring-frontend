@@ -28,10 +28,11 @@ export function Logo({ role, dark = false }) {
 
 export default function AppShell({ ctx, children, footer }) {
   const { path, query, role, logout } = ctx;
-  const buyerReadPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters'].includes(path) || path.startsWith('/buyer/fabrics/');
-  const showConnectionScope = ctx.mode === 'live' && !path.startsWith('/auth/') && path !== '/preview' && !buyerReadPage;
+  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations'].includes(path)
+    || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/'].some(prefix => path.startsWith(prefix));
+  const showConnectionScope = ctx.mode === 'live' && !path.startsWith('/auth/') && path !== '/preview' && !buyerConnectedPage;
   const scopeMessage = role === 'BUYER'
-    ? '원단 조회는 연결되어 있어요. 예약·문의 내역과 정보 수정·제출 기능은 아직 연결 중이며, 변경 내용은 저장되지 않습니다.'
+    ? '원단 조회와 픽업 예약 요청·내역·취소는 연결되어 있어요. 문의와 회원 정보 수정은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
     : '계정·매장 조회는 연결되어 있어요. 이 관리 화면의 원단·예약 목록과 수치는 아직 실제 조회 결과가 아니며, 업무 처리는 저장되지 않습니다.';
   const main = <main className="main-content" id="main-content">{showConnectionScope ? <div className="stack"><Notice>{scopeMessage}</Notice>{ctx.state.storeError && <Notice tone="error">{ctx.state.storeError}</Notice>}{children}</div> : children}</main>;
   if ((path.startsWith('/auth/') && !path.endsWith('/session-expired')) || path === '/preview' || path === '/seller/upload') {

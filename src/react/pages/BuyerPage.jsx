@@ -1,6 +1,10 @@
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Button, Badge, Notice, PageHeading, EmptyState, FabricImage, Field, SelectField } from '../components/ui.jsx';
 import useFabricResource from '../hooks/useFabricResource.js';
+import useReservationResource from '../hooks/useReservationResource.js';
+import useReservationMutation from '../hooks/useReservationMutation.js';
+import { pickupAtKst } from '../services/reservation-contract.js';
+import { validDateKst, reservationListReturn, reservationResourceRequest, reservationListPagePath, reservationPriceText, reservationPreviewFabric, submittedReservationKey, submittedReservationMatches } from './buyer-model.js';
 import { FABRIC_FILTER_OPTIONS, fabricFilterLabel } from '../services/fabric-contract.js';
 import { fabricResourceRequest, fabricListPagePath, applyFilterPath, filterValue, defectText } from './buyer-model.js';
 import { STATUS, STATUS_DESCRIPTION, price, routeId, href, fabricRoute, quantityText, dimensions, priceText, dateText, validDate, fabricNode, statusTone, isExample, exampleQuery, reservationPath, reservationQuantity, draftKey, currentRoute, addQuery, internalReturn, listReturn, keepList, detailPath, pickupPath, listPath, availability, exampleReservation, selectedReservation, FILTER_NAMES, filterEditPath, filterCancelPath, filterSummary, currentPickupStore, storeAddress, reservationPrimaryAction, SUPPLY_STORES } from './buyer-model.js';
@@ -20,12 +24,10 @@ function FabricReadFeedback({ resource, detail = false, resetPath = '/buyer/fabr
   return <section className="panel buyer-resource-feedback"><Notice tone="error"><strong>{invalid ? detail ? '원단 번호를 확인해 주세요' : '검색 조건을 확인해 주세요' : '원단 정보를 불러오지 못했어요'}</strong><p>{resource.error.message || '연결 상태를 확인하고 다시 시도해 주세요.'}</p></Notice><div className="actions">{!invalid && <Button tone="primary" onClick={resource.retry}>다시 불러오기</Button>}<LinkButton path={resetPath} tone={invalid ? 'primary' : 'secondary'}>{detail ? '원단 목록으로' : '검색 조건 초기화'}</LinkButton></div></section>;
 }
 
-function LiveBuyerPage({ ctx }) {
-  const request = fabricResourceRequest(ctx);
-  const resource = useFabricResource(ctx.api, request);
+function useResourceHeading(resource, enabled = true) {
   const loadingFocusOwned = useRef(false);
   useLayoutEffect(() => {
-    if (request?.kind !== 'detail') return undefined;
+    if (!enabled) return undefined;
     const heading = document.querySelector('#main-content h1, #main-content .empty-state h2');
     if (resource.loading) {
       // App's route focus runs after this effect. Track whether the reader leaves
@@ -42,7 +44,13 @@ function LiveBuyerPage({ ctx }) {
     }
     loadingFocusOwned.current = false;
     return undefined;
-  }, [request?.kind, resource.loading, resource.data, resource.error]);
+  }, [enabled, resource.loading, resource.data, resource.error]);
+}
+
+function LiveBuyerPage({ ctx }) {
+  const request = fabricResourceRequest(ctx);
+  const resource = useFabricResource(ctx.api, request);
+  useResourceHeading(resource, request?.kind === 'detail');
   if (!request) return <BuyerScreens ctx={ctx} />;
   if (request.kind === 'list') return <BuyerScreens ctx={{ ...ctx, fabricResource: resource, state: { ...ctx.state, fabrics: resource.data?.content || [] } }} />;
   if (resource.error?.status === 404) return <MissingFabric ctx={ctx} />;
@@ -52,8 +60,41 @@ function LiveBuyerPage({ ctx }) {
   return <BuyerScreens ctx={{ ...ctx, query, resolvedFabricId: resource.data.id, fabricResource: resource, state: { ...ctx.state, fabrics: [resource.data] } }} />;
 }
 
+function ReservationReadFeedback({ resource, confirmed = false }) {
+  if (resource.loading) return <section className="panel buyer-resource-feedback" role="status" aria-live="polite"><p>{confirmed ? '접수는 완료되었어요. 예약 상세를 불러오고 있습니다.' : '예약 정보를 불러오는 중이에요…'}</p></section>;
+  if (!resource.error) return null;
+  const status = resource.error.status;
+  const title = status === 404 ? '예약을 찾을 수 없어요' : status === 403 ? '이 예약을 확인할 수 없어요' : status === 400 ? '예약 조회 조건을 확인해 주세요' : '예약 정보를 불러오지 못했어요';
+  return <section className="panel buyer-resource-feedback">{confirmed && <Notice tone="success">픽업 요청 접수는 완료되었어요. 다시 요청하지 말고 예약 내역에서 진행 상태를 확인해 주세요.</Notice>}<Notice tone="error"><strong>{title}</strong><p>{resource.error.message || '연결 상태를 확인한 뒤 다시 불러와 주세요.'}</p></Notice><div className="actions">{![400, 403, 404].includes(status) && <Button tone="primary" onClick={resource.retry}>예약 정보 다시 불러오기</Button>}<LinkButton path="/buyer/reservations" tone={[400, 403, 404].includes(status) ? 'primary' : 'secondary'}>예약 내역 확인</LinkButton></div></section>;
+}
+
+function LiveReservationPage({ ctx, request }) {
+  const resource = useReservationResource(ctx.api, request);
+  useResourceHeading(resource, request.kind === 'detail');
+  if (request.kind === 'list') return <Reservations ctx={{ ...ctx, reservationResource: resource, state: { ...ctx.state, reservations: resource.data?.content || [] } }} />;
+  const submitted = ctx.path.startsWith('/buyer/pickup/');
+  const confirmation = submitted && ctx.drafts?.get(submittedReservationKey(request.id));
+  const confirmed = confirmation && submittedReservationMatches(ctx, confirmation);
+  if (!resource.data) return <Page node="127:4434"><PageHeading title={confirmed ? '픽업 요청을 보냈어요' : '예약 정보 확인'} /><ReservationReadFeedback resource={resource} confirmed={Boolean(confirmed)} /></Page>;
+  if (submitted) return <LivePickupComplete ctx={ctx} item={resource.data} />;
+  return <ReservationDetail ctx={{ ...ctx, reservationItem: { ...resource.data, list_return: reservationListReturn(ctx) }, reservationResource: resource }} />;
+}
+
+function LivePickupComplete({ ctx, item }) {
+  if (!submittedReservationMatches(ctx, item)) return <Page node="127:4434"><PageHeading title="예약 정보를 다시 확인해 주세요" description="이 주소의 원단과 예약에 연결된 원단이 다릅니다." /><LinkButton path={reservationPath(item)} tone="primary">예약 상세 확인</LinkButton></Page>;
+  const requested = item.status === 'REQUESTED';
+  return <Page node={fabricNode(item.fabric, 2)}><PageHeading title={requested ? '픽업 요청을 보냈어요' : '예약의 현재 상태를 확인해 주세요'} description={requested ? '판매자가 재고와 방문 일정을 확인하고 있어요.' : `${STATUS[item.status]} · ${STATUS_DESCRIPTION[item.status]}`} /><Notice tone={requested ? 'success' : 'info'}>{requested ? '접수 완료 · 아직 재고가 확보되거나 픽업이 확정된 상태는 아니에요.' : '예약 상세에서 현재 진행 상태를 확인할 수 있어요.'}</Notice><section className="panel"><h2 className="buyer-panel-heading">접수된 요청 상세</h2><ReservationDetails item={item} fabric={item.fabric} /><Info rows={[[ '진행 상태', STATUS[item.status]]]} /></section><div className="actions"><LinkButton path={reservationPath(item)} tone="primary">요청 상세 확인</LinkButton><LinkButton path="/buyer/reservations">예약 내역 확인</LinkButton><LinkButton path={listReturn(ctx) || '/buyer/fabrics'}>원단 목록으로</LinkButton></div></Page>;
+}
+
+function UnknownReservationOutcome({ failure, item }) {
+  if (!failure?.outcomeUnknown) return null;
+  return <Notice tone="warning"><strong>{item ? '취소 결과를 아직 확인하지 못했어요.' : '요청이 접수되었는지 아직 확인하지 못했어요.'}</strong><p>같은 요청을 다시 보내기 전에 예약 내역에서 현재 상태를 확인해 주세요.</p><div className="actions"><LinkButton path={item ? reservationPath(item) : '/buyer/reservations?status=REQUESTED'} tone="primary">{item ? '예약 상태 다시 확인' : '예약 내역 확인'}</LinkButton></div></Notice>;
+}
+
 export default function BuyerPage({ ctx }) {
-  return ctx.mode === 'live' ? <LiveBuyerPage ctx={ctx} /> : <BuyerScreens ctx={ctx} />;
+  if (ctx.mode !== 'live') return <BuyerScreens ctx={ctx} />;
+  const reservationRequest = reservationResourceRequest(ctx);
+  return reservationRequest ? <LiveReservationPage ctx={ctx} request={reservationRequest} /> : <LiveBuyerPage ctx={ctx} />;
 }
 
 function FormError({ message }) {
@@ -84,7 +125,7 @@ function StockRecovery({ ctx, fabric, stock }) {
 const ReservationDetails = ({ item, fabric }) => <Info rows={[
   ['요청 번호', item.example ? (item.sale_type === 'ROLL' ? 'R-예시-001' : 'R-예시-002') : item.id],
   ['원단', item.fabric_title || fabric?.title], ['요청 수량', reservationQuantity(item)],
-  ['예상 금액', price(item.display_price)], [item.status === 'ACCEPTED' ? '수락된 픽업' : '희망 픽업', `${dateText(item.pickup_date)} · ${item.pickup_time}`],
+  ['예상 금액', reservationPriceText(item)], [item.status === 'ACCEPTED' ? '수락된 픽업' : '희망 픽업', `${dateText(item.pickup_date)} · ${item.pickup_time}`],
 ]} />;
 
 function SaleTypeTabs({ saleType }) {
@@ -189,34 +230,43 @@ function PickupForm({ ctx, fabric }) {
   const roll = fabric.sale_type === 'ROLL';
   const [values, setValues] = useState(() => {
     const draft = ctx.drafts?.get(key) || {};
-    return { requested_ma: draft.requested_ma ?? Math.max(1, Math.min(maxMa || 1, Number(ctx.query.get('ma')) || Math.min(2, maxMa || 1))), pickup_date: draft.pickup_date ?? validDate(2), pickup_time: draft.pickup_time ?? '14:00', memo: draft.memo || '' };
+    return { requested_ma: draft.requested_ma ?? Math.max(1, Math.min(maxMa || 1, Number(ctx.query.get('ma')) || Math.min(2, maxMa || 1))), pickup_date: draft.pickup_date ?? (ctx.mode === 'live' ? validDateKst(2) : validDate(2)), pickup_time: draft.pickup_time ?? '14:00', memo: draft.memo || '' };
   });
-  const submission = useSubmission();
+  const submission = useReservationMutation(ctx);
   const change = event => {
     const next = { ...values, [event.target.name]: event.target.value };
     setValues(next); ctx.drafts?.set(key, next);
   };
   const submit = event => {
     event.preventDefault();
-    if (!event.currentTarget.reportValidity()) return;
-    if (new Date(`${values.pickup_date}T${values.pickup_time}`).getTime() <= Date.now()) return submission.setError('픽업 희망 날짜와 시간은 현재보다 이후로 선택해 주세요.');
+    if (submission.failure?.outcomeUnknown || !event.currentTarget.reportValidity()) return;
+    if (ctx.mode === 'live') {
+      try { pickupAtKst(values.pickup_date, values.pickup_time); }
+      catch (error) { return submission.setError(error.message); }
+    } else if (new Date(`${values.pickup_date}T${values.pickup_time}`).getTime() <= Date.now()) return submission.setError('픽업 희망 날짜와 시간은 현재보다 이후로 선택해 주세요.');
     const ma = Number(values.requested_ma);
     if (roll && (!Number.isInteger(ma) || ma < 1 || ma * 90 > fabric.available_length_cm)) return submission.setError('구매 가능한 길이 안에서 1마 단위로 선택해 주세요.');
-    submission.run(async () => {
+    submission.run(async ({ signal, isCurrent }) => {
       try {
-        const reservation = await ctx.api.createReservation({ fabric_id: fabric.id, ...(roll ? { requested_length_cm: ma * 90 } : {}), pickup_date: values.pickup_date, pickup_time: values.pickup_time, memo: values.memo.trim() });
+        const reservation = await ctx.api.createReservation({ fabric_id: fabric.id, ...(roll ? { requested_length_cm: ma * 90 } : {}), pickup_date: values.pickup_date, pickup_time: values.pickup_time, memo: values.memo.trim() }, { signal });
+        if (!isCurrent()) return;
         ctx.drafts?.delete(key);
+        if (ctx.mode === 'live') ctx.drafts?.set(submittedReservationKey(reservation.id), { id: reservation.id, fabric_id: fabric.id });
         await ctx.refresh();
+        if (!isCurrent()) return;
         ctx.navigate(keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}?submitted=${encodeURIComponent(reservation.id)}`), { replace: true });
       } catch (error) {
-        const errors = { DUPLICATE_RESERVATION: 'duplicate', INSUFFICIENT_LENGTH: 'insufficient', SCRAP_ALREADY_RESERVED: 'reserved', FABRIC_NOT_AVAILABLE: 'unavailable', TOKEN_EXPIRED: 'expired' };
+        if (!isCurrent()) return;
+        if (error.outcomeUnknown) throw error;
+        const errors = { DUPLICATE_RESERVATION: 'duplicate', INSUFFICIENT_LENGTH: 'insufficient', SCRAP_ALREADY_RESERVED: 'reserved', FABRIC_NOT_AVAILABLE: 'unavailable', TOKEN_EXPIRED: 'expired', NOT_FOUND: 'unavailable' };
         if (!errors[error.code]) throw error;
         await ctx.refresh();
+        if (!isCurrent()) return;
         ctx.navigate(keepList(ctx, `/buyer/errors/${errors[error.code]}?fabric_id=${encodeURIComponent(fabric.id)}`));
       }
     });
   };
-  return <Page node={fabricNode(fabric, 1)}><PageHeading title="픽업 요청하기" description="원단과 방문 정보를 확인한 뒤 판매자에게 요청을 보내세요." />{ctx.mode === 'live' && <Notice>원단 정보는 실제 조회 결과입니다. 픽업 요청 전송은 아직 연결되지 않았으며, 작성한 내용은 판매자에게 전달되지 않습니다.</Notice>}<form className="buyer-page" data-buyer-pickup="" data-fabric-id={fabric.id} onSubmit={submit}><section className="panel"><h2 className="buyer-panel-heading">구매 요청 정보</h2><div className="buyer-pickup-product"><Picture fabric={fabric} /><div><h2>{fabric.title}</h2><Info rows={[[ '원단 치수', dimensions(fabric)], ['판매처', fabric.store_name], ['픽업 장소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.']]} />{roll ? <><div className="buyer-quantity-row field"><label htmlFor="buyer-request-ma">요청 수량 (1마=90cm)</label><input id="buyer-request-ma" name="requested_ma" type="number" min="1" max={maxMa} step="1" value={values.requested_ma} onChange={change} required inputMode="numeric" aria-describedby="buyer-quantity-hint" /><span id="buyer-quantity-hint" className="buyer-small">최대 {maxMa}마 · 1마 단위</span></div>{Number(values.requested_ma) > maxMa && <Notice tone="warning">구매 가능한 길이가 바뀌었어요. 희망 일정과 요청 사항은 유지했으니 수량을 다시 선택해 주세요.</Notice>}</> : <p>요청 수량: 표시된 자투리 한 장 전체</p>}<p>요청 금액 <strong className="buyer-price" data-buyer-estimate="" aria-live="polite">{price(roll ? Number(values.requested_ma) * fabric.price : fabric.price)}</strong></p></div></div><div className="buyer-pickup-fields"><Field label="희망 픽업 날짜" name="pickup_date" type="date" required value={values.pickup_date} min={validDate(0)} onChange={change} /><Field label="희망 픽업 시간" name="pickup_time" type="time" required value={values.pickup_time} onChange={change} /></div><section className="buyer-visit-guide" aria-labelledby="buyer-visit-guide-title"><h3 id="buyer-visit-guide-title">방문 안내</h3><Info rows={[['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['운영 안내', store?.pickup_guide || '방문 가능 시간을 판매자에게 확인해 주세요.']]} /><Notice tone="warning">선택한 일정은 희망 일정입니다. 판매자가 수락한 뒤 방문해 주세요.</Notice></section></section><section className="panel"><h2 className="buyer-panel-heading">계정 정보 확인</h2><div className="buyer-readonly"><dl><dt>닉네임 (계정)</dt><dd>{ctx.state.buyer.nickname}</dd></dl><dl><dt>전화번호 (선택 정보)</dt><dd>{ctx.state.buyer.phone_number || '등록된 전화번호 없음'}</dd></dl></div><div className="field"><label htmlFor="buyer-memo">요청 사항</label><textarea id="buyer-memo" name="memo" maxLength="500" rows="2" placeholder="방문 전 확인할 내용이 있다면 적어주세요." aria-describedby="buyer-memo-hint" value={values.memo} onChange={change} /><span id="buyer-memo-hint" className="buyer-small buyer-muted">최대 500자</span></div><Notice>계정정보는 확인용이며 예약 연락처로 따로 저장되지 않습니다.</Notice></section><FormError message={submission.error} /><div className="actions"><LinkButton path={detailPath(ctx, fabric)}>원단 상세로 돌아가기</LinkButton><Button type="submit" tone="primary" disabled={submission.busy || (roll && maxMa < 1)}>{submission.busy ? '요청 보내는 중…' : '픽업 요청 보내기'}</Button></div></form></Page>;
+  return <Page node={fabricNode(fabric, 1)}><PageHeading title="픽업 요청하기" description="원단과 방문 정보를 확인한 뒤 판매자에게 요청을 보내세요." /><form className="buyer-page" data-buyer-pickup="" data-fabric-id={fabric.id} onSubmit={submit}><section className="panel"><h2 className="buyer-panel-heading">구매 요청 정보</h2><div className="buyer-pickup-product"><Picture fabric={fabric} /><div><h2>{fabric.title}</h2><Info rows={[[ '원단 치수', dimensions(fabric)], ['판매처', fabric.store_name], ['픽업 장소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.']]} />{roll ? <><div className="buyer-quantity-row field"><label htmlFor="buyer-request-ma">요청 수량 (1마=90cm)</label><input id="buyer-request-ma" name="requested_ma" type="number" min="1" max={maxMa} step="1" value={values.requested_ma} onChange={change} required inputMode="numeric" aria-describedby="buyer-quantity-hint" /><span id="buyer-quantity-hint" className="buyer-small">최대 {maxMa}마 · 1마 단위</span></div>{Number(values.requested_ma) > maxMa && <Notice tone="warning">구매 가능한 길이가 바뀌었어요. 희망 일정과 요청 사항은 유지했으니 수량을 다시 선택해 주세요.</Notice>}</> : <p>요청 수량: 표시된 자투리 한 장 전체</p>}<p>요청 금액 <strong className="buyer-price" data-buyer-estimate="" aria-live="polite">{price(roll ? Number(values.requested_ma) * fabric.price : fabric.price)}</strong></p></div></div><div className="buyer-pickup-fields"><Field label="희망 픽업 날짜" name="pickup_date" type="date" required value={values.pickup_date} min={ctx.mode === 'live' ? validDateKst(0) : validDate(0)} onChange={change} /><Field label={ctx.mode === 'live' ? "희망 픽업 시간 (한국 시간)" : "희망 픽업 시간"} name="pickup_time" type="time" required value={values.pickup_time} onChange={change} /></div><section className="buyer-visit-guide" aria-labelledby="buyer-visit-guide-title"><h3 id="buyer-visit-guide-title">방문 안내</h3><Info rows={[['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['운영 안내', store?.pickup_guide || '방문 가능 시간을 판매자에게 확인해 주세요.']]} /><Notice tone="warning">선택한 일정은 희망 일정입니다. 판매자가 수락한 뒤 방문해 주세요.</Notice></section></section><section className="panel"><h2 className="buyer-panel-heading">계정 정보 확인</h2><div className="buyer-readonly"><dl><dt>닉네임 (계정)</dt><dd>{ctx.state.buyer.nickname}</dd></dl><dl><dt>전화번호 (선택 정보)</dt><dd>{ctx.state.buyer.phone_number || '등록된 전화번호 없음'}</dd></dl></div><div className="field"><label htmlFor="buyer-memo">요청 사항</label><textarea id="buyer-memo" name="memo" maxLength="500" rows="2" placeholder="방문 전 확인할 내용이 있다면 적어주세요." aria-describedby="buyer-memo-hint" value={values.memo} onChange={change} /><span id="buyer-memo-hint" className="buyer-small buyer-muted">최대 500자</span></div><Notice>계정정보는 확인용이며 예약 연락처로 따로 저장되지 않습니다.</Notice></section><FormError message={submission.error} /><UnknownReservationOutcome failure={submission.failure} /><div className="actions"><LinkButton path={detailPath(ctx, fabric)}>원단 상세로 돌아가기</LinkButton><Button type="submit" tone="primary" disabled={submission.busy || submission.failure?.outcomeUnknown || (roll && maxMa < 1)}>{submission.busy ? '요청 보내는 중…' : '픽업 요청 보내기'}</Button></div></form></Page>;
 }
 
 function ReservationTabs({ ctx, status, subset }) {
@@ -226,29 +276,39 @@ function ReservationActions({ item }) {
   const primary = reservationPrimaryAction(item);
   if (item.status === 'REQUESTED') return <><LinkButton path={reservationPath(item)}>상세 보기</LinkButton><LinkButton path={reservationPath(item, '/cancel')} tone="danger">예약 취소</LinkButton></>;
   if (item.status === 'ACCEPTED') return <><LinkButton path={primary.path} tone="primary">{primary.label}</LinkButton><LinkButton path={reservationPath(item, '/cancel')} tone="danger">예약 취소</LinkButton></>;
-  if (item.status === 'PICKED_UP') return <LinkButton path="/buyer/fabrics">다른 원단 둘러보기</LinkButton>;
-  return <><LinkButton path={`/buyer/pickup/${encodeURIComponent(item.fabric_id)}`} tone="primary">다시 요청하기</LinkButton>{item.status === 'REJECTED' && <LinkButton path="/buyer/fabrics">다른 원단 찾기</LinkButton>}</>;
+  if (item.status === 'PICKED_UP') return <>{item.source === 'api' && <LinkButton path={reservationPath(item)}>상세 보기</LinkButton>}<LinkButton path="/buyer/fabrics">다른 원단 둘러보기</LinkButton></>;
+  return <>{item.source === 'api' && <LinkButton path={reservationPath(item)}>상세 보기</LinkButton>}<LinkButton path={`/buyer/pickup/${encodeURIComponent(item.fabric_id)}`} tone="primary">다시 요청하기</LinkButton>{item.status === 'REJECTED' && <LinkButton path="/buyer/fabrics">다른 원단 찾기</LinkButton>}</>;
 }
 function ReservationCard({ ctx, item }) {
-  const fabric = ctx.state.fabrics.find(f => f.id === item.fabric_id);
+  const fabric = reservationPreviewFabric(item, ctx.state);
   const title = item.fabric_title || fabric?.title || '원단';
-  const summary = `${reservationQuantity(item)} · ${price(item.display_price)} · 희망 픽업 ${dateText(item.pickup_date)} ${item.pickup_time}`;
+  const summary = `${reservationQuantity(item)} · ${reservationPriceText(item)} · ${item.status === 'ACCEPTED' ? '수락된 픽업' : '희망 픽업'} ${dateText(item.pickup_date)} ${item.pickup_time}`;
   const description = item.status === 'ACCEPTED' ? `${item.sale_type === 'ROLL' ? `${quantityText(item.requested_length_cm)} 확보` : '원단 한 장 예약 중'} · 판매자가 수락했어요. 방문 후 원단을 수령해 주세요.`
     : item.status === 'PICKED_UP' ? item.sale_type === 'ROLL' ? '수령한 길이가 실물 재고에서 차감되었어요.' : '자투리 원단의 거래가 완료되었어요.'
     : item.status === 'REJECTED' ? item.rejection_reason || item.reject_reason || STATUS_DESCRIPTION.REJECTED
     : item.status === 'CANCELED' ? '다시 예약하려면 현재 재고와 구매 가능한 길이를 확인해 주세요.' : STATUS_DESCRIPTION.REQUESTED;
-  if (item.status !== 'REQUESTED') return <article className="panel buyer-compact-card"><Badge tone={statusTone(item.status)}>{STATUS[item.status]}</Badge><h3>{title}</h3><p className="buyer-muted">{summary}</p><p>{description}</p><div className="actions"><ReservationActions item={item} /></div></article>;
-  return <article className="buyer-reservation"><Picture fabric={fabric || { title, texture: 'canvas' }} /><div className="buyer-reservation-info"><h3>{title}</h3><p className="buyer-muted">{item.sale_type === 'ROLL' ? `폭 ${fabric?.width_cm || '—'}cm · 요청 ${quantityText(item.requested_length_cm)}` : fabric ? dimensions(fabric) : '자투리 한 장 전체'}</p><p>픽업 희망 {dateText(item.pickup_date)} · {item.pickup_time}</p><strong>{price(item.display_price)}</strong>{item.memo && <details><summary>요청 사항 보기</summary><p className="buyer-message">{item.memo}</p></details>}</div><div className="buyer-reservation-actions"><Badge tone="amber">{STATUS[item.status]}</Badge><p className="buyer-small buyer-muted">{description}</p><ReservationActions item={item} /></div></article>;
+  if (item.status !== 'REQUESTED') return <article className="panel buyer-compact-card"><Badge tone={statusTone(item.status)}>{STATUS[item.status]}</Badge><h3>{title}</h3>{item.source === 'api' && <p className="buyer-muted">{item.store_name}</p>}<p className="buyer-muted">{summary}</p><p>{description}</p>{item.status === 'ACCEPTED' && item.store?.address && <Info rows={[[ '픽업 주소', item.store.address], ...(item.store.pickup_guide ? [['방문 안내', item.store.pickup_guide]] : [])]} />}<div className="actions"><ReservationActions item={item} /></div></article>;
+  const sizing = item.source === 'api' ? reservationQuantity(item) : item.sale_type === 'ROLL' ? `폭 ${fabric?.width_cm || '—'}cm · 요청 ${quantityText(item.requested_length_cm)}` : fabric ? dimensions(fabric) : '자투리 한 장 전체';
+  return <article className="buyer-reservation"><Picture fabric={fabric || { title, texture: 'canvas' }} /><div className="buyer-reservation-info"><h3>{title}</h3>{item.source === 'api' && <p className="buyer-muted">{item.store_name}</p>}<p className="buyer-muted">{sizing}</p><p>픽업 희망 {dateText(item.pickup_date)} · {item.pickup_time}</p><strong>{reservationPriceText(item)}</strong>{item.memo && <details><summary>요청 사항 보기</summary><p className="buyer-message">{item.memo}</p></details>}</div><div className="buyer-reservation-actions"><Badge tone="amber">{STATUS[item.status]}</Badge><p className="buyer-small buyer-muted">{description}</p><ReservationActions item={item} /></div></article>;
 }
 function Reservations({ ctx }) {
   const requestedStatus = ctx.query.get('status') || 'REQUESTED';
   const status = Object.hasOwn(STATUS, requestedStatus) ? requestedStatus : 'REQUESTED';
   const examples = isExample(ctx); const subset = ctx.query.get('subset');
   if (examples && ['canvas', 'stripe', 'empty'].includes(subset) && ['REQUESTED', 'CANCELED'].includes(status)) return <ReservationSubset ctx={ctx} status={status} subset={subset} />;
-  const reservations = examples ? ['demo-roll', ...(status === 'REJECTED' ? [] : ['demo-scrap'])].map(id => exampleReservation(ctx, id)).filter(Boolean) : ctx.state.reservations.filter(item => item.status === status);
+  const live = ctx.mode === 'live', resource = ctx.reservationResource, page = resource?.data;
+  const ready = !resource?.loading && !resource?.error;
+  const reservations = live ? ctx.state.reservations : examples ? ['demo-roll', ...(status === 'REJECTED' ? [] : ['demo-scrap'])].map(id => exampleReservation(ctx, id)).filter(Boolean) : ctx.state.reservations.filter(item => item.status === status);
+  const outsidePage = live && page?.page > 0 && !reservations.length && page?.totalElements > 0;
   const nodes = { REQUESTED: '123:1806', ACCEPTED: '127:4648', PICKED_UP: '127:4860', REJECTED: '127:4960', CANCELED: '127:5025' };
-  return <Page node={nodes[status]}><PageHeading title="픽업 예약 내역" description="요청한 원단과 픽업 진행 상태를 확인하세요." />{examples && <ExampleNotice />}<ReservationTabs ctx={ctx} status={status} />{status === 'CANCELED' && reservations.length > 0 && <Notice>취소된 예약 내역입니다. 수락된 예약을 취소하면 확보된 원단은 다시 판매할 수 있어요.</Notice>}<div className="buyer-results">{reservations.length ? reservations.map(item => <ReservationCard key={item.id} ctx={ctx} item={item} />) : <EmptyState title={`${STATUS[status]} 내역이 없어요`} description="필요한 원단을 찾아 픽업을 요청해 보세요."><LinkButton path="/buyer/fabrics" tone="primary">원단 둘러보기</LinkButton></EmptyState>}</div><Notice>{status === 'ACCEPTED' ? '원단을 받은 뒤 판매자의 수령 확인이 완료되면 수령 완료 상태로 바뀝니다.' : '판매자가 요청을 처리하면 이곳에서 변경된 상태를 확인할 수 있어요.'}</Notice></Page>;
+  return <Page node={nodes[status]}><PageHeading title="픽업 예약 내역" description={live ? '진행 상태와 한국 시간 기준 픽업 일정을 확인하세요.' : '요청한 원단과 픽업 진행 상태를 확인하세요.'} />{examples && <ExampleNotice />}<ReservationTabs ctx={ctx} status={status} />
+    {live && ready && <div className="buyer-list-status"><p className="buyer-result-count" aria-live="polite">{STATUS[status]} {page?.totalElements ?? 0}건</p><Button onClick={resource.retry}>최신 내역 확인</Button></div>}
+    {status === 'CANCELED' && reservations.length > 0 && <Notice>취소된 예약 내역입니다. 수락된 예약을 취소하면 확보된 원단은 다시 판매할 수 있어요.</Notice>}
+    <div className="buyer-results" aria-busy={resource?.loading || undefined}>{!ready ? <ReservationReadFeedback resource={resource} /> : reservations.length ? reservations.map(item => <ReservationCard key={item.id} ctx={ctx} item={live ? { ...item, list_return: reservationListReturn(ctx) } : item} />) : outsidePage ? <EmptyState title="이 페이지에는 예약이 없어요" description="예약 상태가 바뀌었을 수 있어요. 첫 페이지에서 확인해 주세요."><LinkButton path={reservationListPagePath(ctx, 0)} tone="primary">첫 페이지로</LinkButton></EmptyState> : <EmptyState title={`${STATUS[status]} 내역이 없어요`} description="필요한 원단을 찾아 픽업을 요청해 보세요."><LinkButton path="/buyer/fabrics" tone="primary">원단 둘러보기</LinkButton></EmptyState>}</div>
+    {ready && live && page?.totalPages > 1 && !outsidePage && <nav className="buyer-pagination" aria-label="예약 내역 페이지"><LinkButton path={reservationListPagePath(ctx, page.page - 1)} disabled={page.page <= 0}>이전 페이지</LinkButton><p aria-live="polite">{page.page + 1} / {page.totalPages} 페이지</p><LinkButton path={reservationListPagePath(ctx, page.page + 1)} disabled={page.page + 1 >= page.totalPages}>다음 페이지</LinkButton></nav>}
+    <Notice>{status === 'ACCEPTED' ? '원단을 받은 뒤 판매자의 수령 확인이 완료되면 수령 완료 상태로 바뀝니다.' : '판매자가 요청을 처리하면 이곳에서 변경된 상태를 확인할 수 있어요.'}</Notice></Page>;
 }
+
 function ReservationSubset({ ctx, status, subset }) {
   const canceled = status === 'CANCELED';
   const nodes = canceled ? { canvas: '154:7566', stripe: '154:7639', empty: '154:7712' } : { canvas: '154:7368', stripe: '154:7452', empty: '154:7522' };
@@ -260,24 +320,32 @@ function ReservationSubset({ ctx, status, subset }) {
 
 function ReservationDetail({ ctx }) {
   const item = selectedReservation(ctx);
-  if (!item) return <Page node="127:4434"><EmptyState title="예약을 찾을 수 없어요" description="예약 목록에서 요청 내역을 확인해 주세요."><LinkButton path="/buyer/reservations" tone="primary">예약 목록으로</LinkButton></EmptyState></Page>;
-  const fabric = ctx.state.fabrics.find(f => f.id === item.fabric_id);
+  if (!item) return <Page node="127:4434"><EmptyState title="예약을 찾을 수 없어요" description="예약 목록에서 다시 선택해 주세요."><LinkButton path="/buyer/reservations" tone="primary">예약 목록으로</LinkButton></EmptyState></Page>;
+  const fabric = reservationPreviewFabric(item, ctx.state);
   if (ctx.path.endsWith('/cancel')) return <ReservationCancel ctx={ctx} item={item} fabric={fabric} />;
   const canCancel = ['REQUESTED', 'ACCEPTED'].includes(item.status);
-  const store = currentPickupStore(ctx.state, fabric);
+  const store = item.source === 'api' ? item.store : currentPickupStore(ctx.state, fabric);
   const stock = item.status === 'REQUESTED' ? '아직 확보되지 않음' : item.status === 'ACCEPTED' ? '판매자가 요청 수량을 확보함' : item.status === 'PICKED_UP' ? '수령 완료' : '이 예약으로 확보된 원단 없음';
-  return <Page node={item.sale_type === 'ROLL' ? '127:4434' : '127:4541'}><PageHeading title="픽업 요청 상세" description={item.fabric_title || fabric?.title || '원단'} />{item.example && <ExampleNotice />}<Notice tone={item.status === 'REQUESTED' ? 'warning' : 'info'}>{`${STATUS[item.status]} · ${STATUS_DESCRIPTION[item.status]}`}</Notice><section className="panel"><h2 className="buyer-panel-heading">예약 정보</h2><ReservationDetails item={item} fabric={fabric} /><Info rows={[[ '재고', stock]]} />{item.memo && <p className="buyer-message">요청 사항: {item.memo}</p>}{item.status === 'REJECTED' && <Notice tone="error">{item.rejection_reason || item.reject_reason || STATUS_DESCRIPTION.REJECTED}</Notice>}</section><section className="panel"><h2 className="buyer-panel-heading">픽업 방문 정보</h2><Info rows={[[ '판매처', fabric?.store_name || '판매처 정보 확인 필요'], ['현재 픽업 주소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.'], [item.status === 'ACCEPTED' ? '수락된 픽업 일정' : '희망 픽업 일정', `${dateText(item.pickup_date)} · ${item.pickup_time}`], ['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['방문 안내', store?.pickup_guide || '방문 전 판매자에게 일정을 확인해 주세요.']]} /><p className="buyer-small buyer-muted">주소와 운영 안내는 현재 매장 정보입니다. 예약 당시 정보와 다를 수 있어요.</p>{fabric?.status === 'POSTED' ? <div className="actions"><LinkButton path={fabricRoute(fabric.id)}>원단 상세 보기</LinkButton><LinkButton path={`/buyer/inquiries?fabric_id=${encodeURIComponent(fabric.id)}&compose=1`}>판매자 문의</LinkButton></div> : <Notice>현재 원단이 공개되어 있지 않아 원단 상세와 새 문의를 열 수 없어요.</Notice>}</section><div className="actions">{canCancel ? <LinkButton path={reservationPath(item, '/cancel')} tone="danger">{item.status === 'REQUESTED' ? '예약 요청 취소' : '예약 취소'}</LinkButton> : <LinkButton path={fabricRoute(item.fabric_id)}>원단 상태 확인</LinkButton>}<LinkButton path={`/buyer/reservations?status=${item.status}${item.example ? '&example=1' : ''}`}>예약 목록으로</LinkButton></div></Page>;
+  return <Page node={item.sale_type === 'ROLL' ? '127:4434' : '127:4541'}><PageHeading title="픽업 요청 상세" description={item.fabric_title || fabric?.title || '원단'} />{item.example && <ExampleNotice />}<Notice tone={item.status === 'REQUESTED' ? 'warning' : 'info'}>{`${STATUS[item.status]} · ${STATUS_DESCRIPTION[item.status]}`}</Notice><section className="panel"><h2 className="buyer-panel-heading">예약 정보</h2><ReservationDetails item={item} fabric={fabric} /><Info rows={[[ '재고', stock], ...(item.source === 'api' && item.canceled_by ? [['취소한 사람', item.canceled_by === 'BUYER' ? '구매자' : '판매자']] : []), ...(item.pattern_name ? [['참고 도안', item.pattern_name]] : [])]} />{item.memo && <p className="buyer-message">요청 사항: {item.memo}</p>}{item.status === 'REJECTED' && <Notice tone="error">{item.rejection_reason || item.reject_reason || STATUS_DESCRIPTION.REJECTED}</Notice>}</section><section className="panel"><h2 className="buyer-panel-heading">픽업 방문 정보</h2><Info rows={[[ '판매처', item.store_name || fabric?.store_name || '판매처 정보 확인 필요'], ['현재 픽업 주소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.'], [item.status === 'ACCEPTED' ? '수락된 픽업 일정' : '희망 픽업 일정', `${dateText(item.pickup_date)} · ${item.pickup_time}${item.source === 'api' ? ' (한국 시간)' : ''}`], ['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['방문 안내', store?.pickup_guide || '방문 전 판매자에게 일정을 확인해 주세요.']]} /><p className="buyer-small buyer-muted">주소와 운영 안내는 현재 매장 정보입니다. 예약 당시 정보와 다를 수 있어요.</p>{fabric?.status === 'POSTED' ? <div className="actions"><LinkButton path={fabricRoute(fabric.id)}>원단 상세 보기</LinkButton><LinkButton path={`/buyer/inquiries?fabric_id=${encodeURIComponent(fabric.id)}&compose=1`}>판매자 문의</LinkButton></div> : <Notice>{item.source === 'api' ? '판매가 종료되었거나 원단 정보가 변경되면 원단 상세를 열지 못할 수 있어요. 예약 정보는 이 화면에서 확인할 수 있습니다.' : '현재 원단이 공개되어 있지 않아 원단 상세와 새 문의를 열 수 없어요.'}</Notice>}</section><div className="actions">{canCancel ? <LinkButton path={reservationPath(item, '/cancel')} tone="danger">{item.status === 'REQUESTED' ? '예약 요청 취소' : '예약 취소'}</LinkButton> : <LinkButton path={fabricRoute(item.fabric_id)}>원단 상태 확인</LinkButton>}{ctx.reservationResource && <Button onClick={ctx.reservationResource.retry}>현재 상태 다시 확인</Button>}<LinkButton path={item.list_return || `/buyer/reservations?status=${item.status}${item.example ? '&example=1' : ''}`}>예약 목록으로</LinkButton></div></Page>;
 }
 function ReservationCancel({ ctx, item, fabric }) {
-  const submission = useSubmission();
+  const submission = useReservationMutation(ctx);
   const canCancel = ['REQUESTED', 'ACCEPTED'].includes(item.status);
+  const changed = submission.failure?.code === 'INVALID_STATUS';
   const node = item.status === 'ACCEPTED' ? item.sale_type === 'ROLL' ? '127:4756' : '127:4808' : item.sale_type === 'ROLL' ? '127:4492' : '127:4599';
   const submit = event => {
-    event.preventDefault(); if (!canCancel) return;
+    event.preventDefault(); if (!canCancel || changed || submission.failure?.outcomeUnknown) return;
     if (item.example) { const subset = ctx.query.get('subset'); ctx.navigate(`/buyer/reservations?status=CANCELED&example=1${['canvas', 'stripe'].includes(subset) ? `&subset=${subset}` : ''}`); return; }
-    submission.run(async () => { await ctx.api.cancelReservation(item.id); await ctx.refresh(); ctx.notify('예약이 취소되었습니다.'); ctx.navigate('/buyer/reservations?status=CANCELED'); });
+    submission.run(async ({ signal, isCurrent }) => {
+      await ctx.api.cancelReservation(item.id, { signal });
+      if (!isCurrent()) return;
+      await ctx.refresh();
+      if (!isCurrent()) return;
+      ctx.notify('예약이 취소되었습니다.');
+      ctx.navigate('/buyer/reservations?status=CANCELED', { replace: true });
+    });
   };
-  return <Page node={node}><PageHeading title={item.status === 'ACCEPTED' ? '확정된 예약을 취소할까요?' : '예약 요청을 취소할까요?'} description="취소 전에 원단과 예약 정보를 확인해 주세요." />{item.example && <ExampleNotice />}<section className="panel"><h2 className="buyer-panel-heading">취소할 예약</h2><ReservationDetails item={item} fabric={fabric} /></section><Notice tone="warning">{item.status === 'ACCEPTED' ? '취소하면 확보된 원단이 다시 판매 가능 상태로 돌아갑니다. 필요한 경우 새로 요청해 주세요.' : '취소한 요청은 되돌릴 수 없습니다. 필요한 경우 다시 요청해 주세요.'}</Notice><form data-buyer-cancel-page="" data-reservation-id={item.id} data-example={Boolean(item.example)} onSubmit={submit}><FormError message={submission.error} /><div className="actions"><LinkButton path={reservationPath(item)}>예약 유지</LinkButton><Button type="submit" tone="danger" disabled={!canCancel || submission.busy}>{item.example ? '예시 취소 결과 보기' : '예약 취소하기'}</Button></div></form></Page>;
+  return <Page node={node}><PageHeading title={!canCancel ? '현재 상태에서는 취소할 수 없어요' : item.status === 'ACCEPTED' ? '확정된 예약을 취소할까요?' : '예약 요청을 취소할까요?'} description="취소 전에 원단과 예약 정보를 확인해 주세요." />{item.example && <ExampleNotice />}<section className="panel"><h2 className="buyer-panel-heading">취소할 예약</h2><ReservationDetails item={item} fabric={fabric} /><>{item.source === 'api' && <Badge tone={statusTone(item.status)}>{STATUS[item.status]}</Badge>}</></section><Notice tone="warning">{!canCancel ? STATUS_DESCRIPTION[item.status] : item.status === 'ACCEPTED' ? '취소하면 확보된 원단이 다시 판매 가능 상태로 돌아갑니다. 필요한 경우 새로 요청해 주세요.' : '취소한 요청은 되돌릴 수 없습니다. 필요한 경우 다시 요청해 주세요.'}</Notice><form data-buyer-cancel-page="" data-reservation-id={item.id} data-example={Boolean(item.example)} onSubmit={submit}><FormError message={submission.error} /><UnknownReservationOutcome failure={submission.failure} item={item} />{changed && <Notice tone="warning">예약 상태가 바뀌었어요. 이미 취소되었거나 수령이 완료되었을 수 있으니 현재 상태를 먼저 확인해 주세요.<div className="actions"><LinkButton path={reservationPath(item)} tone="primary">현재 예약 상태 확인</LinkButton></div></Notice>}<div className="actions"><LinkButton path={reservationPath(item)}>{canCancel && !changed && !submission.failure?.outcomeUnknown ? '예약 유지' : '예약 상세로'}</LinkButton><Button type="submit" tone="danger" disabled={!canCancel || submission.busy || changed || submission.failure?.outcomeUnknown}>{submission.busy ? '취소 처리 중…' : item.example ? '예시 취소 결과 보기' : '예약 취소하기'}</Button></div></form></Page>;
 }
 
 function Profile({ ctx }) {

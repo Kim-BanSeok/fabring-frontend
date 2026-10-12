@@ -26,6 +26,9 @@
 .buyer-result-count { font-size: 16px; font-weight: 500; }
 .buyer-pagination { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 16px; }
 .buyer-pagination p { color: var(--loop-muted, #68766f); font-size: 14px; }
+.buyer-list-status { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.buyer-page [data-buyer-cancel-page] { display: flex; flex-direction: column; gap: 20px; }
+.buyer-page .notice > .actions { margin-top: 12px; }
 .buyer-resource-feedback { width: 100%; }
 .buyer-resource-feedback .notice { display: flex; flex-direction: column; gap: 8px; }
 .fabric-art.fabric-art--empty { display: grid; place-items: center; padding: 20px; background: var(--loop-soft, #e8f0e8); color: var(--loop-muted, #68766f); text-align: center; }

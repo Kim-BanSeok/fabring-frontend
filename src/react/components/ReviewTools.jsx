@@ -6,7 +6,7 @@ function LiveAccountTools({ ctx }) {
   const statusLabel = { anonymous: '로그인 전', restoring: '계정 확인 중', authenticated: '로그인됨', expired: '로그인 만료', unavailable: '연결 확인 필요' }[auth.status] || '로그인 전';
   const role = ['BUYER', 'SELLER', 'ADMIN'].includes(auth.user?.role) ? auth.user.role : ctx.role || 'BUYER';
   return <details className="prototype-tools"><summary>실제 계정 · {statusLabel}</summary><section>
-    <p>계정과 구매자 원단 목록·상세 조회는 서버에 연결됩니다. 원단 등록·예약·문의·매장 저장은 아직 연동되지 않아 실제 처리되지 않습니다.</p>
+    <p>계정·구매자 원단 조회·픽업 예약 요청·내역·취소는 서버에 연결됩니다. 판매자 예약 처리·원단 등록·문의·매장 저장은 아직 연동되지 않았습니다.</p>
     {auth.status === 'authenticated' && <p>로그인한 계정: {auth.user?.nickname || auth.user?.email || '회원'} · {{ BUYER: '구매자', SELLER: '판매자', ADMIN: '관리자' }[role]}</p>}
     {auth.status === 'restoring' && <p role="status">저장된 로그인 정보를 확인하고 있어요.</p>}
     {auth.status === 'unavailable' && <><p>계정 정보를 확인하지 못했어요. 연결 상태를 확인한 뒤 다시 시도해 주세요.</p><Button onClick={() => ctx.retrySession()}>계정 연결 다시 확인</Button></>}

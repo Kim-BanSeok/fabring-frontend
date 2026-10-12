@@ -1,5 +1,6 @@
 import { ApiError, createHttpClient } from './http-client.js';
 import { fabricQuery, fabricPage, fabricDetail, fabricIdentifier } from './fabric-contract.js';
+import { reservationQuery, reservationPage, reservationDetail, reservationIdentifier, reservationInput, reservationMutation } from './reservation-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -82,11 +83,54 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     })();
     return restorePromise;
   }
+  function requireSession(allowed = ['BUYER', 'SELLER']) {
+    checkExpiry();
+    if (status !== 'authenticated' || !credential) throw new ApiError('UNAUTHORIZED', '다시 로그인해 주세요.', { status: 401 });
+    if (!allowed.includes(user?.role)) throw new ApiError('FORBIDDEN', '이 계정에서는 예약을 처리할 수 없어요.', { status: 403 });
+  }
+  async function reservationRequest(path, { signal, body, method = 'GET', decode }) {
+    const version = revision;
+    try {
+      const result = await request(path, { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return decode(result);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version) throw cancelled();
+      if (method === 'POST' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '처리 결과를 확인하지 못했어요. 다시 보내기 전에 예약 내역에서 접수·취소 여부를 확인해 주세요.';
+      }
+      throw failure;
+    }
+  }
   const api = {
     mode: 'live',
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async listReservations(filters = {}, { signal } = {}) {
+      requireSession(['BUYER']);
+      return reservationRequest(`/reservations/me?${reservationQuery(filters)}`, { signal, decode: reservationPage });
+    },
+    async getReservation(id, { signal } = {}) {
+      requireSession();
+      const identifier = reservationIdentifier(id);
+      return reservationRequest(`/reservations/${identifier}`, { signal, decode: raw => {
+        const item = reservationDetail(raw);
+        if (item.id !== identifier) throw new ApiError('INVALID_RESPONSE', '선택한 예약 정보를 확인하지 못했어요. 내역에서 다시 선택해 주세요.');
+        return item;
+      } });
+    },
+    async createReservation(input, { signal } = {}) {
+      requireSession(['BUYER']);
+      const body = reservationInput(input, now());
+      return reservationRequest('/reservations', { signal, method: 'POST', body, decode: raw => reservationMutation(raw, 'REQUESTED', { length: body.requested_length_cm }) });
+    },
+    async cancelReservation(id, { signal } = {}) {
+      requireSession();
+      const identifier = reservationIdentifier(id);
+      return reservationRequest(`/reservations/${identifier}/cancel`, { signal, method: 'POST', decode: raw => reservationMutation(raw, 'CANCELED', { id: identifier }) });
+    },
     async listFabrics(filters = {}, { signal } = {}) {
       const version = revision;
       const result = await request(`/fabrics?${fabricQuery(filters)}`, { signal, authenticated: true });
@@ -139,7 +183,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async logout() { clearSession(); },
   };
-  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'createReservation', 'cancelReservation', 'updateReservation', 'updateFabric', 'deleteFabric', 'prepareAiDraft', 'saveDraft', 'createFabric', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric']) {
+  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'updateFabric', 'deleteFabric', 'prepareAiDraft', 'saveDraft', 'createFabric', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric']) {
     api[name] = async () => { throw new ApiError('NOT_CONNECTED', '이 기능은 아직 서버와 연결되지 않았어요. 전체 화면 미리보기에서 흐름을 확인할 수 있어요.'); };
   }
   return api;

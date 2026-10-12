@@ -1,0 +1,631 @@
+{
+  "checkedAt": "2026-10-12T06:41:40.118Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "passed": 87,
+  "note": "Local fictional QA data only. Authentication data and response bodies excluded.",
+  "checks": [
+    {
+      "name": "backend health",
+      "method": "GET",
+      "path": "/health",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "frontend health",
+      "actualStatus": 200
+    },
+    {
+      "name": "QA seller login",
+      "actualStatus": 200
+    },
+    {
+      "name": "QA buyer login",
+      "actualStatus": 200
+    },
+    {
+      "name": "QA stranger login",
+      "actualStatus": 200
+    },
+    {
+      "name": "unauthenticated reservation list is rejected",
+      "method": "GET",
+      "path": "/reservations/me",
+      "expectedStatus": 401,
+      "actualStatus": 401
+    },
+    {
+      "name": "create requestedScrap",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "duplicate active request is 409",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 409,
+      "actualStatus": 409
+    },
+    {
+      "name": "other buyer cannot read reservation",
+      "method": "GET",
+      "path": "/reservations/3",
+      "expectedStatus": 403,
+      "actualStatus": 403
+    },
+    {
+      "name": "other buyer cannot cancel reservation",
+      "method": "POST",
+      "path": "/reservations/3/cancel",
+      "expectedStatus": 403,
+      "actualStatus": 403
+    },
+    {
+      "name": "requested detail preserves memo and KST pickup time",
+      "method": "GET",
+      "path": "/reservations/3",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "buyer cancels requested reservation",
+      "method": "POST",
+      "path": "/reservations/3/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "canceled detail records buyer and timestamp",
+      "method": "GET",
+      "path": "/reservations/3",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "repeat cancel is 409",
+      "method": "POST",
+      "path": "/reservations/3/cancel",
+      "expectedStatus": 409,
+      "actualStatus": 409
+    },
+    {
+      "name": "non-90cm roll request is 400",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 400,
+      "actualStatus": 400
+    },
+    {
+      "name": "excessive roll request is 409",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 409,
+      "actualStatus": 409
+    },
+    {
+      "name": "create stockRoll",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "roll detail keeps requested length and estimated price",
+      "method": "GET",
+      "path": "/reservations/4",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "request alone does not hold inventory",
+      "method": "GET",
+      "path": "/fabrics/27",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "seller accepts roll reservation",
+      "method": "POST",
+      "path": "/reservations/4/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "accept reserves inventory",
+      "method": "GET",
+      "path": "/fabrics/27",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "accepted list includes pickup address and guide",
+      "method": "GET",
+      "path": "/reservations/me?status=ACCEPTED",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "buyer cancels accepted roll reservation",
+      "method": "POST",
+      "path": "/reservations/4/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "accepted cancellation restores inventory",
+      "method": "GET",
+      "path": "/fabrics/27",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create soldScrap",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "create soldScrapCompeting",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "seller accepts scrap reservation",
+      "method": "POST",
+      "path": "/reservations/5/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "seller confirms pickup and sells out scrap",
+      "method": "POST",
+      "path": "/reservations/5/pickup",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "sold-out reservation history remains readable",
+      "method": "GET",
+      "path": "/reservations/5",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "sold-out public fabric detail is hidden",
+      "method": "GET",
+      "path": "/fabrics/28",
+      "expectedStatus": 404,
+      "actualStatus": 404
+    },
+    {
+      "name": "competing request is rejected as sold out",
+      "method": "GET",
+      "path": "/reservations/6",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "picked-up reservation cannot be canceled",
+      "method": "POST",
+      "path": "/reservations/5/cancel",
+      "expectedStatus": 409,
+      "actualStatus": 409
+    },
+    {
+      "name": "create history01",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history01",
+      "method": "POST",
+      "path": "/reservations/7/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history02",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history02",
+      "method": "POST",
+      "path": "/reservations/8/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history03",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history03",
+      "method": "POST",
+      "path": "/reservations/9/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history04",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history04",
+      "method": "POST",
+      "path": "/reservations/10/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history05",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history05",
+      "method": "POST",
+      "path": "/reservations/11/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history06",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history06",
+      "method": "POST",
+      "path": "/reservations/12/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history07",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history07",
+      "method": "POST",
+      "path": "/reservations/13/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history08",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history08",
+      "method": "POST",
+      "path": "/reservations/14/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history09",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history09",
+      "method": "POST",
+      "path": "/reservations/15/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history10",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history10",
+      "method": "POST",
+      "path": "/reservations/16/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history11",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history11",
+      "method": "POST",
+      "path": "/reservations/17/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history12",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history12",
+      "method": "POST",
+      "path": "/reservations/18/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history13",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history13",
+      "method": "POST",
+      "path": "/reservations/19/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history14",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history14",
+      "method": "POST",
+      "path": "/reservations/20/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history15",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history15",
+      "method": "POST",
+      "path": "/reservations/21/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history16",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history16",
+      "method": "POST",
+      "path": "/reservations/22/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history17",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history17",
+      "method": "POST",
+      "path": "/reservations/23/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history18",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history18",
+      "method": "POST",
+      "path": "/reservations/24/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history19",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history19",
+      "method": "POST",
+      "path": "/reservations/25/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history20",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history20",
+      "method": "POST",
+      "path": "/reservations/26/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history21",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history21",
+      "method": "POST",
+      "path": "/reservations/27/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create history22",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "cancel history22",
+      "method": "POST",
+      "path": "/reservations/28/cancel",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create acceptedScrap",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "leave accepted pickup fixture for browser",
+      "method": "POST",
+      "path": "/reservations/29/accept",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "create rejectedScrap",
+      "method": "POST",
+      "path": "/reservations",
+      "expectedStatus": 201,
+      "actualStatus": 201
+    },
+    {
+      "name": "leave rejected fixture with reason for browser",
+      "method": "POST",
+      "path": "/reservations/30/reject",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "buyer list page zero has twenty rows",
+      "method": "GET",
+      "path": "/reservations/me",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "buyer list page one has remaining seven rows",
+      "method": "GET",
+      "path": "/reservations/me?page=1",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "cancel status filter counts all twenty-four canceled rows",
+      "method": "GET",
+      "path": "/reservations/me?status=CANCELED&size=50",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "pickup status filter includes sold-out item",
+      "method": "GET",
+      "path": "/reservations/me?status=PICKED_UP",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "missing reservation detail is 404",
+      "method": "GET",
+      "path": "/reservations/99999999",
+      "expectedStatus": 404,
+      "actualStatus": 404
+    },
+    {
+      "name": "browser scrap is still available",
+      "method": "GET",
+      "path": "/fabrics/30",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    },
+    {
+      "name": "browser roll is untouched",
+      "method": "GET",
+      "path": "/fabrics/31",
+      "expectedStatus": 200,
+      "actualStatus": 200
+    }
+  ],
+  "preservation": {
+    "User": {
+      "originalRows": 6,
+      "unchanged": true
+    },
+    "Store": {
+      "originalRows": 1,
+      "unchanged": true
+    },
+    "Fabric": {
+      "originalRows": 25,
+      "unchanged": true
+    },
+    "FabricDetail": {
+      "originalRows": 25,
+      "unchanged": true
+    },
+    "FabricImage": {
+      "originalRows": 1,
+      "unchanged": true
+    },
+    "Reservation": {
+      "originalRows": 2,
+      "unchanged": true
+    }
+  }
+}
