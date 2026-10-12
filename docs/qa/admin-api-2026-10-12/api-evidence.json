@@ -1,0 +1,1068 @@
+{
+  "checkedAt": "2026-10-12T08:51:20.891Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Actual HTTP against isolated fixtures; additive initial data; pre-existing content preserved",
+  "checks": [
+    {
+      "name": "GET /admin/fabrics: anonymous denied",
+      "method": "GET",
+      "path": "/admin/fabrics",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "GET /admin/fabrics: buyer denied",
+      "method": "GET",
+      "path": "/admin/fabrics",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "GET /admin/fabrics: owner denied",
+      "method": "GET",
+      "path": "/admin/fabrics",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/fabrics/129/approve: anonymous denied",
+      "method": "POST",
+      "path": "/admin/fabrics/129/approve",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/fabrics/129/approve: buyer denied",
+      "method": "POST",
+      "path": "/admin/fabrics/129/approve",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/fabrics/129/approve: owner denied",
+      "method": "POST",
+      "path": "/admin/fabrics/129/approve",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/fabrics/129/reject: anonymous denied",
+      "method": "POST",
+      "path": "/admin/fabrics/129/reject",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/fabrics/129/reject: buyer denied",
+      "method": "POST",
+      "path": "/admin/fabrics/129/reject",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/fabrics/129/reject: owner denied",
+      "method": "POST",
+      "path": "/admin/fabrics/129/reject",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "GET /admin/sellers: anonymous denied",
+      "method": "GET",
+      "path": "/admin/sellers",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "GET /admin/sellers: buyer denied",
+      "method": "GET",
+      "path": "/admin/sellers",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "GET /admin/sellers: owner denied",
+      "method": "GET",
+      "path": "/admin/sellers",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/sellers/35/approve: anonymous denied",
+      "method": "POST",
+      "path": "/admin/sellers/35/approve",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/sellers/35/approve: buyer denied",
+      "method": "POST",
+      "path": "/admin/sellers/35/approve",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/sellers/35/approve: owner denied",
+      "method": "POST",
+      "path": "/admin/sellers/35/approve",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/sellers/35/reject: anonymous denied",
+      "method": "POST",
+      "path": "/admin/sellers/35/reject",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/sellers/35/reject: buyer denied",
+      "method": "POST",
+      "path": "/admin/sellers/35/reject",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "POST /admin/sellers/35/reject: owner denied",
+      "method": "POST",
+      "path": "/admin/sellers/35/reject",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Authorization precedes malformed-id validation",
+      "method": "POST",
+      "path": "/admin/fabrics/abc/approve",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "fabrics: defaults to pending page0 size20",
+      "method": "GET",
+      "path": "/admin/fabrics",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics PENDING page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=PENDING&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics PENDING page8: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=PENDING&page=8&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics beyond last page is empty and retains totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=PENDING&page=12&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics POSTED page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=POSTED&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics POSTED page51: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=POSTED&page=51&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics REJECTED page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=REJECTED&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics REJECTED page1: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=REJECTED&page=1&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics SOLD_OUT page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=SOLD_OUT&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics SOLD_OUT page5: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/fabrics?status=SOLD_OUT&page=5&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query status=ALL",
+      "method": "GET",
+      "path": "/admin/fabrics?status=ALL",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query status=pending",
+      "method": "GET",
+      "path": "/admin/fabrics?status=pending",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query page=-1",
+      "method": "GET",
+      "path": "/admin/fabrics?page=-1",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query page=abc",
+      "method": "GET",
+      "path": "/admin/fabrics?page=abc",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query size=0",
+      "method": "GET",
+      "path": "/admin/fabrics?size=0",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query size=51",
+      "method": "GET",
+      "path": "/admin/fabrics?size=51",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: invalid query size=1.5",
+      "method": "GET",
+      "path": "/admin/fabrics?size=1.5",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: defaults to pending page0 size20",
+      "method": "GET",
+      "path": "/admin/sellers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers PENDING page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/sellers?status=PENDING&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers PENDING page6: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/sellers?status=PENDING&page=6&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers beyond last page is empty and retains totals",
+      "method": "GET",
+      "path": "/admin/sellers?status=PENDING&page=10&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers APPROVED page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/sellers?status=APPROVED&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers APPROVED page5: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/sellers?status=APPROVED&page=5&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers REJECTED page0: exact ordered ids and totals",
+      "method": "GET",
+      "path": "/admin/sellers?status=REJECTED&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query status=ALL",
+      "method": "GET",
+      "path": "/admin/sellers?status=ALL",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query status=pending",
+      "method": "GET",
+      "path": "/admin/sellers?status=pending",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query page=-1",
+      "method": "GET",
+      "path": "/admin/sellers?page=-1",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query page=abc",
+      "method": "GET",
+      "path": "/admin/sellers?page=abc",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query size=0",
+      "method": "GET",
+      "path": "/admin/sellers?size=0",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query size=51",
+      "method": "GET",
+      "path": "/admin/sellers?size=51",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: invalid query size=1.5",
+      "method": "GET",
+      "path": "/admin/sellers?size=1.5",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pending admin fabric list includes three ordered images without duplicating rows",
+      "method": "GET",
+      "path": "/admin/fabrics?size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Seller list includes registered store and nullable missing store",
+      "method": "GET",
+      "path": "/admin/sellers?size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics: malformed id abc rejected",
+      "method": "POST",
+      "path": "/admin/fabrics/abc/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: malformed id abc rejected",
+      "method": "POST",
+      "path": "/admin/sellers/abc/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: malformed id 0 rejected",
+      "method": "POST",
+      "path": "/admin/fabrics/0/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: malformed id 0 rejected",
+      "method": "POST",
+      "path": "/admin/sellers/0/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: malformed id -1 rejected",
+      "method": "POST",
+      "path": "/admin/fabrics/-1/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: malformed id -1 rejected",
+      "method": "POST",
+      "path": "/admin/sellers/-1/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "fabrics: malformed id 1.5 rejected",
+      "method": "POST",
+      "path": "/admin/fabrics/1.5/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "sellers: malformed id 1.5 rejected",
+      "method": "POST",
+      "path": "/admin/sellers/1.5/approve",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Missing fabric approve returns404",
+      "method": "POST",
+      "path": "/admin/fabrics/999999/approve",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Nonexistent or non-seller 999999 approve returns404",
+      "method": "POST",
+      "path": "/admin/sellers/999999/approve",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Nonexistent or non-seller 33 approve returns404",
+      "method": "POST",
+      "path": "/admin/sellers/33/approve",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Nonexistent or non-seller 32 approve returns404",
+      "method": "POST",
+      "path": "/admin/sellers/32/approve",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "httpPosted cannot approve outside pending",
+      "method": "POST",
+      "path": "/admin/fabrics/136/approve",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "httpRejected cannot approve outside pending",
+      "method": "POST",
+      "path": "/admin/fabrics/137/approve",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "httpSoldOut cannot approve outside pending",
+      "method": "POST",
+      "path": "/admin/fabrics/138/approve",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "Missing fabric reject returns404",
+      "method": "POST",
+      "path": "/admin/fabrics/999999/reject",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Nonexistent or non-seller 999999 reject returns404",
+      "method": "POST",
+      "path": "/admin/sellers/999999/reject",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Nonexistent or non-seller 33 reject returns404",
+      "method": "POST",
+      "path": "/admin/sellers/33/reject",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Nonexistent or non-seller 32 reject returns404",
+      "method": "POST",
+      "path": "/admin/sellers/32/reject",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "httpPosted cannot reject outside pending",
+      "method": "POST",
+      "path": "/admin/fabrics/136/reject",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "httpRejected cannot reject outside pending",
+      "method": "POST",
+      "path": "/admin/fabrics/137/reject",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "httpSoldOut cannot reject outside pending",
+      "method": "POST",
+      "path": "/admin/fabrics/138/reject",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "httpApprove: fresh seller profile reports PENDING",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pending seller cannot create fabric",
+      "method": "POST",
+      "path": "/fabrics",
+      "status": 403,
+      "errorCode": "SELLER_NOT_APPROVED",
+      "passed": true
+    },
+    {
+      "name": "Seller PENDING to APPROVED",
+      "method": "POST",
+      "path": "/admin/sellers/35/approve",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "httpApprove: fresh seller profile reports APPROVED",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Approved seller cannot approve again",
+      "method": "POST",
+      "path": "/admin/sellers/35/approve",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "Approved seller cannot reject again",
+      "method": "POST",
+      "path": "/admin/sellers/35/reject",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "Freshly approved seller can register fabric without relogin",
+      "method": "POST",
+      "path": "/fabrics",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Upload actual PNG before administrator approval",
+      "method": "POST",
+      "path": "/fabrics/139/images",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "New approved-seller fabric can be posted after photo upload",
+      "method": "POST",
+      "path": "/admin/fabrics/139/approve",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Seller PENDING to REJECTED",
+      "method": "POST",
+      "path": "/admin/sellers/36/reject",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "httpReject: fresh seller profile reports REJECTED",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Rejected seller cannot register fabric",
+      "method": "POST",
+      "path": "/fabrics",
+      "status": 403,
+      "errorCode": "SELLER_NOT_APPROVED",
+      "passed": true
+    },
+    {
+      "name": "Rejected seller cannot reject again",
+      "method": "POST",
+      "path": "/admin/sellers/36/reject",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "Seller REJECTED to APPROVED",
+      "method": "POST",
+      "path": "/admin/sellers/36/approve",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "httpReject: fresh seller profile reports APPROVED",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pending fabric hidden from buyer detail",
+      "method": "GET",
+      "path": "/fabrics/129",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Fabric PENDING to POSTED with photos",
+      "method": "POST",
+      "path": "/admin/fabrics/129/approve",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer detail becomes visible after posting",
+      "method": "GET",
+      "path": "/fabrics/129",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Owner sees posted status and cleared reason",
+      "method": "GET",
+      "path": "/fabrics/129",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Already posted fabric approval conflict",
+      "method": "POST",
+      "path": "/admin/fabrics/129/approve",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "Photo-free pending fabric cannot be approved",
+      "method": "POST",
+      "path": "/admin/fabrics/132/approve",
+      "status": 400,
+      "errorCode": "IMAGE_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "Image-required failure preserves pending state",
+      "method": "GET",
+      "path": "/fabrics/132",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Fabric rejection validates nonblank reason max255",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Fabric rejection validates nonblank reason max255",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Fabric rejection validates nonblank reason max255",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Fabric rejection validates nonblank reason max255",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Fabric rejection validates nonblank reason max255",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Fabric rejection validates nonblank reason max255",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Fabric PENDING to REJECTED accepts trimmed max255 reason",
+      "method": "POST",
+      "path": "/admin/fabrics/130/reject",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Owner reads persisted rejection reason",
+      "method": "GET",
+      "path": "/fabrics/130",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot read rejected fabric",
+      "method": "GET",
+      "path": "/fabrics/130",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Rejected fabric approval requires owner resubmission",
+      "method": "POST",
+      "path": "/admin/fabrics/130/approve",
+      "status": 409,
+      "errorCode": "INVALID_STATUS",
+      "passed": true
+    },
+    {
+      "name": "Owner correction returns rejected fabric to pending",
+      "method": "PATCH",
+      "path": "/fabrics/130",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Resubmitted fabric approval succeeds",
+      "method": "POST",
+      "path": "/admin/fabrics/130/approve",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Resubmission approval clears previous rejection reason",
+      "method": "GET",
+      "path": "/fabrics/130",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Concurrent fabric review produces exactly one success and one conflict",
+      "passed": true
+    },
+    {
+      "name": "Concurrent seller review ends approved under allowed transition rules",
+      "passed": true
+    },
+    {
+      "name": "Buyer public list includes newly posted QA fabrics and excludes pending",
+      "method": "GET",
+      "path": "/fabrics?keyword=%5B%EA%B4%80%EB%A6%AC%EC%9E%90%20API%20%EA%B2%80%EC%A6%9D%2020261012%5D&size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Owner list reflects posted QA review results",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Browser-specific sellers and fabrics remain unprocessed",
+      "passed": true
+    },
+    {
+      "name": "Administrator actual original image loads",
+      "method": "GET",
+      "status": 200,
+      "bytes": 8593,
+      "passed": true
+    },
+    {
+      "name": "Administrator actual thumbnail image loads",
+      "method": "GET",
+      "status": 200,
+      "bytes": 294,
+      "passed": true
+    },
+    {
+      "name": "All pre-existing rows across eleven models unchanged",
+      "passed": true
+    },
+    {
+      "name": "Backend healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend healthy",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "pagination": [
+    {
+      "kind": "fabrics",
+      "status": "PENDING",
+      "totalElements": 17,
+      "size": 2,
+      "totalPages": 9,
+      "firstAndLastPageMatch": true
+    },
+    {
+      "kind": "fabrics",
+      "status": "POSTED",
+      "totalElements": 103,
+      "size": 2,
+      "totalPages": 52,
+      "firstAndLastPageMatch": true
+    },
+    {
+      "kind": "fabrics",
+      "status": "REJECTED",
+      "totalElements": 4,
+      "size": 2,
+      "totalPages": 2,
+      "firstAndLastPageMatch": true
+    },
+    {
+      "kind": "fabrics",
+      "status": "SOLD_OUT",
+      "totalElements": 11,
+      "size": 2,
+      "totalPages": 6,
+      "firstAndLastPageMatch": true
+    },
+    {
+      "kind": "sellers",
+      "status": "PENDING",
+      "totalElements": 13,
+      "size": 2,
+      "totalPages": 7,
+      "firstAndLastPageMatch": true
+    },
+    {
+      "kind": "sellers",
+      "status": "APPROVED",
+      "totalElements": 11,
+      "size": 2,
+      "totalPages": 6,
+      "firstAndLastPageMatch": true
+    },
+    {
+      "kind": "sellers",
+      "status": "REJECTED",
+      "totalElements": 1,
+      "size": 2,
+      "totalPages": 1,
+      "firstAndLastPageMatch": true
+    }
+  ],
+  "transitions": {
+    "sellers": {
+      "approved": 35,
+      "rejectedThenApproved": 36,
+      "newFabricAfterApproval": 139
+    },
+    "fabrics": {
+      "approved": 129,
+      "rejectedThenResubmittedAndApproved": 130,
+      "imageRequiredPreservedPending": 132,
+      "rejectionReasonBoundary": 255
+    }
+  },
+  "races": {
+    "fabric": {
+      "fabricId": 131,
+      "responses": [
+        {
+          "action": "approve",
+          "status": 409,
+          "finalStatus": null,
+          "errorCode": "INVALID_STATUS"
+        },
+        {
+          "action": "reject",
+          "status": 200,
+          "finalStatus": "REJECTED",
+          "errorCode": null
+        }
+      ],
+      "finalStatus": "REJECTED"
+    },
+    "seller": {
+      "userId": 37,
+      "responses": [
+        {
+          "action": "approve",
+          "status": 200,
+          "finalStatus": "APPROVED",
+          "errorCode": null
+        },
+        {
+          "action": "reject",
+          "status": 409,
+          "finalStatus": null,
+          "errorCode": "INVALID_STATUS"
+        }
+      ],
+      "finalStatus": "APPROVED",
+      "allowsRejectedToApproved": true
+    }
+  },
+  "browserFixtures": {
+    "sellerApprove": 38,
+    "sellerReject": 39,
+    "fabricApprove": 133,
+    "fabricReject": 134,
+    "fabricNoPhoto": 135
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 31,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 12,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "health": {
+    "backendReady": true,
+    "frontendReady": true
+  },
+  "passed": 119
+}

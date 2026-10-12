@@ -1,0 +1,183 @@
+{
+  "checkedAt": "2026-10-12T08:53:28.197Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Frontend createLiveApi with actual HTTP; isolated new adapter fixtures; existing data preserved",
+  "checks": [
+    {
+      "name": "Dashboard seven status counts match current database totals",
+      "passed": true
+    },
+    {
+      "name": "Adapter sellers PENDING list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Adapter sellers APPROVED list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Adapter sellers REJECTED list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Adapter fabrics PENDING list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Adapter fabrics POSTED list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Adapter fabrics REJECTED list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Adapter fabrics SOLD_OUT list decodes actual page",
+      "passed": true
+    },
+    {
+      "name": "Seller lookup finds pending seller despite wrong status hint and includes store",
+      "passed": true
+    },
+    {
+      "name": "Missing seller produces NOT_FOUND after actual status scans",
+      "passed": true
+    },
+    {
+      "name": "Admin fabric detail includes pending status and private fields",
+      "passed": true
+    },
+    {
+      "name": "Missing fabric detail produces NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot call admin lists",
+      "passed": true
+    },
+    {
+      "name": "Seller begins pending in fresh profile",
+      "passed": true
+    },
+    {
+      "name": "Adapter seller rejection reaches backend",
+      "passed": true
+    },
+    {
+      "name": "Same seller session refreshes rejection without relogin",
+      "passed": true
+    },
+    {
+      "name": "Stale pending hint locates newly rejected seller",
+      "passed": true
+    },
+    {
+      "name": "Adapter rejected seller approval reaches backend",
+      "passed": true
+    },
+    {
+      "name": "Existing seller session and new login reflect approval",
+      "passed": true
+    },
+    {
+      "name": "Repeated seller approval exposes INVALID_STATUS and latest detail remains approved",
+      "passed": true
+    },
+    {
+      "name": "No-photo fabric approval exposes IMAGE_REQUIRED without unknown outcome",
+      "passed": true
+    },
+    {
+      "name": "Adapter fabric approval persists POSTED",
+      "passed": true
+    },
+    {
+      "name": "Adapter fabric rejection trims and persists reason",
+      "passed": true
+    },
+    {
+      "name": "Fresh seller detail sees administrator rejection reason",
+      "passed": true
+    },
+    {
+      "name": "Actual public lookup shows posted fabric and hides rejected fabric",
+      "passed": true
+    },
+    {
+      "name": "Dashboard counts refresh after reviews",
+      "passed": true
+    },
+    {
+      "name": "All original data across eleven models unchanged after adapter operations",
+      "passed": true
+    }
+  ],
+  "fixtures": {
+    "sellerId": 40,
+    "storeId": 18,
+    "adapterApprove": 140,
+    "adapterReject": 141,
+    "adapterNoPhoto": 142
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 31,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 12,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "dashboardBefore": {
+    "PENDING": 17,
+    "POSTED": 106,
+    "REJECTED": 5,
+    "SOLD_OUT": 11
+  },
+  "dashboardAfter": {
+    "PENDING": 15,
+    "POSTED": 107,
+    "REJECTED": 6,
+    "SOLD_OUT": 11
+  },
+  "passed": 27
+}

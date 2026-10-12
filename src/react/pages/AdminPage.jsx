@@ -3,6 +3,7 @@ import { Badge, Button, EmptyState, FabricImage, Notice, PageHeading, SelectFiel
 import { formatLength, formatPrice } from '../lib/format.js';
 import { useAction } from '../hooks/useAction.js';
 import { adminRoute, canReviewSeller, confirmSellerReview, fabricPhotos, reviewPath, safeAdminReturn } from './admin-review.js';
+import AdminLivePage from './AdminLivePage.jsx';
 
 const SELLER_STATUS = { PENDING: '승인 대기', APPROVED: '승인 완료', REJECTED: '승인 거절' };
 const FABRIC_STATUS = { PENDING: '승인 대기', POSTED: '게시 중', REJECTED: '승인 거절', SOLD_OUT: '판매 완료' };
@@ -261,6 +262,7 @@ function ServiceError({ ctx }) {
 }
 
 export default function AdminPage({ ctx }) {
+  if (ctx.mode === 'live') return <AdminLivePage ctx={ctx} />;
   // URL examples are overlays; review actions always mutate the service through ctx.api.
   if (ctx.query.has('sample') || ctx.query.has('empty')) {
     ctx = { ...ctx, state: structuredClone(ctx.state) };

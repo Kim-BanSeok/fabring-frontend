@@ -1,0 +1,288 @@
+{
+  "checkedAt": "2026-10-12T08:56:56.307Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Read-only HTTP GET and database SELECT after browser review actions; no mutation requests",
+  "checks": [
+    {
+      "name": "browserApprove: seller profile reflects browser APPROVED",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserApprove: original store remains available",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserReject: seller profile reflects browser REJECTED",
+      "method": "GET",
+      "path": "/users/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserReject: original store remains available",
+      "method": "GET",
+      "path": "/stores/me",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserApprove: administrator reads saved review status and images",
+      "method": "GET",
+      "path": "/fabrics/133",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserApprove: owner sees same status and rejection reason",
+      "method": "GET",
+      "path": "/fabrics/133",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer can open browser-approved fabric detail",
+      "method": "GET",
+      "path": "/fabrics/133",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserReject: administrator reads saved review status and images",
+      "method": "GET",
+      "path": "/fabrics/134",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserReject: owner sees same status and rejection reason",
+      "method": "GET",
+      "path": "/fabrics/134",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot open rejected browser fabric",
+      "method": "GET",
+      "path": "/fabrics/134",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "browserNoPhoto: administrator reads saved review status and images",
+      "method": "GET",
+      "path": "/fabrics/135",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "browserNoPhoto: owner sees same status and rejection reason",
+      "method": "GET",
+      "path": "/fabrics/135",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot open pending browser fabric",
+      "method": "GET",
+      "path": "/fabrics/135",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Buyer public catalog includes approved and excludes rejected or photo-free pending fixtures",
+      "method": "GET",
+      "path": "/fabrics?keyword=%5B%EA%B4%80%EB%A6%AC%EC%9E%90%20API%20%EA%B2%80%EC%A6%9D%2020261012%5D&size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Owner management list reflects all three browser outcomes",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=50",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator sellers APPROVED page0 reflects saved review",
+      "method": "GET",
+      "path": "/admin/sellers?status=APPROVED&size=50&page=0",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator sellers REJECTED page0 reflects saved review",
+      "method": "GET",
+      "path": "/admin/sellers?status=REJECTED&size=50&page=0",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator fabrics POSTED page0 reflects saved review",
+      "method": "GET",
+      "path": "/admin/fabrics?status=POSTED&size=50&page=0",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator fabrics POSTED page1 reflects saved review",
+      "method": "GET",
+      "path": "/admin/fabrics?status=POSTED&size=50&page=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator fabrics POSTED page2 reflects saved review",
+      "method": "GET",
+      "path": "/admin/fabrics?status=POSTED&size=50&page=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator fabrics REJECTED page0 reflects saved review",
+      "method": "GET",
+      "path": "/admin/fabrics?status=REJECTED&size=50&page=0",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Administrator fabrics PENDING page0 reflects saved review",
+      "method": "GET",
+      "path": "/admin/fabrics?status=PENDING&size=50&page=0",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Database confirms browser seller and fabric states, ownership, image counts and unchanged roll inventory",
+      "passed": true
+    },
+    {
+      "name": "All original rows across eleven models remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend remains healthy",
+      "method": "GET",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "sellers": {
+    "browserApprove": {
+      "userId": 38,
+      "seller_approval_status": "APPROVED",
+      "hasStore": true,
+      "storeId": 16,
+      "active": true
+    },
+    "browserReject": {
+      "userId": 39,
+      "seller_approval_status": "REJECTED",
+      "hasStore": true,
+      "storeId": 17,
+      "active": true
+    }
+  },
+  "fabrics": {
+    "browserApprove": {
+      "fabricId": 133,
+      "status": "POSTED",
+      "imageCount": 1,
+      "reject_reason": null,
+      "storeId": 13,
+      "sale_type": "SCRAP"
+    },
+    "browserReject": {
+      "fabricId": 134,
+      "status": "REJECTED",
+      "imageCount": 1,
+      "reject_reason": "전체 길이를 확인할 수 있는 사진을 보완해 주세요.",
+      "storeId": 13,
+      "sale_type": "ROLL",
+      "remaining_length_cm": 900,
+      "reserved_length_cm": 0
+    },
+    "browserNoPhoto": {
+      "fabricId": 135,
+      "status": "PENDING",
+      "imageCount": 0,
+      "reject_reason": null,
+      "storeId": 13,
+      "sale_type": "SCRAP"
+    }
+  },
+  "adminCounts": {
+    "sellers.APPROVED": 16,
+    "sellers.REJECTED": 2,
+    "fabrics.POSTED": 108,
+    "fabrics.REJECTED": 7,
+    "fabrics.PENDING": 13
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 31,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 12,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "health": {
+    "backendReady": true,
+    "frontendReady": true
+  },
+  "passed": 26
+}

@@ -5,6 +5,7 @@ import { reservationQuery, reservationPage, reservationDetail, reservationIdenti
 import { SELLER_FABRIC_STATUSES, SELLER_INQUIRY_STATUSES, sellerStatusCount, collectSellerPickups } from './seller-dashboard-contract.js';
 import { ownFabricQuery, ownFabricPage, ownFabricDetail, sellerFabricInput, fabricMutation, fabricDeletion, imageUploadBody, fabricImage } from './seller-fabric-contract.js';
 import { storeInput, storeDetail, storeCreated } from './store-contract.js';
+import { ADMIN_FABRIC_STATUSES, ADMIN_SELLER_STATUSES, adminQuery, adminPage, adminReview, adminReviewResult, findAdminSeller } from './admin-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -15,7 +16,7 @@ const cancelled = () => new DOMException('Aborted', 'AbortError');
 // This adapter contains no demo fixtures. Unconnected business operations never report success.
 export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs } = {}) {
   let credential = null, user = null, store = {}, storeError = '', restorePromise, revision = 0;
-  let status = 'anonymous', error = '', expiryTimer, storeVersion = 0;
+  let status = 'anonymous', error = '', expiryTimer, storeVersion = 0, adminVersion = 0;
   const listeners = new Set();
   try {
     const saved = JSON.parse(storage?.getItem(AUTH_STORAGE_KEY) || 'null');
@@ -139,11 +140,75 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       throw failure;
     }
   }
+  async function adminRequest(path, { signal, body, method = 'GET', decode }) {
+    requireSession(['ADMIN']);
+    const version = revision;
+    if (method !== 'GET') adminVersion++;
+    const readVersion = adminVersion;
+    try {
+      const result = await request(path, { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== adminVersion)) throw cancelled();
+      return decode(result);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== adminVersion)) throw cancelled();
+      if (method !== 'GET' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '승인 처리 결과를 확인하지 못했어요. 다시 처리하기 전에 최신 상태를 조회해 주세요.';
+      }
+      throw failure;
+    } finally {
+      if (method !== 'GET' && revision === version) adminVersion++;
+    }
+  }
   const api = {
     mode: 'live',
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async listAdminSellers(input = {}, { signal } = {}) {
+      const query = adminQuery('sellers', input);
+      return adminRequest(`/admin/sellers?${query}`, { signal, decode: raw => adminPage('sellers', raw, query) });
+    },
+    async listAdminFabrics(input = {}, { signal } = {}) {
+      const query = adminQuery('fabrics', input);
+      return adminRequest(`/admin/fabrics?${query}`, { signal, decode: raw => adminPage('fabrics', raw, query) });
+    },
+    async getAdminSeller(id, options = {}) {
+      requireSession(['ADMIN']);
+      const version = revision, readVersion = adminVersion;
+      const result = await findAdminSeller(api.listAdminSellers, id, options);
+      if (options.signal?.aborted || revision !== version || readVersion !== adminVersion) throw cancelled();
+      return result;
+    },
+    async getAdminFabric(id, { signal } = {}) {
+      const identifier = fabricIdentifier(id);
+      return adminRequest(`/fabrics/${identifier}`, { signal, decode: raw => {
+        const result = ownFabricDetail(raw);
+        if (result.id !== identifier) throw new ApiError('INVALID_RESPONSE', '선택한 원단 정보를 다시 조회해 주세요.');
+        return result;
+      } });
+    },
+    async getAdminDashboard({ signal } = {}) {
+      requireSession(['ADMIN']);
+      const version = revision, readVersion = adminVersion;
+      const [fabrics, sellers] = await Promise.all([
+        Promise.all(ADMIN_FABRIC_STATUSES.map(status => api.listAdminFabrics({ status, page: 0, size: status === 'PENDING' ? 3 : 1 }, { signal }))),
+        Promise.all(ADMIN_SELLER_STATUSES.map(status => api.listAdminSellers({ status, page: 0, size: 1 }, { signal }))),
+      ]);
+      if (signal?.aborted || revision !== version || readVersion !== adminVersion) throw cancelled();
+      return { fabricCounts: Object.fromEntries(ADMIN_FABRIC_STATUSES.map((status, i) => [status, fabrics[i].totalElements])),
+        sellerCounts: Object.fromEntries(ADMIN_SELLER_STATUSES.map((status, i) => [status, sellers[i].totalElements])), pendingFabrics: fabrics[0].items };
+    },
+    async reviewSeller(id, next, { signal } = {}) {
+      requireSession(['ADMIN']);
+      const { identifier, action } = adminReview('sellers', id, next);
+      return adminRequest(`/admin/sellers/${identifier}/${action}`, { signal, method: 'POST', decode: raw => adminReviewResult('sellers', raw, identifier, next) });
+    },
+    async reviewFabric(id, next, reason = '', { signal } = {}) {
+      requireSession(['ADMIN']);
+      const { identifier, action, body } = adminReview('fabrics', id, next, reason);
+      return adminRequest(`/admin/fabrics/${identifier}/${action}`, { signal, method: 'POST', body, decode: raw => adminReviewResult('fabrics', raw, identifier, next) });
+    },
     async refreshSellerProfile({ signal } = {}) {
       requireSession(['SELLER']);
       const version = storeVersion;
@@ -350,7 +415,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async logout() { clearSession(); },
   };
-  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos', 'reviewSeller', 'reviewFabric']) {
+  for (const name of ['updateProfile', 'updateSellerProfile', 'saveStore', 'createInquiry', 'answerInquiry', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos']) {
     api[name] = async () => { throw new ApiError('NOT_CONNECTED', '이 기능은 아직 서버와 연결되지 않았어요. 전체 화면 미리보기에서 흐름을 확인할 수 있어요.'); };
   }
   return api;
