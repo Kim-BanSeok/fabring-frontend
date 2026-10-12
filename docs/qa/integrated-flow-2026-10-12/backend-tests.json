@@ -1,0 +1,12 @@
+{
+  "suites": "All backend tests/**/*.test.js",
+  "verificationMode": "All existing backend tests on a fresh task-only database guarded by NODE_ENV=test, exact database name, loopback host and port, and a separate upload directory; scenario fixtures created only after test completion",
+  "passed": 474,
+  "completed": true,
+  "failed": 0,
+  "durationMs": 79787,
+  "sensitiveValuesIncluded": false,
+  "skipped": 0,
+  "checkedAt": "2026-10-12T12:41:34.5858211Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9"
+}

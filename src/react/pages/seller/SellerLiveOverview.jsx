@@ -88,7 +88,7 @@ function Dashboard({ ctx, calendar }) {
       <section className="panel seller-panel"><h2>내 원단 현황</h2>
         {fabrics.loading ? <p role="status" className="muted">원단 현황을 조회하고 있어요.</p> : fabrics.error ? <OverviewFailure resource={fabrics} label="원단 현황" /> : <dl className="seller-overview-counts">{SELLER_FABRIC_COUNT_LABELS.map(([key, label]) => <div key={key}><dt>{label}</dt><dd>{sellerOverviewCount(fabrics, key)}</dd></div>)}</dl>}
         <h3>문의 현황</h3>{inquiries.loading ? <p role="status" className="muted">문의 현황을 조회하고 있어요.</p> : inquiries.error ? <OverviewFailure resource={inquiries} label="문의 현황" /> : <dl className="seller-overview-counts"><div><dt>답변 대기</dt><dd>{sellerOverviewCount(inquiries, 'WAITING')}</dd></div><div><dt>답변 완료</dt><dd>{sellerOverviewCount(inquiries, 'ANSWERED')}</dd></div></dl>}
-        <Notice>원단 관리에서 실제 등록 내역을 확인하고 수정할 수 있어요. 문의 화면의 목록 조회·답변은 아직 연결되지 않았습니다.</Notice><div className="actions"><Link path="/seller/fabrics">원단 관리</Link><Link path="/seller/inquiries">문의 화면 · 미연동</Link></div>
+        <Notice>원단 관리에서 등록 내역을 수정하고, 문의 내역에서 구매자의 질문을 확인하고 답변할 수 있어요.</Notice><div className="actions"><Link path="/seller/fabrics">원단 관리</Link><Link path="/seller/inquiries">문의 확인·답변</Link></div>
       </section>
     </div><Calendar ctx={ctx} resource={calendar} compact /></div>
   </section>;

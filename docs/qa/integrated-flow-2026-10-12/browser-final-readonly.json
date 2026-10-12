@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-12T12:50:47.039Z",
+  "completed": true,
+  "verificationMode": "Independent read-only database assertions after root-driven visible browser writes; separate browser identities from adapter scenario",
+  "checks": [
+    {
+      "name": "Browser buyer, seller and admin roles remain distinct",
+      "passed": true
+    },
+    {
+      "name": "Browser-created store belongs to seller and retains submitted name",
+      "passed": true
+    },
+    {
+      "name": "Browser-created fabric is owned by browser seller and publicly posted",
+      "passed": true
+    },
+    {
+      "name": "Browser fabric dimensions and wire enum values are preserved",
+      "passed": true
+    },
+    {
+      "name": "Browser-uploaded image persisted with served original and thumbnail",
+      "passed": true
+    },
+    {
+      "name": "Browser public inquiry belongs to correct buyer and fabric",
+      "passed": true
+    },
+    {
+      "name": "Browser seller answer persisted with answered status and timestamp",
+      "passed": true
+    },
+    {
+      "name": "Browser reservation links correct buyer, seller and fabric",
+      "passed": true
+    },
+    {
+      "name": "Browser reservation retains two yards, quoted price and KST pickup instant",
+      "passed": true
+    },
+    {
+      "name": "Browser pickup is completed with prior acceptance and pickup timestamps",
+      "passed": true
+    },
+    {
+      "name": "Browser pickup consumes exactly 180cm with no held stock remaining",
+      "passed": true
+    },
+    {
+      "name": "Browser seller has no accepted pickup left after completion",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 12
+}

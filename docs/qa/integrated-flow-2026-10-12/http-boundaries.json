@@ -1,0 +1,69 @@
+{
+  "checkedAt": "2026-10-12T12:40:50.841Z",
+  "completed": true,
+  "verificationMode": "Direct actual HTTP negative/boundary checks using isolated scenario identities; browser fixture untouched",
+  "checks": [
+    {
+      "name": "Duplicate signup cannot create another identity",
+      "passed": true
+    },
+    {
+      "name": "Signup never permits ADMIN role",
+      "passed": true
+    },
+    {
+      "name": "Signup without required agreement creates no user",
+      "passed": true
+    },
+    {
+      "name": "Wrong password rejected without revealing account hash",
+      "passed": true
+    },
+    {
+      "name": "Protected profile rejects anonymous and invalid-token requests",
+      "passed": true
+    },
+    {
+      "name": "Buyer cannot call seller reservation list or admin dashboard lists",
+      "passed": true
+    },
+    {
+      "name": "Anonymous public fabric list returns published entries only with explicit sale type",
+      "passed": true
+    },
+    {
+      "name": "Anonymous inquiries expose public answer but mask answered private content",
+      "passed": true
+    },
+    {
+      "name": "Private content accessible to its author, owner seller and admin only",
+      "passed": true
+    },
+    {
+      "name": "Profile rejects changing email, password or account role",
+      "passed": true
+    },
+    {
+      "name": "Foreign seller cannot modify or delete another seller fabric",
+      "passed": true
+    },
+    {
+      "name": "Invalid page ranges rejected on reservations and inquiries",
+      "passed": true
+    },
+    {
+      "name": "Reservation rejects past pickup instant without changing inventory",
+      "passed": true
+    },
+    {
+      "name": "Confirmed AI session belongs to original seller and cannot be reused for second fabric",
+      "passed": true
+    },
+    {
+      "name": "Raw profile DTO excludes password hash and bearer token",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 15
+}

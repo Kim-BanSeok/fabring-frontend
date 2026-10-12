@@ -10,6 +10,29 @@ export function inquiryPath(fabricId, values = {}) {
   return `/buyer/inquiries?${query}`;
 }
 
+// Keep the selected fabric, pattern, or reservation when a buyer asks a question.
+// Only read-only buyer routes and their filters survive; mode/scenario flags do not.
+export function inquiryReturnPath(value, depth = 0) {
+  if (typeof value !== 'string' || /[\\#\r\n]/.test(value) || depth > 2) return '';
+  const [path, search = ''] = value.split('?');
+  if (!/^\/buyer\/(?:fabrics|patterns|reservations)(?:\/[1-9]\d*)?$/.test(path)
+    && !/^\/buyer\/recommendations\/[1-9]\d*$/.test(path)) return '';
+  const incoming = new URLSearchParams(search), query = new URLSearchParams();
+  for (const name of ['sale_type', 'material', 'thickness', 'color', 'color_family', 'keyword', 'sort', 'page', 'size', 'view', 'collapsed', 'category', 'fabric_id', 'status']) {
+    if (incoming.has(name)) query.set(name, incoming.get(name));
+  }
+  for (const name of ['return', 'patterns_return']) {
+    const destination = inquiryReturnPath(incoming.get(name), depth + 1);
+    if (destination) query.set(name, destination);
+  }
+  return path + (query.size ? `?${query}` : '');
+}
+
+export function inquiryFlowPath(ctx, fabricId, values = {}) {
+  const origin = ctx.path === '/buyer/inquiries' ? ctx.query.get('from') : ctx.path + (ctx.query.size ? `?${ctx.query}` : '');
+  return inquiryPath(fabricId, { ...values, from: inquiryReturnPath(origin) });
+}
+
 export function sellerInquiryPath(values = {}) {
   const query = new URLSearchParams();
   for (const [key, value] of Object.entries(values)) if (value != null && value !== '') query.set(key, String(value));

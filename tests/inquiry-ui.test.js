@@ -1,10 +1,54 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { INQUIRY_TARGETS_KEY, inquiryFailure, inquiryPageQuery, inquiryPath, reconcileInquiryAnswer, rememberInquiryTarget, sellerInquiryPath, sendInquiry, sendInquiryAnswer, startInquiryRead } from '../src/react/pages/inquiry-model.js';
+import { INQUIRY_TARGETS_KEY, inquiryFailure, inquiryFlowPath, inquiryPageQuery, inquiryPath, inquiryReturnPath, reconcileInquiryAnswer, rememberInquiryTarget, sellerInquiryPath, sendInquiry, sendInquiryAnswer, startInquiryRead } from '../src/react/pages/inquiry-model.js';
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
 const fabric = { id: '23', title: '네이비 면 원단' };
 const input = { content: '신축성이 있나요?', is_private: true };
+
+const context = route => { const [path, query] = route.split('?'); return { path, query: new URLSearchParams(query) }; };
+
+test('fabric or recommendation → inquiry → receipt → pagination keeps the original selected screen and filters', () => {
+  for (const path of ['/buyer/fabrics/23', '/buyer/recommendations/23']) {
+    const origin = context(path);
+    origin.query.set('return', '/buyer/fabrics?sale_type=ROLL&material=면&page=2');
+    const compose = context(inquiryFlowPath(origin, fabric.id, { compose: 1 }));
+    const receipt = context(inquiryFlowPath(compose, fabric.id, { state: 'DONE', id: '7' }));
+    const nextPage = context(inquiryFlowPath(receipt, fabric.id, { page: 1 }));
+    assert.equal(nextPage.query.get('from'), compose.query.get('from'));
+    const returned = context(inquiryReturnPath(nextPage.query.get('from')));
+    assert.equal(returned.path, path);
+    assert.equal(context(returned.query.get('return')).query.get('material'), '면');
+    assert.equal(context(returned.query.get('return')).query.get('page'), '2');
+    assert.equal(nextPage.query.has('state'), false);
+    assert.equal(nextPage.query.has('compose'), false);
+  }
+});
+
+test('pattern and reservation inquiries restore the selected item and its catalogue/list', () => {
+  for (const [path, key, back] of [
+    ['/buyer/patterns/7', 'patterns_return', '/buyer/patterns?keyword=가방&page=3&fabric_id=23'],
+    ['/buyer/reservations/9', 'return', '/buyer/reservations?status=ACCEPTED&page=2'],
+  ]) {
+    const origin = context(path); origin.query.set(key, back); origin.query.set('fabric_id', fabric.id);
+    const compose = context(inquiryFlowPath(origin, fabric.id, { compose: 1 }));
+    const restored = context(inquiryReturnPath(compose.query.get('from')));
+    assert.equal(restored.path, path);
+    assert.equal(restored.query.get('fabric_id'), fabric.id);
+    assert.deepEqual(Object.fromEntries(context(restored.query.get(key)).query), Object.fromEntries(context(back).query));
+  }
+});
+
+test('inquiry return destinations reject external/write/role routes and remove demo and completion flags', () => {
+  for (const value of ['https://example.com', '//example.com', '/admin/fabrics/23', '/buyer/reservations/9/cancel', '/buyer/inquiries?compose=1', '/buyer/fabrics/23#x', '/buyer/fabrics\\23', '/buyer/fabrics/23\n']) {
+    assert.equal(inquiryReturnPath(value), '');
+  }
+  const origin = context('/buyer/patterns/7?fabric_id=23&mode=demo&scenario=12:34&state=DONE');
+  origin.query.set('return', '/buyer/fabrics?page=2&mode=demo&scenario=12:34');
+  const restored = context(inquiryReturnPath(origin.path + '?' + origin.query));
+  assert.deepEqual([...restored.query.keys()], ['fabric_id', 'return']);
+  assert.equal(restored.query.get('return'), '/buyer/fabrics?page=2');
+});
 
 test('inquiry create keeps an uncertain operation before dispatch and never automatically retries a lost response', async () => {
   let operation, calls = 0;

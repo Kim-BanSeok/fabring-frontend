@@ -1,0 +1,179 @@
+{
+  "checkedAt": "2026-10-12T12:38:23.693Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "frontendRevision": "559c231cf023103a3880cd823f24cabfd44c23b7",
+  "completed": true,
+  "verificationMode": "Actual production frontend adapter and HTTP requests through unmodified isolated Express/PostgreSQL. Scenario accounts separate from browser fixtures. Fake AI only; no real model request. No main DB writes.",
+  "checks": [
+    {
+      "name": "Buyer signup and real credential login establish BUYER session",
+      "passed": true
+    },
+    {
+      "name": "Seller signup starts PENDING with no store; login routes first-login contract",
+      "passed": true
+    },
+    {
+      "name": "Isolated secondary buyer and seller sign up for ownership checks",
+      "passed": true
+    },
+    {
+      "name": "Unapproved seller cannot create fabric",
+      "passed": true
+    },
+    {
+      "name": "Seller registers store before approval and receives real persisted store",
+      "passed": true
+    },
+    {
+      "name": "Admin PENDING list and detail include newly registered seller",
+      "passed": true
+    },
+    {
+      "name": "Admin approves seller; existing seller session refresh observes approval",
+      "passed": true
+    },
+    {
+      "name": "Admin reject and subsequent approval of separate seller",
+      "passed": true
+    },
+    {
+      "name": "Approved seller creates ROLL fabric PENDING, invisible to buyer before approval",
+      "passed": true
+    },
+    {
+      "name": "Admin cannot publish without actual image",
+      "passed": true
+    },
+    {
+      "name": "Image upload returns served original and thumbnail in isolated upload directory",
+      "passed": true
+    },
+    {
+      "name": "Admin rejects fabric with reason; seller corrects and resubmits to PENDING",
+      "passed": true
+    },
+    {
+      "name": "Admin publishes corrected image-backed fabric; buyer sees actual listing and detail",
+      "passed": true
+    },
+    {
+      "name": "Pattern list and part detail load from real seeded isolated pattern",
+      "passed": true
+    },
+    {
+      "name": "Recommendation uses server cutting calculation and price, preserves pattern id",
+      "passed": true
+    },
+    {
+      "name": "Buyer requests recommended roll with pattern and receives REQUESTED without stock hold",
+      "passed": true
+    },
+    {
+      "name": "Owner seller sees request; unrelated accounts cannot read or accept it",
+      "passed": true
+    },
+    {
+      "name": "Seller accepts request; stock held exactly once and buyer gets pickup store information",
+      "passed": true
+    },
+    {
+      "name": "Accepted reservation appears on seller date-based pickup calendar",
+      "passed": true
+    },
+    {
+      "name": "Seller pickup completion consumes roll stock once and removes accepted calendar entry",
+      "passed": true
+    },
+    {
+      "name": "Buyer cancellation before acceptance leaves roll stock unchanged",
+      "passed": true
+    },
+    {
+      "name": "Buyer cancellation after acceptance releases held roll length",
+      "passed": true
+    },
+    {
+      "name": "Seller rejects request with readable buyer reason and no stock change",
+      "passed": true
+    },
+    {
+      "name": "Seller cancellation after acceptance releases stock and records canceled_by SELLER",
+      "passed": true
+    },
+    {
+      "name": "Oversized roll request is rejected without extra reservation",
+      "passed": true
+    },
+    {
+      "name": "Seller creates and publishes SCRAP with independent inventory",
+      "passed": true
+    },
+    {
+      "name": "Only one competing scrap request can be accepted",
+      "passed": true
+    },
+    {
+      "name": "Scrap pickup marks SOLD_OUT and automatically rejects competing request with sold-out reason",
+      "passed": true
+    },
+    {
+      "name": "Buyer creates public and private inquiries for same posted roll",
+      "passed": true
+    },
+    {
+      "name": "Other buyer cannot read private inquiry content or answer",
+      "passed": true
+    },
+    {
+      "name": "Seller answers and revises inquiry; buyer sees final answer and counters agree",
+      "passed": true
+    },
+    {
+      "name": "Answered private inquiry stays masked to stranger and foreign seller cannot answer",
+      "passed": true
+    },
+    {
+      "name": "Buyer profile nickname and phone persist on relogin; empty phone clears to null",
+      "passed": true
+    },
+    {
+      "name": "Seller personal profile update preserves store fields and approval",
+      "passed": true
+    },
+    {
+      "name": "Store update preserves seller personal profile and reflects latest pickup guide",
+      "passed": true
+    },
+    {
+      "name": "Fake AI conversation completes draft through all questions without model key",
+      "passed": true
+    },
+    {
+      "name": "AI confirmation creates one PENDING fabric, recovery GET retains confirmed fabric id",
+      "passed": true
+    },
+    {
+      "name": "AI registered fabric uses same photo and admin publication flow as manual",
+      "passed": true
+    },
+    {
+      "name": "Seller dashboard counts match own status lists after mixed lifecycle",
+      "passed": true
+    },
+    {
+      "name": "Buyer reservation status filters and seller calendar reconcile final outcomes",
+      "passed": true
+    },
+    {
+      "name": "Admin dashboard reads actual aggregated totals and pending fabric list",
+      "passed": true
+    },
+    {
+      "name": "Logout removes credentials; protected profile and mutations reject without request",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 42
+}

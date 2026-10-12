@@ -3,7 +3,7 @@ import { Badge, Button, EmptyState, Notice, PageHeading } from '../components/ui
 import useReservationMutation from '../hooks/useReservationMutation.js';
 import './inquiry.css';
 import { formatDate, formatDateTime } from '../lib/format.js';
-import { INQUIRY_RECEIPT_KEY, INQUIRY_TARGETS_KEY, inquiryAnswerKey, inquiryCreateKey, inquiryFailure, inquiryPageQuery, inquiryPath, reconcileInquiryAnswer, rememberInquiryTarget, sellerInquiryPath, sendInquiry, sendInquiryAnswer, startInquiryRead } from './inquiry-model.js';
+import { INQUIRY_RECEIPT_KEY, INQUIRY_TARGETS_KEY, inquiryAnswerKey, inquiryCreateKey, inquiryFailure, inquiryFlowPath, inquiryPageQuery, inquiryPath, inquiryReturnPath, reconcileInquiryAnswer, rememberInquiryTarget, sellerInquiryPath, sendInquiry, sendInquiryAnswer, startInquiryRead } from './inquiry-model.js';
 
 const Link = ({ path, children, ...props }) => <Button href={path} {...props}>{children}</Button>;
 const BuyerPage = ({ children }) => <div className="buyer-page" data-figma-node="123:2068">{children}</div>;
@@ -50,6 +50,11 @@ function InquiryContent({ item }) {
   </>;
 }
 
+function InquiryReturn({ ctx }) {
+  const path = inquiryReturnPath(ctx.query.get('from'));
+  return path ? <Link path={path}>문의 전 화면으로 돌아가기</Link> : null;
+}
+
 function BuyerInquiryIndex({ ctx }) {
   const targets = ctx.drafts.get(INQUIRY_TARGETS_KEY) || [];
   return <BuyerPage><PageHeading title="문의 내역" description="원단별로 남긴 질문과 판매자의 답변을 확인하세요." />
@@ -65,7 +70,7 @@ function BuyerUnknownInquiry({ ctx, fabric, record, resource }) {
   if (record?.operation?.status !== 'UNKNOWN') return null;
   return <section className="panel stack"><h2 className="buyer-panel-heading">이전 문의의 등록 결과를 확인해 주세요</h2><Notice tone="warning">연결이 끊겨도 문의는 등록되었을 수 있어요. 아래 목록에서 내용과 작성 시각을 확인해 주세요. 방금 보낸 요청은 목록에 늦게 나타날 수 있으니 먼저 새로 조회해 주세요.</Notice>
     <p className="buyer-message">{record.operation.input.content}</p><Button onClick={resource.retry} disabled={resource.loading}>문의 목록 새로 조회</Button>
-    {resource.data && <><label className="check"><input type="checkbox" checked={checked} onChange={event => setChecked(event.target.checked)} /> 같은 문의가 이미 등록됐는지 확인했어요. 다시 보내면 중복 문의가 생길 수 있음을 이해해요.</label><div><Button disabled={!checked} onClick={() => { ctx.drafts.set(inquiryCreateKey(fabric.id), { ...record, operation: null }); ctx.navigate(inquiryPath(fabric.id, { compose: 1 })); }}>확인했어요 · 작성 계속</Button></div></>}
+    {resource.data && <><label className="check"><input type="checkbox" checked={checked} onChange={event => setChecked(event.target.checked)} /> 같은 문의가 이미 등록됐는지 확인했어요. 다시 보내면 중복 문의가 생길 수 있음을 이해해요.</label><div><Button disabled={!checked} onClick={() => { ctx.drafts.set(inquiryCreateKey(fabric.id), { ...record, operation: null }); ctx.navigate(inquiryFlowPath(ctx, fabric.id, { compose: 1 })); }}>확인했어요 · 작성 계속</Button></div></>}
   </section>;
 }
 
@@ -77,11 +82,11 @@ function BuyerFabricInquiries({ ctx, fabric }) {
   return <BuyerPage><PageHeading title={received ? '문의를 등록했어요' : '원단 문의·답변'} description={fabric.title} />
     {received && <Notice tone="success">등록이 완료됐어요. 판매자의 답변은 이 원단의 문의 목록에서 확인할 수 있습니다.</Notice>}
     <Notice>이 원단에 등록된 문의 목록입니다. 비공개 문의의 내용과 답변은 작성자·판매자·운영팀만 확인할 수 있어요.</Notice>
-    <div className="actions"><Link path={inquiryPath(fabric.id, { compose: 1 })} tone="primary">새 문의 작성</Link><Button onClick={resource.retry} disabled={resource.loading}>새로 조회</Button><Link path={`/buyer/fabrics/${encodeURIComponent(fabric.id)}`}>원단 상세로</Link></div>
+    <div className="actions"><Link path={inquiryFlowPath(ctx, fabric.id, { compose: 1 })} tone="primary">새 문의 작성</Link><Button onClick={resource.retry} disabled={resource.loading}>새로 조회</Button><Link path={`/buyer/fabrics/${encodeURIComponent(fabric.id)}`}>원단 상세로</Link><InquiryReturn ctx={ctx} /></div>
     <BuyerUnknownInquiry key={`${fabric.id}:${resource.attempt}`} ctx={ctx} fabric={fabric} record={record} resource={resource} />
     <ReadFeedback resource={resource} />
     {page && <><p className="buyer-result-count" aria-live="polite">전체 문의 {page.totalElements}건</p>{items.length ? items.map(item => <article key={item.id} className="panel buyer-inquiry-item stack" aria-label={`문의 ${item.id}`}><InquiryContent item={item} /></article>) : <EmptyState title={page.page > 0 ? '이 페이지에 문의가 없어요' : '등록된 문의가 없어요'} description={page.page > 0 ? '첫 페이지에서 다시 확인해 주세요.' : '원단에 궁금한 점이 있다면 판매자에게 질문해 주세요.'} />}
-      <Pagination page={page} path={index => inquiryPath(fabric.id, { page: index })} />
+      <Pagination page={page} path={index => inquiryFlowPath(ctx, fabric.id, { page: index })} />
     </>}
   </BuyerPage>;
 }
@@ -102,20 +107,20 @@ function BuyerInquiryForm({ ctx, fabric }) {
       const result = await sendInquiry(ctx.api, fabric, { content: input.content.trim(), is_private: input.is_private }, { signal, isCurrent, remember: rememberOperation });
       if (!result || !isCurrent()) return;
       ctx.drafts.set(key, { input: { content: '', is_private: false }, operation: { status: 'CONFIRMED', id: result.id } });
-      ctx.navigate(inquiryPath(fabric.id, { state: 'DONE', id: result.id }), { replace: true });
+      ctx.navigate(inquiryFlowPath(ctx, fabric.id, { state: 'DONE', id: result.id }), { replace: true });
     });
   };
   return <BuyerPage><PageHeading title="판매자 문의" description={`${fabric.title}에 대해 궁금한 점을 남겨 주세요.`} />
     <section className="panel"><h2 className="buyer-panel-heading">문의 대상</h2><dl className="buyer-info"><dt>원단</dt><dd>{fabric.title}</dd><dt>판매처</dt><dd>{fabric.store_name}</dd></dl></section>
     <InquiryError failure={mutation.failure} />
-    {uncertain && !mutation.busy && <Notice tone="warning"><strong>등록 결과를 먼저 확인해 주세요.</strong><p>입력한 내용은 보관했어요. 같은 문의를 중복해서 보내지 않도록 원단의 문의 목록을 확인해 주세요.</p><Link path={inquiryPath(fabric.id)} tone="primary">문의 목록에서 확인</Link></Notice>}
+    {uncertain && !mutation.busy && <Notice tone="warning"><strong>등록 결과를 먼저 확인해 주세요.</strong><p>입력한 내용은 보관했어요. 같은 문의를 중복해서 보내지 않도록 원단의 문의 목록을 확인해 주세요.</p><Link path={inquiryFlowPath(ctx, fabric.id)} tone="primary">문의 목록에서 확인</Link></Notice>}
     <form className="panel buyer-inquiry-form stack" onSubmit={submit}><h2 className="buyer-panel-heading">문의 작성</h2>
       <fieldset className="seller-live-fieldset stack" disabled={mutation.busy || uncertain}>
         <div className="field"><label htmlFor="live-inquiry-content">문의 내용 (1~1,000자)</label><textarea id="live-inquiry-content" rows={5} required minLength={1} maxLength={1000} value={input.content} onChange={event => remember({ ...record, input: { ...input, content: event.target.value } })} aria-describedby="live-inquiry-visibility" /></div>
         <label className="check"><input type="checkbox" checked={input.is_private} onChange={event => remember({ ...record, input: { ...input, is_private: event.target.checked } })} /> 비공개 문의로 작성</label>
         <Notice id="live-inquiry-visibility" tone={input.is_private ? 'info' : 'warning'}>{input.is_private ? '내용과 답변은 작성자·해당 판매자·운영팀만 볼 수 있어요. 닉네임·작성 시각·답변 상태는 다른 사용자에게도 표시됩니다.' : '다른 사용자도 읽을 수 있는 공개 문의입니다. 개인 연락처나 주소는 적지 마세요.'}</Notice>
         <Notice>등록한 문의는 현재 수정·삭제할 수 없어요. 보내기 전에 내용과 공개 여부를 확인해 주세요.</Notice>
-        <div className="actions"><Link path={inquiryPath(fabric.id)}>문의 목록으로</Link><Button type="submit" tone="primary">{mutation.busy ? '문의 보내는 중…' : '문의 등록'}</Button></div>
+        <div className="actions"><Link path={inquiryFlowPath(ctx, fabric.id)}>문의 목록으로</Link><InquiryReturn ctx={ctx} /><Button type="submit" tone="primary">{mutation.busy ? '문의 보내는 중…' : '문의 등록'}</Button></div>
       </fieldset>
     </form><p className="buyer-small buyer-muted">작성 중인 내용은 이 탭에서만 임시로 보관해요. 새로고침·로그아웃하면 저장하지 않은 입력은 사라집니다.</p>
   </BuyerPage>;
@@ -132,7 +137,7 @@ function BuyerInquiryForFabric({ ctx, id }) {
     // not moved to a field or another control while the request was pending.
     if (document.activeElement === document.body) heading.focus({ preventScroll: true });
   }, [resource.loading]);
-  if (!resource.data) return <BuyerPage><PageHeading title="원단 문의" /><ReadFeedback resource={resource} /><Link path="/buyer/fabrics">원단 목록으로</Link></BuyerPage>;
+  if (!resource.data) return <BuyerPage><PageHeading title="원단 문의" /><ReadFeedback resource={resource} /><Link path="/buyer/fabrics">원단 목록으로</Link><InquiryReturn ctx={ctx} /></BuyerPage>;
   return ctx.query.get('compose') === '1' ? <BuyerInquiryForm key={resource.data.id} ctx={ctx} fabric={resource.data} /> : <BuyerFabricInquiries key={resource.data.id} ctx={ctx} fabric={resource.data} />;
 }
 

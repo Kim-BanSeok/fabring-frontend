@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-12T12:41:24.471Z",
+  "completed": true,
+  "verificationMode": "Read-only independent Sequelize/SQL assertions after actual adapter/HTTP lifecycle on isolated database",
+  "checks": [
+    {
+      "name": "Buyer and seller identities remain correct after profile updates",
+      "passed": true
+    },
+    {
+      "name": "Store retains independent contact and new guide",
+      "passed": true
+    },
+    {
+      "name": "Roll inventory equation matches exactly one completed 90cm pickup",
+      "passed": true
+    },
+    {
+      "name": "Scrap sold out and AI handoff produced exactly one pending-to-posted fabric",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation pickup is PICKED_UP",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation cancelRequested is CANCELED",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation cancelAccepted is CANCELED",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation reject is REJECTED",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation cancelSeller is CANCELED",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation scrap is PICKED_UP",
+      "passed": true
+    },
+    {
+      "name": "Persisted reservation scrapOther is REJECTED",
+      "passed": true
+    },
+    {
+      "name": "Public and private inquiries retain correct ownership, privacy and final answers",
+      "passed": true
+    },
+    {
+      "name": "No invalid agreement or ADMIN signup identity was created",
+      "passed": true
+    },
+    {
+      "name": "All scenario fabrics have at least one actual uploaded image record",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 14
+}

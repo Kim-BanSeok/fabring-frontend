@@ -1,0 +1,16 @@
+{
+  "checkedOn": "2026-10-12",
+  "frontend": { "tests": 365, "failures": 0, "lint": "passed", "build": "passed", "appChunkKb": 698.17, "knownWarning": "Application chunk exceeds 500 kB" },
+  "browser": {
+    "realBackend": true,
+    "isolatedDatabase": true,
+    "roles": ["BUYER", "SELLER", "ADMIN"],
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "flow": "Pending seller registers store; admin approves; seller creates fabric and uploads photo; admin posts; buyer filters and views recommendations, creates inquiry; seller answers; buyer returns to preserved search and requests pickup; seller accepts, calendar shows it, then completes pickup; buyer reloads final state and sees stock reduced from 900 to 720 cm.",
+    "mobile": { "verifiedView": "buyer reservation detail", "viewportWidth": 390, "documentClientWidth": 375, "documentScrollWidth": 375 },
+    "demoRegression": "Preview buyer screen list opens the original demo fabric independently of the live transaction.",
+    "profileCoverage": "Current actual API scenario plus preceding inquiry-profile browser QA; no duplicate profile edits in this browser run."
+  },
+  "sensitiveValuesIncluded": false
+}
