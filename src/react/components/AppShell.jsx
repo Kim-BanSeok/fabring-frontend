@@ -37,7 +37,7 @@ export default function AppShell({ ctx, children, footer }) {
   const scopeMessage = role === 'BUYER'
     ? '원단 조회·도안 추천·도안 조회와 픽업 예약 요청·내역·취소는 연결되어 있어요. 문의와 회원 정보 수정은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
     : role === 'SELLER'
-      ? '계정 조회·매장 등록·수정, 직접 원단 등록·관리, 예약 처리, 대시보드 통계와 픽업 달력은 연결되어 있어요. 개인 프로필 수정·문의 답변·AI 등록은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
+      ? '계정 조회·매장 등록·수정, 직접·AI 보조 원단 등록·관리, 예약 처리, 대시보드 통계와 픽업 달력은 연결되어 있어요. 개인 프로필 수정·문의 답변은 아직 연결 중이며, 이 화면의 변경 내용은 저장되지 않습니다.'
       : '판매자·원단 조회와 승인·거절, 대시보드 통계가 연결되어 있어요.';
   const showStoreError = ctx.mode === 'live' && role === 'SELLER' && !path.startsWith('/auth/') && ctx.state.storeError;
   const main = <main className="main-content" id="main-content">{showConnectionScope || showStoreError ? <div className="stack">{showConnectionScope && <Notice>{scopeMessage}</Notice>}{showStoreError && <Notice tone="error">{ctx.state.storeError}</Notice>}{children}</div> : children}</main>;

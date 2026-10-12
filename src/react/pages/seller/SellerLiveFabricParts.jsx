@@ -35,7 +35,7 @@ export function LocalPhoto({ photo, className = 'seller-photo' }) {
 export function LocalPhotoGallery({ photos }) {
   return <div className="seller-photo-gallery">{photos.map(photo => <figure key={photo.slot}><LocalPhoto photo={photo} className="seller-photo-preview" /><figcaption><strong>{LIVE_PHOTO_SLOTS.find(([slot]) => slot === photo.slot)?.[1]}</strong><span>{photo.file.name}</span><small className="muted">선택한 파일 · 업로드 전</small></figcaption></figure>)}</div>;
 }
-export function LiveFabricForm({ ctx, initial, onRemember, onSubmit, busy, edit = false, children, submitLabel }) {
+export function LiveFabricForm({ ctx, initial, onRemember, onSubmit, busy, edit = false, children, submitLabel, photosPath: suppliedPhotosPath, backPath, onReviewPhotos }) {
   const formRef = useRef(null), photoSection = useRef(null);
   const [draft, setDraft] = useState(initial);
   const [photoError, setPhotoError] = useState('');
@@ -51,9 +51,9 @@ export function LiveFabricForm({ ctx, initial, onRemember, onSubmit, busy, edit 
   useEffect(() => {
     if (ctx.query.get('focus') === 'photos') { photoSection.current?.focus({ preventScroll: true }); photoSection.current?.scrollIntoView({ block: 'start' }); }
   }, [ctx.query]);
-  const photosPath = `/seller/register/photos?type=${initial.sale_type}`;
+  const photosPath = suppliedPhotosPath || `/seller/register/photos?type=${initial.sale_type}`;
   const reviewPhotos = event => {
-    event.preventDefault(); remember(); ctx.drafts.set(`seller:live:photo-return:${initial.sale_type}`, window.scrollY); ctx.navigate(photosPath);
+    event.preventDefault(); const value = remember(); if (onReviewPhotos) { onReviewPhotos(value); return; } ctx.drafts.set(`seller:live:photo-return:${initial.sale_type}`, window.scrollY); ctx.navigate(photosPath);
   };
   return <form ref={formRef} id="seller-fabric-form" className="stack" onInput={remember} onChange={event => { if (event.target.type !== 'file') remember(); }} onSubmit={event => { event.preventDefault(); if (event.currentTarget.reportValidity()) onSubmit(remember()); }}>
     <fieldset className="seller-live-fieldset stack" disabled={busy}>
@@ -72,7 +72,7 @@ export function LiveFabricForm({ ctx, initial, onRemember, onSubmit, busy, edit 
       </div><p className="muted seller-small">{scrap ? '하자를 피한 가장 큰 직사각형 기준 · 자투리 길이 30~90cm' : '롤 잔량은 90cm 이상인 정수예요. 90cm의 배수일 필요는 없어요.'}</p>
         <Field label={scrap ? '가격 · 원/장' : '90cm(1마)당 가격 · 원'} name="price" defaultValue={initial.price} type="number" min={1} max={2147483647} step={1} required inputMode="numeric" />
       </section>
-      <section className="panel seller-panel"><h2>하자</h2><fieldset className="seller-defect"><legend>하자가 있나요?</legend><div className="actions"><label><input type="radio" name="has_defect" value="false" defaultChecked={!initial.has_defect} /> 없음</label><label><input type="radio" name="has_defect" value="true" defaultChecked={initial.has_defect} /> 있음</label></div></fieldset><Field label="하자 위치 / 내용 / 크기" name="defect_note" defaultValue={initial.defect_note || ''} maxLength={255} /></section>
+      <section className="panel seller-panel"><h2>하자</h2><fieldset className="seller-defect"><legend>하자가 있나요?</legend><div className="actions"><label><input type="radio" name="has_defect" value="false" defaultChecked={initial.has_defect === false} required /> 없음</label><label><input type="radio" name="has_defect" value="true" defaultChecked={initial.has_defect === true} required /> 있음</label></div></fieldset><Field label="하자 위치 / 내용 / 크기" name="defect_note" defaultValue={initial.defect_note || ''} maxLength={255} /></section>
       {!edit && <section ref={photoSection} className="panel seller-panel seller-photo-section" data-seller-photos tabIndex={-1}>
         <div className="seller-section-heading"><h2>사진</h2><span className="muted">{draft.photos.length}/3장 선택</span></div>{photoError && <Notice tone="error">{photoError}</Notice>}
         <div className="seller-photos">{LIVE_PHOTO_SLOTS.map(([slot, label]) => { const photo = draft.photos.find(value => value.slot === slot); return <div className="seller-photo-slot" key={slot}>
@@ -82,7 +82,7 @@ export function LiveFabricForm({ ctx, initial, onRemember, onSubmit, busy, edit 
         </div>; })}</div><p className="muted seller-small">jpg·png·webp 최대 3장, 장당 5MB 이하 · 원단 정보 저장 후 한 장씩 업로드해요.</p>
         {draft.photos.length > 0 && <FabricLink path={photosPath} data-seller-action="review-photos" onClick={reviewPhotos}>선택한 사진 확인</FabricLink>}
       </section>}
-      {children}<div className="actions"><Button tone="primary" type="submit">{busy ? '저장 중' : submitLabel || '등록 내용 확인'}</Button><FabricLink path={edit ? liveFabricPath(ctx, initial.id) : '/seller/register'}>돌아가기</FabricLink></div>
+      {children}<div className="actions"><Button tone="primary" type="submit">{busy ? '저장 중' : submitLabel || '등록 내용 확인'}</Button><FabricLink path={backPath || (edit ? liveFabricPath(ctx, initial.id) : '/seller/register')}>돌아가기</FabricLink></div>
     </fieldset>
   </form>;
 }

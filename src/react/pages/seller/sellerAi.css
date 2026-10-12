@@ -1,0 +1,12 @@
+.seller-live-ai-chat {
+  max-height: 24rem;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+.seller-live-ai-chat p { white-space: pre-wrap; margin-bottom: 0; }
+.seller-live-ai-chat .seller-chat-user { margin: 0; }
+@media (max-width: 600px) {
+  .seller-live-ai-chat { max-height: 18rem; }
+}

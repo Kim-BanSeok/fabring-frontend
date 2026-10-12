@@ -8,13 +8,13 @@ export class ApiError extends Error {
 
 export function createHttpClient({ baseUrl = '/api/v1', fetchImpl = globalThis.fetch, timeoutMs = 15000, getToken = () => null, onUnauthorized = () => {} } = {}) {
   const base = baseUrl.replace(/\/+$/, '');
-  return async function request(path, { method = 'GET', body, signal, authenticated = false, token } = {}) {
+  return async function request(path, { method = 'GET', body, signal, authenticated = false, token, timeoutMs: requestTimeoutMs = timeoutMs } = {}) {
     const controller = new AbortController();
     const abort = () => controller.abort(signal.reason);
     if (signal?.aborted) abort();
     else signal?.addEventListener('abort', abort, { once: true });
     let timedOut = false;
-    const timer = setTimeout(() => { timedOut = true; controller.abort(); }, timeoutMs);
+    const timer = setTimeout(() => { timedOut = true; controller.abort(); }, requestTimeoutMs);
     const accessToken = token ?? (authenticated ? getToken() : null);
     const multipart = typeof FormData !== 'undefined' && body instanceof FormData;
     try {

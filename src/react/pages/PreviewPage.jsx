@@ -31,7 +31,7 @@ export default function PreviewPage({ ctx }) {
   }
   return <section className="preview-page stack" data-figma-node="133:6724">
     <PageHeading title="전체 흐름 · 연결 작업본" description="구매자 · 판매자 · 관리자 / React에서 확인하는 전체 흐름" />
-    <Notice>실제 계정으로 시작하거나 예시 데이터로 전체 흐름을 살펴볼 수 있습니다. 계정·구매자 원단 조회·픽업 예약과 판매자 매장 등록·수정·직접 원단 등록·관리·예약 처리·대시보드 통계·픽업 달력, 관리자 판매자·원단 조회·승인·거절은 서버에 연결됩니다. 개인 프로필 수정·문의 처리·AI 등록은 아직 미연동이며, 시연은 예시 데이터로 동작합니다.</Notice>
+    <Notice>실제 계정으로 시작하거나 예시 데이터로 전체 흐름을 살펴볼 수 있습니다. 계정·구매자 원단 조회·도안 추천·도안 조회·픽업 예약과 판매자 매장 등록·수정·직접·AI 보조 원단 등록·관리·예약 처리·대시보드 통계·픽업 달력, 관리자 판매자·원단 조회·승인·거절은 서버에 연결됩니다. 개인 프로필 수정·문의 처리는 아직 미연동이며, 시연은 예시 데이터로 동작합니다. AI 응답 방식은 등록 화면에서 확인하세요.</Notice>
     <section className="panel"><h2>회원가입과 첫 진입</h2><Rows entries={[
       ['구매자', '회원가입 → 가입 완료 → 로그인 → 메인'], ['판매자', '가입 → 매장 등록 → 판매자 승인 → 원단 등록'], ['관리자', '로그인 → 대시보드 · 공개 회원가입 없음'],
     ]} /></section>
@@ -39,7 +39,7 @@ export default function PreviewPage({ ctx }) {
     <div className="actions">{roles.slice(0, 2).map(([role, label]) => <Button key={role} href={withMode(`/auth/${role}/signup`, 'live')}>{label} 회원가입</Button>)}</div>
     <div className="actions">{roles.map(([role, label]) => <Button key={role} href={withMode(`/auth/${role}/login`, 'demo')}>{label} 시연 시작</Button>)}</div>
     <section className="panel"><h2>연결된 핵심 과정</h2><Rows entries={[
-      ['원단 등록', '등록 방법 → 직접/AI 예시 입력 → 검토 → 등록·사진 업로드 → 승인 대기'], ['픽업 거래', '요청 → 판매자 수락 → 예약 확보 → 판매자 수령 확인 / 취소 시 확보 해제'],
+      ['원단 등록', '등록 방법 → 직접/AI 보조 입력 → 검토 → 등록·사진 업로드 → 승인 대기'], ['픽업 거래', '요청 → 판매자 수락 → 예약 확보 → 판매자 수령 확인 / 취소 시 확보 해제'],
       ['판매 단위', '자투리 1장 전체 / 롤 90cm(1마) 단위 · 상품별 치수·단가 표시'], ['운영 검수', '판매자 승인과 원단 게시 승인을 각각 검토·처리'],
     ]} /></section>
     <div className="actions">{roles.map(([role, label]) => <Button key={role} href={`/preview?role=${role}`}>{label} 화면·상태 목록</Button>)}</div>

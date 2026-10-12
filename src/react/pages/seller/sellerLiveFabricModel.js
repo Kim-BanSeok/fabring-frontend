@@ -13,7 +13,7 @@ export function readLiveFabricForm(form, previous) {
   const data = new FormData(form), result = { ...previous };
   for (const key of ['title', 'material', 'thickness', 'color', 'color_detail', 'description', 'defect_note']) if (data.has(key)) result[key] = String(data.get(key));
   for (const key of ['width_cm', 'length_cm', 'price']) if (data.has(key)) result[key] = data.get(key) === '' ? '' : Number(data.get(key));
-  result.has_defect = data.get('has_defect') === 'true';
+  if (data.has('has_defect')) result.has_defect = data.get('has_defect') === 'true';
   if (result.sale_type === 'ROLL') result.remaining_length_cm = result.length_cm;
   return result;
 }
@@ -21,6 +21,7 @@ export function validateLiveFabricDraft(draft, photosRequired = false) {
   const result = validateSellerDraft(draft, false);
   if (result) return result;
   if (!draft.thickness || !draft.color) return '두께와 색상 계열을 선택해 주세요.';
+  if (typeof draft.has_defect !== 'boolean') return '하자 여부를 확인해 선택해 주세요.';
   if (draft.price > 2147483647 || (draft.remaining_length_cm || 0) > 2147483647) return '가격과 남은 길이는 2,147,483,647 이하의 정수로 입력해 주세요.';
   if ((draft.description || '').length > 5000) return '판매자 설명은 5,000자 이하로 입력해 주세요.';
   if (photosRequired && !draft.photos?.length) return '원단 사진을 한 장 이상 선택해 주세요.';

@@ -1,0 +1,94 @@
+{
+  "checkedAt": "2026-10-12T11:34:31.529Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Production createLiveApi against running local Express/PostgreSQL using fake-rules AI; client validation separately named",
+  "checks": [
+    {
+      "name": "Anonymous AI session start rejected by frontend auth guard",
+      "passed": true
+    },
+    {
+      "name": "Actual approved seller adapter login",
+      "passed": true
+    },
+    {
+      "name": "Actual AI session start decodes server question and empty draft",
+      "passed": true
+    },
+    {
+      "name": "Actual AI session detail decodes messages and fabric null",
+      "passed": true
+    },
+    {
+      "name": "Other seller receives actual403 for session read",
+      "passed": true
+    },
+    {
+      "name": "Malformed session ID rejected by client before request",
+      "passed": true
+    },
+    {
+      "name": "Conflicting selected and text answer rejected before request",
+      "passed": true
+    },
+    {
+      "name": "Actual selected sale type answer advances to title",
+      "passed": true
+    },
+    {
+      "name": "Actual free title and size answers convert3ma to270cm",
+      "passed": true
+    },
+    {
+      "name": "Unknown material and missing thickness remain honest partial draft",
+      "passed": true
+    },
+    {
+      "name": "Actual finish returns partial draft without inventing color price or defect",
+      "passed": true
+    },
+    {
+      "name": "Client rejects invalid final price before confirmation",
+      "passed": true
+    },
+    {
+      "name": "Actual confirm stores seller-completed final form as PENDING",
+      "passed": true
+    },
+    {
+      "name": "Read confirmed session gives recoverable created fabric ID",
+      "passed": true
+    },
+    {
+      "name": "Duplicate actual confirm returns closed instead of second fabric",
+      "passed": true
+    },
+    {
+      "name": "Actual photo upload uses existing fabric ID after AI confirmation",
+      "passed": true
+    },
+    {
+      "name": "New AI session can abort incomplete known draft",
+      "passed": true
+    },
+    {
+      "name": "Actual direct create after abort uses manual values and a single new fabric",
+      "passed": true
+    },
+    {
+      "name": "Closed aborted session rejects answers through adapter",
+      "passed": true
+    },
+    {
+      "name": "Admin approves only new photo-bearing AI fabric and public catalog exposes it",
+      "passed": true
+    }
+  ],
+  "fabrics": {
+    "confirmedRoll": "162",
+    "manualScrap": "163"
+  },
+  "sensitiveValuesIncluded": false,
+  "passed": 20
+}

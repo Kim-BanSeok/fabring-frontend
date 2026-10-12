@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-12T11:35:42.392Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Production frontend adapter + real Express on isolated ephemeral loopback port; controlled provider overrides and transport lost-ACK injection; PostgreSQL real; no OpenAI calls",
+  "mainBackendUnaffected": true,
+  "completed": true,
+  "checks": [
+    {
+      "name": "Selected option bypasses failed provider and does not call extraction",
+      "passed": true
+    },
+    {
+      "name": "Two controlled extraction failures produce actual503 AI_UNAVAILABLE without outcomeUnknown",
+      "passed": true
+    },
+    {
+      "name": "Failed extraction preserves draft question and transcript",
+      "passed": true
+    },
+    {
+      "name": "503 session can finish then abort without provider and preserve manual handoff data",
+      "passed": true
+    },
+    {
+      "name": "One controlled extraction failure retries once and returns parsed answer",
+      "passed": true
+    },
+    {
+      "name": "Default AI adapter timeout accepts actual16000ms answer beyond general15s timeout",
+      "passed": true
+    },
+    {
+      "name": "Timed-out mutating answer is marked outcomeUnknown and not automatically retried",
+      "passed": true
+    },
+    {
+      "name": "GET after delayed operation settles recovers processed answer and exact transcript",
+      "passed": true
+    },
+    {
+      "name": "Successful confirmation with controlled lost ACK exposes unknown outcome",
+      "passed": true
+    },
+    {
+      "name": "GET recovers confirmed fabric without resending confirm or creating duplicate",
+      "passed": true
+    },
+    {
+      "name": "Abort after already-confirmed returns409 then GET recovers same created fabric",
+      "passed": true
+    },
+    {
+      "name": "Main backend remains healthy with original fake provider, independent of helper overrides",
+      "passed": true
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "slowAnswerElapsedMs": 16023,
+  "recoveredFabricId": "164",
+  "passed": 12
+}

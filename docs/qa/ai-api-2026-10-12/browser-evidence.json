@@ -1,0 +1,77 @@
+{
+  "recordedAt": "2026-10-12T20:57:57+09:00",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Actual React browser interactions against local Express/PostgreSQL using the repository's fake-rules provider; no external AI calls",
+  "completed": true,
+  "observations": [
+    {
+      "name": "Start screen identifies the rule-based development provider and text-only assistance",
+      "passed": true,
+      "screenshot": "01-start.png"
+    },
+    {
+      "name": "Server questions, selected answers and free-text answers produce a draft and complete transcript",
+      "passed": true,
+      "screenshot": "02-chat-complete.png",
+      "captureNote": "Intermediate verification capture before final Korean display labels for selected responses; retained to document the fake price-parser limitation. Current labels are shown in07-mobile-chat.png."
+    },
+    {
+      "name": "Width 150cm and 3ma normalize to width150cm and remaining270cm",
+      "passed": true
+    },
+    {
+      "name": "Fake price parser interpreted '1마당 5500원' as1; seller review corrected it to5500 before confirmation",
+      "passed": true,
+      "limitation": "Provider interpretation error, not proof of external model quality",
+      "screenshot": "03-review.png"
+    },
+    {
+      "name": "Reviewed ROLL165 saved as PENDING with width150cm remaining270cm price5500 and one actual uploaded photo",
+      "passed": true,
+      "fabricId": "165",
+      "screenshots": [
+        "04-confirmed-upload.png",
+        "05-saved-detail.png"
+      ]
+    },
+    {
+      "name": "Reload restores complete server conversation history; revisiting confirmed session shows fabric165 without another confirm request",
+      "passed": true
+    },
+    {
+      "name": "Early-finished SCRAP draft leaves unknown fields empty; neither defect radio is selected and native required validation blocks submission",
+      "passed": true,
+      "screenshot": "06-mobile-incomplete-edit.png"
+    },
+    {
+      "name": "Seller edits SCRAP width80cm length60cm price2500 thin white and title, then aborts AI and preserves those values in manual registration",
+      "passed": true,
+      "screenshot": "08-mobile-manual-handoff.png",
+      "additionalFabricCreated": false
+    },
+    {
+      "name": "Mobile390x844 chat is bounded and page has no horizontal overflow",
+      "passed": true,
+      "screenshot": "07-mobile-chat.png",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "documentWidth": 390,
+      "chatClientHeight": 288,
+      "chatScrollHeight": 654
+    },
+    {
+      "name": "Final browser console inspection contains no errors or warnings",
+      "passed": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "limits": [
+    "Fake-rule extraction and controlled-provider error checks do not verify real OpenAI output quality, cost or outages.",
+    "User requested no additional local external-AI key or provider configuration; existing fake provider and isolated alternative verification were retained.",
+    "Later checks used partial sessions, abort and manual handoff without creating further fabrics."
+  ],
+  "sensitiveValuesIncluded": false
+}

@@ -1,0 +1,231 @@
+{
+  "checkedAt": "2026-10-12T11:57:36.705Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Read-only final HTTP/DB validation after additive QA; no writes",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Original User rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Store rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Fabric rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original FabricDetail rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original FabricImage rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Reservation rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Pattern rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original PatternPart rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Favorite rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Inquiry rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "Original Factory rows unchanged",
+      "passed": true
+    },
+    {
+      "name": "QA owner account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "QA otherSeller account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "QA browserSeller account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "QA adapterSeller account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "QA pendingSeller account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "QA noStoreSeller account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "QA buyer account still exists with expected role",
+      "passed": true
+    },
+    {
+      "name": "HTTP SCRAP persisted final status",
+      "passed": true
+    },
+    {
+      "name": "HTTP ROLL persisted final status",
+      "passed": true
+    },
+    {
+      "name": "Adapter approved ROLL persisted final status",
+      "passed": true
+    },
+    {
+      "name": "Adapter manual SCRAP persisted final status",
+      "passed": true
+    },
+    {
+      "name": "Read QA owner fabric 159 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Read QA owner fabric 160 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Read QA owner fabric 164 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Read QA browserSeller fabric 165 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Read QA adapterSeller fabric 161 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Read QA adapterSeller fabric 162 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Read QA adapterSeller fabric 163 and accessible saved photos",
+      "passed": true
+    },
+    {
+      "name": "Approved adapter AI fabric is publicly readable with photo and correct price",
+      "passed": true
+    },
+    {
+      "name": "Main local backend and frontend remain healthy",
+      "passed": true
+    }
+  ],
+  "existingData": {
+    "User": {
+      "originalRows": 44,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 19,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 158,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 158,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 21,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 133,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 7,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "qaFabrics": [
+    {
+      "actor": "owner",
+      "fabricId": 159,
+      "saleType": "SCRAP",
+      "status": "PENDING",
+      "images": 1
+    },
+    {
+      "actor": "owner",
+      "fabricId": 160,
+      "saleType": "ROLL",
+      "status": "PENDING",
+      "images": 0
+    },
+    {
+      "actor": "owner",
+      "fabricId": 164,
+      "saleType": "SCRAP",
+      "status": "PENDING",
+      "images": 0
+    },
+    {
+      "actor": "browserSeller",
+      "fabricId": 165,
+      "saleType": "ROLL",
+      "status": "PENDING",
+      "images": 1
+    },
+    {
+      "actor": "adapterSeller",
+      "fabricId": 161,
+      "saleType": "ROLL",
+      "status": "PENDING",
+      "images": 1
+    },
+    {
+      "actor": "adapterSeller",
+      "fabricId": 162,
+      "saleType": "ROLL",
+      "status": "POSTED",
+      "images": 1
+    },
+    {
+      "actor": "adapterSeller",
+      "fabricId": 163,
+      "saleType": "SCRAP",
+      "status": "PENDING",
+      "images": 0
+    }
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 31
+}

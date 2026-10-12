@@ -7,6 +7,7 @@ import { ownFabricQuery, ownFabricPage, ownFabricDetail, sellerFabricInput, fabr
 import { storeInput, storeDetail, storeCreated } from './store-contract.js';
 import { ADMIN_FABRIC_STATUSES, ADMIN_SELLER_STATUSES, adminQuery, adminPage, adminReview, adminReviewResult, findAdminSeller } from './admin-contract.js';
 import { patternQuery, patternPage, patternDetail, patternIdentifier, recommendationResult } from './recommendation-contract.js';
+import { aiSessionIdentifier, aiAnswerInput, aiSession, aiAborted } from './ai-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -15,10 +16,11 @@ const validUser = user => user && user.userId != null && roles.includes(user.rol
 const cancelled = () => new DOMException('Aborted', 'AbortError');
 
 // This adapter contains no demo fixtures. Unconnected business operations never report success.
-export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs } = {}) {
+export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs, aiTimeoutMs = 45000 } = {}) {
   let credential = null, user = null, store = {}, storeError = '', restorePromise, revision = 0;
   let status = 'anonymous', error = '', expiryTimer, storeVersion = 0, adminVersion = 0;
   const listeners = new Set();
+  const aiVersions = new Map();
   try {
     const saved = JSON.parse(storage?.getItem(AUTH_STORAGE_KEY) || 'null');
     if (saved?.baseUrl === baseUrl && typeof saved.accessToken === 'string' && saved.accessToken && Number.isFinite(saved.expiresAt)) {
@@ -35,6 +37,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
   };
   function clearSession(nextStatus = 'anonymous') {
     revision++; clearTimeout(expiryTimer);
+    aiVersions.clear();
     credential = null; user = null; store = {}; storeError = ''; error = ''; status = nextStatus;
     persist(); emit();
   }
@@ -161,11 +164,50 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       if (method !== 'GET' && revision === version) adminVersion++;
     }
   }
+  async function aiRequest(path, { signal, body, method = 'GET', decode, sessionId = 'new', answer = false }) {
+    requireSession(['SELLER']);
+    const version = revision;
+    const bump = () => aiVersions.set(sessionId, (aiVersions.get(sessionId) || 0) + 1);
+    if (method !== 'GET') bump();
+    const readVersion = aiVersions.get(sessionId) || 0;
+    try {
+      const raw = await request(path, { signal, body, method, authenticated: true, ...(answer ? { timeoutMs: aiTimeoutMs } : {}) });
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== (aiVersions.get(sessionId) || 0))) throw cancelled();
+      return decode(raw);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== (aiVersions.get(sessionId) || 0))) throw cancelled();
+      if (method !== 'GET' && failure.code !== 'AI_UNAVAILABLE' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '처리 결과를 확인하지 못했어요. 같은 내용을 다시 보내기 전에 AI 등록 세션의 현재 상태를 확인해 주세요.';
+      }
+      throw failure;
+    } finally { if (method !== 'GET' && revision === version) bump(); }
+  }
   const api = {
     mode: 'live',
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async startAiSession({ signal } = {}) {
+      return aiRequest('/ai-sessions', { method: 'POST', signal, decode: raw => aiSession(raw, { open: true }) });
+    },
+    async getAiSession(id, { signal } = {}) {
+      const sessionId = aiSessionIdentifier(id);
+      return aiRequest(`/ai-sessions/${sessionId}`, { sessionId, signal, decode: raw => aiSession(raw, { id: sessionId, detail: true }) });
+    },
+    async answerAiSession(id, input, { signal } = {}) {
+      const sessionId = aiSessionIdentifier(id), body = aiAnswerInput(input);
+      return aiRequest(`/ai-sessions/${sessionId}/answers`, { sessionId, signal, method: 'POST', body, answer: true, decode: raw => aiSession(raw, { id: sessionId, open: true }) });
+    },
+    async confirmAiSession(id, input, { signal } = {}) {
+      if (typeof input?.has_defect !== 'boolean') throw new ApiError('VALIDATION_ERROR', '하자 여부를 직접 확인해 주세요.', { status: 400 });
+      const sessionId = aiSessionIdentifier(id), body = sellerFabricInput(input);
+      return aiRequest(`/ai-sessions/${sessionId}/confirm`, { sessionId, signal, method: 'POST', body, decode: raw => fabricMutation(raw, { created: true }) });
+    },
+    async abortAiSession(id, { signal } = {}) {
+      const sessionId = aiSessionIdentifier(id);
+      return aiRequest(`/ai-sessions/${sessionId}/abort`, { sessionId, signal, method: 'POST', decode: raw => aiAborted(raw, sessionId) });
+    },
     async listAdminSellers(input = {}, { signal } = {}) {
       const query = adminQuery('sellers', input);
       return adminRequest(`/admin/sellers?${query}`, { signal, decode: raw => adminPage('sellers', raw, query) });

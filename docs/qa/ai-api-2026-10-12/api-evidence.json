@@ -1,0 +1,791 @@
+{
+  "checkedAt": "2026-10-12T11:32:16.214Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Actual local Express/PostgreSQL HTTP with fake-rules AI extraction; no OpenAI calls",
+  "provider": "fake",
+  "sessionStore": "memory",
+  "completed": true,
+  "checks": [
+    {
+      "name": "owner real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "otherSeller real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "buyer real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "pendingSeller real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "noStoreSeller real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Start blocked for anonymous",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Start blocked for buyer",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Start blocked for pendingSeller",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 403,
+      "errorCode": "SELLER_NOT_APPROVED",
+      "passed": true
+    },
+    {
+      "name": "Start blocked for noStoreSeller",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 403,
+      "errorCode": "STORE_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "Start scrap session",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Read scrap session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Session GET ownership otherSeller",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session GET ownership buyer",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session GET ownership anonymous",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Session POST/answers ownership otherSeller",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session POST/answers ownership buyer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session POST/answers ownership anonymous",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Session POST/confirm ownership otherSeller",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session POST/confirm ownership buyer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session POST/confirm ownership anonymous",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Session POST/abort ownership otherSeller",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session POST/abort ownership buyer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "Session POST/abort ownership anonymous",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Session invalid or absent lookup 400",
+      "method": "GET",
+      "path": "/ai-sessions/invalid",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Session invalid or absent lookup 404",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: ",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: finish",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: finish",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Read scrap session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Read scrap session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer scrap: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Invalid confirm keeps session open: SCRAP_LENGTH_OUT_OF_RANGE",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 400,
+      "errorCode": "SCRAP_LENGTH_OUT_OF_RANGE",
+      "passed": true
+    },
+    {
+      "name": "Invalid confirm keeps session open: DEFECT_NOTE_REQUIRED",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 400,
+      "errorCode": "DEFECT_NOTE_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "Invalid confirm keeps session open: VALIDATION_ERROR",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Read scrap session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Confirm seller-edited SCRAP final data",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Read scrap session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Database uses seller-edited final values and PENDING status",
+      "passed": true
+    },
+    {
+      "name": "Closed confirmed session rejects further mutations",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 409,
+      "errorCode": "AI_SESSION_CLOSED",
+      "passed": true
+    },
+    {
+      "name": "Closed confirmed session rejects further mutations",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 409,
+      "errorCode": "AI_SESSION_CLOSED",
+      "passed": true
+    },
+    {
+      "name": "Closed confirmed session rejects further mutations",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 409,
+      "errorCode": "AI_SESSION_CLOSED",
+      "passed": true
+    },
+    {
+      "name": "Confirmed AI fabric accepts actual multipart photo and serves image",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Seller reads confirmed fabric with uploaded image",
+      "method": "GET",
+      "path": "/fabrics/159",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Public cannot read pending AI fabric before approval",
+      "method": "GET",
+      "path": "/fabrics/159",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Start roll session",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer roll: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Roll remaining length below90 rejected without closing",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 400,
+      "errorCode": "ROLL_LENGTH_REQUIRED",
+      "passed": true
+    },
+    {
+      "name": "Concurrent double confirmation returns201+409 and creates exactly one roll",
+      "passed": true
+    },
+    {
+      "name": "Read roll session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Start unknown session",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer unknown: finish",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Abort keeps incomplete draft for manual handoff",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Read unknown session",
+      "method": "GET",
+      "path": "/ai-sessions/:sessionId",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Aborted session rejects new operations",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 409,
+      "errorCode": "AI_SESSION_CLOSED",
+      "passed": true
+    },
+    {
+      "name": "Aborted session rejects new operations",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/confirm",
+      "status": 409,
+      "errorCode": "AI_SESSION_CLOSED",
+      "passed": true
+    },
+    {
+      "name": "Aborted session rejects new operations",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 409,
+      "errorCode": "AI_SESSION_CLOSED",
+      "passed": true
+    },
+    {
+      "name": "Start size session",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Answer size: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer size: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer size: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer size: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer size: selected",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Answer size: answer",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Abort size flow",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Start earlyFinish session",
+      "method": "POST",
+      "path": "/ai-sessions",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Answer earlyFinish: finish",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/answers",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Abort unfinished empty draft",
+      "method": "POST",
+      "path": "/ai-sessions/:sessionId/abort",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "All pre-existing rows across eleven models unchanged",
+      "passed": true
+    }
+  ],
+  "examples": {
+    "scrapDraft": {
+      "sale_type": "SCRAP",
+      "title": "[AI 등록 검증 20261012] 자유 답변 초안",
+      "width_cm": 150,
+      "length_cm": 70,
+      "material": "COTTON",
+      "thickness": "NORMAL",
+      "color_family": "BLUE",
+      "has_defect": false,
+      "price": 3500
+    },
+    "rollDraft": {
+      "sale_type": "ROLL",
+      "title": "[AI 등록 검증 20261012] 선택 답변 롤",
+      "width_cm": 150,
+      "remaining_length_cm": 270,
+      "material": "LINEN",
+      "thickness": "THICK",
+      "color_family": "NAVY",
+      "has_defect": true,
+      "defect_note": "오른쪽 아래 얼룩 3cm",
+      "price": 12000
+    },
+    "unconfirmedDraft": {
+      "sale_type": "SCRAP",
+      "title": "[AI 등록 검증 20261012] 모르는 정보",
+      "width_cm": 50,
+      "length_cm": 70,
+      "material": "UNKNOWN"
+    },
+    "unconfirmedFields": [
+      "material",
+      "thickness",
+      "color_family"
+    ]
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 44,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 19,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 158,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 158,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 21,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 133,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 5,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 7,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "createdFabrics": {
+    "scrap": 159,
+    "roll": 160
+  },
+  "passed": 95
+}
