@@ -39,7 +39,7 @@ function RoutePage({ ctx }) {
 
 export default function App({ store }) {
   const snapshot = useSyncExternalStore(store.subscribe, store.getSnapshot);
-  const ctx = { ...snapshot, navigate: store.navigate, refresh: store.refresh, notify: store.notify, logout: store.logout, retrySession: store.retrySession };
+  const ctx = { ...snapshot, navigate: store.navigate, refresh: store.refresh, notify: store.notify, logout: store.logout, retrySession: store.retrySession, useContest: store.useContest };
   const routeKey = `${snapshot.sessionId}:${snapshot.path}?${snapshot.query}`;
   const lastRoute = useRef(null);
   useEffect(() => store.connect(), [store]);

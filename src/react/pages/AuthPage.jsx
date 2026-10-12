@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Badge, Button, FabricImage, Notice } from '../components/ui.jsx';
 import { getAuthState } from './auth-state.js';
+import { CONTEST_ACCOUNTS, isContestLogin } from './contest-accounts.js';
 import { POLICIES } from '../content/policies.js';
 
 const names = { buyer: '구매자', seller: '판매자', admin: '관리자' };
@@ -72,9 +73,23 @@ function PolicyViewer({ policyKey, onClose }) {
 
 function LoginFields({ data, onChange }) {
   return <>
+    <ContestAccounts />
     <AuthInput label="이메일" name="email" data={data} onChange={onChange} type="email" autoComplete="username" maxLength={255} inputMode="email" spellCheck={false} />
     <AuthInput label="비밀번호" name="password" data={data} onChange={onChange} type="password" autoComplete="current-password" maxLength={72} />
   </>;
+}
+
+function ContestAccounts() {
+  return <section className="auth-contest" aria-label="공모전 확인용 계정">
+    <p>아래 아이디와 비밀번호로 바로 들어갈 수 있어요. 입력칸에도 채워 두었습니다.</p>
+    <ul>
+      {Object.entries(CONTEST_ACCOUNTS).map(([item, account]) => <li key={item}>
+        <a href={`#${url(item, 'login')}`}>{names[item]}</a>
+        <span>아이디 {account.email}</span>
+        <span>비밀번호 {account.password}</span>
+      </li>)}
+    </ul>
+  </section>;
 }
 
 function SignupFields({ data, onChange }) {
@@ -158,17 +173,21 @@ export default function AuthPage({ ctx }) {
     }
     submittingRef.current = true;
     setSubmitting(true);
-    const scenario = ctx.mode === 'live' ? null : ctx.query.get('demo');
+    const contest = kind === 'login' && isContestLogin(role, data);
+    const switched = contest && ctx.useContest ? ctx.useContest() : null;
+    const context = switched ? { ...ctx, ...switched, navigate: ctx.navigate, useContest: ctx.useContest } : ctx;
+    const auth = getAuthState(context.drafts);
+    const scenario = context.mode === 'live' ? null : context.query.get('demo');
     const input = {
       role: role.toUpperCase(), email: data.email.trim(), password: data.password,
       ...(kind === 'signup' ? { nickname: data.nickname.trim(), phone_number: '', terms: data.terms, privacy: data.privacy } : {}),
     };
     if (kind === 'signup') {
-      store.updateForm(ctx.state, role, 'login', 'email', data.email.trim());
-      store.updateForm(ctx.state, role, 'login', 'password', '');
+      auth.updateForm(context.state, role, 'login', 'email', data.email.trim());
+      auth.updateForm(context.state, role, 'login', 'password', '');
     }
-    store.startRequest({ api: ctx.api, role, kind, scenario, first: view === 'first-login', input });
-    ctx.navigate(url(role, 'processing', kind === 'signup' ? 'operation=signup' : ''));
+    auth.startRequest({ api: context.api, role, kind, scenario, first: view === 'first-login', input });
+    context.navigate(url(role, 'processing', kind === 'signup' ? 'operation=signup' : ''));
   }
 
   if (view === 'login' || view === 'signup') {

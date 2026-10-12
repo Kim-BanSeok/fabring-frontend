@@ -1,3 +1,5 @@
+import { CONTEST_ACCOUNTS } from './contest-accounts.js';
+
 const storeKey = 'auth:state';
 
 // A service-local transient model: form passwords never enter persistent API state.
@@ -14,9 +16,10 @@ class AuthState {
     const key = `${role}:${kind}`;
     if (!this.#forms.has(key)) {
       const profile = state[role] || { email: 'admin@example.com' };
+      const account = kind === 'login' ? CONTEST_ACCOUNTS[role] : null;
       this.#forms.set(key, {
-        email: profile.email || '', nickname: profile.nickname || '',
-        password: '', confirm: '', terms: false, privacy: false,
+        email: account?.email || profile.email || '', nickname: profile.nickname || '',
+        password: account?.password || '', confirm: '', terms: false, privacy: false,
       });
     }
     return this.#forms.get(key);
@@ -24,6 +27,11 @@ class AuthState {
 
   initialForm(state, role, kind, preview) {
     const data = this.#draft(state, role, kind);
+    const account = kind === 'login' ? CONTEST_ACCOUNTS[role] : null;
+    if (account) {
+      if (!data.email) data.email = account.email;
+      if (!data.password) data.password = account.password;
+    }
     if (kind === 'signup') {
       const key = `${role}:${preview}`;
       if (/^[01]{2}$/.test(preview || '') && this.#consentPreviews.get(role) !== key) {

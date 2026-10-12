@@ -2,7 +2,7 @@ import { Badge, Button, Notice } from './ui.jsx';
 import { useRef } from 'react';
 import { HOME } from '../app/store.js';
 
-const buyerLinks = [['홈', '/buyer/home'], ['원단목록', '/buyer/fabrics'], ['부자재 찾기', '/buyer/supplies'], ['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['마이페이지', '/buyer/profile']];
+const buyerLinks = [['홈', '/buyer/home'], ['원단목록', '/buyer/fabrics'], ['부자재 찾기', '/buyer/supplies'], ['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
 const sellerLinks = [['홈', '/seller/dashboard'], ['내 원단', '/seller/fabrics'], ['원단 등록', '/seller/register'], ['픽업 예약', '/seller/reservations'], ['문의내역', '/seller/inquiries'], ['마이페이지', '/seller/profile']];
 const adminLinks = [['대시보드 홈', '/admin/dashboard'], ['판매자 승인', '/admin/sellers'], ['상품목록', '/admin/fabrics'], ['원단 게시 승인', '/admin/approvals']];
 
@@ -28,14 +28,14 @@ export function Logo({ role, dark = false }) {
 
 export default function AppShell({ ctx, children, footer }) {
   const { path, query, role, logout } = ctx;
-  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/profile'].includes(path)
+  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile'].includes(path)
     || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/', '/buyer/patterns/', '/buyer/recommendations/'].some(prefix => path.startsWith(prefix));
   const sellerConnectedPage = ['/seller', '/seller/dashboard', '/seller/calendar', '/seller/reservations', '/seller/fabrics', '/seller/register', '/seller/upload', '/seller/store', '/seller/profile', '/seller/profile/saved', '/seller/approval'].includes(path)
     || path === '/seller/inquiries' || ['/seller/reservations/', '/seller/fabrics/', '/seller/register/', '/seller/inquiries/'].some(prefix => path.startsWith(prefix));
   const adminConnectedPage = role === 'ADMIN' && (path === '/admin' || path.startsWith('/admin/'));
   const showConnectionScope = ctx.mode === 'live' && !path.startsWith('/auth/') && path !== '/preview' && !buyerConnectedPage && !sellerConnectedPage && !adminConnectedPage;
   const scopeMessage = role === 'BUYER'
-    ? '원단 조회·추천·픽업 예약, 원단별 문의·답변 조회와 회원 정보 수정은 연결되어 있어요. 이 화면은 아직 예시 정보입니다.'
+    ? '원단 조회·추천·픽업 예약, 원단별 문의·답변, 관심 저장과 회원 정보 수정은 연결되어 있어요. 이 화면은 아직 예시 정보입니다.'
     : role === 'SELLER'
       ? '개인 정보·매장 관리, 직접·AI 보조 원단 등록, 예약 처리, 받은 문의·답변과 대시보드는 연결되어 있어요. 이 화면은 아직 예시 정보입니다.'
       : '판매자·원단 조회와 승인·거절, 대시보드 통계가 연결되어 있어요.';

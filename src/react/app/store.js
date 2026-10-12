@@ -127,5 +127,13 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
       return () => { browser.removeEventListener('hashchange', update); browser.removeEventListener('focus', onFocus); disconnect?.(); };
     },
     navigate, refresh, notify, logout, reset, retrySession: () => liveApi?.restore(),
+    useContest() {
+      mode = 'demo';
+      const route = parseRoute(browser.location.hash);
+      route.query.delete('mode');
+      const search = route.query.toString();
+      browser.history.replaceState(null, '', `#${route.path}${search ? `?${search}` : ''}`);
+      return update();
+    },
   };
 }

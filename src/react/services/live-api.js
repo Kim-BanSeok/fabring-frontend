@@ -10,6 +10,7 @@ import { patternQuery, patternPage, patternDetail, patternIdentifier, recommenda
 import { aiSessionIdentifier, aiAnswerInput, aiSession, aiAborted } from './ai-contract.js';
 import { inquiryIdentifier, inquiryQuery, inquiryInput, inquiryPage, inquiryMutation } from './inquiry-contract.js';
 import { profileInput, profileDetail } from './profile-contract.js';
+import { favoriteIdentifier, favoriteQuery, favoriteInput, favoritePage, favoriteCreated } from './favorite-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -21,7 +22,7 @@ const cancelled = () => new DOMException('Aborted', 'AbortError');
 export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs, aiTimeoutMs = 45000 } = {}) {
   let credential = null, user = null, store = {}, storeError = '', restorePromise, revision = 0;
   let status = 'anonymous', error = '', expiryTimer, storeVersion = 0, adminVersion = 0;
-  let inquiryVersion = 0, profileVersion = 0, profileWriteSequence = 0;
+  let inquiryVersion = 0, profileVersion = 0, profileWriteSequence = 0, favoriteVersion = 0;
   const listeners = new Set();
   const aiVersions = new Map();
   try {
@@ -203,6 +204,24 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       throw failure;
     } finally { if (method !== 'GET' && revision === version) inquiryVersion++; }
   }
+  async function favoriteRequest(path, { signal, body, method = 'GET', decode }) {
+    requireSession(roles);
+    const version = revision;
+    if (method !== 'GET') favoriteVersion++;
+    const readVersion = favoriteVersion;
+    try {
+      const raw = await request(path, { signal, body, method, authenticated: true });
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== favoriteVersion)) throw cancelled();
+      return decode(raw);
+    } catch (failure) {
+      if (signal?.aborted || revision !== version || (method === 'GET' && readVersion !== favoriteVersion)) throw cancelled();
+      if (method !== 'GET' && (['NETWORK_ERROR', 'TIMEOUT', 'INVALID_RESPONSE'].includes(failure.code) || failure.status >= 500)) {
+        failure.outcomeUnknown = true;
+        failure.message = '관심 저장 결과를 확인하지 못했어요. 관심 목록에서 현재 상태를 확인해 주세요.';
+      }
+      throw failure;
+    } finally { if (method !== 'GET' && revision === version) favoriteVersion++; }
+  }
   async function profileRequest({ signal, body, method = 'GET', submitted }) {
     requireSession(roles);
     const version = revision, identity = { ...user };
@@ -281,6 +300,21 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       if (typeof input?.has_defect !== 'boolean') throw new ApiError('VALIDATION_ERROR', '하자 여부를 직접 확인해 주세요.', { status: 400 });
       const sessionId = aiSessionIdentifier(id), body = sellerFabricInput(input);
       return aiRequest(`/ai-sessions/${sessionId}/confirm`, { sessionId, signal, method: 'POST', body, decode: raw => fabricMutation(raw, { created: true }) });
+    },
+    async listFavorites(input = {}, { signal } = {}) {
+      const query = favoriteQuery(input);
+      return favoriteRequest(`/favorites/me?${query}`, { signal, decode: raw => favoritePage(raw, query) });
+    },
+    async createFavorite(targetType, targetId, { signal } = {}) {
+      const body = favoriteInput(targetType, targetId);
+      return favoriteRequest('/favorites', { signal, method: 'POST', body, decode: favoriteCreated });
+    },
+    async deleteFavorite(id, { signal } = {}) {
+      const identifier = favoriteIdentifier(id);
+      return favoriteRequest(`/favorites/${identifier}`, { signal, method: 'DELETE', decode: raw => {
+        if (raw !== null) throw new ApiError('INVALID_RESPONSE', '관심 목록에서 지웠는지 확인하지 못했어요. 목록을 다시 조회해 주세요.');
+        return { id: identifier };
+      } });
     },
     async abortAiSession(id, { signal } = {}) {
       const sessionId = aiSessionIdentifier(id);
