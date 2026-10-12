@@ -1,0 +1,21 @@
+{
+  "fabrics": {
+    "POSTED": 59,
+    "PENDING": 2,
+    "REJECTED": 3,
+    "SOLD_OUT": 4,
+    "total": 68
+  },
+  "inquiries": {
+    "WAITING": 53,
+    "ANSWERED": 7,
+    "total": 60
+  },
+  "totalAccepted": 54,
+  "months": {
+    "2026-09": 2,
+    "2026-10": 50,
+    "2026-11": 2
+  },
+  "passed": true
+}

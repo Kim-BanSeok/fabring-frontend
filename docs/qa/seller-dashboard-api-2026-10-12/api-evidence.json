@@ -1,0 +1,325 @@
+{
+  "checkedAt": "2026-10-12T07:20:57.607Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "passed": 35,
+  "fixtureSetup": "Dedicated synthetic fixtures were inserted directly into the local development database to cover past dates and more than 50 records. These are not API creation tests.",
+  "checks": [
+    {
+      "name": "/sellers/me/fabrics: authentication required",
+      "method": "GET",
+      "path": "/sellers/me/fabrics",
+      "expectedStatus": 401,
+      "actualStatus": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/fabrics: buyer forbidden",
+      "method": "GET",
+      "path": "/sellers/me/fabrics",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/fabrics: other seller has no unrelated data",
+      "method": "GET",
+      "path": "/sellers/me/fabrics",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/fabrics: invalid size rejected",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=51",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/fabrics: invalid status rejected",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=INVALID",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/inquiries: authentication required",
+      "method": "GET",
+      "path": "/sellers/me/inquiries",
+      "expectedStatus": 401,
+      "actualStatus": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/inquiries: buyer forbidden",
+      "method": "GET",
+      "path": "/sellers/me/inquiries",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/inquiries: other seller has no unrelated data",
+      "method": "GET",
+      "path": "/sellers/me/inquiries",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/inquiries: invalid size rejected",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?size=51",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/inquiries: invalid status rejected",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?status=INVALID",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/reservations: authentication required",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 401,
+      "actualStatus": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/reservations: buyer forbidden",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 403,
+      "actualStatus": 403,
+      "errorCode": "FORBIDDEN",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/reservations: other seller has no unrelated data",
+      "method": "GET",
+      "path": "/sellers/me/reservations",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/reservations: invalid size rejected",
+      "method": "GET",
+      "path": "/sellers/me/reservations?size=51",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "/sellers/me/reservations: invalid status rejected",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=INVALID",
+      "expectedStatus": 400,
+      "actualStatus": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "default fabrics page reports full total",
+      "method": "GET",
+      "path": "/sellers/me/fabrics",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabrics page 0",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=50&page=0",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabrics page 1",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=50&page=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabric POSTED count is totalElements, not one-row content length",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=POSTED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabric SOLD_OUT count is totalElements, not one-row content length",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=SOLD_OUT&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabric PENDING count is totalElements, not one-row content length",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=PENDING&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "fabric REJECTED count is totalElements, not one-row content length",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=REJECTED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "default inquiries page reports full total",
+      "method": "GET",
+      "path": "/sellers/me/inquiries",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "waiting inquiries page 0",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?status=WAITING&size=50&page=0",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "waiting inquiries page 1",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?status=WAITING&size=50&page=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "answered inquiry count",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?status=ANSWERED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "all reservation statuses remain distinct",
+      "method": "GET",
+      "path": "/sellers/me/reservations?size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reservation ACCEPTED total",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=ACCEPTED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reservation REQUESTED total",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REQUESTED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reservation CANCELED total",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=CANCELED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reservation REJECTED total",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REJECTED&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "reservation PICKED_UP total",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=PICKED_UP&size=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "accepted calendar page 0",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=ACCEPTED&size=50&page=0",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "accepted calendar page 1",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=ACCEPTED&size=50&page=1",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    },
+    {
+      "name": "backend health",
+      "method": "GET",
+      "path": "/health",
+      "expectedStatus": 200,
+      "actualStatus": 200,
+      "errorCode": null,
+      "passed": true
+    }
+  ],
+  "existingDataUnchanged": true
+}

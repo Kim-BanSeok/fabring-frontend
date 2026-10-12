@@ -1,0 +1,327 @@
+{
+  "checkedAt": "2026-10-12T07:30:30.817Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "method": "Read-only database SELECT and HTTP GET after browser pickup 75 and seller cancel 68",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Browser pickup is persisted",
+      "method": "GET",
+      "path": "/reservations/75",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Browser seller cancellation is persisted",
+      "method": "GET",
+      "path": "/reservations/68",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Picked-up scrap is sold out",
+      "method": "GET",
+      "path": "/fabrics/54",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Canceled roll releases all 180cm of secured stock",
+      "method": "GET",
+      "path": "/fabrics/47",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics total after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics POSTED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=POSTED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics PENDING count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=PENDING&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics REJECTED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=REJECTED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "fabrics SOLD_OUT count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/fabrics?status=SOLD_OUT&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "inquiries total after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "inquiries WAITING count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?status=WAITING&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "inquiries ANSWERED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/inquiries?status=ANSWERED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reservations total after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reservations ACCEPTED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=ACCEPTED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reservations REQUESTED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REQUESTED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reservations CANCELED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=CANCELED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reservations REJECTED count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=REJECTED&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reservations PICKED_UP count after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=PICKED_UP&size=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Accepted calendar page 0 after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=ACCEPTED&size=50&page=0",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Accepted calendar page 1 after browser actions",
+      "method": "GET",
+      "path": "/sellers/me/reservations?status=ACCEPTED&size=50&page=1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Calendar refreshed: all 52 accepted IDs, October 48, October 12 two entries at 10:00 and 23:30",
+      "passed": true
+    },
+    {
+      "name": "All original rows unchanged across eleven models, including original 66 reservations",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend remains healthy",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "reservations": {
+    "68": {
+      "reservationId": 68,
+      "fabricId": 47,
+      "status": "CANCELED",
+      "canceled_by": "SELLER",
+      "requested_length_cm": 180,
+      "canceled_at": "2026-10-12T16:28:58+09:00"
+    },
+    "75": {
+      "reservationId": 75,
+      "fabricId": 54,
+      "status": "PICKED_UP",
+      "picked_up_at": "2026-10-12T16:28:07+09:00"
+    }
+  },
+  "fabrics": {
+    "47": {
+      "fabricId": 47,
+      "status": "POSTED",
+      "remaining_length_cm": 1800,
+      "reserved_length_cm": 0,
+      "available_length_cm": 1800
+    },
+    "54": {
+      "fabricId": 54,
+      "status": "SOLD_OUT"
+    }
+  },
+  "counts": {
+    "fabrics": {
+      "total": 68,
+      "byStatus": {
+        "POSTED": 58,
+        "PENDING": 2,
+        "REJECTED": 3,
+        "SOLD_OUT": 5
+      }
+    },
+    "inquiries": {
+      "total": 60,
+      "byStatus": {
+        "WAITING": 53,
+        "ANSWERED": 7
+      }
+    },
+    "reservations": {
+      "total": 60,
+      "byStatus": {
+        "ACCEPTED": 52,
+        "REQUESTED": 3,
+        "CANCELED": 2,
+        "REJECTED": 1,
+        "PICKED_UP": 2
+      }
+    }
+  },
+  "calendar": {
+    "acceptedTotal": 52,
+    "pageSizes": [
+      50,
+      2
+    ],
+    "byMonth": {
+      "2026-10": 48,
+      "2026-09": 2,
+      "2026-11": 2
+    },
+    "byDate": {
+      "2026-10-26": 3,
+      "2026-10-25": 3,
+      "2026-10-24": 3,
+      "2026-10-23": 3,
+      "2026-10-22": 3,
+      "2026-10-21": 3,
+      "2026-10-20": 3,
+      "2026-10-19": 3,
+      "2026-10-18": 3,
+      "2026-10-17": 3,
+      "2026-10-16": 3,
+      "2026-10-15": 3,
+      "2026-10-14": 3,
+      "2026-10-13": 3,
+      "2026-10-27": 2,
+      "2026-10-12": 2,
+      "2026-09-01": 1,
+      "2026-11-15": 1,
+      "2026-10-01": 1,
+      "2026-09-30": 1,
+      "2026-11-01": 1,
+      "2026-10-31": 1
+    },
+    "october12": [
+      {
+        "reservationId": 67,
+        "time": "10:00"
+      },
+      {
+        "reservationId": 76,
+        "time": "23:30"
+      }
+    ],
+    "removedFromCalendar": [
+      75,
+      68
+    ],
+    "duplicateOrMissingIds": false
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 13,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 3,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 45,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 45,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 1,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 66,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "health": {
+    "backendReady": true,
+    "frontendReady": true
+  },
+  "passed": 24
+}

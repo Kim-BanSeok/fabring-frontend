@@ -2,6 +2,7 @@ import { ApiError, createHttpClient } from './http-client.js';
 import { fabricQuery, fabricPage, fabricDetail, fabricIdentifier } from './fabric-contract.js';
 import { reservationQuery, reservationPage, reservationDetail, reservationIdentifier, reservationInput, reservationMutation,
   receivedReservationQuery, receivedReservationPage, acceptReservationInput, rejectReservationInput } from './reservation-contract.js';
+import { SELLER_FABRIC_STATUSES, SELLER_INQUIRY_STATUSES, sellerStatusCount, collectSellerPickups } from './seller-dashboard-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -109,6 +110,34 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     subscribe(listener) { listeners.add(listener); return () => listeners.delete(listener); },
     getAuth: () => ({ status, user: user ? structuredClone(user) : null, error, revision }),
     checkExpiry, restore,
+    async getSellerFabricCounts({ signal } = {}) {
+      requireSession(['SELLER']);
+      const version = revision;
+      const counts = await Promise.all(SELLER_FABRIC_STATUSES.map(async status => [status, await reservationRequest(`/sellers/me/fabrics?status=${status}&page=0&size=1`, {
+        signal, decode: raw => sellerStatusCount(raw, status, 'fabric'),
+      })]));
+      if (revision !== version || signal?.aborted) throw cancelled();
+      return { ...Object.fromEntries(counts), total: counts.reduce((sum, [, count]) => sum + count, 0) };
+    },
+    async getSellerInquiryCounts({ signal } = {}) {
+      requireSession(['SELLER']);
+      const version = revision;
+      const counts = await Promise.all(SELLER_INQUIRY_STATUSES.map(async status => [status, await reservationRequest(`/sellers/me/inquiries?status=${status}&page=0&size=1`, {
+        signal, decode: raw => sellerStatusCount(raw, status, 'inquiry'),
+      })]));
+      if (revision !== version || signal?.aborted) throw cancelled();
+      return { ...Object.fromEntries(counts), total: counts.reduce((sum, [, count]) => sum + count, 0) };
+    },
+    async getSellerPickupCalendar({ signal } = {}) {
+      requireSession(['SELLER']);
+      const version = revision;
+      const result = await collectSellerPickups((filters, options) => {
+        if (revision !== version || signal?.aborted) throw cancelled();
+        return api.listReceivedReservations(filters, options);
+      }, { signal, now });
+      if (revision !== version || signal?.aborted) throw cancelled();
+      return result;
+    },
     async listReservations(filters = {}, { signal } = {}) {
       requireSession(['BUYER']);
       return reservationRequest(`/reservations/me?${reservationQuery(filters)}`, { signal, decode: reservationPage });
