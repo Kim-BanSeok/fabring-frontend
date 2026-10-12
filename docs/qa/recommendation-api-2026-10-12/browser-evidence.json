@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-12",
+  "environment": "Local frontend 127.0.0.1:5173 and local API 127.0.0.1:3000; dedicated fictional QA records only",
+  "observations": [
+    "Fabric 157 detail preview -> recommendation list -> pattern 1 real parts -> pickup form",
+    "Required cutting length 91cm shown as 2ma/180cm and 6400 KRW",
+    "Quantity 1 blocked by form minimum 2 before submission",
+    "Browser reservation 133 created with 180cm/6400 KRW; detail shows selected pattern name; subsequently canceled through UI",
+    "UNKNOWN material on fabric 145 has needs-check guidance; recommended pickup route blocks until suitability is confirmed",
+    "Available fabric 146 with no matches differs from unavailable fabric 151 with less than 90cm stock",
+    "Pattern keyword search retained through detail and back to catalogue",
+    "Inactive pattern 5 shows not-found recovery rather than mock content",
+    "Forged ma=99 on recommendation pickup route ignored; server recommendation prefills 2",
+    "Actual QA fabric 157 price changed from 3200 to 3300 after form load: submit stopped with price-changed message and preserved quantity/memo",
+    "Back to pattern and pickup displayed updated 6600 KRW and preserved memo; test price restored to 3200",
+    "Mobile 390x844 pattern and pickup pages have no horizontal overflow; document scrollWidth 375",
+    "Async pickup heading is focused and document title updated to 픽업 요청하기",
+    "Final browser error/warning log query returned no entries; viewport override reset"
+  ],
+  "reservation": { "id": 133, "fabricId": 157, "patternId": 1, "lengthCm": 180, "estimatedPrice": 6400, "finalStatus": "CANCELED" },
+  "screenshots": [
+    "01-live-recommendations.png", "02-live-pattern-parts.png", "03-recommended-pickup.png",
+    "04-reservation-created.png", "05-reservation-pattern.png", "06-needs-check.png",
+    "07-no-recommendations.png", "08-unavailable.png", "09-pattern-search-return.png",
+    "10-mobile-pattern.png", "11-mobile-pickup.png", "12-mobile-needs-check-blocked.png",
+    "13-inactive-pattern.png", "14-price-change-blocked.png", "15-final-recommendations.png"
+  ],
+  "limitations": [
+    "QA patterns are not verified sewing patterns or production content",
+    "UI preflight reads and reservation POST are not an atomic price quote or fit guarantee",
+    "Network-error and malformed-response cases are controlled unit tests, not production outage tests",
+    "Public shared deployment was not performed"
+  ]
+}

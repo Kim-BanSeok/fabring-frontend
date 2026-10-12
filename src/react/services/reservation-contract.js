@@ -38,7 +38,9 @@ export function reservationInput(input, now = Date.now()) {
   if (input.memo != null && !text(input.memo)) validation('요청 사항을 확인해 주세요.');
   const memo = input.memo?.trim() || null;
   if (memo?.length > 500) validation('요청 사항은 500자 이내로 입력해 주세요.');
-  return { fabric_id: fabricId, pickup_at: pickupAtKst(input.pickup_date, input.pickup_time, now), memo, requested_length_cm: length, pattern_id: null };
+  const patternId = input.pattern_id == null ? null : Number(input.pattern_id);
+  if (patternId !== null && (!/^\d+$/.test(String(input.pattern_id)) || !integer(patternId, 1))) validation('도안 번호를 확인해 주세요. 도안 추천에서 다시 선택해 주세요.');
+  return { fabric_id: fabricId, pickup_at: pickupAtKst(input.pickup_date, input.pickup_time, now), memo, requested_length_cm: length, pattern_id: patternId };
 }
 
 export function reservationQuery(input = {}) {

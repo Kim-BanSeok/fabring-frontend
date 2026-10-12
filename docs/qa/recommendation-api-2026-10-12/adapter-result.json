@@ -1,0 +1,176 @@
+{
+  "checkedAt": "2026-10-12T11:17:47.112Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "completed": true,
+  "verificationMode": "Production createLiveApi with actual local HTTP; isolated adapterPickup fixture; client-side rejected requests explicitly labeled",
+  "checks": [
+    {
+      "name": "Anonymous real pattern list decodes string IDs and API source",
+      "passed": true
+    },
+    {
+      "name": "Real pattern alias filter and second page work through adapter",
+      "passed": true
+    },
+    {
+      "name": "Real pattern details preserve parts and absent image",
+      "passed": true
+    },
+    {
+      "name": "Pattern leading zeros canonicalize to server pattern ID",
+      "passed": true
+    },
+    {
+      "name": "Actual empty-parts pattern remains empty",
+      "passed": true
+    },
+    {
+      "name": "Actual unavailable pattern preserves backend404",
+      "passed": true
+    },
+    {
+      "name": "Actual unavailable pattern preserves backend404",
+      "passed": true
+    },
+    {
+      "name": "Client rejects invalid pattern ID before network",
+      "passed": true
+    },
+    {
+      "name": "Client rejects too-large pattern page size before network",
+      "passed": true
+    },
+    {
+      "name": "Real roll recommendation decodes required91 to purchase180,2yards,6400won",
+      "passed": true
+    },
+    {
+      "name": "Real scrap recommendation preserves nullable length and price fields",
+      "passed": true
+    },
+    {
+      "name": "Real unknown material preserves NEEDS_CHECK and material reason",
+      "passed": true
+    },
+    {
+      "name": "Real empty recommendations remain distinct from unavailable inventory",
+      "passed": true
+    },
+    {
+      "name": "Real missing recommendation fabric preserves404",
+      "passed": true
+    },
+    {
+      "name": "Actual buyer and seller login through adapter",
+      "passed": true
+    },
+    {
+      "name": "Actual adapter reservation sends selected pattern and server purchase length",
+      "passed": true
+    },
+    {
+      "name": "Actual database and buyer detail persist pattern ID/name,180cm,6400won",
+      "passed": true
+    },
+    {
+      "name": "Seller adapter sees the selected pattern name",
+      "passed": true
+    },
+    {
+      "name": "Seller adapter accepts actual selected-pattern reservation",
+      "passed": true
+    },
+    {
+      "name": "Real recommendations reflect180cm newly reserved stock",
+      "passed": true
+    },
+    {
+      "name": "Seller adapter completes actual selected-pattern pickup",
+      "passed": true
+    },
+    {
+      "name": "Buyer adapter reads completed pattern pickup and unchanged price",
+      "passed": true
+    },
+    {
+      "name": "Ordinary reservation without selected pattern sends null and still succeeds",
+      "passed": true
+    },
+    {
+      "name": "Cancel ordinary reservation without changing completed pattern pickup",
+      "passed": true
+    },
+    {
+      "name": "All pre-existing data across eleven models still matches original SHA256",
+      "passed": true
+    }
+  ],
+  "transitions": {
+    "reservationId": "131",
+    "directReservationId": "132",
+    "fabricId": 156,
+    "patternId": "1",
+    "requestedLengthCm": 180,
+    "estimatedPrice": 6400,
+    "finalStatus": "PICKED_UP",
+    "directFinalStatus": "CANCELED",
+    "requests": [
+      {
+        "pattern_id": 1,
+        "requested_length_cm": 180
+      },
+      {
+        "pattern_id": null,
+        "requested_length_cm": 90
+      }
+    ]
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 40,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 18,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 142,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 142,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 15,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "passed": 25
+}

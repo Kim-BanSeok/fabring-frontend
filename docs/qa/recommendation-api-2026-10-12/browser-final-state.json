@@ -1,0 +1,175 @@
+{
+  "checkedAt": "2026-10-12T11:23:12.725Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Final read-only actual HTTP and database checks after browser interaction",
+  "completed": true,
+  "checks": [
+    {
+      "name": "Browser reservation 133 keeps selected active pattern in database",
+      "passed": true
+    },
+    {
+      "name": "Browser reservation 133 buyer detail matches database",
+      "passed": true
+    },
+    {
+      "name": "Browser reservation 133 seller sees same pattern and status",
+      "passed": true
+    },
+    {
+      "name": "Earlier api-evidence.json pattern pickup remains completed",
+      "passed": true
+    },
+    {
+      "name": "Earlier adapter-result.json pattern pickup remains completed",
+      "passed": true
+    },
+    {
+      "name": "Actual public pattern listing still excludes inactive fixture",
+      "passed": true
+    },
+    {
+      "name": "Actual selected pattern detail still has91cm total cutting length",
+      "passed": true
+    },
+    {
+      "name": "Unmodified roll recommendation still returns2yards and6400won",
+      "passed": true
+    },
+    {
+      "name": "Unknown material still returns only NEEDS_CHECK",
+      "passed": true
+    },
+    {
+      "name": "Empty matches and unavailable stock stay distinct",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing User rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Store rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Fabric rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing FabricDetail rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing FabricImage rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Reservation rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Pattern rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing PatternPart rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Favorite rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Inquiry rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Pre-existing Factory rows and SHA256 unchanged after browser QA",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "passed": true
+    },
+    {
+      "name": "Frontend remains available",
+      "passed": true
+    }
+  ],
+  "browserReservations": [
+    {
+      "reservationId": 133,
+      "fabricId": 157,
+      "patternId": 1,
+      "patternName": "[도안 API 검증 20261012] 연습 파우치",
+      "requestedLengthCm": 180,
+      "estimatedPrice": 6400,
+      "status": "CANCELED"
+    }
+  ],
+  "previousHttpAndAdapterReservations": [
+    {
+      "reservationId": 130,
+      "status": "PICKED_UP",
+      "patternId": 1,
+      "requestedLengthCm": 180,
+      "estimatedPrice": 6400
+    },
+    {
+      "reservationId": 131,
+      "status": "PICKED_UP",
+      "patternId": 1,
+      "requestedLengthCm": 180,
+      "estimatedPrice": 6400
+    }
+  ],
+  "existingData": {
+    "User": {
+      "originalRows": 40,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 18,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 142,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 142,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 15,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "sensitiveValuesIncluded": false,
+  "passed": 23
+}

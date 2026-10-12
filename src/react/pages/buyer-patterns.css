@@ -1,0 +1,12 @@
+.buyer-pattern-card { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.buyer-pattern-card > h2, .buyer-pattern-card > h4, .buyer-pattern-card-heading h3 { margin: 0; overflow-wrap: anywhere; }
+.buyer-pattern-card-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; }
+.buyer-pattern-card .actions { margin-top: auto; }
+.buyer-pattern-image { width: 180px; height: 148px; flex: 0 0 180px; object-fit: contain; border-radius: 12px; background: var(--loop-soft, #e8f0e8); }
+.buyer-pattern-image--empty { display: grid; place-items: center; padding: 16px; text-align: center; color: var(--loop-muted, #68766f); font-size: 14px; }
+.buyer-pattern-reasons { margin: 0; padding-left: 24px; display: grid; gap: 12px; overflow-wrap: anywhere; }
+.buyer-pattern-card details > summary { cursor: pointer; padding: 8px 0; }
+.buyer-pattern-card .buyer-recommend-body { flex-wrap: wrap; }
+.buyer-pattern-card .buyer-recommend-copy { min-width: 0; flex: 1 1 160px; }
+.buyer-pattern-card .buyer-info { grid-template-columns: 70px minmax(0, 1fr); }
+@media (max-width: 700px) { .buyer-pattern-image { max-width: 100%; } }

@@ -6,6 +6,7 @@ import { SELLER_FABRIC_STATUSES, SELLER_INQUIRY_STATUSES, sellerStatusCount, col
 import { ownFabricQuery, ownFabricPage, ownFabricDetail, sellerFabricInput, fabricMutation, fabricDeletion, imageUploadBody, fabricImage } from './seller-fabric-contract.js';
 import { storeInput, storeDetail, storeCreated } from './store-contract.js';
 import { ADMIN_FABRIC_STATUSES, ADMIN_SELLER_STATUSES, adminQuery, adminPage, adminReview, adminReviewResult, findAdminSeller } from './admin-contract.js';
+import { patternQuery, patternPage, patternDetail, patternIdentifier, recommendationResult } from './recommendation-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -376,6 +377,26 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       const fabric = fabricDetail(result);
       if (fabric.id !== identifier) throw new ApiError('INVALID_RESPONSE', '선택한 원단 정보를 확인하지 못했어요. 목록에서 다시 선택해 주세요.');
       return fabric;
+    },
+    async listPatterns(filters = {}, { signal } = {}) {
+      const version = revision;
+      const raw = await request(`/patterns?${patternQuery(filters)}`, { signal, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return patternPage(raw);
+    },
+    async getPattern(id, { signal } = {}) {
+      const identifier = patternIdentifier(id), version = revision;
+      const raw = await request(`/patterns/${identifier}`, { signal, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      const pattern = patternDetail(raw);
+      if (pattern.id !== identifier) throw new ApiError('INVALID_RESPONSE', '선택한 도안 정보를 확인하지 못했어요. 도안 목록에서 다시 선택해 주세요.');
+      return pattern;
+    },
+    async getRecommendations(fabricId, { signal } = {}) {
+      const identifier = fabricIdentifier(fabricId), version = revision;
+      const raw = await request(`/fabrics/${identifier}/recommendations`, { signal, authenticated: true });
+      if (signal?.aborted || revision !== version) throw cancelled();
+      return recommendationResult(raw);
     },
     getState() {
       const profile = user ? { ...user, id: user.userId } : blankProfile();

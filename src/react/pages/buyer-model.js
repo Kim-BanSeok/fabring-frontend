@@ -69,7 +69,7 @@ export const addQuery = (path, key, value) => {
 export function internalReturn(value, kind) {
   if (!value || /[\\#\r\n]/.test(value)) return '';
   const path = value.split('?')[0];
-  return (kind === 'pattern' ? ['/buyer/patterns', '/buyer/patterns/pouch'].includes(path) : path === '/buyer/fabrics') ? value : '';
+  return (kind === 'pattern' ? ['/buyer/patterns', '/buyer/patterns/pouch'].includes(path) || /^\/buyer\/patterns\/\d+$/.test(path) : path === '/buyer/fabrics') ? value : '';
 }
 export const listReturn = ctx => ctx.path === '/buyer/fabrics' ? currentRoute(ctx) : internalReturn(ctx.query.get('return'), 'list');
 export const keepList = (ctx, path) => addQuery(path, 'return', listReturn(ctx));

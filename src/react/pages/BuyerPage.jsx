@@ -3,6 +3,8 @@ import { Button, Badge, Notice, PageHeading, EmptyState, FabricImage, Field, Sel
 import useFabricResource from '../hooks/useFabricResource.js';
 import useReservationResource from '../hooks/useReservationResource.js';
 import useReservationMutation from '../hooks/useReservationMutation.js';
+import BuyerLivePatterns, { LiveRecommendationsPreview, LivePatternPickup } from './BuyerLivePatterns.jsx';
+import { isPatternRoute, recommendedPickupIssue, patternDetailPath } from './buyer-pattern-model.js';
 import { pickupAtKst } from '../services/reservation-contract.js';
 import { validDateKst, reservationListReturn, reservationResourceRequest, reservationListPagePath, reservationPriceText, reservationPreviewFabric, submittedReservationKey, submittedReservationMatches } from './buyer-model.js';
 import { FABRIC_FILTER_OPTIONS, fabricFilterLabel } from '../services/fabric-contract.js';
@@ -93,6 +95,7 @@ function UnknownReservationOutcome({ failure, item }) {
 
 export default function BuyerPage({ ctx }) {
   if (ctx.mode !== 'live') return <BuyerScreens ctx={ctx} />;
+  if (isPatternRoute(ctx.path)) return <BuyerLivePatterns ctx={ctx} />;
   const reservationRequest = reservationResourceRequest(ctx);
   return reservationRequest ? <LiveReservationPage ctx={ctx} request={reservationRequest} /> : <LiveBuyerPage ctx={ctx} />;
 }
@@ -193,6 +196,7 @@ function ProductArt({ kind }) {
   return kind === 'tote' ? <div className="buyer-product-art"><img src="/assets/figma/tote.svg" alt="데일리 토트백 모양 예시" width="180" height="148" /></div> : <div className="buyer-product-art buyer-product-art--pouch" role="img" aria-label="지퍼 파우치 모양 예시"><span className="buyer-pouch-grain" /><span className="buyer-pouch-pull" /></div>;
 }
 function RecommendationsPreview({ ctx, fabric }) {
+  if (ctx.mode === 'live') return <LiveRecommendationsPreview ctx={ctx} fabric={fabric} />;
   return <><h2>이런 활용 아이디어가 있어요</h2><p className="buyer-muted">모양을 살펴보는 예시입니다. 파우치는 이 원단의 제작 조건도 확인할 수 있어요.</p><div className="buyer-recommend-grid">{[['pouch', '지퍼 파우치', '작은 소지품을 담기 좋은 기본형 파우치'], ['tote', '데일리 토트백', '가볍게 들기 좋은 실용적인 토트백']].map(([kind, title, description]) => <article key={kind} className="panel"><h3>{title}</h3><div className="buyer-recommend-body"><ProductArt kind={kind} /><div className="buyer-recommend-copy"><strong>{description}</strong><p className="buyer-muted">{kind === 'pouch' ? '원단 치수와 소재가 맞는지 먼저 확인하세요.' : '모양을 참고하는 아이디어입니다. 토트백 제작 조건·재단 치수는 제공하지 않아요.'}</p><Badge>{kind === 'pouch' ? '제작 조건 확인 가능' : '활용 아이디어 예시'}</Badge></div></div>{kind === 'pouch' && <div className="actions"><LinkButton path={keepList(ctx, `/buyer/recommendations/${encodeURIComponent(fabric.id)}`)} tone="primary">파우치 제작 조건 확인</LinkButton><LinkButton path={keepList(ctx, `/buyer/patterns/pouch?fabric_id=${encodeURIComponent(fabric.id)}`)}>파우치 재단 치수 확인</LinkButton></div>}</article>)}</div></>;
 }
 
@@ -220,17 +224,21 @@ function Pickup({ ctx }) {
   if (reservation) return <Page node={fabricNode(fabric, 2)}><PageHeading title="픽업 요청을 보냈어요" description="판매자가 재고와 방문 일정을 확인하고 있어요." />{reservation.example && <ExampleNotice />}<Notice tone="success">접수 완료 · 아직 재고가 확보되거나 픽업이 확정된 상태는 아니에요.</Notice><section className="panel"><h2 className="buyer-panel-heading">접수된 요청 상세</h2><ReservationDetails item={reservation} fabric={fabric} /><Info rows={[[ '진행 상태', '요청됨']]} /></section><div className="actions"><LinkButton path={reservationPath(reservation)} tone="primary">요청 상세 확인</LinkButton><LinkButton path="/buyer/fabrics">원단 목록으로</LinkButton></div></Page>;
   const stock = availability(ctx, fabric);
   if (!stock.canRequest) return <Page node={fabricNode(fabric, 1)}><PageHeading title="픽업 요청 전 확인해 주세요" description={fabric.title} /><section className="panel"><h2 className="buyer-panel-heading">현재 원단 상태</h2><Badge tone="amber">{stock.label}</Badge><Info rows={[[ '원단', fabric.title], ['구매 가능 치수', dimensions(fabric)]]} /></section><StockRecovery ctx={ctx} fabric={fabric} stock={stock} /><div><LinkButton path={detailPath(ctx, fabric)}>원단 상세로 돌아가기</LinkButton></div></Page>;
+  if (ctx.mode === 'live' && ctx.query.has('pattern_id')) return <LivePatternPickup ctx={ctx} fabric={fabric}>{recommendation => <PickupForm ctx={ctx} fabric={fabric} recommendation={recommendation} />}</LivePatternPickup>;
   return <PickupForm ctx={ctx} fabric={fabric} />;
 }
 
-function PickupForm({ ctx, fabric }) {
-  const key = draftKey('pickup', fabric.id);
+function PickupForm({ ctx, fabric, recommendation }) {
+  const baseKey = draftKey('pickup', fabric.id);
+  const key = recommendation ? `${baseKey}:pattern:${recommendation.pattern_id}` : baseKey;
   const store = currentPickupStore(ctx.state, fabric);
   const maxMa = Math.floor((fabric.available_length_cm || 0) / 90);
   const roll = fabric.sale_type === 'ROLL';
   const [values, setValues] = useState(() => {
     const draft = ctx.drafts?.get(key) || {};
-    return { requested_ma: draft.requested_ma ?? Math.max(1, Math.min(maxMa || 1, Number(ctx.query.get('ma')) || Math.min(2, maxMa || 1))), pickup_date: draft.pickup_date ?? (ctx.mode === 'live' ? validDateKst(2) : validDate(2)), pickup_time: draft.pickup_time ?? '14:00', memo: draft.memo || '' };
+    const fallback = ctx.drafts?.get(baseKey) || {};
+    const initialMa = recommendation?.yards || (ctx.mode === 'live' ? Math.min(2, maxMa || 1) : Math.max(1, Math.min(maxMa || 1, Number(ctx.query.get('ma')) || Math.min(2, maxMa || 1))));
+    return { requested_ma: draft.requested_ma ?? initialMa, pickup_date: draft.pickup_date ?? fallback.pickup_date ?? (ctx.mode === 'live' ? validDateKst(2) : validDate(2)), pickup_time: draft.pickup_time ?? fallback.pickup_time ?? '14:00', memo: draft.memo ?? fallback.memo ?? '' };
   });
   const submission = useReservationMutation(ctx);
   const change = event => {
@@ -247,8 +255,20 @@ function PickupForm({ ctx, fabric }) {
     const ma = Number(values.requested_ma);
     if (roll && (!Number.isInteger(ma) || ma < 1 || ma * 90 > fabric.available_length_cm)) return submission.setError('구매 가능한 길이 안에서 1마 단위로 선택해 주세요.');
     submission.run(async ({ signal, isCurrent }) => {
+      if (recommendation) {
+        let fresh, freshFabric;
+        try {
+          [fresh, freshFabric] = await Promise.all([ctx.api.getRecommendations(fabric.id, { signal }), ctx.api.getFabric(fabric.id, { signal }), ctx.api.getPattern(recommendation.pattern_id, { signal })]);
+        } catch (error) {
+          if (error.status === 404) throw new Error('이 원단 또는 도안의 공개 상태가 바뀌었어요. 추천 결과를 다시 확인해 주세요.');
+          throw error;
+        }
+        if (!isCurrent()) return;
+        const issue = recommendedPickupIssue(fresh, recommendation.pattern_id, fabric, ma, freshFabric);
+        if (issue) throw new Error(issue);
+      }
       try {
-        const reservation = await ctx.api.createReservation({ fabric_id: fabric.id, ...(roll ? { requested_length_cm: ma * 90 } : {}), pickup_date: values.pickup_date, pickup_time: values.pickup_time, memo: values.memo.trim() }, { signal });
+        const reservation = await ctx.api.createReservation({ fabric_id: fabric.id, ...(roll ? { requested_length_cm: ma * 90 } : {}), ...(recommendation ? { pattern_id: recommendation.pattern_id } : {}), pickup_date: values.pickup_date, pickup_time: values.pickup_time, memo: values.memo.trim() }, { signal });
         if (!isCurrent()) return;
         ctx.drafts?.delete(key);
         if (ctx.mode === 'live') ctx.drafts?.set(submittedReservationKey(reservation.id), { id: reservation.id, fabric_id: fabric.id });
@@ -266,7 +286,7 @@ function PickupForm({ ctx, fabric }) {
       }
     });
   };
-  return <Page node={fabricNode(fabric, 1)}><PageHeading title="픽업 요청하기" description="원단과 방문 정보를 확인한 뒤 판매자에게 요청을 보내세요." /><form className="buyer-page" data-buyer-pickup="" data-fabric-id={fabric.id} onSubmit={submit}><section className="panel"><h2 className="buyer-panel-heading">구매 요청 정보</h2><div className="buyer-pickup-product"><Picture fabric={fabric} /><div><h2>{fabric.title}</h2><Info rows={[[ '원단 치수', dimensions(fabric)], ['판매처', fabric.store_name], ['픽업 장소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.']]} />{roll ? <><div className="buyer-quantity-row field"><label htmlFor="buyer-request-ma">요청 수량 (1마=90cm)</label><input id="buyer-request-ma" name="requested_ma" type="number" min="1" max={maxMa} step="1" value={values.requested_ma} onChange={change} required inputMode="numeric" aria-describedby="buyer-quantity-hint" /><span id="buyer-quantity-hint" className="buyer-small">최대 {maxMa}마 · 1마 단위</span></div>{Number(values.requested_ma) > maxMa && <Notice tone="warning">구매 가능한 길이가 바뀌었어요. 희망 일정과 요청 사항은 유지했으니 수량을 다시 선택해 주세요.</Notice>}</> : <p>요청 수량: 표시된 자투리 한 장 전체</p>}<p>요청 금액 <strong className="buyer-price" data-buyer-estimate="" aria-live="polite">{price(roll ? Number(values.requested_ma) * fabric.price : fabric.price)}</strong></p></div></div><div className="buyer-pickup-fields"><Field label="희망 픽업 날짜" name="pickup_date" type="date" required value={values.pickup_date} min={ctx.mode === 'live' ? validDateKst(0) : validDate(0)} onChange={change} /><Field label={ctx.mode === 'live' ? "희망 픽업 시간 (한국 시간)" : "희망 픽업 시간"} name="pickup_time" type="time" required value={values.pickup_time} onChange={change} /></div><section className="buyer-visit-guide" aria-labelledby="buyer-visit-guide-title"><h3 id="buyer-visit-guide-title">방문 안내</h3><Info rows={[['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['운영 안내', store?.pickup_guide || '방문 가능 시간을 판매자에게 확인해 주세요.']]} /><Notice tone="warning">선택한 일정은 희망 일정입니다. 판매자가 수락한 뒤 방문해 주세요.</Notice></section></section><section className="panel"><h2 className="buyer-panel-heading">계정 정보 확인</h2><div className="buyer-readonly"><dl><dt>닉네임 (계정)</dt><dd>{ctx.state.buyer.nickname}</dd></dl><dl><dt>전화번호 (선택 정보)</dt><dd>{ctx.state.buyer.phone_number || '등록된 전화번호 없음'}</dd></dl></div><div className="field"><label htmlFor="buyer-memo">요청 사항</label><textarea id="buyer-memo" name="memo" maxLength="500" rows="2" placeholder="방문 전 확인할 내용이 있다면 적어주세요." aria-describedby="buyer-memo-hint" value={values.memo} onChange={change} /><span id="buyer-memo-hint" className="buyer-small buyer-muted">최대 500자</span></div><Notice>계정정보는 확인용이며 예약 연락처로 따로 저장되지 않습니다.</Notice></section><FormError message={submission.error} /><UnknownReservationOutcome failure={submission.failure} /><div className="actions"><LinkButton path={detailPath(ctx, fabric)}>원단 상세로 돌아가기</LinkButton><Button type="submit" tone="primary" disabled={submission.busy || submission.failure?.outcomeUnknown || (roll && maxMa < 1)}>{submission.busy ? '요청 보내는 중…' : '픽업 요청 보내기'}</Button></div></form></Page>;
+  return <Page node={fabricNode(fabric, 1)}><PageHeading title="픽업 요청하기" description="원단과 방문 정보를 확인한 뒤 판매자에게 요청을 보내세요." />{recommendation && <section className="panel buyer-page"><h2 className="buyer-panel-heading">선택한 도안: {recommendation.pattern_name}</h2><Notice>등록 정보 기준으로 조건에 적합한 도안입니다. 실물 촉감·수축·결 방향은 제작 전 확인해 주세요.{roll && ` 이 도안에는 ${recommendation.yards}마(${recommendation.purchase_length_cm}cm) 이상 필요해요.`}</Notice><div className="actions"><LinkButton path={patternDetailPath(ctx, recommendation.pattern_id, fabric.id)}>도안과 제작 조건 다시 확인</LinkButton><LinkButton path={pickupPath(ctx, fabric)}>도안 연결 없이 일반 픽업 요청</LinkButton></div></section>}<form className="buyer-page" data-buyer-pickup="" data-fabric-id={fabric.id} onSubmit={submit}><section className="panel"><h2 className="buyer-panel-heading">구매 요청 정보</h2><div className="buyer-pickup-product"><Picture fabric={fabric} /><div><h2>{fabric.title}</h2><Info rows={[[ '원단 치수', dimensions(fabric)], ['판매처', fabric.store_name], ['픽업 장소', storeAddress(store) || '판매자에게 방문 주소를 확인해 주세요.']]} />{roll ? <><div className="buyer-quantity-row field"><label htmlFor="buyer-request-ma">요청 수량 (1마=90cm)</label><input id="buyer-request-ma" name="requested_ma" type="number" min={recommendation?.yards || 1} max={maxMa} step="1" value={values.requested_ma} onChange={change} required inputMode="numeric" aria-describedby="buyer-quantity-hint" /><span id="buyer-quantity-hint" className="buyer-small">{recommendation?.yards ? `도안 기준 최소 ${recommendation.yards}마 · ` : ""}최대 {maxMa}마 · 1마 단위</span></div>{Number(values.requested_ma) > maxMa && <Notice tone="warning">구매 가능한 길이가 바뀌었어요. 희망 일정과 요청 사항은 유지했으니 수량을 다시 선택해 주세요.</Notice>}</> : <p>요청 수량: 표시된 자투리 한 장 전체</p>}<p>요청 금액 <strong className="buyer-price" data-buyer-estimate="" aria-live="polite">{price(roll ? Number(values.requested_ma) * fabric.price : fabric.price)}</strong></p></div></div><div className="buyer-pickup-fields"><Field label="희망 픽업 날짜" name="pickup_date" type="date" required value={values.pickup_date} min={ctx.mode === 'live' ? validDateKst(0) : validDate(0)} onChange={change} /><Field label={ctx.mode === 'live' ? "희망 픽업 시간 (한국 시간)" : "희망 픽업 시간"} name="pickup_time" type="time" required value={values.pickup_time} onChange={change} /></div><section className="buyer-visit-guide" aria-labelledby="buyer-visit-guide-title"><h3 id="buyer-visit-guide-title">방문 안내</h3><Info rows={[['휴무일', store?.closed_days || '등록된 휴무 안내 없음'], ['운영 안내', store?.pickup_guide || '방문 가능 시간을 판매자에게 확인해 주세요.']]} /><Notice tone="warning">선택한 일정은 희망 일정입니다. 판매자가 수락한 뒤 방문해 주세요.</Notice></section></section><section className="panel"><h2 className="buyer-panel-heading">계정 정보 확인</h2><div className="buyer-readonly"><dl><dt>닉네임 (계정)</dt><dd>{ctx.state.buyer.nickname}</dd></dl><dl><dt>전화번호 (선택 정보)</dt><dd>{ctx.state.buyer.phone_number || '등록된 전화번호 없음'}</dd></dl></div><div className="field"><label htmlFor="buyer-memo">요청 사항</label><textarea id="buyer-memo" name="memo" maxLength="500" rows="2" placeholder="방문 전 확인할 내용이 있다면 적어주세요." aria-describedby="buyer-memo-hint" value={values.memo} onChange={change} /><span id="buyer-memo-hint" className="buyer-small buyer-muted">최대 500자</span></div><Notice>계정정보는 확인용이며 예약 연락처로 따로 저장되지 않습니다.</Notice></section><FormError message={submission.error} /><UnknownReservationOutcome failure={submission.failure} /><div className="actions"><LinkButton path={detailPath(ctx, fabric)}>원단 상세로 돌아가기</LinkButton><Button type="submit" tone="primary" disabled={submission.busy || submission.failure?.outcomeUnknown || (roll && maxMa < 1)}>{submission.busy ? '요청 보내는 중…' : '픽업 요청 보내기'}</Button></div></form></Page>;
 }
 
 function ReservationTabs({ ctx, status, subset }) {

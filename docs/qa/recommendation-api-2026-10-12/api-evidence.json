@@ -1,0 +1,921 @@
+{
+  "checkedAt": "2026-10-12T11:16:05.935Z",
+  "backendRevision": "7dc28c79994295daee635524d05048574247a6d9",
+  "verificationMode": "Actual HTTP against additive QA fixtures on local Express/PostgreSQL; not a mock",
+  "completed": true,
+  "checks": [
+    {
+      "name": "buyer real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "owner real login",
+      "method": "POST",
+      "path": "/auth/login",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Public active pattern listing excludes inactive and supports no-login reads",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern page zero contains first two registered active items",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&page=0&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern page one contains remaining active items",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&page=1&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern out-of-range page remains a valid empty page",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&page=2&size=2",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern title search",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&keyword=%EC%97%B0%EC%8A%B5%20%ED%8C%8C%EC%9A%B0%EC%B9%98",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern alias search is case insensitive",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&keyword=M4-POUCH-ALIAS",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern literal percent and underscore search escapes LIKE wildcards",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&keyword=%25_",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern unknown category is empty",
+      "method": "GET",
+      "path": "/patterns?category=LOCAL_QA_ABSENT",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern whitespace keyword is omitted",
+      "method": "GET",
+      "path": "/patterns?category=M4_LOCAL_QA&keyword=%20%20",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern detail exposes actual ordered parts and metadata",
+      "method": "GET",
+      "path": "/patterns/1",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern with no parts is readable and exposes empty parts honestly",
+      "method": "GET",
+      "path": "/patterns/4",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Pattern inactive response",
+      "method": "GET",
+      "path": "/patterns/5",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Pattern missing response",
+      "method": "GET",
+      "path": "/patterns/999999",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Pattern invalid response",
+      "method": "GET",
+      "path": "/patterns/0",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pattern invalid filter is rejected",
+      "method": "GET",
+      "path": "/patterns?size=51",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pattern invalid filter is rejected",
+      "method": "GET",
+      "path": "/patterns?page=-1",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pattern invalid filter is rejected",
+      "method": "GET",
+      "path": "/patterns?size=0",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pattern invalid filter is rejected",
+      "method": "GET",
+      "path": "/patterns?keyword=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Pattern invalid filter is rejected",
+      "method": "GET",
+      "path": "/patterns?category=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Invalid bearer token is rejected by public endpoint",
+      "method": "GET",
+      "path": "/patterns",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Invalid bearer token is rejected by public endpoint",
+      "method": "GET",
+      "path": "/patterns/1",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Invalid bearer token is rejected by public endpoint",
+      "method": "GET",
+      "path": "/fabrics/143/recommendations",
+      "status": 401,
+      "errorCode": "UNAUTHORIZED",
+      "passed": true
+    },
+    {
+      "name": "Recommendations roll",
+      "method": "GET",
+      "path": "/fabrics/143/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations scrap",
+      "method": "GET",
+      "path": "/fabrics/144/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations unknown",
+      "method": "GET",
+      "path": "/fabrics/145/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations noResults",
+      "method": "GET",
+      "path": "/fabrics/146/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations narrow",
+      "method": "GET",
+      "path": "/fabrics/147/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations thin",
+      "method": "GET",
+      "path": "/fabrics/148/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations wool",
+      "method": "GET",
+      "path": "/fabrics/149/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations noRotation",
+      "method": "GET",
+      "path": "/fabrics/150/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations insufficient",
+      "method": "GET",
+      "path": "/fabrics/151/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations reservedScrap",
+      "method": "GET",
+      "path": "/fabrics/152/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations pending",
+      "method": "GET",
+      "path": "/fabrics/153/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations soldOut",
+      "method": "GET",
+      "path": "/fabrics/154/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Missing recommendation fabric returns404",
+      "method": "GET",
+      "path": "/fabrics/999999/recommendations",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Invalid recommendation fabric returns400",
+      "method": "GET",
+      "path": "/fabrics/0/recommendations",
+      "status": 400,
+      "errorCode": "VALIDATION_ERROR",
+      "passed": true
+    },
+    {
+      "name": "Recommendations roll",
+      "method": "GET",
+      "path": "/fabrics/143/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations roll",
+      "method": "GET",
+      "path": "/fabrics/143/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations httpPickup",
+      "method": "GET",
+      "path": "/fabrics/155/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Inactive pattern reservation rejected before mutation",
+      "method": "POST",
+      "path": "/reservations",
+      "status": 404,
+      "errorCode": "NOT_FOUND",
+      "passed": true
+    },
+    {
+      "name": "Create actual pickup using recommendation pattern ID and180cm",
+      "method": "POST",
+      "path": "/reservations",
+      "status": 201,
+      "passed": true
+    },
+    {
+      "name": "Database stores exact selected pattern ID,180cm,6400won",
+      "passed": true
+    },
+    {
+      "name": "Buyer reservation detail shows selected pattern name and price",
+      "method": "GET",
+      "path": "/reservations/130",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Seller reservation detail shows the same pattern name",
+      "method": "GET",
+      "path": "/reservations/130",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Seller accepts actual pattern pickup",
+      "method": "POST",
+      "path": "/reservations/130/accept",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Recommendations httpPickup",
+      "method": "GET",
+      "path": "/fabrics/155/recommendations",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Seller completes actual pattern pickup",
+      "method": "POST",
+      "path": "/reservations/130/pickup",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Buyer reads completed pickup with preserved pattern and amount",
+      "method": "GET",
+      "path": "/reservations/130",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "All pre-existing rows across eleven models unchanged",
+      "passed": true
+    },
+    {
+      "name": "Browser fixture reservations untouched by HTTP verification",
+      "passed": true
+    },
+    {
+      "name": "Backend remains healthy",
+      "method": "GET",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "Frontend remains healthy",
+      "status": 200,
+      "passed": true
+    }
+  ],
+  "examples": {
+    "pattern": {
+      "patternId": 1,
+      "pattern_name": "[도안 API 검증 20261012] 연습 파우치",
+      "aliases": "m4-pouch-alias",
+      "category": "M4_LOCAL_QA",
+      "description": "실제 제작용 도안이 아닌 로컬 API 검증 전용 가상 자료입니다. 부품을 회전하거나 여러 줄로 놓지 않는 백엔드 계산을 확인합니다.",
+      "image_url": null,
+      "allowed_materials": [
+        "COTTON",
+        "LINEN"
+      ],
+      "allowed_thickness": [
+        "NORMAL"
+      ],
+      "reviewed_by": "QA 가상 검수",
+      "parts": [
+        {
+          "part_name": "겉감 앞판",
+          "width_cm": 35,
+          "height_cm": 46,
+          "quantity": 1
+        },
+        {
+          "part_name": "겉감 뒤판",
+          "width_cm": 35,
+          "height_cm": 45,
+          "quantity": 1
+        }
+      ]
+    },
+    "roll": {
+      "available": true,
+      "items": [
+        {
+          "patternId": 3,
+          "pattern_name": "[도안 API 검증 20261012] 방향 고정 커버",
+          "image_url": null,
+          "judgement": "SUITABLE",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 80,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 80cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 90,
+              "actual": 900,
+              "met": true,
+              "text": "필요 구매 길이 90cm(1마) → 구매 가능 길이 900cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "COTTON",
+              "met": true,
+              "text": "허용 소재(면, 린넨) → 원단 소재 면 (충족)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": 40,
+          "purchase_length_cm": 90,
+          "yards": 1,
+          "estimated_price": 3200
+        },
+        {
+          "patternId": 1,
+          "pattern_name": "[도안 API 검증 20261012] 연습 파우치",
+          "image_url": null,
+          "judgement": "SUITABLE",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 35,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 35cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 180,
+              "actual": 900,
+              "met": true,
+              "text": "필요 구매 길이 180cm(2마) → 구매 가능 길이 900cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "COTTON",
+              "met": true,
+              "text": "허용 소재(면, 린넨) → 원단 소재 면 (충족)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": 91,
+          "purchase_length_cm": 180,
+          "yards": 2,
+          "estimated_price": 6400
+        },
+        {
+          "patternId": 2,
+          "pattern_name": "[도안 API 검증 20261012] 연습 에코백",
+          "image_url": null,
+          "judgement": "SUITABLE",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 40,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 40cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 270,
+              "actual": 900,
+              "met": true,
+              "text": "필요 구매 길이 270cm(3마) → 구매 가능 길이 900cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "COTTON",
+              "met": true,
+              "text": "허용 소재(면, 린넨) → 원단 소재 면 (충족)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": 210,
+          "purchase_length_cm": 270,
+          "yards": 3,
+          "estimated_price": 9600
+        }
+      ],
+      "notices": [
+        "실물 확인 권장: 촉감·결 방향·수축은 정보로 확인할 수 없어요"
+      ],
+      "message": null
+    },
+    "scrap": {
+      "available": true,
+      "items": [
+        {
+          "patternId": 2,
+          "pattern_name": "[도안 API 검증 20261012] 연습 에코백",
+          "image_url": null,
+          "judgement": "SUITABLE",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 96,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 96cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 60,
+              "actual": 70,
+              "met": true,
+              "text": "필요 세로 60cm 이상 → 길이 70cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "COTTON",
+              "met": true,
+              "text": "허용 소재(면, 린넨) → 원단 소재 면 (충족)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": null,
+          "purchase_length_cm": null,
+          "yards": null,
+          "estimated_price": null
+        },
+        {
+          "patternId": 3,
+          "pattern_name": "[도안 API 검증 20261012] 방향 고정 커버",
+          "image_url": null,
+          "judgement": "SUITABLE",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 80,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 80cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 40,
+              "actual": 70,
+              "met": true,
+              "text": "필요 세로 40cm 이상 → 길이 70cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "COTTON",
+              "met": true,
+              "text": "허용 소재(면, 린넨) → 원단 소재 면 (충족)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": null,
+          "purchase_length_cm": null,
+          "yards": null,
+          "estimated_price": null
+        },
+        {
+          "patternId": 1,
+          "pattern_name": "[도안 API 검증 20261012] 연습 파우치",
+          "image_url": null,
+          "judgement": "SUITABLE",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 70,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 70cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 46,
+              "actual": 70,
+              "met": true,
+              "text": "필요 세로 46cm 이상 → 길이 70cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "COTTON",
+              "met": true,
+              "text": "허용 소재(면, 린넨) → 원단 소재 면 (충족)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": null,
+          "purchase_length_cm": null,
+          "yards": null,
+          "estimated_price": null
+        }
+      ],
+      "notices": [
+        "실물 확인 권장: 촉감·결 방향·수축은 정보로 확인할 수 없어요"
+      ],
+      "message": null
+    },
+    "unknown": {
+      "available": true,
+      "items": [
+        {
+          "patternId": 3,
+          "pattern_name": "[도안 API 검증 20261012] 방향 고정 커버",
+          "image_url": null,
+          "judgement": "NEEDS_CHECK",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 80,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 80cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 90,
+              "actual": 900,
+              "met": true,
+              "text": "필요 구매 길이 90cm(1마) → 구매 가능 길이 900cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "UNKNOWN",
+              "met": null,
+              "text": "허용 소재(면, 린넨) → 원단 소재를 알 수 없어요 (확인 필요)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": 40,
+          "purchase_length_cm": 90,
+          "yards": 1,
+          "estimated_price": 3200
+        },
+        {
+          "patternId": 1,
+          "pattern_name": "[도안 API 검증 20261012] 연습 파우치",
+          "image_url": null,
+          "judgement": "NEEDS_CHECK",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 35,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 35cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 180,
+              "actual": 900,
+              "met": true,
+              "text": "필요 구매 길이 180cm(2마) → 구매 가능 길이 900cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "UNKNOWN",
+              "met": null,
+              "text": "허용 소재(면, 린넨) → 원단 소재를 알 수 없어요 (확인 필요)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": 91,
+          "purchase_length_cm": 180,
+          "yards": 2,
+          "estimated_price": 6400
+        },
+        {
+          "patternId": 2,
+          "pattern_name": "[도안 API 검증 20261012] 연습 에코백",
+          "image_url": null,
+          "judgement": "NEEDS_CHECK",
+          "reasons": [
+            {
+              "criterion": "WIDTH",
+              "required": 40,
+              "actual": 150,
+              "met": true,
+              "text": "필요 가로 40cm 이상 → 폭 150cm (충족)"
+            },
+            {
+              "criterion": "LENGTH",
+              "required": 270,
+              "actual": 900,
+              "met": true,
+              "text": "필요 구매 길이 270cm(3마) → 구매 가능 길이 900cm (충족)"
+            },
+            {
+              "criterion": "MATERIAL",
+              "required": [
+                "COTTON",
+                "LINEN"
+              ],
+              "actual": "UNKNOWN",
+              "met": null,
+              "text": "허용 소재(면, 린넨) → 원단 소재를 알 수 없어요 (확인 필요)"
+            },
+            {
+              "criterion": "THICKNESS",
+              "required": [
+                "NORMAL"
+              ],
+              "actual": "NORMAL",
+              "met": true,
+              "text": "허용 두께(보통) → 원단 두께 보통 (충족)"
+            }
+          ],
+          "required_length_cm": 210,
+          "purchase_length_cm": 270,
+          "yards": 3,
+          "estimated_price": 9600
+        }
+      ],
+      "notices": [
+        "실물 확인 권장: 촉감·결 방향·수축은 정보로 확인할 수 없어요",
+        "소재를 판매자에게 확인해 보세요"
+      ],
+      "message": null
+    }
+  },
+  "transitions": {
+    "reservationId": 130,
+    "fabricId": 155,
+    "patternId": 1,
+    "states": [
+      "REQUESTED",
+      "ACCEPTED",
+      "PICKED_UP"
+    ],
+    "requestedLengthCm": 180,
+    "estimatedPrice": 6400,
+    "remainingBeforeCm": 900,
+    "remainingAfterCm": 720,
+    "reservedAfterCm": 0
+  },
+  "existingData": {
+    "User": {
+      "originalRows": 40,
+      "sameFingerprint": true
+    },
+    "Store": {
+      "originalRows": 18,
+      "sameFingerprint": true
+    },
+    "Fabric": {
+      "originalRows": 142,
+      "sameFingerprint": true
+    },
+    "FabricDetail": {
+      "originalRows": 142,
+      "sameFingerprint": true
+    },
+    "FabricImage": {
+      "originalRows": 15,
+      "sameFingerprint": true
+    },
+    "Reservation": {
+      "originalRows": 128,
+      "sameFingerprint": true
+    },
+    "Pattern": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "PatternPart": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Favorite": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    },
+    "Inquiry": {
+      "originalRows": 60,
+      "sameFingerprint": true
+    },
+    "Factory": {
+      "originalRows": 0,
+      "sameFingerprint": true
+    }
+  },
+  "limitations": [
+    "The local database originally contained no patterns. Added patterns are fictional QA content.",
+    "Reservation API checks active pattern existence, not recommendation suitability or minimum cutting length."
+  ],
+  "sensitiveValuesIncluded": false,
+  "passed": 54
+}
