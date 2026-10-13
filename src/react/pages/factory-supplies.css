@@ -1,0 +1,21 @@
+.factory-map{height:484px;position:relative;overflow:hidden;background:#edf2fa;border:1px solid #dce4f2;border-radius:12px}
+.factory-map-canvas{height:100%;width:100%}
+.factory-map-overview{position:absolute;top:12px;right:12px;z-index:1;background:#fff;box-shadow:0 2px 8px #20305020;min-height:36px;padding:7px 12px;font-size:13px}
+.factory-map-feedback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;gap:12px;color:#52617a;background:#edf2fa}
+.factory-map-caption{position:absolute;bottom:12px;left:12px;right:12px;max-width:calc(100% - 24px);width:fit-content;padding:7px 10px;background:#fff;border-radius:6px;font-size:13px}
+.factory-source{color:#52617a;font-size:14px;line-height:1.8}
+.factory-list-panel{padding:22px!important;min-width:0}
+.factory-list-panel h2{font-size:20px;margin:0 0 20px}
+.factory-store-list{max-height:395px;overflow-y:auto;scrollbar-gutter:stable;padding-right:12px}
+.factory-store-list a{gap:6px;padding:18px 0;overflow-wrap:anywhere}
+.factory-store-list strong{font-size:17px;font-weight:600}
+.factory-store-list span{font-size:14px;line-height:1.8}
+.factory-store-list small{font-size:12px;line-height:1.8;color:#62708b}
+.factory-store-list a[aria-current=true]{color:var(--brand,#2448bc)}
+.factory-selected{margin-top:24px;padding:25px!important}
+.factory-selected h2{font-size:22px;overflow-wrap:anywhere}
+.factory-details{margin:20px 0}
+.factory-details>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding:10px 0;border-bottom:1px solid #edf0f7;font-size:14px;line-height:1.9}
+.factory-details dt{color:#62708b}.factory-details dd{margin:0;overflow-wrap:anywhere}
+@media(max-width:850px){.factory-supply-layout{grid-template-columns:1fr}.factory-map{height:330px}.factory-store-list{max-height:300px}}
+@media(max-width:400px){.factory-map{height:280px}.factory-list-panel,.factory-selected{padding:18px!important}.factory-details>div{grid-template-columns:72px minmax(0,1fr);gap:10px}}

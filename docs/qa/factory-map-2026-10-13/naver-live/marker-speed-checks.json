@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-13T05:51:30.574Z",
+  "browser": "Codex In-app Browser",
+  "configuredTiming": {
+    "markerPanMs": 180,
+    "zoomAppliedImmediatelyAfterPan": true,
+    "overviewAppliedImmediately": true,
+    "tileFadeMs": 100
+  },
+  "liveChecks": {
+    "overviewScale": "5km",
+    "focusScale": "100m",
+    "markerCount": 26,
+    "quickSelectionThenOverview": true,
+    "sameMarkerReselection": true
+  },
+  "relatedTestsPassed": 32,
+  "buildPassed": true,
+  "newLintWarnings": 0,
+  "screenshot": "marker-speed-iab.jpg"
+}

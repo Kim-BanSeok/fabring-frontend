@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "viewport": "desktop",
+      "realFactoryCount": 28,
+      "listCount": 28,
+      "selectedDetailsAndBack": true,
+      "horizontalOverflow": false,
+      "missingKeyFallback": true,
+      "naverRequests": 0
+    },
+    {
+      "viewport": "mobile",
+      "realFactoryCount": 28,
+      "listCount": 28,
+      "selectedDetailsAndBack": true,
+      "horizontalOverflow": false,
+      "missingKeyFallback": true,
+      "naverRequests": 0
+    }
+  ],
+  "pageErrors": [],
+  "source": "Real local HTTP API and PostgreSQL replay DB; no response substitution",
+  "coordinates": "All null; live Naver geocoding was not called"
+}

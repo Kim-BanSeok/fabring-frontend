@@ -7,6 +7,7 @@ import BuyerLivePatterns, { LiveRecommendationsPreview, LivePatternPickup } from
 import { BuyerLiveInquiries } from './InquiryPages.jsx';
 import { FavoriteButton, FavoriteList } from './FavoritePages.jsx';
 import LiveProfilePage from './LiveProfilePage.jsx';
+import FactorySupplies from './FactorySupplies.jsx';
 import { inquiryFlowPath } from './inquiry-model.js';
 import { isPatternRoute, recommendedPickupIssue, patternDetailPath } from './buyer-pattern-model.js';
 import { pickupAtKst } from '../services/reservation-contract.js';
@@ -452,7 +453,7 @@ function Supplies({ ctx }) {
   const storeId = routeId(ctx);
   const selected = SUPPLY_STORES.find(store => store.id === (storeId || ctx.query.get('selected') || '1'));
   const from = internalReturn(ctx.query.get('from'), 'pattern');
-  const supplyPath = path => addQuery(path, 'from', from);
+  const supplyPath = path => addQuery(addQuery(path, 'mode', 'demo'), 'from', from);
   const selectionPath = id => supplyPath(`/buyer/supplies?selected=${id}&focus=selected`);
   const backToPattern = from ? <LinkButton path={from}>도안으로 돌아가기</LinkButton> : null;
   useEffect(() => {
@@ -498,7 +499,7 @@ function BuyerScreens({ ctx }) {
   if (ctx.path === '/buyer/inquiries') return <Inquiries ctx={ctx} />;
   if (ctx.path.startsWith('/buyer/recommendations/')) return <Recommendations ctx={ctx} />;
   if (ctx.path === '/buyer/patterns' || ctx.path === '/buyer/patterns/pouch') return <Pattern ctx={ctx} />;
-  if (ctx.path === '/buyer/supplies' || ctx.path.startsWith('/buyer/supplies/')) return <Supplies ctx={ctx} />;
+  if (ctx.path === '/buyer/supplies' || ctx.path.startsWith('/buyer/supplies/')) return ctx.mode === 'live' ? <FactorySupplies ctx={ctx} /> : <Supplies ctx={ctx} />;
   if (ctx.path.startsWith('/buyer/errors/')) return <PickupError ctx={ctx} />;
   return <Page node="123:855"><EmptyState title="화면을 찾을 수 없어요"><LinkButton path="/buyer/fabrics" tone="primary">원단 둘러보기</LinkButton></EmptyState></Page>;
 }

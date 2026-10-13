@@ -2,7 +2,7 @@ import { Component, lazy, Suspense, useEffect, useLayoutEffect, useRef, useSyncE
 import AppShell from './react/components/AppShell.jsx';
 import ReviewTools from './react/components/ReviewTools.jsx';
 import { Button, EmptyState } from './react/components/ui.jsx';
-import { NAVIGATION_FOCUS_TARGETS } from './react/app/store.js';
+import { NAVIGATION_FOCUS_TARGETS, isFactoryRoute, pageMountKey } from './react/app/store.js';
 
 // Load the current role's screens without downloading every role's UI at entry.
 const loadPage = factory => lazy(async () => {
@@ -42,6 +42,7 @@ class PageErrorBoundary extends Component {
 function RoutePage({ ctx }) {
   if (ctx.path === '/preview') return <PreviewPage ctx={ctx} />;
   if (ctx.path.startsWith('/auth/')) return <AuthPage ctx={ctx} />;
+  if (ctx.mode === 'live' && isFactoryRoute(ctx.path)) return <BuyerPage ctx={ctx} />;
   if (ctx.mode === 'live' && ctx.auth.status !== 'authenticated') {
     const { status, error } = ctx.auth;
     const loading = status === 'restoring';
@@ -79,7 +80,7 @@ export default function App({ store }) {
   });
   return <>
     <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); const main = document.getElementById('main-content'); main.tabIndex = -1; main.focus(); }}>본문으로 바로가기</a>
-    <AppShell ctx={ctx} footer={import.meta.env.DEV || snapshot.mode === 'demo' ? <ReviewTools ctx={ctx} onReset={store.reset} /> : null}><PageErrorBoundary key={routeKey}><Suspense fallback={<section className="panel" role="status" aria-live="polite">화면을 불러오고 있어요…</section>}><RoutePage ctx={ctx} /></Suspense></PageErrorBoundary></AppShell>
+    <AppShell ctx={ctx} footer={import.meta.env.DEV || snapshot.mode === 'demo' ? <ReviewTools ctx={ctx} onReset={store.reset} /> : null}><PageErrorBoundary key={pageMountKey(snapshot)}><Suspense fallback={<section className="panel" role="status" aria-live="polite">화면을 불러오고 있어요…</section>}><RoutePage ctx={ctx} /></Suspense></PageErrorBoundary></AppShell>
     <div className="toast" id="feedback" role="status" aria-live="polite">{snapshot.toast}</div>
   </>;
 }

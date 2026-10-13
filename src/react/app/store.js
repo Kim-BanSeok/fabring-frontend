@@ -2,6 +2,12 @@ import { createMockApi } from '../../prototype/services/mock-api.js';
 import { createScenarioApi } from '../../prototype/data/scenarios.js';
 
 export const HOME = { BUYER: '/buyer/home', SELLER: '/seller/dashboard', ADMIN: '/admin/dashboard' };
+export const isFactoryRoute = (path = '') => path === '/buyer/supplies' || /^\/buyer\/supplies\/[1-9]\d*$/.test(path);
+export function pageMountKey({ sessionId, path, query, mode }) {
+  const key = `${sessionId}:${path}`;
+  // 선택 업체 변경은 같은 지도 안에서 처리한다. 세션·페이지 변경은 다시 마운트한다.
+  return mode === 'live' && path === '/buyer/supplies' ? key : `${key}?${query}`;
+}
 // Navigation accepts named destinations, never a selector supplied through a URL.
 export const NAVIGATION_FOCUS_TARGETS = Object.freeze({
   'seller-calendar-date': '.seller-calendar-day[aria-current="date"]',
@@ -50,12 +56,15 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
     if (liveApi && ['live', 'demo'].includes(requestedMode)) mode = requestedMode;
     if (requested && /^\d+:\d+$/.test(requested)) mode = 'demo';
     if (route.path === '/preview') mode = 'demo';
+    // 공개 공장 지도는 저장된 시연 세션보다 실제 조회를 우선한다.
+    // 명시적인 시연 링크와 Figma 상태 예시는 그대로 열 수 있다.
+    if (liveApi && isFactoryRoute(route.path) && requestedMode !== 'demo' && !(requested && /^\d+:\d+$/.test(requested))) mode = 'live';
     try { browser.sessionStorage?.setItem('yangju-loop-mode', mode); } catch { /* See above. */ }
     if (mode === 'live') {
       if (api !== liveApi) { api = liveApi; scenario = ''; sessionId++; }
       const auth = liveApi.getAuth();
       if (auth.status === 'restoring') queueMicrotask(() => { if (mode === 'live') void liveApi.restore(); });
-      if (auth.status === 'authenticated' && !route.path.startsWith('/auth/') && route.role !== auth.user.role) {
+      if (auth.status === 'authenticated' && !route.path.startsWith('/auth/') && !isFactoryRoute(route.path) && route.role !== auth.user.role) {
         browser.history.replaceState(null, '', `#${HOME[auth.user.role]}`);
         route = parseRoute(browser.location.hash);
       }

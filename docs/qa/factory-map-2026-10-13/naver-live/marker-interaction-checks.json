@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-13T05:40:21.615Z",
+  "browser": "Codex In-app Browser",
+  "source": "Actual user tab, local factory API and live Naver Maps; no response substitution",
+  "candidateCount": 28,
+  "markerCount": 26,
+  "selectedFactory": {
+    "id": 1360,
+    "name": "우진화스나(주)"
+  },
+  "initialScale": "5km",
+  "selectedScale": "100m",
+  "overviewRestoredScale": "5km",
+  "sameMarkerReselectionScale": "100m",
+  "overviewButtonVerified": true,
+  "accessibilityMapContainerAndControlsRetained": true,
+  "relatedTestsPassed": 30,
+  "buildPassed": true,
+  "newLintWarnings": 0,
+  "screenshot": "marker-focus-iab.jpg"
+}

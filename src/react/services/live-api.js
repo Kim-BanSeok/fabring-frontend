@@ -11,6 +11,7 @@ import { aiSessionIdentifier, aiAnswerInput, aiSession, aiAborted } from './ai-c
 import { inquiryIdentifier, inquiryQuery, inquiryInput, inquiryPage, inquiryMutation } from './inquiry-contract.js';
 import { profileInput, profileDetail } from './profile-contract.js';
 import { favoriteIdentifier, favoriteQuery, favoriteInput, favoritePage, favoriteCreated } from './favorite-contract.js';
+import { factoryQuery, factoryPage } from './factory-contract.js';
 
 export const AUTH_STORAGE_KEY = 'yangju-loop-auth-v1';
 const roles = ['BUYER', 'SELLER', 'ADMIN'];
@@ -304,6 +305,12 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     async listFavorites(input = {}, { signal } = {}) {
       const query = favoriteQuery(input);
       return favoriteRequest(`/favorites/me?${query}`, { signal, decode: raw => favoritePage(raw, query) });
+    },
+    async listFactories(input = {}, { signal } = {}) {
+      const query = factoryQuery(input), version = revision;
+      const raw = await request(`/factories?${query}`, { signal });
+      if (signal?.aborted || version !== revision) throw cancelled();
+      return factoryPage(raw, query);
     },
     async createFavorite(targetType, targetId, { signal } = {}) {
       const body = favoriteInput(targetType, targetId);

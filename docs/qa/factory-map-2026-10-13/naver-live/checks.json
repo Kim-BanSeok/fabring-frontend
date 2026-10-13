@@ -1,0 +1,438 @@
+{
+  "checkedAt": "2026-10-13T05:14:32.547Z",
+  "source": "Real local PostgreSQL/API and live Naver Maps SDK; no response substitution",
+  "checks": [
+    {
+      "viewport": "desktop",
+      "candidateCount": 28,
+      "locatedCount": 28,
+      "markerCount": 26,
+      "sameCoordinateGrouping": true,
+      "allCoordinatesMatchDatabase": true,
+      "allMarkersInitiallyInBounds": true,
+      "allMarkerIconsVisible": true,
+      "realNaverTilesLoaded": true,
+      "listToMarker": true,
+      "markerToList": true,
+      "detailsAndBack": true,
+      "horizontalOverflow": false
+    },
+    {
+      "viewport": "mobile",
+      "candidateCount": 28,
+      "locatedCount": 28,
+      "markerCount": 26,
+      "sameCoordinateGrouping": true,
+      "allCoordinatesMatchDatabase": true,
+      "allMarkersInitiallyInBounds": true,
+      "allMarkerIconsVisible": true,
+      "realNaverTilesLoaded": true,
+      "listToMarker": true,
+      "markerToList": true,
+      "detailsAndBack": true,
+      "horizontalOverflow": false
+    }
+  ],
+  "pageErrors": [],
+  "network": [
+    {
+      "viewport": "desktop",
+      "host": "oapi.map.naver.com",
+      "path": "/openapi/v3/maps.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1748/792.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1745/790.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1745/791.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1747/790.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1748/789.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1748/790.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1745/789.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1748/791.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "oapi.map.naver.com",
+      "path": "/v3/auth",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1747/791.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1747/792.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1744/790.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1744/791.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1744/789.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1744/792.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1746/791.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1746/790.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1746/792.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1745/792.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1747/789.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/11/1746/789.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "desktop",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "oapi.map.naver.com",
+      "path": "/openapi/v3/maps.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/872/395.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/874/396.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/872/394.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/873/396.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/873/395.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/873/394.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/874/394.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/872/396.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic/1791456229/10/874/395.png",
+      "status": 200,
+      "type": "image"
+    },
+    {
+      "viewport": "mobile",
+      "host": "oapi.map.naver.com",
+      "path": "/v3/auth",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/satellite.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/terrain.json",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "viewport": "mobile",
+      "host": "nrbe.map.naver.net",
+      "path": "/styles/basic.json",
+      "status": 200,
+      "type": "script"
+    }
+  ]
+}

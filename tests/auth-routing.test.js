@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createAppStore } from '../src/react/app/store.js';
+import { createAppStore, isFactoryRoute, pageMountKey } from '../src/react/app/store.js';
 import { createMockApi } from '../src/prototype/services/mock-api.js';
 import { createLiveApi, AUTH_STORAGE_KEY } from '../src/react/services/live-api.js';
 import { getAuthState } from '../src/react/pages/auth-state.js';
@@ -30,6 +30,66 @@ test('plain public entry opens real login even after a prior demo session', () =
   assert.equal(store.getSnapshot().mode, 'live');
   assert.equal(store.getSnapshot().auth.status, 'anonymous');
   assert.deepEqual(store.getSnapshot().state.fabrics, []);
+});
+
+test('public factory map opens real data without login after a saved demo session', async () => {
+  const storage = memory();
+  storage.setItem('yangju-loop-mode', 'demo');
+  const { store, liveApi } = setup('#/buyer/supplies', storage);
+  assert.equal(store.getSnapshot().mode, 'live');
+  assert.equal(store.getSnapshot().api, liveApi);
+  assert.equal(store.getSnapshot().auth.status, 'anonymous');
+  assert.equal(storage.getItem('yangju-loop-mode'), 'live');
+  await store.navigate('/buyer/supplies/23?from=%2Fbuyer%2Fpatterns%2F7');
+  assert.equal(store.getSnapshot().mode, 'live');
+  assert.equal(store.getSnapshot().query.get('from'), '/buyer/patterns/7');
+  assert.equal(isFactoryRoute(store.getSnapshot().path), true);
+  for (const path of ['/buyer/favorites', '/buyer/supplies-private', '/buyer/supplies/23/edit']) assert.equal(isFactoryRoute(path), false);
+});
+
+test('factory navigation exits demo by default but explicit demo and gallery routes stay examples', async () => {
+  const { store, liveApi } = setup('#/buyer/home?mode=demo');
+  assert.equal(store.getSnapshot().mode, 'demo');
+  await store.navigate('/buyer/supplies');
+  assert.equal(store.getSnapshot().api, liveApi);
+  await store.navigate('/buyer/supplies?mode=demo');
+  assert.equal(store.getSnapshot().mode, 'demo');
+  await store.navigate('/buyer/supplies/1?mode=demo');
+  assert.equal(store.getSnapshot().mode, 'demo');
+  await store.navigate('/buyer/supplies?scenario=123:1637');
+  assert.equal(store.getSnapshot().mode, 'demo');
+  await store.navigate('/buyer/supplies');
+  assert.equal(store.getSnapshot().mode, 'live');
+});
+
+test('public factory map preserves authenticated role while private buyer routes retain role checks', async () => {
+  const { store, liveApi } = setup();
+  liveApi.commitLogin(await liveApi.login({ email: profile.email, password: 'TestPass123!' }));
+  await store.navigate('/buyer/supplies');
+  assert.equal(store.getSnapshot().path, '/buyer/supplies');
+  assert.equal(liveApi.getAuth().user.role, 'SELLER');
+  await store.navigate('/buyer/favorites');
+  assert.equal(store.getSnapshot().path, '/seller/dashboard');
+  await liveApi.logout();
+});
+
+test('factory selection preserves the mounted map while detail, mode and session changes reset it', async () => {
+  const { store, liveApi } = setup('#/buyer/supplies');
+  const stop = store.connect();
+  const first = pageMountKey(store.getSnapshot());
+  await store.navigate('/buyer/supplies?selected=331&focus=selected');
+  assert.equal(pageMountKey(store.getSnapshot()), first);
+  await store.navigate('/buyer/supplies?selected=348&focus=selected');
+  assert.equal(pageMountKey(store.getSnapshot()), first);
+  await store.navigate('/buyer/supplies/348');
+  assert.notEqual(pageMountKey(store.getSnapshot()), first);
+  await store.navigate('/buyer/supplies?mode=demo');
+  assert.notEqual(pageMountKey(store.getSnapshot()), first);
+  await store.navigate('/buyer/supplies');
+  liveApi.commitLogin(await liveApi.login({ email: profile.email, password: 'TestPass123!' }));
+  assert.notEqual(pageMountKey(store.getSnapshot()), first);
+  await liveApi.logout();
+  stop();
 });
 
 test('live route roles never change authenticated server role or expose demo state', async () => {

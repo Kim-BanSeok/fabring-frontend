@@ -1,0 +1,31 @@
+{
+  "verifiedAt": "2026-10-13T06:09:29.071Z",
+  "url": "http://127.0.0.1:5173/#/buyer/supplies?selected=2860&focus=selected",
+  "transition": {
+    "durationMsConfigured": 300,
+    "easing": "easeOutCubic",
+    "marker": "morph",
+    "overview": "panToBounds",
+    "tileDurationMsConfigured": 120
+  },
+  "browser": {
+    "canvas": [
+      "mapboxgl-canvas"
+    ],
+    "markers": 26,
+    "scale": "100m"
+  },
+  "checks": [
+    "Selected deep link opens at 100m after GL init",
+    "Overview restores 5km",
+    "Same marker selection returns to 100m",
+    "Overview followed by selection finishes at latest factory 2860",
+    "Candidate count 28, unique markers 26"
+  ],
+  "tests": {
+    "related": 32,
+    "passed": 32,
+    "build": "passed",
+    "lint": "no errors or new warnings; 5 existing SellerVoiceAnswer warnings"
+  }
+}

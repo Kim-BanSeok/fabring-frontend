@@ -28,8 +28,8 @@ export function Logo({ role }) {
 
 export default function AppShell({ ctx, children, footer }) {
   const { path, query, role, logout } = ctx;
-  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile'].includes(path)
-    || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/', '/buyer/patterns/', '/buyer/recommendations/'].some(prefix => path.startsWith(prefix));
+  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile', '/buyer/supplies'].includes(path)
+    || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/', '/buyer/patterns/', '/buyer/recommendations/', '/buyer/supplies/'].some(prefix => path.startsWith(prefix));
   const sellerConnectedPage = ['/seller', '/seller/dashboard', '/seller/calendar', '/seller/reservations', '/seller/fabrics', '/seller/register', '/seller/upload', '/seller/store', '/seller/profile', '/seller/profile/saved', '/seller/approval'].includes(path)
     || path === '/seller/inquiries' || ['/seller/reservations/', '/seller/fabrics/', '/seller/register/', '/seller/inquiries/'].some(prefix => path.startsWith(prefix));
   const adminConnectedPage = role === 'ADMIN' && (path === '/admin' || path.startsWith('/admin/'));
