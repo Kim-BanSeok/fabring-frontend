@@ -12,7 +12,7 @@ export const routeId = ctx => { try { return ctx.resolvedFabricId || decodeURICo
 export const href = path => `#${path}`;
 export const fabricRoute = id => `/buyer/fabrics/${encodeURIComponent(id)}`;
 export const quantityText = cm => Number(cm) % 90 === 0 ? `${Number(cm) / 90}마(${Number(cm)}cm)` : `${Number(cm)}cm`;
-export const dimensions = fabric => fabric.sale_type === 'ROLL' ? `폭 ${fabric.width_cm}cm · 구매 가능 ${quantityText(fabric.available_length_cm ?? 0)}` : `폭 ${fabric.width_cm}cm × 길이 ${fabric.length_cm}cm`;
+export const dimensions = fabric => fabric.sale_type === 'ROLL' ? `폭 ${fabric.width_cm}cm · 구매 가능 ${quantityText(fabric.available_length_cm ?? 0)}` : `폭 ${fabric.width_cm}cm × 길이 ${fabric.length_cm}cm${fabric.sheet_count ? ` · ${fabric.sheet_count}장` : ''}`;
 export const priceText = fabric => `${price(fabric.price)} / ${fabric.sale_type === 'ROLL' ? '1마(90cm)' : '한 장'}`;
 export const dateText = value => String(value || '').replaceAll('-', '.');
 export const validDate = offset => {

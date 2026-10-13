@@ -288,6 +288,9 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     async startAiSession({ signal } = {}) {
       return aiRequest('/ai-sessions', { method: 'POST', signal, decode: raw => aiSession(raw, { open: true }) });
     },
+    async composeAiListing(input, { signal } = {}) {
+      return aiRequest('/ai-sessions/listings', { method: 'POST', signal, body: input, answer: true, decode: raw => aiSession(raw, { detail: true, open: true }) });
+    },
     async getAiSession(id, { signal } = {}) {
       const sessionId = aiSessionIdentifier(id);
       return aiRequest(`/ai-sessions/${sessionId}`, { sessionId, signal, decode: raw => aiSession(raw, { id: sessionId, detail: true }) });

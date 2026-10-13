@@ -436,7 +436,7 @@ function fabricDetailView(ctx) {
   const f = fabricByQuery(ctx);
   if (!f) return missing('127:7149');
   const after = ctx.query.get('after') === 'pickup';
-  return wrap(after ? '129:5726' : '127:7149', <>{pageHeading(after ? '내 원단 목록' : '내 원단 상세', after ? '수령 확인으로 변경된 원단 재고를 확인하세요.' : f.title)}{after ? notice('수령 완료된 수량을 현재 남은 길이에 반영했어요.') : fabricImage(f, 'seller-banner-image')}{record('원단 정보', <>{details(fabricRows(f))}{f.reject_reason ? notice(`거절 사유: ${f.reject_reason}`, 'error') : ''}</>, {
+  return wrap(after ? '129:5726' : '127:7149', <>{pageHeading(after ? '내 원단 목록' : '내 원단 상세', after ? '수령 확인으로 변경된 원단 재고를 확인하세요.' : f.title)}{after ? notice('수령 완료된 수량을 현재 남은 길이에 반영했어요.') : fabricImage(f, 'seller-banner-image')}{record('원단 정보', <>{details(fabricRows(f))}{f.description ? <section className="seller-listing-copy"><h3>원단 소개</h3><p>{f.description}</p></section> : null}{f.reject_reason ? notice(`거절 사유: ${f.reject_reason}`, 'error') : ''}</>, {
       status: FABRIC_STATUS[f.status]
     })}{record('재고 현황', details(stockRows(f)))}<div className={"actions"}>{f.status !== 'SOLD_OUT' ? go(f.status === 'REJECTED' ? '내용 보완하기' : '정보 수정', fabricRoute(f, 'edit'), 'primary') : ''}{go('판매 내역 확인', `/seller/reservations?status=ALL&fabric=${encodeURIComponent(f.id)}`)}{go('삭제', fabricRoute(f, 'delete'), 'danger')}{go('원단 목록', '/seller/fabrics')}</div></>);
 }

@@ -4,7 +4,7 @@ import { createLiveApi } from '../src/react/services/live-api.js';
 import { ownFabricQuery, ownFabricPage, ownFabricDetail, sellerFabricInput, imageUploadBody } from '../src/react/services/seller-fabric-contract.js';
 
 const response = (data, status = 200) => new Response(JSON.stringify(status < 400 ? { success: true, data } : { success: false, error: data }), { status });
-const draft = (sale_type = 'SCRAP') => ({ sale_type, title: ' 검증 원단 ', price: 5000, width_cm: 120, length_cm: sale_type === 'SCRAP' ? 80 : null, remaining_length_cm: sale_type === 'ROLL' ? 450 : null, material: '면', thickness: '중간 두께', color: '네이비', has_defect: false, description: ' 설명 ', photo_names: ['not-wire.png'], status: 'POSTED' });
+const draft = (sale_type = 'SCRAP') => ({ sale_type, title: ' 검증 원단 ', price: 5000, width_cm: 120, length_cm: sale_type === 'SCRAP' ? 80 : null, remaining_length_cm: sale_type === 'ROLL' ? 450 : null, material: '면', thickness: '중간 두께', color: '네이비', has_defect: false, description: ' 설명 ', sheet_count: sale_type === 'SCRAP' ? 2 : null, photo_names: ['not-wire.png'], status: 'POSTED' });
 const summary = (status = 'REJECTED') => ({ fabricId: 12, title: '원단', sale_type: 'ROLL', price: 5000, material: 'COTTON', thickness: 'NORMAL', color_family: 'NAVY', width_cm: 120, length_cm: null, available_length_cm: 270, is_reserved: false, has_defect: false, thumbnail_url: null, store_name: '매장', status, reject_reason: status === 'REJECTED' ? '사진 보완' : null, active_reservation_count: 2 });
 const detail = () => ({ fabricId: 12, title: '원단', sale_type: 'ROLL', price: 5000, status: 'POSTED', remaining_length_cm: 450, reject_reason: null,
   detail: { material: 'COTTON', thickness: 'NORMAL', color_family: 'NAVY', color_detail: null, width_cm: 120, length_cm: null, has_defect: false, defect_note: null, blend_ratio: null, weave: null, grain_direction: null, description: '설명' },
@@ -44,7 +44,7 @@ test('own detail requires private owner fields and distinguishes total remaining
 test('creation maps UI enum labels, trims optional text and omits UI metadata', () => {
   const body = sellerFabricInput(draft());
   assert.equal(body.title, '검증 원단'); assert.equal(body.detail.material, 'COTTON'); assert.equal(body.detail.thickness, 'NORMAL'); assert.equal(body.detail.color_family, 'NAVY');
-  assert.equal(body.detail.description, '설명'); assert.equal(body.detail.length_cm, 80); assert.equal(body.remaining_length_cm, null);
+  assert.equal(body.detail.description, '설명'); assert.equal(body.detail.length_cm, 80); assert.equal(body.detail.sheet_count, 2); assert.equal(body.remaining_length_cm, null);
   assert.equal(body.photo_names, undefined); assert.equal(body.status, undefined);
   assert.equal(sellerFabricInput(draft('ROLL')).detail.length_cm, null);
   assert.equal(sellerFabricInput(draft('ROLL')).remaining_length_cm, 450);
@@ -55,7 +55,7 @@ test('partial patch keeps omission, explicit clearing and unknown material disti
   assert.throws(() => sellerFabricInput({}, { partial: true }), { code: 'VALIDATION_ERROR' });
 });
 test('client rejects invalid dimensions, prices, enums and defect explanation before sending', () => {
-  for (const patch of [{ price: 2147483648 }, { price: 0 }, { width_cm: 1001 }, { length_cm: 29 }, { length_cm: null }, { title: ' ' }, { material: '알수없는소재' }, { has_defect: true }, { description: 'x'.repeat(5001) }]) {
+  for (const patch of [{ price: 2147483648 }, { price: 0 }, { width_cm: 1001 }, { length_cm: 0 }, { length_cm: null }, { title: ' ' }, { material: '알수없는소재' }, { has_defect: true }, { description: 'x'.repeat(5001) }]) {
     assert.throws(() => sellerFabricInput({ ...draft(), ...patch }), { code: 'VALIDATION_ERROR' });
   }
   assert.throws(() => sellerFabricInput({ ...draft('ROLL'), remaining_length_cm: 89 }), { code: 'VALIDATION_ERROR' });

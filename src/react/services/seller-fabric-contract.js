@@ -72,6 +72,13 @@ export function sellerFabricInput(input, { partial = false } = {}) {
   if (required('title')) text('title', 100, body, true);
   if (required('price')) number('price', 1, intMax);
   if (required('width_cm')) number('width_cm', 1, 1000, detail);
+  if (has('sheet_count') || (!partial && input.sale_type === 'SCRAP')) {
+    if (input.sale_type === 'ROLL') {
+      if (input.sheet_count != null) validation('롤은 판매 장수를 보내지 않아요.');
+      detail.sheet_count = null;
+    } else if (!integer(input.sheet_count, 1, 9999)) validation('판매 장수는 1장 이상 9,999장 이하인 정수로 입력해 주세요.');
+    else detail.sheet_count = input.sheet_count;
+  }
   for (const [key, kind] of [['material', 'material'], ['thickness', 'thickness'], ['color', 'color']]) {
     const source = key === 'color' && has('color_family') ? 'color_family' : key;
     if (!partial || has(source)) detail[key === 'color' ? 'color_family' : key] = fabricWireCode(kind, key === 'material' && input[source] == null ? 'UNKNOWN' : input[source]);

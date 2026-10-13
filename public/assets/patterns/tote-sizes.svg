@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="420" viewBox="0 0 1100 420">
+
+  <rect width="1100" height="420" fill="#cfc4b6"/>
+  <text x="40" y="42" fill="#3d342c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">표준 사이즈 중에서 고르면 아래 도안을 그대로 쓸 수 있습니다.</text>
+  
+    <path d="M 121.5 148 Q 129.54 112 138.84 146" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 178.5 148 Q 170.45999999999998 112 161.16 146" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 83 156 L 217 156 L 225 250 L 75 250 Z" fill="#f4efe6" stroke="#3d342c" stroke-width="2.5"/>
+    <path d="M 93 168 L 207 168 L 213 240 L 87 240 Z" fill="none" stroke="#d9cfc2" stroke-width="1.5"/>
+  
+    <path d="M 367.5 108 Q 372.18 72 380.28 106" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 412.5 108 Q 407.82 72 399.72 106" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 333 116 L 447 116 L 455 250 L 325 250 Z" fill="#f4efe6" stroke="#3d342c" stroke-width="2.5"/>
+    <path d="M 343 128 L 437 128 L 443 240 L 337 240 Z" fill="none" stroke="#d9cfc2" stroke-width="1.5"/>
+  
+    <path d="M 621 163 Q 623.72 127 631.12 161" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 659 163 Q 656.28 127 648.88 161" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 588 171 L 692 171 L 700 250 L 580 250 Z" fill="#f4efe6" stroke="#3d342c" stroke-width="2.5"/>
+    <path d="M 598 183 L 682 183 L 688 240 L 592 240 Z" fill="none" stroke="#d9cfc2" stroke-width="1.5"/>
+  
+    <path d="M 869 128 Q 884.04 92 895.84 126" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 951 128 Q 935.96 92 924.16 126" fill="none" stroke="#3d342c" stroke-width="7" stroke-linecap="round"/>
+    <path d="M 823 136 L 997 136 L 1005 250 L 815 250 Z" fill="#f4efe6" stroke="#3d342c" stroke-width="2.5"/>
+    <path d="M 833 148 L 987 148 L 993 240 L 827 240 Z" fill="none" stroke="#d9cfc2" stroke-width="1.5"/>
+  <text x="150" y="300" text-anchor="middle" fill="#3d342c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="18" font-weight="700">기본 A4</text>
+  <text x="390" y="300" text-anchor="middle" fill="#3d342c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="18" font-weight="700">세로로 긴 A4</text>
+  <text x="640" y="300" text-anchor="middle" fill="#3d342c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="18" font-weight="700">도시락 가방</text>
+  <text x="910" y="300" text-anchor="middle" fill="#3d342c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="18" font-weight="700">1박 여행 가방</text>
+  <text x="550" y="370" text-anchor="middle" fill="#5c534b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16">사진의 가방은 완성 크기 예시입니다. 재단 치수는 아래 도안을 따릅니다.</text>
+
+</svg>

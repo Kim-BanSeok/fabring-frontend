@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="620" viewBox="0 0 880 620">
+
+  <title>안감 뒤집기 구멍</title>
+  <rect width="880" height="620" fill="#f7f8fb"/>
+  <text x="36" y="46" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700">3. 안감 — 바닥 가운데 8cm</text>
+  <text x="36" y="76" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">겉감과 같이 박되, 바닥 가운데는 뒤집기 구멍으로 남깁니다.</text>
+  <g transform="translate(160,140)">
+    <rect x="0" y="0" width="420" height="280" fill="#edf3fb" stroke="#20242b" stroke-width="2.5"/>
+    <path d="M28 28 V252 H150" fill="none" stroke="#2458c6" stroke-width="4" stroke-dasharray="9 6"/>
+    <path d="M270 252 H392 V28" fill="none" stroke="#2458c6" stroke-width="4" stroke-dasharray="9 6"/>
+    <line x1="158" y1="252" x2="262" y2="252" stroke="#c2410c" stroke-width="6"/>
+    <circle cx="158" cy="252" r="6" fill="#c2410c"/>
+    <circle cx="262" cy="252" r="6" fill="#c2410c"/>
+    <text x="210" y="236" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#c2410c">8cm</text>
+    <text x="210" y="140" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" text-anchor="middle">안감 2장</text>
+    <text x="460" y="120" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">빨간 선 8cm는</text>
+    <text x="460" y="148" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">박지 않습니다.</text>
+    <text x="460" y="190" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">구멍 양쪽 끝은</text>
+    <text x="460" y="218" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">되돌아 박아</text>
+    <text x="460" y="246" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">터지지 않게 합니다.</text>
+  </g>
+  <text x="36" y="560" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">구멍이 너무 크면 안감이 겉으로 나오고, 너무 짧으면 뒤집기 어렵습니다.</text>
+  <text x="36" y="588" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">입구는 겉감처럼 열어 둡니다. 이 구멍으로 나중에 전체를 뒤집습니다.</text>
+</svg>

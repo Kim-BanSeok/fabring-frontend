@@ -8,11 +8,12 @@ import { AI_ACTIVE_KEY, AI_FIELD_LABELS, aiDraftKey, aiPath, aiOptionLabel, aiMe
 import SellerVoiceAnswer from './SellerVoiceAnswer.jsx';
 import { primeMicrophone, unlockVoice } from './sellerVoice.js';
 import useSellerAiSession from './useSellerAiSession.js';
+import SellerAiBrief from './SellerAiBrief.jsx';
 import './sellerAi.css';
 
 export function AiProviderNotice() {
   const provider = import.meta.env.VITE_AI_PROVIDER;
-  return <Notice>{provider === 'fake' ? '현재 연결된 개발 서버는 외부 AI 대신 규칙 기반 테스트 도우미를 사용해요. 답변 정리와 실제 원단 등록 흐름을 확인할 수 있어요.' : provider === 'openai' ? '질문에 입력한 답변을 AI가 원단 정보로 정리해요. 등록 전에 내용이 맞는지 직접 확인해 주세요.' : '입력한 답변은 서버의 등록 도우미가 정리해요. 이 환경의 외부 AI 연결 여부는 확인되지 않았어요.'} 사진은 원단 게시물에 첨부하며, 대화 분석에는 보내지 않아요.</Notice>;
+  return <Notice>{provider === 'fake' ? '현재 연결된 개발 서버는 외부 AI 대신 규칙 기반 테스트 도우미를 사용해요. 답변 정리와 실제 원단 등록 흐름을 확인할 수 있어요.' : provider === 'openai' ? '입력과 사진을 AI가 상세설명으로 정리해요. 등록 전에 내용이 맞는지 직접 확인해 주세요.' : '입력한 내용과 사진은 서버의 등록 도우미가 정리해요. 이 환경의 외부 AI 연결 여부는 확인되지 않았어요.'} 폭, 길이, 소재 표현은 입력한 값을 유지해요.</Notice>;
 }
 
 function DraftSummary({ session }) {
@@ -24,43 +25,13 @@ function DraftSummary({ session }) {
   return <section className="panel seller-panel"><h2>지금까지 정리된 항목</h2><FabricDetails rows={rows} />{raw.description && <section className="seller-listing-copy"><h3>원단 소개</h3><p>{raw.description}</p></section>}{session?.unconfirmed_fields.length > 0 && <Notice tone="warning">직접 확인할 항목: {session.unconfirmed_fields.map(key => AI_FIELD_LABELS[key] || key).join(', ')}</Notice>}</section>;
 }
 
-function StartAiRegistration({ ctx }) {
-  const mutation = useReservationMutation(ctx), active = ctx.drafts.get(AI_ACTIVE_KEY);
-  const [uncertain, setUncertain] = useState(() => Boolean(ctx.drafts.get('seller:live:ai:start-unknown')));
-  const start = () => {
-    unlockVoice();
-    primeMicrophone();
-    return mutation.run(async ({ signal, isCurrent }) => {
-    ctx.drafts.set('seller:live:ai:start-unknown', true); setUncertain(true);
-    try {
-      const session = await ctx.api.startAiSession({ signal });
-      if (!isCurrent()) return;
-      ctx.drafts.delete('seller:live:ai:start-unknown');
-      const opening = session.next_question?.text;
-      const withMessages = opening ? { ...session, messages: [{ role: 'assistant', content: opening, created_at: new Date().toISOString() }] } : session;
-      ctx.drafts.set(AI_ACTIVE_KEY, session.sessionId);
-      ctx.drafts.set(aiDraftKey(session.sessionId), { session: withMessages, answer: '' });
-      ctx.navigate(aiPath(session.sessionId));
-    } catch (error) {
-      if (isCurrent() && !error.outcomeUnknown) { ctx.drafts.delete('seller:live:ai:start-unknown'); setUncertain(false); }
-      throw error;
-    }
-  });
-  };
-  return <section className="seller-page stack" data-figma-node="123:3842"><PageHeading title="원단 등록 · AI와 대화로" description="질문을 하나씩 듣고 답하면 등록 항목이 채워져요. 확인·수정과 사진 첨부를 마친 뒤 승인 신청을 보내요." /><RegistrationSteps mode="AI" /><AiProviderNotice />
-    <section className="panel seller-panel"><h2>원단 등록 도우미</h2><p>대화를 시작하면 바로 물어봐요. 말로 답하면 다음 질문으로 넘어가고, 버튼을 눌러 답해도 돼요.</p><Notice>대화는 서버 메모리에 임시 보관해요. 서버 재시작 또는 24시간 동안 사용하지 않으면 사라질 수 있어요. 선택한 사진과 수정 중인 내용은 이 탭에서만 보관하므로 새로고침하면 다시 선택해야 해요.</Notice></section>
-    {mutation.failure && <Notice tone="error">{aiFailureMessage(mutation.failure)}</Notice>}
-    {uncertain && !mutation.busy && <Notice tone="warning">대화가 만들어졌는지 확인하지 못했어요. 아직 원단 등록은 요청하지 않았어요. 다시 시작하면 새 대화를 만듭니다.</Notice>}
-    <div className="actions">{active && <FabricLink path={aiPath(active)} tone="primary">이전 대화 이어서 확인</FabricLink>}<Button tone={active ? 'secondary' : 'primary'} onClick={start} disabled={mutation.busy}>{mutation.busy ? '대화 준비 중' : active || uncertain ? '새 대화 시작' : 'AI와 대화 시작'}</Button><FabricLink path="/seller/register/type">직접 입력하기</FabricLink><FabricLink path="/seller/register">등록 방식으로</FabricLink></div>
-  </section>;
-}
-
 function AiSession({ ctx, id }) {
   const resource = useSellerAiSession(ctx, id), mutation = useReservationMutation(ctx);
   const { record, save } = resource, session = record.session;
   const [checkedMissing, setCheckedMissing] = useState(false);
   const [reviewed, setReviewed] = useState(false);
   const [hearing, setHearing] = useState('');
+  const [speak, setSpeak] = useState(false);
   const questionRef = useRef(null), focusQuestion = useRef(false), chatRef = useRef(null);
   useEffect(() => {
     if (chatRef.current) chatRef.current.scrollTop = chatRef.current.scrollHeight;
@@ -174,12 +145,13 @@ function AiSession({ ctx, id }) {
   if (step === 'edit') return <section className="seller-page stack" data-figma-node={draft.sale_type === 'SCRAP' ? '127:6196' : '123:3466'}><PageHeading title="정리된 내용을 확인·수정해 주세요" description="정확하지 않거나 비어 있는 항목을 보완하고 사진을 첨부해 주세요." />{feedback}{session.unconfirmed_fields.length > 0 && <Notice tone="warning">대화에서 확인하지 못한 항목: {session.unconfirmed_fields.map(key => AI_FIELD_LABELS[key] || key).join(', ')}. 아래 내용을 직접 확인해 주세요.</Notice>}<RegistrationSteps mode="AI" stage={2} /><nav className="tabs seller-tabs" aria-label="판매 형태">{['ROLL', 'SCRAP'].map(type => <Button key={type} className={draft.sale_type === type ? 'seller-tab--active' : ''} aria-pressed={draft.sale_type === type} disabled={blocked} onClick={() => draftRemember(changeAiSaleType(draft, type))}>{aiOptionLabel('sale_type', type)}</Button>)}</nav>{['ROLL', 'SCRAP'].includes(draft.sale_type) ? <LiveFabricForm key={draft.sale_type} ctx={ctx} initial={draft} onRemember={draftRemember} onSubmit={session.session_status === 'ABORTED' ? value => { draftRemember(value); directCopy(); } : toReview} busy={blocked} photosPath={aiPath(id, 'photos')} onReviewPhotos={value => { draftRemember(value); ctx.navigate(aiPath(id, 'photos')); }} backPath={aiPath(id)} submitLabel={session.session_status === 'ABORTED' ? '직접 입력에서 계속' : '등록 내용 확인'} /> : <Notice>판매 형태를 먼저 선택해 주세요. 다른 항목과 사진은 유지돼요.</Notice>}</section>;
 
   const question = session.next_question;
-  return <section className="seller-page stack" data-figma-node="123:3842"><PageHeading title="원단 등록 · AI와 대화로" description="질문에 하나씩 답해 주세요. 확인한 내용은 ‘정리된 항목’에 모아 보여드려요." /><RegistrationSteps mode="AI" /><AiProviderNotice />{feedback}<div className="seller-ai-layout"><div className="stack"><section className="panel seller-panel"><h2>원단 등록 도우미</h2><div ref={chatRef} className="seller-chat seller-live-ai-chat" role="log" aria-label="등록 대화" tabIndex={0}>{session.messages?.map((message, index) => <div key={`${index}-${message.created_at}`} className={message.role === 'user' ? 'seller-chat-user' : 'notice notice--info'}><small className="muted">{message.role === 'user' ? '내 답변' : '등록 도우미'}</small><p>{aiMessageDisplay(message)}</p></div>)}</div>{!session.messages?.length && <p className="muted">현재 질문부터 계속할 수 있어요. 이전 대화는 다시 조회해 주세요.</p>}</section>
-      {question ? <section className="panel seller-panel" ref={questionRef} tabIndex={-1}><SellerVoiceAnswer questionText={question.text} paused={blocked} onSpoken={text => answer({ answer: text })} onHearing={setHearing} />{hearing && <p className="seller-chat-user">{hearing}</p>}{question.options?.length > 0 && <div className="actions">{question.options.map(option => <Button key={option} onClick={() => answer({ selected: option })} disabled={blocked}>{aiOptionLabel(question.field, option)}</Button>)}</div>}<details className="seller-voice-type"><summary>글로 답하기</summary><form className="stack" onSubmit={event => { event.preventDefault(); if (record.answer?.trim()) answer({ answer: record.answer.trim() }); }}><label className="field"><span>질문에 대한 답변</span><textarea rows={3} maxLength={1000} value={record.answer || ''} onChange={event => patch({ answer: event.target.value })} disabled={blocked} placeholder="모르면 ‘모름’이라고 적어도 돼요." /></label><Button type="submit" tone="primary" disabled={blocked || !record.answer?.trim()}>{mutation.busy ? '답변 처리 중' : '답변 보내기'}</Button></form></details><Button onClick={() => answer({ finish: true })} disabled={blocked}>여기까지 정리하고 직접 보완</Button></section> : <section className="panel seller-panel"><h2 ref={questionRef} tabIndex={-1}>초안을 확인해 주세요</h2><p>질문을 마쳤어요. 비어 있거나 정확하지 않은 항목을 보완하고 사진을 추가해 주세요.</p><Button tone="primary" onClick={edit} disabled={blocked}>내용 수정 · 사진 추가</Button></section>}
+  const listing = question?.field === 'listing';
+  return <section className="seller-page stack" data-figma-node="123:3842"><PageHeading title="원단 등록 · AI가 상세 정보를 써 줘요" description="원단을 짧게 적으면 AI가 이름, 치수, 소재, 소개글을 채워요. 맞지 않는 항목은 확인 화면에서 고치면 돼요." /><RegistrationSteps mode="AI" /><AiProviderNotice />{feedback}<div className="seller-ai-layout"><div className="stack"><section className="panel seller-panel"><h2>원단 등록 도우미</h2><div ref={chatRef} className="seller-chat seller-live-ai-chat" role="log" aria-label="등록 대화" tabIndex={0}>{session.messages?.map((message, index) => <div key={`${index}-${message.created_at}`} className={message.role === 'user' ? 'seller-chat-user' : 'notice notice--info'}><small className="muted">{message.role === 'user' ? '내 설명' : '등록 도우미'}</small><p>{aiMessageDisplay(message)}</p></div>)}</div>{!session.messages?.length && <p className="muted">안내를 다시 불러오는 중이에요.</p>}</section>
+      {question ? <section className="panel seller-panel" ref={questionRef} tabIndex={-1}>{listing ? <form className="stack" onSubmit={event => { event.preventDefault(); if (record.answer?.trim()) answer({ answer: record.answer.trim() }); }}><label className="field"><span>어떤 원단인가요?</span><textarea rows={5} maxLength={1000} value={record.answer || ''} onChange={event => patch({ answer: event.target.value })} disabled={blocked} placeholder="예: 네이비 면 자투리, 가로 50 세로 70, 얇고 하자가 없어요. 한 장에 7천원." /></label><Button type="submit" tone="primary" disabled={blocked || !record.answer?.trim()}>{mutation.busy ? '상세 정보를 쓰는 중' : '상세 정보 작성'}</Button></form> : <><SellerVoiceAnswer questionText={question.text} paused={blocked} onSpoken={text => answer({ answer: text })} onHearing={setHearing} />{hearing && <p className="seller-chat-user">{hearing}</p>}{question.options?.length > 0 && <div className="actions">{question.options.map(option => <Button key={option} onClick={() => answer({ selected: option })} disabled={blocked}>{aiOptionLabel(question.field, option)}</Button>)}</div>}<details className="seller-voice-type"><summary>글로 답하기</summary><form className="stack" onSubmit={event => { event.preventDefault(); if (record.answer?.trim()) answer({ answer: record.answer.trim() }); }}><label className="field"><span>질문에 대한 답변</span><textarea rows={3} maxLength={1000} value={record.answer || ''} onChange={event => patch({ answer: event.target.value })} disabled={blocked} placeholder="모르면 ‘모름’이라고 적어도 돼요." /></label><Button type="submit" tone="primary" disabled={blocked || !record.answer?.trim()}>{mutation.busy ? '답변 처리 중' : '답변 보내기'}</Button></form></details></>}{listing && <details className="seller-voice-type" onToggle={event => setSpeak(event.currentTarget.open)}><summary>말로 설명하기</summary>{speak && <><SellerVoiceAnswer questionText={question.text} paused={blocked} onSpoken={text => answer({ answer: text })} onHearing={setHearing} />{hearing && <p className="seller-chat-user">{hearing}</p>}</>}</details>}<Button onClick={() => answer({ finish: true })} disabled={blocked}>설명 없이 직접 입력</Button></section> : <section className="panel seller-panel"><h2 ref={questionRef} tabIndex={-1}>초안을 확인해 주세요</h2><p>적은 내용으로 상세 정보를 정리했어요. 비어 있거나 다른 항목을 고치고 사진을 추가해 주세요.</p><Button tone="primary" onClick={edit} disabled={blocked}>내용 수정 · 사진 추가</Button></section>}
       <div className="actions"><Button onClick={abort} disabled={mutation.busy || resource.loading || Boolean(resource.error)}>대화를 중단하고 직접 입력으로</Button><FabricLink path="/seller/register">등록 방식으로</FabricLink></div><p className="muted">대화는 서버 재시작 또는 24시간 미사용 시 사라질 수 있어요. 사진과 수정 내용은 새로고침하면 다시 입력해야 해요.</p></div><DraftSummary session={session} /></div></section>;
 }
 
 export default function SellerLiveAiRegistration({ ctx }) {
   const id = ctx.query.get('session');
-  return id ? <AiSession key={id} ctx={ctx} id={id} /> : <StartAiRegistration ctx={ctx} />;
+  return id ? <AiSession key={id} ctx={ctx} id={id} /> : <SellerAiBrief ctx={ctx} />;
 }

@@ -3,7 +3,7 @@ import { Button, Badge, Notice, PageHeading, EmptyState, FabricImage, Field, Sel
 import useFabricResource from '../hooks/useFabricResource.js';
 import useReservationResource from '../hooks/useReservationResource.js';
 import useReservationMutation from '../hooks/useReservationMutation.js';
-import BuyerLivePatterns, { LiveRecommendationsPreview, LivePatternPickup } from './BuyerLivePatterns.jsx';
+import BuyerLivePatterns, { MakingSteps, pouchGuideImages, LiveRecommendationsPreview, LivePatternPickup } from './BuyerLivePatterns.jsx';
 import { BuyerLiveInquiries } from './InquiryPages.jsx';
 import { FavoriteButton, FavoriteList } from './FavoritePages.jsx';
 import LiveProfilePage from './LiveProfilePage.jsx';
@@ -204,12 +204,11 @@ function Fabrics({ ctx, dedicated = false }) {
   </Page>;
 }
 
-function ProductArt({ kind }) {
-  return kind === 'tote' ? <div className="buyer-product-art"><img src="/assets/figma/tote.svg" alt="데일리 토트백 모양 예시" width="180" height="148" /></div> : <div className="buyer-product-art buyer-product-art--pouch" role="img" aria-label="지퍼 파우치 모양 예시"><span className="buyer-pouch-grain" /><span className="buyer-pouch-pull" /></div>;
-}
 function RecommendationsPreview({ ctx, fabric }) {
+  const [asked, setAsked] = useState(false);
+  useEffect(() => { setAsked(false); }, [fabric.id]);
   if (ctx.mode === 'live') return <LiveRecommendationsPreview ctx={ctx} fabric={fabric} />;
-  return <><h2>이런 활용 아이디어가 있어요</h2><p className="buyer-muted">모양을 살펴보는 예시입니다. 파우치는 이 원단의 제작 조건도 확인할 수 있어요.</p><div className="buyer-recommend-grid">{[['pouch', '지퍼 파우치', '작은 소지품을 담기 좋은 기본형 파우치'], ['tote', '데일리 토트백', '가볍게 들기 좋은 실용적인 토트백']].map(([kind, title, description]) => <article key={kind} className="panel"><h3>{title}</h3><div className="buyer-recommend-body"><ProductArt kind={kind} /><div className="buyer-recommend-copy"><strong>{description}</strong><p className="buyer-muted">{kind === 'pouch' ? '원단 치수와 소재가 맞는지 먼저 확인하세요.' : '모양을 참고하는 아이디어입니다. 토트백 제작 조건·재단 치수는 제공하지 않아요.'}</p><Badge>{kind === 'pouch' ? '제작 조건 확인 가능' : '활용 아이디어 예시'}</Badge></div></div>{kind === 'pouch' && <div className="actions"><LinkButton path={keepList(ctx, `/buyer/recommendations/${encodeURIComponent(fabric.id)}`)} tone="primary">파우치 제작 조건 확인</LinkButton><LinkButton path={keepList(ctx, `/buyer/patterns/pouch?fabric_id=${encodeURIComponent(fabric.id)}`)}>파우치 재단 치수 확인</LinkButton></div>}</article>)}</div></>;
+  return <section className="buyer-page" aria-labelledby="buyer-demo-pattern-title"><h2 id="buyer-demo-pattern-title">이 원단으로 만드는 방법</h2><p className="buyer-muted">버튼을 누르면 사이즈별 가방과 재단 도안을 보여 드려요.</p>{!asked ? <div className="actions"><Button tone="primary" onClick={() => setAsked(true)}>AI로 도안 뽑아서 보기</Button></div> : <article className="panel"><h3>토트백 도안</h3><MakingSteps parts={[]} images={pouchGuideImages} /></article>}</section>;
 }
 
 function FabricGallery({ fabric }) {
@@ -444,7 +443,7 @@ function Pattern({ ctx }) {
   const length = fabric.sale_type === 'ROLL' ? fabric.available_length_cm : fabric.length_cm;
   const canRequest = availability(ctx, fabric).canRequest && fabric.width_cm >= 35 && length >= (fabric.sale_type === 'ROLL' ? 180 : 100) && ['면', '혼방'].includes(fabric.material) && ['중간 두께', '보통', '중간'].includes(fabric.thickness) && ctx.query.get('state') !== 'NEEDS_CHECK';
   const recommendation = keepList(ctx, `/buyer/recommendations/${encodeURIComponent(fabric.id)}${isExample(ctx) ? '?example=1&state=NEEDS_CHECK' : ''}`);
-  return <Page node="127:4299"><PageHeading title="지퍼 파우치 재단 치수 확인" description="지퍼 파우치의 고정된 재단 치수입니다. 실제 크기 출력·다운로드 파일은 제공하지 않아요." />{ctx.mode === 'live' && <Notice>아래 치수는 예시 도안입니다. 도안 조회 서비스는 아직 연결되지 않았어요.</Notice>}<section className="panel"><h2 className="buyer-panel-heading">시접 포함 재단 부품</h2><div className="table-wrapper"><table className="data-table buyer-pattern-table"><thead><tr><th scope="col">부품</th><th scope="col">치수</th><th scope="col">장수</th></tr></thead><tbody><tr><th scope="row">겉감 앞·뒤</th><td>35×25cm</td><td>2장</td></tr><tr><th scope="row">안감 앞·뒤</th><td>35×25cm</td><td>2장</td></tr></tbody></table></div></section><section className="panel"><h2 className="buyer-panel-heading">재단 기준</h2><Info rows={[[ '배치', '롤 길이 방향으로 한 장씩 배치 · 부품 회전 없음'], ['원단 폭', '35cm 이상'], ['합산 길이', '25cm × 4장 = 100cm'], ['예약 기준', fabric.sale_type === 'ROLL' ? `2마(180cm) / ${price(fabric.price * 2)}` : '자투리 한 장에 재단 부품을 배치할 수 있는지 확인'], ['부자재', '지퍼·실 별도 준비']]} /></section><Notice>실제 제작 전 원단의 촉감·수축·결 방향을 확인해 주세요.</Notice>{!canRequest && <Notice tone="warning">이 원단은 제작 조건을 먼저 확인해 주세요. 도안의 치수만 보고 적합성을 판단할 수는 없습니다.</Notice>}<div className="actions"><LinkButton path={recommendation}>제작 조건으로 돌아가기</LinkButton>{canRequest ? <LinkButton path={keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}?ma=2`)} tone="primary">{fabric.sale_type === 'ROLL' ? '2마로 픽업 요청' : '픽업 요청'}</LinkButton> : <LinkButton path={keepList(ctx, `/buyer/inquiries?compose=1&fabric_id=${encodeURIComponent(fabric.id)}`)} tone="primary">판매자에게 물어보기</LinkButton>}<LinkButton path={addQuery('/buyer/supplies', 'from', currentRoute(ctx))}>부자재 둘러보기</LinkButton></div></Page>;
+  return <Page node="127:4299"><PageHeading title="토트백 도안" description="사이즈를 고르면 아래 재단 그림대로 자릅니다. 실제 크기 출력은 제공하지 않아요." />{ctx.mode === 'live' && <Notice>아래 치수는 예시 도안입니다. 도안 조회 서비스는 아직 연결되지 않았어요.</Notice>}<section className="panel"><MakingSteps parts={[]} images={pouchGuideImages} /></section><section className="panel"><h2 className="buyer-panel-heading">재단 기준</h2><Info rows={[[ '겉감 · 안감', '고른 사이즈의 몸통을 각 1장 자릅니다.'], ['손잡이', '점선을 따라 세 번 접어 만듭니다. 2조.'], ['바닥 곡선', '모서리를 둥글게 잡는 선입니다.'], ['부자재', '손잡이 심과 실은 따로 준비합니다.']]} /></section><Notice>실제 제작 전 원단의 촉감·수축·결 방향을 확인해 주세요.</Notice>{!canRequest && <Notice tone="warning">이 원단은 제작 조건을 먼저 확인해 주세요. 도안의 치수만 보고 적합성을 판단할 수는 없습니다.</Notice>}<div className="actions"><LinkButton path={recommendation}>제작 조건으로 돌아가기</LinkButton>{canRequest ? <LinkButton path={keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}?ma=2`)} tone="primary">{fabric.sale_type === 'ROLL' ? '2마로 픽업 요청' : '픽업 요청'}</LinkButton> : <LinkButton path={keepList(ctx, `/buyer/inquiries?compose=1&fabric_id=${encodeURIComponent(fabric.id)}`)} tone="primary">판매자에게 물어보기</LinkButton>}<LinkButton path={addQuery('/buyer/supplies', 'from', currentRoute(ctx))}>부자재 둘러보기</LinkButton></div></Page>;
 }
 
 function Supplies({ ctx }) {

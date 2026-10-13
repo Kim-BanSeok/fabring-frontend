@@ -10,7 +10,7 @@ const enums = {
 const textFields = { title: 100, defect_note: 255, description: 5000 };
 const numberFields = { width_cm: 1000, length_cm: 2147483647, remaining_length_cm: 2147483647, price: 2147483647 };
 const draftFields = [...Object.keys(enums), ...Object.keys(textFields), ...Object.keys(numberFields), 'has_defect'];
-const questions = ['sale_type', 'title', 'size', 'material', 'thickness', 'color_family', 'has_defect', 'defect_note', 'price'];
+const questions = ['listing', 'sale_type', 'title', 'size', 'material', 'thickness', 'color_family', 'has_defect', 'defect_note', 'price'];
 const record = value => value && typeof value === 'object' && !Array.isArray(value);
 const text = value => typeof value === 'string';
 const integer = value => Number.isSafeInteger(value) && value > 0;
