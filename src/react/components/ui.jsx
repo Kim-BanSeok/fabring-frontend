@@ -31,7 +31,8 @@ export function EmptyState({ title, description = '', children }) {
   return <section className="empty-state"><h2>{title}</h2><p>{description}</p>{children && <div className="actions">{children}</div>}</section>;
 }
 
-export function FabricImage({ fabric, className = '', exampleLabel = true, compact = false }) {
+// Example photos keep their honest aria-label; the visible tag is opt-in.
+export function FabricImage({ fabric, className = '', exampleLabel = false, compact = false }) {
   const [failedUrl, setFailedUrl] = useState(null);
   const source = fabric.image_url && /^(https?:|blob:|\/)/.test(fabric.image_url) ? fabric.image_url : null;
   const texture = /블루.*스트라이프|스트라이프.*블루/.test(`${fabric.title} ${fabric.color || ''}`) ? 'stripe'
@@ -43,6 +44,12 @@ export function FabricImage({ fabric, className = '', exampleLabel = true, compa
   const sample = /데님/.test(fabric.title) ? [0, 0] : /캔버스/.test(fabric.title) ? [2, 0] : /거즈/.test(fabric.title) ? [2, 1] : /린넨/.test(fabric.title) ? [0, 1] : null;
   if (sample) return <div className={`fabric-art fabric-art--photo ${className}`} role="img" aria-label={`${fabric.title} 생성 소재 사진 예시`} style={{ '--fabric-x': sample[0], '--fabric-y': sample[1] }}><img src="/assets/brand/fabric-swatches.webp" alt="" loading="lazy" decoding="async" />{exampleLabel && <em className="fabric-example-label" aria-hidden="true">생성 사진 예시</em>}</div>;
   return <div className={`fabric-art fabric-art--${texture} ${className}`} role="img" aria-label={`${fabric.title} 질감 예시`}><span aria-hidden="true" />{exampleLabel && <em className="fabric-example-label" aria-hidden="true">질감 예시</em>}</div>;
+}
+
+export function Icon({ name }) {
+  return <svg className="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    {name === 'search' ? <><circle cx="11" cy="11" r="6.5" /><path d="m16 16 4.5 4.5" /></> : <path d="M4 12h15m-5-5 5 5-5 5" />}
+  </svg>;
 }
 
 export function Field({ label, name, type = 'text', required = false, readOnly = false, hint = '', id = `field-${name}`, ...props }) {

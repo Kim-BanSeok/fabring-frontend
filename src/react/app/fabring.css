@@ -25,7 +25,7 @@ html{background:#fff}
 .app-shell .site-nav a{flex:none;font-size:14px;min-height:44px;padding:10px 6px;border-radius:0}
 .app-shell .site-nav a[aria-current=page]{background:transparent;font-size:14px;color:#2458c6;border-bottom-width:2px}
 .app-shell .tabs a,.app-shell .tabs button{border-radius:0;background:transparent;color:#526176}
-.app-shell .tabs [aria-current=page],.app-shell .tabs .is-active,.app-shell .tabs .seller-tab--active{color:#2458c6;background:#edf3fb;border-color:#2458c6}
+.app-shell .tabs [aria-current=page],.app-shell .tabs .is-active,.app-shell .tabs .seller-tab--active{color:#2458c6;background:transparent;border-color:#2458c6}
 .app-shell .field-control{position:relative;min-width:0}
 .field-control input{width:100%}
 .field-control--unit input{padding-right:52px}
@@ -41,7 +41,7 @@ html{background:#fff}
 .sr-only{position:absolute;width:1px;height:1px;clip-path:inset(50%);overflow:hidden;white-space:nowrap}
 .brand-search{display:flex;align-items:center;min-width:0;min-height:47px;background:#fff;border:1px solid #b7c3d4}
 .app-shell .brand-search input{border:0;background:transparent;min-height:46px;min-width:0;font-size:15px;padding:11px 15px}
-.brand-search button{border:0;background:transparent;width:47px;min-height:46px;flex:none;color:#2458c6;font-size:23px}
+.brand-search button{border:0;background:transparent;width:47px;min-height:46px;flex:none;color:#2458c6;display:grid;place-items:center}
 .app-shell .buyer-home-banner{grid-template-columns:1.25fr 1fr;padding:0;gap:0;border-radius:0;background:#edf3fb;min-height:310px}
 .buyer-home-banner-copy{padding:30px 36px;gap:15px}
 .buyer-home-banner-copy h1{font-size:36px;line-height:1.35;letter-spacing:-.055em}
@@ -191,8 +191,37 @@ html{background:#fff}
 .admin-page .admin-actions .button{min-width:0}
 .app-shell .mobile-menu>summary,.app-shell .mobile-menu-links a{border-radius:3px}
 .app-shell .mobile-menu-panel{box-shadow:0 8px 16px rgb(25 44 68 / 8%)}
-@media(max-width:1150px){.app-shell .site-header{gap:18px;padding-inline:28px}.app-shell .site-nav{gap:5px}.app-shell .site-nav a{font-size:13px}.buyer-home-banner-copy{padding:27px}.buyer-home-banner-copy h1{font-size:31px}.buyer-catalog-layout{grid-template-columns:190px minmax(0,1fr);gap:25px}.buyer-page--catalog .buyer-results{grid-template-columns:repeat(2,minmax(0,1fr))}.seller-overview-work{grid-template-columns:1fr}.admin-page .admin-selected-product{grid-template-columns:1fr}.app-shell .admin-workspace>.main-content{padding:28px}.seller-shell .main-content{padding:28px}.app-shell.admin-shell{--admin-gutter:28px}}
-@media(max-width:900px){.app-shell .site-header{gap:14px;padding-inline:22px}.app-shell .site-nav a{font-size:12px;padding-inline:3px}.app-shell .brand{font-size:20px}.app-shell .site-header>.badge{display:none}.buyer-home-products{grid-template-columns:repeat(2,minmax(0,1fr))}.buyer-page--detail .buyer-detail-grid{grid-template-columns:1fr}.buyer-detail-summary{grid-column:auto}.buyer-home-banner-copy h1{font-size:28px}.buyer-home-banner-copy .page-heading p{font-size:13px}.admin-work-queue{grid-template-columns:1fr}.app-shell.admin-shell,.seller-shell{grid-template-columns:190px minmax(0,1fr)}.seller-sidebar,.app-shell .admin-sidebar{padding-inline:16px}.admin-page .admin-review-workspace{grid-template-columns:1fr}}
+/* Design feedback 2026-10-13: one light-blue moment (hero/selection), neutral info, brand tag, account nav, footer. */
+.app-shell :is(h1,h2,h3),.app-shell .page-heading p,.buyer-pickup-guide p,.site-footer{word-break:keep-all}
+.app-shell .notice--info{background:#f5f6f8;color:#384456}
+.icon{flex:none}
+.app-shell .button .icon{width:16px;height:16px}
+.app-shell .site-header>.brand,.app-shell .auth-header>.brand{width:auto}
+.app-shell .brand-tag{font-size:12px;font-weight:500;letter-spacing:0;line-height:16px;color:#526176;padding-left:10px;border-left:1px solid #dbe2ec}
+.app-shell .site-nav{gap:22px}
+.app-shell .site-nav a,.app-shell .site-nav a[aria-current=page]{color:#20242b;font-size:15px;font-weight:500}
+.app-shell .site-nav a[aria-current=page]{color:#2458c6}
+.site-account{display:flex;gap:2px;flex:none}
+.site-account a{display:inline-flex;align-items:center;min-height:44px;padding:10px 8px;font-size:13px;color:#526176}
+.site-account a[aria-current=page]{color:#2458c6;font-weight:550}
+.site-footer{flex-shrink:0;display:flex;flex-direction:column;gap:2px;padding:28px clamp(20px,4.4vw,64px) 32px;background:#20242b;color:#aeb6c2;font-size:12px;line-height:1.8}
+.site-footer p{margin:0}
+.site-footer-brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin-bottom:8px}
+.site-footer-brand strong{color:#fff;font-size:16px;font-weight:600}
+.site-footer-brand span{color:#d5dae2;font-size:13px}
+.buyer-home-section-heading>.button{gap:6px}
+.buyer-uses-link{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:44px;padding:0;border:0;background:none;color:#2458c6;font-size:14px;cursor:pointer}
+.buyer-uses-link .icon{width:16px;height:16px}
+#fabric-uses{scroll-margin-top:24px}
+.seller-empty-line{margin:0;padding:14px 0;border-top:1px solid #e1e7ef;color:#657185;font-size:14px}
+.app-shell .auth-brand-panel{border-radius:4px}
+.app-shell .auth-contest{border-radius:3px;background:#f5f6f8;font-size:13px}
+.app-shell .auth-contest p{font-size:13px;color:#526176}
+.app-shell .auth-contest li{font-size:13px}
+.factory-map,.factory-map-feedback{background:#f5f6f8}
+.factory-map{border-color:#e1e7ef;border-radius:4px}
+@media(max-width:1150px){.app-shell .site-nav{order:0;flex-basis:auto;gap:14px}.app-shell .site-header{gap:18px;padding-inline:28px}.app-shell .site-nav a,.app-shell .site-nav a[aria-current=page]{font-size:14px}.buyer-home-banner-copy{padding:27px}.buyer-home-banner-copy h1{font-size:31px}.buyer-catalog-layout{grid-template-columns:190px minmax(0,1fr);gap:25px}.buyer-page--catalog .buyer-results{grid-template-columns:repeat(2,minmax(0,1fr))}.seller-overview-work{grid-template-columns:1fr}.admin-page .admin-selected-product{grid-template-columns:1fr}.app-shell .admin-workspace>.main-content{padding:28px}.seller-shell .main-content{padding:28px}.app-shell.admin-shell{--admin-gutter:28px}}
+@media(max-width:900px){.app-shell .site-header{gap:14px;padding-inline:22px}.app-shell .site-nav a,.app-shell .site-nav a[aria-current=page]{font-size:13px;padding-inline:3px}.app-shell .brand{font-size:20px}.app-shell .site-header>.badge{display:none}.buyer-home-products{grid-template-columns:repeat(2,minmax(0,1fr))}.buyer-page--detail .buyer-detail-grid{grid-template-columns:1fr}.buyer-detail-summary{grid-column:auto}.buyer-home-banner-copy h1{font-size:28px}.buyer-home-banner-copy .page-heading p{font-size:13px}.admin-work-queue{grid-template-columns:1fr}.app-shell.admin-shell,.seller-shell{grid-template-columns:190px minmax(0,1fr)}.seller-sidebar,.app-shell .admin-sidebar{padding-inline:16px}.admin-page .admin-review-workspace{grid-template-columns:1fr}}
 @media(max-width:700px){
  .app-shell .main-content,.app-shell .admin-workspace>.main-content,.seller-shell .main-content{padding:24px 20px 32px}
  .app-shell .site-header{padding:12px 20px;min-height:74px}
@@ -236,3 +265,6 @@ html{background:#fff}
 }
 @media(max-width:360px){.buyer-home-banner-copy{padding:22px 18px}.buyer-home-banner-copy .page-heading h1{font-size:25px}.buyer-home-section-heading{flex-wrap:wrap}.buyer-material-links{gap:13px;font-size:12px}.buyer-card-price{font-size:14px}.buyer-mobile-pickup{padding-inline:15px}.buyer-mobile-pickup strong{font-size:13px}.registration-steps li{padding-inline:8px}.registration-steps strong{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.app-shell *{scroll-behavior:auto!important;transition:none!important}}
+@media(max-width:900px) and (min-width:701px){.app-shell .brand-tag{display:none}.app-shell .site-nav{gap:12px}.site-account a{padding-inline:5px;font-size:12px}}
+@media(max-width:700px){.app-shell .site-header>.site-account{display:none}.app-shell .brand-tag{font-size:11px;padding-left:8px}.site-footer{padding:24px 20px 28px}}
+@media(max-width:360px){.app-shell .brand-tag{display:none}}

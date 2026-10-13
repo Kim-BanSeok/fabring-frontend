@@ -80,6 +80,6 @@ export default function LiveProfilePage({ ctx }) {
   return <div className="buyer-page" ref={root} data-figma-node="123:1964"><PageHeading title="마이페이지" description="내 정보와 이용 내역을 한곳에서 관리하세요." />
     {operation?.status === 'UNKNOWN' && <Notice tone="warning">이전 회원 정보 수정 결과를 확인해야 해요. 정보 수정에서 현재 저장 상태를 확인해 주세요.</Notice>}
     <section className="panel"><h2 className="buyer-panel-heading">회원 정보</h2><div className="buyer-profile-title"><h3>로그인 정보</h3><Button href="/buyer/profile?edit=1">정보 수정</Button></div><Info rows={profileRows(user)} /></section>
-    <div className="buyer-two-columns"><section className="panel"><h3>구매 내역</h3><p className="buyer-muted">요청한 원단과 픽업 예약을 확인하세요.</p><Button href="/buyer/reservations">구매 내역 바로 가기 →</Button></section><section className="panel"><h3>문의 내역</h3><p className="buyer-muted">남긴 질문과 판매자의 답변을 확인하세요.</p><Button href="/buyer/inquiries">문의 내역 바로 가기 →</Button></section></div><div className="actions"><Button onClick={() => ctx.logout('BUYER')}>로그아웃</Button></div>
+    <div className="buyer-two-columns"><section className="panel"><h3>픽업 예약</h3><p className="buyer-muted">요청한 원단과 픽업 예약을 확인하세요.</p><Button href="/buyer/reservations">픽업 예약 보기</Button></section><section className="panel"><h3>문의 내역</h3><p className="buyer-muted">남긴 질문과 판매자의 답변을 확인하세요.</p><Button href="/buyer/inquiries">문의 보기</Button></section></div><div className="actions"><Button onClick={() => ctx.logout('BUYER')}>로그아웃</Button></div>
   </div>;
 }

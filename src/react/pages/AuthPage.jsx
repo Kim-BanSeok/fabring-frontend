@@ -28,12 +28,11 @@ function route(path) {
 
 function Brand({ role }) {
   const copy = role === 'seller'
-    ? ['남은 원단의\n다음 쓰임을\n연결해요.', '매장의 원단을 필요한 사람에게.\n등록부터 픽업 예약까지 한곳에서 관리하세요.', 'denim']
+    ? ['매장에 남은 원단을\n필요한 사람에게.', '사진과 치수를 올리면 게시 심사부터\n픽업 예약·문의까지 한곳에서 관리해요.', 'denim']
     : role === 'admin'
-      ? ['더 좋은 순환을\n만드는 곳.', '원단과 사람을 잇는 플랫폼을\n함께 관리합니다.', 'canvas']
-      : ['좋은 원단의\n새로운 시작.', '양주에서 발견한 원단으로\n당신의 다음 작품을 만들어 보세요.', 'canvas'];
+      ? ['패브링\n운영 관리', '판매자 계정과 원단 게시를 심사해요.', 'canvas']
+      : ['양주에 남은 원단,\n가까운 매장에서.', '양주 원단 매장의 자투리와 롤 원단을\n예약하고 직접 받아 가세요.', 'canvas'];
   return <aside className="auth-brand-panel">
-    <p className="auth-kicker">패브링 · 원단의 새로운 쓰임</p>
     <p className="auth-display">{copy[0]}</p>
     <p className="auth-brand-description">{copy[1]}</p>
     <FabricImage fabric={{ title: role === 'seller' ? '블루 데님' : '내추럴 캔버스', texture: copy[2] }} className="auth-fabric" exampleLabel={false} />
@@ -80,8 +79,8 @@ function LoginFields({ data, onChange }) {
 }
 
 function ContestAccounts() {
-  return <section className="auth-contest" aria-label="공모전 확인용 계정">
-    <p>아래 아이디와 비밀번호로 바로 들어갈 수 있어요. 입력칸에도 채워 두었습니다.</p>
+  return <section className="auth-contest" aria-label="심사용 체험 계정">
+    <p>심사용 체험 계정 · 입력칸에 채워 두었어요.</p>
     <ul>
       {Object.entries(CONTEST_ACCOUNTS).map(([item, account]) => <li key={item}>
         <a href={`#${url(item, 'login')}`}>{names[item]}</a>

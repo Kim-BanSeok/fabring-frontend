@@ -65,7 +65,7 @@ function Dashboard({ ctx }) {
     ['등록된 원단수', state.fabrics.length, '전체 상태 합계 · 상태별 목록에서 조회', null],
   ];
   return <section className="admin-page admin-dashboard stack" data-figma-node="123:4955">
-    <PageHeading title="관리자 대시보드" description="승인 대기 업무를 먼저 처리하고 서비스 현황을 확인하세요." />
+    <PageHeading title="관리자 대시보드" />
     <AdminWorkQueue fabrics={pending.length} sellers={state.sellers.filter(s => s.seller_approval_status === 'PENDING').length} />
     <section className="panel admin-panel admin-dashboard-work" aria-labelledby="admin-pending-heading"><div className="admin-list-heading"><h2 id="admin-pending-heading">원단 게시 승인 대기 · {pending.length}건</h2><Button href="/admin/approvals" tone="primary">대기 원단 검토</Button></div>
       <div className="admin-dashboard-preview">{pending.length ? <PendingTable fabrics={pending.slice(0, 3)} /> : <EmptyState title={ctx.mode === 'live' ? '승인 대기 목록 연결을 준비하고 있어요.' : '게시 승인을 기다리는 원단이 없어요.'} description={ctx.mode === 'live' ? '원단 승인 내역은 아직 조회하지 않았습니다.' : '새로운 원단이 등록되면 이곳에서 확인할 수 있어요.'} />}</div>
