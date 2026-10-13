@@ -11,6 +11,7 @@ async function session(business, { role = 'SELLER', ...options } = {}) {
   const calls = [], profile = { userId: 1, nickname: '검증 계정', role, email: 'fixture@example.com', hasStore: false };
   let number = 0;
   const api = createLiveApi({ storage: null, ...options, fetchImpl: async (url, request) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) return response({ accessToken: `dashboard-token-${++number}`, expiresIn: 3600, user: profile });
     if (url.endsWith('/users/me')) return response(profile);
     calls.push({ url, request }); return business(url, request);

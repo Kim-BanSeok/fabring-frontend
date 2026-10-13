@@ -14,6 +14,7 @@ const input = (patch = {}) => ({ fabric_id: '7', pickup_date: '2030-01-04', pick
 async function session(business, options = {}) {
   const calls = [], profile = { userId: 1, nickname: '검증 구매자', role: 'BUYER', email: 'buyer@example.com', hasStore: false };
   const api = createLiveApi({ storage: null, now: () => now, ...options, fetchImpl: async (url, request) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) return response({ accessToken: 'test-reservation-token', expiresIn: 3600, user: profile });
     if (url.endsWith('/users/me')) return response(profile);
     calls.push({ url, request }); return business(url, request);

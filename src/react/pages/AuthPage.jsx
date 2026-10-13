@@ -95,7 +95,7 @@ function SignupFields({ data, onChange }) {
   return <>
     <AuthInput label="닉네임" name="nickname" data={data} onChange={onChange} autoComplete="nickname" maxLength={50} />
     <AuthInput label="이메일" name="email" data={data} onChange={onChange} type="email" autoComplete="username" maxLength={255} inputMode="email" spellCheck={false} />
-    <AuthInput label="비밀번호" name="password" data={data} onChange={onChange} type="password" autoComplete="new-password" minLength={8} maxLength={72} hint="8~72자로 입력해 주세요." />
+    <AuthInput label="비밀번호" name="password" data={data} onChange={onChange} type="password" autoComplete="new-password" minLength={8} maxLength={72} hint="8자 이상, UTF-8 기준 72바이트 이하로 입력해 주세요." />
     <AuthInput label="비밀번호 확인" name="confirm" data={data} onChange={onChange} type="password" autoComplete="new-password" minLength={8} maxLength={72} />
   </>;
 }

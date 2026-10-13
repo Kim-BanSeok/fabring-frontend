@@ -18,6 +18,9 @@ const roles = ['BUYER', 'SELLER', 'ADMIN'];
 const blankProfile = () => ({ id: null, email: '', nickname: '', phone_number: null, hasStore: false, seller_approval_status: null });
 const validUser = user => user && user.userId != null && roles.includes(user.role) && typeof user.hasStore === 'boolean' && typeof user.nickname === 'string';
 const cancelled = () => new DOMException('Aborted', 'AbortError');
+const checkPasswordBytes = password => {
+  if (typeof password !== 'string' || new TextEncoder().encode(password).length > 72) throw new ApiError('VALIDATION_ERROR', '비밀번호는 UTF-8 기준 72바이트 이하여야 해요.', { status: 400 });
+};
 
 // This adapter contains no demo fixtures. Unconnected business operations never report success.
 export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = globalThis.sessionStorage, now = Date.now, timeoutMs, aiTimeoutMs = 45000 } = {}) {
@@ -569,6 +572,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       };
     },
     async signup(input, { signal } = {}) {
+      checkPasswordBytes(input.password);
       if (!['BUYER', 'SELLER'].includes(input.role)) throw new ApiError('FORBIDDEN', '관리자 계정은 회원가입으로 만들 수 없어요.');
       const result = await request('/auth/signup', { method: 'POST', signal, body: {
         email: input.email.trim().toLowerCase(), password: input.password, nickname: input.nickname.trim(), role: input.role,
@@ -578,6 +582,7 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       return { ...result, email: input.email.trim().toLowerCase() };
     },
     async login(input, { signal } = {}) {
+      checkPasswordBytes(input.password);
       const version = revision;
       const result = await request('/auth/login', { method: 'POST', signal, body: { email: input.email.trim().toLowerCase(), password: input.password } });
       if (typeof result?.accessToken !== 'string' || !result.accessToken || !Number.isFinite(result.expiresIn) || result.expiresIn <= 0 || !validUser(result.user)) throw new ApiError('INVALID_RESPONSE', '로그인 응답을 확인하지 못했어요. 다시 시도해 주세요.');
@@ -595,7 +600,18 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       revision++; credential = result.credential; user = result.user; store = result.store; storeError = result.storeError;
       status = 'authenticated'; error = ''; persist(); scheduleExpiry(); emit();
     },
-    async logout() { clearSession(); },
+    async logout() {
+      const token = credential?.accessToken;
+      clearSession();
+      if (!token) return { serverRevoked: true };
+      try {
+        await request('/auth/logout', { method: 'POST', token });
+        return { serverRevoked: true };
+      } catch (failure) {
+        if (failure.status === 401) return { serverRevoked: true };
+        return { serverRevoked: false };
+      }
+    },
   };
   for (const name of ['updateSellerProfile', 'saveStore', 'updateReservation', 'prepareAiDraft', 'saveDraft', 'uploadPhotos', 'retryPhotos']) {
     api[name] = async () => { throw new ApiError('NOT_CONNECTED', '이 기능은 아직 서버와 연결되지 않았어요. 전체 화면 미리보기에서 흐름을 확인할 수 있어요.'); };

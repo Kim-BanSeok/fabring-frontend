@@ -113,8 +113,9 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
   async function logout() {
     const role = snapshot.role;
     draftStore().clear();
-    await (mode === 'live' ? api.logout() : api.logoutDemo());
+    const result = await (mode === 'live' ? api.logout() : api.logoutDemo());
     await navigate(`/auth/${role.toLowerCase()}/login`);
+    if (result?.serverRevoked === false) notify('이 기기에서는 로그아웃했지만 서버의 로그인 상태 종료는 확인하지 못했어요.');
   }
   async function reset() {
     if (mode === 'live') return;

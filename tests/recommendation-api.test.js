@@ -20,6 +20,7 @@ const profile = { userId: 8, nickname: '구매자', role: 'BUYER', email: 'buyer
 async function login(api) { api.commitLogin(await api.login({ email: profile.email, password: 'test-placeholder' })); }
 function businessApi(fetchBusiness) {
   return createLiveApi({ storage: null, fetchImpl: async (url, options) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) return response({ accessToken: 'test-placeholder-token', expiresIn: 3600, user: profile });
     if (url.endsWith('/users/me')) return response(profile);
     return fetchBusiness(url, options);
@@ -104,6 +105,7 @@ test('contradictory judgements, malformed quantities and missing reasons fail cl
 test('public API endpoints work without login, with safe IDs and no demo fields in requests', async () => {
   const calls = [];
   const api = createLiveApi({ storage: null, fetchImpl: async (url, options) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     calls.push({ url, options });
     return response(url.includes('/recommendations') ? result() : url.includes('/patterns?') ? page() : pattern());
   } });

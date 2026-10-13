@@ -15,6 +15,7 @@ async function session(business, { role = 'BUYER', timeoutMs } = {}) {
   const account = user({ role, seller_approval_status: role === 'SELLER' ? 'APPROVED' : null }), calls = [];
   let authenticating = false, loginNumber = 0;
   const api = createLiveApi({ storage: null, timeoutMs, fetchImpl: async (url, options) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) { authenticating = true; return response({ accessToken: `inquiry-profile-test-${++loginNumber}`, expiresIn: 3600, user: account }); }
     if (authenticating && url.endsWith('/users/me')) { authenticating = false; return response(account); }
     calls.push({ url, options }); return business(url, options, account);

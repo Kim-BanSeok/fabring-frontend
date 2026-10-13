@@ -17,6 +17,7 @@ async function authenticated(fetchBusiness, { role = 'SELLER', ...options } = {}
   const calls = [];
   const user = profile(role);
   const api = createLiveApi({ storage: null, ...options, fetchImpl: async (url, init) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     calls.push({ url, init });
     if (url.endsWith('/auth/login')) return response({ accessToken: 'placeholder-test-token', expiresIn: 3600, user });
     if (url.endsWith('/users/me')) return response(user);

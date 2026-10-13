@@ -14,6 +14,7 @@ async function session(business, { role = 'SELLER', timeoutMs } = {}) {
   const calls = [], profile = { userId: 1, nickname: '테스트', role, email: 'fixture@example.com', hasStore: false };
   let sequence = 0;
   const api = createLiveApi({ storage: null, timeoutMs, fetchImpl: async (url, request) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) return response({ accessToken: `fixture-${++sequence}`, expiresIn: 3600, user: profile });
     if (url.endsWith('/users/me')) return response(profile);
     calls.push({ url, request }); return business(url, request);

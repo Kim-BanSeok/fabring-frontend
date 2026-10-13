@@ -13,6 +13,7 @@ async function session(business, { role = 'SELLER', timeoutMs } = {}) {
   const calls = []; let signingIn = false, loginNumber = 0;
   const account = profile({ role });
   const api = createLiveApi({ storage: null, timeoutMs, fetchImpl: async (url, options) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) { signingIn = true; return response({ accessToken: `store-test-${++loginNumber}`, expiresIn: 3600, user: account }); }
     if (url.endsWith('/users/me') && signingIn) { signingIn = false; return response(account); }
     calls.push({ url, options }); return business(url, options);

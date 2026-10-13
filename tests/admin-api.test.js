@@ -18,6 +18,7 @@ async function session(business, { role = 'ADMIN', timeoutMs } = {}) {
   const calls = [], user = { userId: 99, email: 'admin@example.test', nickname: '관리자', role, hasStore: false, seller_approval_status: null };
   let signingIn = false;
   const api = createLiveApi({ storage: null, timeoutMs, fetchImpl: async (url, options) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     if (url.endsWith('/auth/login')) { signingIn = true; return response({ accessToken: 'admin-test-token', expiresIn: 3600, user }); }
     if (url.endsWith('/users/me') && signingIn) { signingIn = false; return response(user); }
     calls.push({ url, options }); return business(url, options);

@@ -40,6 +40,7 @@ function fetchQueue(...handlers) {
   const fetchImpl = async (url, options) => {
     const index = calls.length;
     calls.push({ url, options });
+    if (url.endsWith('/auth/logout')) return response(null);
     assert(index < handlers.length, `Unexpected fetch #${index + 1}: ${url}`);
     const handler = handlers[index];
     return typeof handler === 'function' ? handler(url, options) : handler;
@@ -204,7 +205,9 @@ test('login follows the verified server role and only commitLogin makes the sess
   assert.equal(Object.hasOwn(stored, 'password'), false); assert.equal(Object.hasOwn(stored, 'user'), false);
   unsubscribe(); await f.api.logout();
   assert.equal(f.storage.getItem(AUTH_STORAGE_KEY), null); assert.equal(f.api.getState().session.authenticated, false);
-  assert.equal(f.calls.length, 2); // The contract has no server logout endpoint.
+  assert.equal(f.calls.length, 3);
+  assert.equal(f.calls[2].url, `${BASE}/auth/logout`);
+  assert.equal(f.calls[2].options.headers.Authorization, 'Bearer test-access-token');
 });
 
 test('seller login loads /stores/me using the token and maps the actual DTO', async () => {

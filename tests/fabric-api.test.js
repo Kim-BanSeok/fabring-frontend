@@ -20,6 +20,7 @@ const profile = { userId: 8, nickname: '검증 구매자', role: 'BUYER', email:
 async function loggedIn(fetchBusiness) {
   const calls = [];
   const api = createLiveApi({ storage: null, fetchImpl: async (url, options) => {
+    if (url.endsWith('/auth/logout')) return response(null);
     calls.push({ url, options });
     if (url.endsWith('/auth/login')) return response({ accessToken: 'test-fabric-token', expiresIn: 3600, user: profile });
     if (url.endsWith('/users/me')) return response(profile);
