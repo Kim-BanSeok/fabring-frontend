@@ -135,5 +135,13 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
       browser.history.replaceState(null, '', `#${route.path}${search ? `?${search}` : ''}`);
       return update();
     },
+    useLive() {
+      mode = 'live';
+      const route = parseRoute(browser.location.hash);
+      route.query.delete('mode');
+      const search = route.query.toString();
+      browser.history.replaceState(null, '', `#${route.path}${search ? `?${search}` : ''}`);
+      return update();
+    },
   };
 }

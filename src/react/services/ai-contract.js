@@ -7,7 +7,7 @@ const enums = {
   thickness: ['THIN', 'NORMAL', 'THICK'],
   color_family: ['WHITE', 'BLACK', 'GRAY', 'BEIGE', 'BROWN', 'RED', 'PINK', 'YELLOW', 'GREEN', 'BLUE', 'NAVY', 'PURPLE', 'MIXED'],
 };
-const textFields = { title: 100, defect_note: 255 };
+const textFields = { title: 100, defect_note: 255, description: 5000 };
 const numberFields = { width_cm: 1000, length_cm: 2147483647, remaining_length_cm: 2147483647, price: 2147483647 };
 const draftFields = [...Object.keys(enums), ...Object.keys(textFields), ...Object.keys(numberFields), 'has_defect'];
 const questions = ['sale_type', 'title', 'size', 'material', 'thickness', 'color_family', 'has_defect', 'defect_note', 'price'];

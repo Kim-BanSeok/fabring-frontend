@@ -119,7 +119,7 @@ function fabricsView(ctx) {
 }
 function registrationView(ctx) {
   if (ctx.query.get('mode') === 'ai') return typeView(ctx);
-  return wrap('123:3245', <>{pageHeading('새 원단 등록', '편한 방법으로 원단 정보를 입력하세요.')}<div className={"seller-columns seller-methods"}><section className={"panel seller-panel"}><h2>{"AI와 대화로 등록"}</h2><h3>{"원단에 대해 알려주세요."}</h3><p className={"muted"}>{"대화를 통해 등록 항목을 정리하고, 판매자가 내용을 확인해요."}</p>{notice('사진은 게시물에 첨부해요. AI 대화에는 사진을 보내지 않아요.')}{go('AI와 대화 시작', '/seller/register?mode=ai', 'primary')}</section><section className={"panel seller-panel"}><h2>{"직접 입력"}</h2><h3>{"정보를 차례로 입력해요."}</h3><p className={"muted"}>{"사진, 소재, 치수와 가격을 직접 입력하고 등록 내용을 확인해요."}</p>{notice('이미 알고 있는 원단 정보를 빠르게 등록하세요.')}{go('직접 입력하기', '/seller/register/type')}</section></div></>);
+  return wrap('123:3245', <>{pageHeading('새 원단 등록', '편한 방법으로 원단 정보를 입력하세요.')}<div className={"seller-columns seller-methods"}><section className={"panel seller-panel"}><h2>{"AI와 대화로 등록"}</h2><h3>{"원단에 대해 알려주세요."}</h3><p className={"muted"}>{"밴드에 올리던 짧은 메모로 소개글을 만들고, 판매자가 내용을 확인해요."}</p>{notice('사진은 게시물에 첨부해요. AI 대화에는 사진을 보내지 않아요.')}{go('AI와 대화 시작', '/seller/register?mode=ai', 'primary')}</section><section className={"panel seller-panel"}><h2>{"직접 입력"}</h2><h3>{"정보를 차례로 입력해요."}</h3><p className={"muted"}>{"사진, 소재, 치수와 가격을 직접 입력하고 등록 내용을 확인해요."}</p>{notice('이미 알고 있는 원단 정보를 빠르게 등록하세요.')}{go('직접 입력하기', '/seller/register/type')}</section></div></>);
 }
 
 function PhotoPreview({ photo, className = '' }) {
@@ -143,7 +143,7 @@ function photosFields(draft) {
 function manualView(ctx) {
   const draft = draftFor(ctx),
     scrap = draft.sale_type === 'SCRAP';
-  return wrap(scrap ? '127:6196' : '123:3466', <>{pageHeading(scrap ? '자투리 원단 입력' : '원단 등록 · 직접 입력', scrap ? '1장 그대로 판매 · 직접 입력 또는 AI 초안 확인' : '원단 정보를 입력한 뒤 등록 내용을 확인해 주세요.')}<RegistrationSteps stage={1} /><nav className={"tabs seller-tabs"} aria-label={"판매 형태"}><a className={"" + "button " + (!scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=ROLL"}>{"롤 원단"}</a><a className={"" + "button " + (scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=SCRAP"}>{"자투리 원단"}</a></nav>{scrap ? notice('하자를 피해 사용할 수 있는 가장 큰 직사각형을 기준으로 재주세요. 길이는 30~90cm예요.', 'warning') : ''}{"\n    "}<form id={"seller-fabric-form"} className={"stack"} data-sale-type={draft.sale_type} onSubmit={ctx.runtime.fabricSubmit} ref={ctx.runtime.fabricForm} onInput={ctx.runtime.rememberInput} onChange={ctx.runtime.photoChange}><p className="muted seller-form-progress">기본 정보 → 치수·가격 → 하자 → 사진 → 등록 내용 확인</p>{ctx.query.get('from') === 'ai' ? notice('AI 예시 초안을 가져왔어요. 입력 내용은 유지되어 있으며 사진과 세부 항목을 이어서 보완할 수 있어요.') : null}<section className={"panel seller-panel"}><h2>{"기본 정보"}</h2>{field('원단 이름', 'title', {
+  return wrap(scrap ? '127:6196' : '123:3466', <>{pageHeading(scrap ? '자투리 원단 입력' : '원단 등록 · 직접 입력', scrap ? '1장 그대로 판매 · 직접 입력 또는 AI 초안 확인' : '원단 정보를 입력한 뒤 등록 내용을 확인해 주세요.')}<RegistrationSteps stage={1} /><nav className={"tabs seller-tabs"} aria-label={"판매 형태"}><a className={"" + "button " + (!scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=ROLL"}>{"롤 원단"}</a><a className={"" + "button " + (scrap ? 'seller-tab--active' : '')} href={"#/seller/register/manual?type=SCRAP"}>{"자투리 원단"}</a></nav>{scrap ? notice('하자를 피해 사용할 수 있는 가장 큰 직사각형을 기준으로 재주세요.', 'warning') : ''}{"\n    "}<form id={"seller-fabric-form"} className={"stack"} data-sale-type={draft.sale_type} onSubmit={ctx.runtime.fabricSubmit} ref={ctx.runtime.fabricForm} onInput={ctx.runtime.rememberInput} onChange={ctx.runtime.photoChange}><p className="muted seller-form-progress">기본 정보 → 치수·가격 → 하자 → 사진 → 등록 내용 확인</p>{ctx.query.get('from') === 'ai' ? notice('AI 예시 초안을 가져왔어요. 입력 내용은 유지되어 있으며 사진과 세부 항목을 이어서 보완할 수 있어요.') : null}<section className={"panel seller-panel"}><h2>{"기본 정보"}</h2>{field('원단 이름', 'title', {
           value: draft.title,
           required: true,
           "maxLength": "100"
@@ -164,13 +164,10 @@ function manualView(ctx) {
             value: scrap ? draft.length_cm : draft.remaining_length_cm ?? draft.length_cm,
             type: 'number',
             required: true,
-            "min": scrap ? '30' : '90',
-            ...(scrap ? {
-              "max": "90"
-            } : {}),
+            "min": scrap ? '1' : '90',
             "step": "1",
             "inputMode": "numeric"
-          })}</div><p className={"muted seller-small"}>{scrap ? '자투리 길이 30~90cm · cm 정수' : '롤 잔량은 90cm 이상인 cm 정수로 입력해 주세요.'}</p><div className={scrap ? '' : 'seller-half'}>{field(scrap ? '가격 · 원/장' : '90cm(1마)당 가격 · 원', 'price', {
+          })}</div><p className={"muted seller-small"}>{scrap ? '자투리 길이는 1cm 이상의 정수로 입력해 주세요.' : '롤 잔량은 90cm 이상인 cm 정수로 입력해 주세요.'}</p><div className={scrap ? '' : 'seller-half'}>{field(scrap ? '가격 · 원/장' : '90cm(1마)당 가격 · 원', 'price', {
             value: draft.price,
             type: 'number',
             required: true,
@@ -360,7 +357,7 @@ function typeView(ctx) {
       status: '길이로 판매',
       meta: '재고 · 이월 원단',
       actions: go(ai ? '롤 원단으로 시작' : '롤 원단 입력', next('ROLL'), 'primary')
-    })}{record('자투리 원단', <><p>{"길이 30~90cm의 원단 1장을 등록해요. 사용 가능한 직사각형의 치수를 입력해 주세요."}</p></>, {
+    })}{record('자투리 원단', <><p>{"한 장을 그대로 판매해요. 사용 가능한 직사각형의 치수를 입력해 주세요."}</p></>, {
       status: '1장 그대로 판매',
       meta: '롤을 팔고 남은 끝단',
       actions: go(ai ? '자투리 원단으로 시작' : '자투리 원단 입력', next('SCRAP'), 'primary')
@@ -468,10 +465,7 @@ function fabricEditView(ctx) {
           value: scrap ? d.length_cm : d.remaining_length_cm,
           type: 'number',
           required: true,
-          "min": scrap ? 30 : Math.max(90, f.reserved_length_cm || 0),
-          ...(scrap ? {
-            "max": "90"
-          } : {}),
+          "min": scrap ? 1 : Math.max(90, f.reserved_length_cm || 0),
           "step": "1"
         })}</div>{field(scrap ? '가격 · 원/장' : '가격 · 원/90cm', 'price', {
         value: d.price,

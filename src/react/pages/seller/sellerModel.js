@@ -82,7 +82,7 @@ export function validateSellerDraft(draft, requirePhoto = true) {
   if (!draft.title?.trim() || draft.title.length > 100) return '원단 이름을 1~100자로 입력해 주세요.';
   if (!Number.isSafeInteger(draft.width_cm) || draft.width_cm < 1 || draft.width_cm > 1000) return '가로(폭)는 1~1000cm 정수로 입력해 주세요.';
   const length = draft.sale_type === 'ROLL' ? draft.remaining_length_cm : draft.length_cm;
-  if (!Number.isSafeInteger(length) || (draft.sale_type === 'ROLL' ? length < 90 : length < 30 || length > 90)) return draft.sale_type === 'ROLL' ? '롤 잔량은 90cm 이상인 정수로 입력해 주세요.' : '자투리 길이는 30~90cm 정수로 입력해 주세요.';
+  if (!Number.isSafeInteger(length) || length < 1 || length > 2147483647 || (draft.sale_type === 'ROLL' && length < 90)) return draft.sale_type === 'ROLL' ? '롤 잔량은 90cm 이상인 정수로 입력해 주세요.' : '자투리 길이는 1cm 이상의 정수로 입력해 주세요.';
   if (!Number.isSafeInteger(draft.price) || draft.price < 1) return '가격은 1원 이상의 정수로 입력해 주세요.';
   if (draft.has_defect && !draft.defect_note?.trim()) return '하자 위치와 내용을 입력해 주세요.';
   if ((draft.defect_note || '').length > 255) return '하자 내용은 255자 이하로 입력해 주세요.';

@@ -44,13 +44,14 @@ test('answer input trims documented values and cannot silently prioritize select
 });
 
 test('partial draft preserves missing fields and unknown material even when conversation is complete', () => {
-  const raw = session({ ai_draft: { sale_type: 'SCRAP', width_cm: 50, length_cm: 110, material: 'UNKNOWN' },
+  const raw = session({ ai_draft: { sale_type: 'SCRAP', width_cm: 50, length_cm: 110, material: 'UNKNOWN', description: '원단의 가치' },
     unconfirmed_fields: ['material', 'thickness', 'has_defect'], next_question: null, is_complete: true });
   const actual = aiSession(raw);
   assert.equal(actual.ai_draft.length_cm, 110); // The conversational draft can still offer conversion to ROLL.
   assert.equal(actual.ai_draft.material, 'UNKNOWN');
   assert.equal(actual.ai_draft.thickness, undefined);
   assert.equal(actual.ai_draft.has_defect, undefined);
+  assert.equal(actual.ai_draft.description, '원단의 가치');
   assert.equal(actual.is_complete, true); // Not a claim that createFabric validation passed.
 });
 

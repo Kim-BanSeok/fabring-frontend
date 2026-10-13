@@ -18,6 +18,8 @@ test('AI wire codes and roll length map to the existing seller form without losi
   assert.equal(draft.material, '면'); assert.equal(draft.thickness, '중간 두께'); assert.equal(draft.color, '네이비');
   assert.equal(draft.length_cm, 270); assert.equal(draft.remaining_length_cm, 270); assert.equal(draft.has_defect, false);
   assert.equal(draft.photos, photos); assert.equal(draft.description, '판매자 메모');
+  const fromMemo = aiFabricDraft({ ai_draft: { description: '원단의 가치' } }, { description: '이전 메모' });
+  assert.equal(fromMemo.description, '원단의 가치');
 });
 
 test('changing AI sale type keeps seller edits and photos but requires new dimensions for that type', () => {
@@ -59,7 +61,7 @@ test('AI final form rejects unanswered defect questions and retains the existing
   const draft = { ...aiFabricDraft({ ai_draft: { sale_type: 'ROLL', title: '면', width_cm: 150, remaining_length_cm: 270, material: 'COTTON', thickness: 'NORMAL', color_family: 'NAVY', price: 2000 } }), photos: [{ file: {} }] };
   assert.match(validateLiveFabricDraft(draft, true), /하자 여부/);
   assert.equal(validateLiveFabricDraft({ ...draft, has_defect: false }, true), '');
-  assert.match(validateLiveFabricDraft({ ...draft, sale_type: 'SCRAP', length_cm: 100, has_defect: false }, true), /30~90/);
+  assert.equal(validateLiveFabricDraft({ ...draft, sale_type: 'SCRAP', length_cm: 100, remaining_length_cm: null, has_defect: false }, true), '');
 });
 
 test('AI choice labels are human-readable and session routes encode identifiers', () => {

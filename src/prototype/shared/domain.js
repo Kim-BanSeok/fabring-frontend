@@ -12,7 +12,7 @@ export function validateFabric(draft) {
   if (!Number.isInteger(Number(draft.width_cm)) || Number(draft.width_cm) < 1 || Number(draft.width_cm) > 1000) throw failure('INVALID_INPUT', '폭을 1~1,000cm의 정수로 입력해 주세요.');
   if (!Number.isInteger(Number(draft.price)) || Number(draft.price) <= 0) throw failure('INVALID_INPUT', '가격을 1원 이상의 정수로 입력해 주세요.');
   const length = Number(draft.sale_type === 'ROLL' ? draft.remaining_length_cm : draft.length_cm);
-  if (!Number.isInteger(length) || (draft.sale_type === 'ROLL' ? length < 90 : length < 30 || length > 90)) throw failure('INVALID_LENGTH', draft.sale_type === 'ROLL' ? '롤 잔량은 90cm 이상의 정수로 입력해 주세요.' : '자투리 길이는 30~90cm의 정수로 입력해 주세요.');
+  if (!Number.isInteger(length) || length < 1 || (draft.sale_type === 'ROLL' && length < 90)) throw failure('INVALID_LENGTH', draft.sale_type === 'ROLL' ? '롤 잔량은 90cm 이상의 정수로 입력해 주세요.' : '자투리 길이는 1cm 이상의 정수로 입력해 주세요.');
   if ((draft.has_defect && !String(draft.defect_note || '').trim()) || String(draft.defect_note || '').length > 255) throw failure('INVALID_INPUT', '하자 설명은 1~255자로 입력해 주세요.');
   if ((draft.photo_names || []).length > 3) throw failure('TOO_MANY_PHOTOS', '사진은 최대 3장까지 선택할 수 있어요.');
   return { ...draft, title: String(draft.title).trim(), width_cm: Number(draft.width_cm), price: Number(draft.price), length_cm: draft.sale_type === 'SCRAP' ? length : null, remaining_length_cm: draft.sale_type === 'ROLL' ? length : null };

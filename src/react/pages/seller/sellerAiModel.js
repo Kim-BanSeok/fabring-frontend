@@ -38,7 +38,7 @@ export function aiFabricDraft(session, previous = {}) {
     material: fabricFilterLabel('material', raw.material || 'UNKNOWN'),
     thickness: fabricFilterLabel('thickness', raw.thickness), color: fabricFilterLabel('color', raw.color_family),
     price: raw.price ?? '', has_defect: typeof raw.has_defect === 'boolean' ? raw.has_defect : null,
-    defect_note: raw.defect_note ?? '', description: previous.description || '', color_detail: previous.color_detail || '',
+    defect_note: raw.defect_note ?? '', description: raw.description || previous.description || '', color_detail: previous.color_detail || '',
     photos: previous.photos || [],
   };
 }

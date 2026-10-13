@@ -174,7 +174,7 @@ export default function AuthPage({ ctx }) {
     submittingRef.current = true;
     setSubmitting(true);
     const contest = kind === 'login' && isContestLogin(role, data);
-    const switched = contest && ctx.useContest ? ctx.useContest() : null;
+    const switched = contest && role === 'seller' && ctx.useLive ? ctx.useLive() : contest && ctx.useContest ? ctx.useContest() : null;
     const context = switched ? { ...ctx, ...switched, navigate: ctx.navigate, useContest: ctx.useContest } : ctx;
     const auth = getAuthState(context.drafts);
     const scenario = context.mode === 'live' ? null : context.query.get('demo');
@@ -199,9 +199,9 @@ export default function AuthPage({ ctx }) {
       <form className="auth-form" data-auth-form={kind} aria-labelledby="auth-title" onSubmit={onSubmit}>
         <h1 id="auth-title" tabIndex={-1}>{names[role]} {signup ? '회원가입' : '로그인'}</h1>
         <p className="auth-subtitle">{signup ? '필요한 정보만 입력하고 시작하세요.' : role === 'admin' ? '발급받은 계정으로 로그인하세요.' : '이메일로 패브링을 시작하세요.'}</p>
-        {role !== 'admin' && <nav className="auth-role-tabs" aria-label={signup ? '가입할 계정 선택' : '로그인할 계정 선택'}>
-          {['buyer', 'seller'].map(item => <a key={item} href={`#${url(item, signup ? 'signup' : 'login')}`} aria-current={item === role ? 'page' : undefined}>{names[item]}</a>)}
-        </nav>}
+        <nav className="auth-role-tabs" aria-label={signup ? '가입할 계정 선택' : '로그인할 계정 선택'}>
+          {(signup ? ['buyer', 'seller'] : ['buyer', 'seller', 'admin']).map(item => <a key={item} href={`#${url(item, signup ? 'signup' : 'login')}`} aria-current={item === role ? 'page' : undefined}>{names[item]}</a>)}
+        </nav>
         {signup ? <SignupFields data={data} onChange={onChange} /> : <LoginFields data={data} onChange={onChange} />}
         {signup && <>
           <div className="auth-consent-row"><label className="auth-consent"><input type="checkbox" name="terms" required checked={data.terms} onChange={onChange} /><span>이용약관 동의 (필수)</span></label><button type="button" className="policy-link" onClick={() => setPolicyKey('terms')} aria-label="이용약관 내용 보기">내용 보기</button></div>

@@ -24,7 +24,8 @@ test('fabric validation accepts non-yard-multiple roll stock but enforces scrap 
   assert.equal(validateLiveFabricDraft(draft('ROLL'), true), '');
   assert.equal(validateLiveFabricDraft(draft('SCRAP'), true), '');
   assert.match(validateLiveFabricDraft({ ...draft('ROLL'), remaining_length_cm: 89 }), /90cm/);
-  for (const length_cm of [29, 91]) assert.match(validateLiveFabricDraft({ ...draft('SCRAP'), length_cm }), /30~90cm/);
+  for (const length_cm of [1, 29, 91, 150]) assert.equal(validateLiveFabricDraft({ ...draft('SCRAP'), length_cm }), '');
+  assert.match(validateLiveFabricDraft({ ...draft('SCRAP'), length_cm: 0 }), /1cm 이상/);
   assert.match(validateLiveFabricDraft({ ...draft('ROLL'), price: 2147483648 }), /2,147,483,647/);
   assert.match(validateLiveFabricDraft({ ...draft('ROLL'), photos: [] }, true), /사진/);
   assert.equal(validateLiveFabricDraft({ ...draft('ROLL'), photos: [] }), '', 'editing does not invent a server photo minimum');

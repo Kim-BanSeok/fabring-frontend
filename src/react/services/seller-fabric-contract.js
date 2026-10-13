@@ -78,13 +78,13 @@ export function sellerFabricInput(input, { partial = false } = {}) {
   }
   if (!partial || has('length_cm')) {
     if (input.sale_type === 'ROLL' || input.length_cm === null) detail.length_cm = null;
-    else number('length_cm', 30, 90, detail);
+    else number('length_cm', 1, intMax, detail);
   }
   if (!partial || has('remaining_length_cm')) {
     if (input.sale_type === 'SCRAP' || input.remaining_length_cm === null) body.remaining_length_cm = null;
     else number('remaining_length_cm', 90, intMax);
   }
-  if ((!partial || has('length_cm')) && input.sale_type === 'SCRAP' && detail.length_cm === null) validation('자투리 길이는 30~90cm로 입력해 주세요.');
+  if ((!partial || has('length_cm')) && input.sale_type === 'SCRAP' && detail.length_cm === null) validation('자투리 길이는 1cm 이상의 정수로 입력해 주세요.');
   if ((!partial || has('remaining_length_cm')) && input.sale_type === 'ROLL' && body.remaining_length_cm === null) validation('롤 잔량은 90cm 이상으로 입력해 주세요.');
   if (!partial || has('has_defect')) {
     if (input.has_defect !== undefined && typeof input.has_defect !== 'boolean') validation('하자 여부를 선택해 주세요.');

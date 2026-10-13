@@ -105,11 +105,11 @@ html{background:#fff}
 .buyer-measures dd{margin:5px 0 0;font-size:25px;font-weight:600}
 .buyer-measures small{font-size:13px;font-weight:400}
 .buyer-detail-summary .buyer-info{grid-template-columns:90px minmax(0,1fr);font-size:14px;gap:12px 18px;padding:6px 0}
-.buyer-seller-description{border-block:1px solid #e1e7ef;font-size:14px}
-.buyer-seller-description summary{cursor:pointer;min-height:45px;display:flex;align-items:center;justify-content:space-between;padding:10px 0;list-style:none}
-.buyer-seller-description summary::after{content:'＋';color:#657185}
-.buyer-seller-description[open] summary::after{content:'−'}
-.buyer-seller-description p{padding-bottom:15px;line-height:1.85;color:#657185;white-space:pre-line}
+.buyer-seller-description{border-block:1px solid #e1e7ef;font-size:14px;padding-block:8px}
+.buyer-seller-description h2{margin:8px 0;font-size:16px}
+.buyer-seller-description p{padding-bottom:15px;line-height:1.85;color:#243044;white-space:pre-line}
+.seller-listing-copy h3{margin:16px 0 8px;font-size:16px}
+.seller-listing-copy p{white-space:pre-line;line-height:1.7}
 .buyer-pickup-store{display:flex;flex-direction:column;gap:5px;padding-bottom:15px;border-bottom:1px solid #e1e7ef;font-size:14px}
 .buyer-detail-summary .buyer-detail-actions{gap:10px;grid-template-columns:1.2fr 1fr}
 .buyer-detail-summary .buyer-detail-actions .button{min-width:0}
