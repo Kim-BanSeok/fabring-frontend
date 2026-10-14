@@ -37,11 +37,11 @@ export default function FactorySupplies({ ctx }) {
           {items.map((item) => <li key={item.id}><a href={`#${route(item.id)}`} aria-current={selected?.id === item.id ? 'true' : undefined} onClick={(event) => {
             if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
             event.preventDefault(); select(item.id);
-          }}><strong>{item.name}</strong><span>{item.industry || '생산품 정보 없음'}</span><small>{item.address}</small><small>{item.latitude === null ? '위치 미확인' : '지도 위치 확인됨'}</small></a></li>)}
+          }}><strong>{item.name}</strong><span>{item.industry || '생산품 정보 없음'}</span><small>{item.address}</small><small>전화번호: {item.phone_number || '원본에 전화번호 없음'}</small><small>{item.latitude === null ? '위치 미확인' : '지도 위치 확인됨'}</small></a></li>)}
         </ol></section>
       </div>}
       {selected ? <section className="panel buyer-selected-store factory-selected"><h2 ref={heading} tabIndex={-1}>{selected.name}</h2>
-        <dl className="factory-details"><div><dt>생산품</dt><dd>{selected.industry || '정보 없음'}</dd></div><div><dt>등록 주소</dt><dd>{selected.address}</dd></div><div><dt>출처</dt><dd>{selected.data_source}</dd></div><div><dt>위치</dt><dd>{selected.latitude === null ? '주소에 맞는 위치를 확인하고 있어요.' : '지도 위치가 확인되었어요.'}</dd></div></dl>
+        <dl className="factory-details"><div><dt>생산품</dt><dd>{selected.industry || '정보 없음'}</dd></div><div><dt>등록 주소</dt><dd>{selected.address}</dd></div><div><dt>전화번호</dt><dd>{selected.phone_number ? <a href={`tel:${selected.phone_number.replace(/[^\d+]/g, '')}`}>{selected.phone_number}</a> : '원본에 전화번호 없음'}</dd></div><div><dt>출처</dt><dd>{selected.data_source}</dd></div><div><dt>위치</dt><dd>{selected.latitude === null ? '주소에 맞는 위치를 확인하고 있어요.' : '지도 위치가 확인되었어요.'}</dd></div></dl>
         <div className="actions"><Button href={route(selected.id, !routeId)}>{routeId ? '지도·목록으로 돌아가기' : '업체 정보 보기'}</Button></div>
       </section> : <EmptyState title="업체를 찾을 수 없어요" description="현재 공장 목록에서 다시 선택해 주세요."><Button href="/buyer/supplies">공장 목록으로</Button></EmptyState>}
     </>}

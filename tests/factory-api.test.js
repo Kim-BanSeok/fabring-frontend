@@ -6,6 +6,14 @@ import { FACTORY_MAP_MOVE_MS, focusFactoryMarker, groupFactoryMarkers, loadNaver
 
 const item = (id = 1, extra = {}) => ({ factoryId: id, factory_name: `업체 ${id}`, industry: '단추', category: 'OTHER', address: '경기도 양주시 은현면 봉암리 422-4', latitude: null, longitude: null, data_source: '양주시청 공장등록 2026-09', created_at: '2026-10-13T12:00:00+09:00', ...extra });
 const page = (items = [item()], extra = {}) => ({ content: items, page: 0, size: 50, totalElements: items.length, totalPages: items.length ? 1 : 0, ...extra });
+test('공장 연락처를 보존하고 원본에 없는 전화번호는 null로 둔다', () => {
+  const data = factoryItem(item(1, { phone_number: ' 031-123-4567 ', fax_number: '031-123-4568' }));
+  assert.equal(data.phone_number, '031-123-4567');
+  assert.equal(data.fax_number, '031-123-4568');
+  assert.equal(factoryItem(item()).phone_number, null);
+  assert.equal(factoryItem(item(1, { phone_number: '  ' })).phone_number, null);
+  assert.throws(() => factoryItem(item(1, { phone_number: 311234567 })), { code: 'INVALID_RESPONSE' });
+});
 
 test('공개 API로 후보를 요청하고 null 좌표와 생산품 전체 문구를 보존한다', async () => {
   const calls = [];

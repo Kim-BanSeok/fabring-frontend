@@ -28,10 +28,14 @@ export function factoryItem(raw) {
   if (!raw || !integer(raw.factoryId, 1) || !text(raw.factory_name) || !text(raw.address)
     || !(raw.industry === null || typeof raw.industry === 'string') || !categories.includes(raw.category)
     || !text(raw.data_source) || typeof raw.created_at !== 'string' || !Number.isFinite(Date.parse(raw.created_at))) invalid();
+  for (const key of ['phone_number', 'fax_number']) {
+    if (raw[key] != null && (typeof raw[key] !== 'string' || raw[key].length > 20)) invalid();
+  }
   const missing = raw.latitude === null && raw.longitude === null;
   if (!missing && (!Number.isFinite(raw.latitude) || !Number.isFinite(raw.longitude)
     || Math.abs(raw.latitude) > 90 || Math.abs(raw.longitude) > 180)) invalid();
   return { id: String(raw.factoryId), name: raw.factory_name, address: raw.address, industry: raw.industry,
+    phone_number: raw.phone_number?.trim() || null, fax_number: raw.fax_number?.trim() || null,
     category: raw.category, latitude: raw.latitude, longitude: raw.longitude, data_source: raw.data_source, created_at: raw.created_at };
 }
 
