@@ -13,8 +13,8 @@ const FEEL = ['매끈함', '보송함', '약간 거침', '탄탄함', '유연함
 const STRETCH = ['거의 없음', '약간 늘어남', '잘 늘어남', '모름'];
 const emptyBrief = () => ({ photos: [], material_text: '', thickness: '', width_cm: '', length_cm: '', sheet_count: '', feel: [], stretch: '', memo: '' });
 
-function briefPath(step) {
-  return `/seller/register/ai?step=${step}`;
+function briefPath(step, type) {
+  return `/seller/register/ai?${new URLSearchParams({ step, type })}`;
 }
 
 function StepBack({ label, onClick, disabled = false }) {
@@ -42,6 +42,8 @@ export default function SellerAiBrief({ ctx }) {
   const [photoError, setPhotoError] = useState('');
   const requested = ctx.query.get('step');
   const step = STEPS.includes(requested) ? requested : 'photos';
+  const saleType = ctx.query.get('type') === 'SCRAP' ? 'SCRAP' : 'ROLL';
+  const roll = saleType === 'ROLL';
   const stage = STEPS.indexOf(step) + 1;
   const remember = (patch) => {
     const next = { ...brief, ...patch };
@@ -49,14 +51,15 @@ export default function SellerAiBrief({ ctx }) {
     setBrief(next);
     return next;
   };
-  const go = (name) => ctx.navigate(briefPath(name));
+  const go = (name) => ctx.navigate(briefPath(name, saleType));
   const setPhoto = (slot, file) => {
     const error = validateLivePhoto(file);
     setPhotoError(error);
     if (error) return;
     remember({ photos: [...brief.photos.filter(photo => photo.slot !== slot), { slot, file }] });
   };
-  const requiredReady = brief.material_text.trim() && brief.thickness && Number(brief.width_cm) >= 1 && Number(brief.length_cm) >= 1 && Number(brief.sheet_count) >= 1;
+  const lengthOk = roll ? Number(brief.length_cm) >= 90 : Number(brief.length_cm) >= 1;
+  const requiredReady = brief.material_text.trim() && brief.thickness && Number(brief.width_cm) >= 1 && lengthOk && (roll || Number(brief.sheet_count) >= 1);
   const write = () => mutation.run(async ({ signal, isCurrent }) => {
     const images = [];
     for (const photo of brief.photos.slice(0, 2)) images.push(await photoPayload(photo.file));
@@ -68,14 +71,15 @@ export default function SellerAiBrief({ ctx }) {
       thickness_label: thicknessLabel,
       width_cm: Number(brief.width_cm),
       length_cm: Number(brief.length_cm),
-      sheet_count: Number(brief.sheet_count),
+      sale_type: saleType,
+      ...(roll ? {} : { sheet_count: Number(brief.sheet_count) }),
       ...(brief.feel.length ? { feel: brief.feel.join(', ') } : {}),
       ...(brief.stretch ? { stretch: brief.stretch } : {}),
       ...(brief.memo.trim() ? { memo: brief.memo.trim() } : {}),
       images,
     }, { signal });
     if (!isCurrent()) return;
-    const draft = aiFabricDraft(session, { photos: brief.photos, color_detail: brief.material_text.trim(), sheet_count: Number(brief.sheet_count) });
+    const draft = aiFabricDraft(session, { photos: brief.photos, color_detail: brief.material_text.trim(), ...(roll ? {} : { sheet_count: Number(brief.sheet_count) }) });
     ctx.drafts.set(AI_ACTIVE_KEY, session.sessionId);
     ctx.drafts.set(aiDraftKey(session.sessionId), { session, draft, answer: '' });
     ctx.drafts.delete(BRIEF_KEY);
@@ -83,7 +87,8 @@ export default function SellerAiBrief({ ctx }) {
   });
 
   return <section className="seller-page stack">
-    <PageHeading title="원단 등록 · AI 상세설명" description="사진과 짧은 입력을 보내면 AI가 고객용 소개를 써요. 소재와 치수는 입력한 값 그대로 남아요." />
+    <PageHeading title={`원단 등록 · ${roll ? '롤' : '자투리'}`} description="사진과 짧은 입력을 보내면 AI가 고객용 소개를 써요. 소재와 치수는 입력한 값 그대로 남아요." />
+    <p className="seller-register-kind">{roll ? '롤 원단' : '자투리 원단'}으로 등록하고 있어요. {roll ? '남은 길이는 90cm 이상입니다.' : '잘라 둔 조각의 길이와 장수를 입력합니다.'}</p>
     <RegistrationSteps mode="AI_BRIEF" stage={stage} />
     {mutation.failure && <Notice tone="error">{aiFailureMessage(mutation.failure)}</Notice>}
     <StepBack
@@ -107,14 +112,15 @@ export default function SellerAiBrief({ ctx }) {
       <div className="actions"><Button tone="primary" disabled={!brief.photos.some(photo => photo.slot === 'FULL')} onClick={() => go('required')}>필수 입력으로 이동</Button></div>
     </section>}
     {step === 'required' && <form className="panel seller-panel stack" onSubmit={event => { event.preventDefault(); if (requiredReady) go('optional'); }}>
-      <h2>필수 입력</h2>
+      <h2>필수 입력 · {roll ? '롤' : '자투리'}</h2>
       <Field label="소재·원단 종류" name="material_text" value={brief.material_text} maxLength={100} required onChange={event => remember({ material_text: event.target.value })} placeholder="예: 면 혼방 데님" />
       <fieldset className="seller-material"><legend>두께</legend><div className="actions">{THICKNESS.map(([value, label]) => <Button key={value} type="button" tone={brief.thickness === value ? 'primary' : 'secondary'} aria-pressed={brief.thickness === value} onClick={() => remember({ thickness: value })}>{label}</Button>)}</div></fieldset>
       <div className="form-grid">
         <Field label="폭 · cm" name="width_cm" type="number" min={1} max={1000} step={1} required inputMode="numeric" value={brief.width_cm} onChange={event => remember({ width_cm: event.target.value })} />
-        <Field label="길이 · cm" name="length_cm" type="number" min={1} max={2147483647} step={1} required inputMode="numeric" value={brief.length_cm} onChange={event => remember({ length_cm: event.target.value })} />
-        <Field label="판매 장수" name="sheet_count" type="number" min={1} max={9999} step={1} required inputMode="numeric" value={brief.sheet_count} onChange={event => remember({ sheet_count: event.target.value })} />
+        <Field label={roll ? '남은 길이 · cm' : '길이 · cm'} name="length_cm" type="number" min={roll ? 90 : 1} max={2147483647} step={1} required inputMode="numeric" value={brief.length_cm} onChange={event => remember({ length_cm: event.target.value })} />
+        {!roll && <Field label="판매 장수" name="sheet_count" type="number" min={1} max={9999} step={1} required inputMode="numeric" value={brief.sheet_count} onChange={event => remember({ sheet_count: event.target.value })} />}
       </div>
+      {roll && brief.length_cm !== '' && Number(brief.length_cm) < 90 && <Notice tone="warning">롤은 남은 길이를 90cm 이상으로 입력해 주세요. 60cm처럼 더 짧은 조각은 자투리로 등록해요.</Notice>}
       <div className="actions"><Button type="submit" tone="primary" disabled={!requiredReady}>선택 입력으로 이동</Button></div>
     </form>}
     {step === 'optional' && <form className="panel seller-panel stack" onSubmit={event => { event.preventDefault(); go('preview'); }}>
@@ -128,13 +134,13 @@ export default function SellerAiBrief({ ctx }) {
       <h2>사진과 입력 내용</h2>
       <LocalPhotoGallery photos={brief.photos.filter(photo => ['FULL', 'ZOOM'].includes(photo.slot))} />
       <dl className="seller-details">
-        {[['소재·원단 종류', brief.material_text], ['두께', THICKNESS.find(([value]) => value === brief.thickness)?.[1]], ['폭', `${brief.width_cm}cm`], ['길이', `${brief.length_cm}cm`], ['판매 장수', `${brief.sheet_count}장`], ['촉감', brief.feel.join(', ') || '미입력'], ['신축성', brief.stretch || '미입력'], ['추가 메모', brief.memo || '미입력']].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+        {[['판매 형태', roll ? '롤 원단' : '자투리 원단'], ['소재·원단 종류', brief.material_text], ['두께', THICKNESS.find(([value]) => value === brief.thickness)?.[1]], ['폭', `${brief.width_cm}cm`], [roll ? '남은 길이' : '길이', `${brief.length_cm}cm`], ...(roll ? [] : [['판매 장수', `${brief.sheet_count}장`]]), ['촉감', brief.feel.join(', ') || '미입력'], ['신축성', brief.stretch || '미입력'], ['추가 메모', brief.memo || '미입력']].map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
       </dl>
       <div className="actions"><Button tone="primary" onClick={() => go('generate')}>AI 작성으로 이동</Button></div>
     </section>}
     {step === 'generate' && <section className="panel seller-panel stack">
       <h2>상세설명 작성</h2>
-      <p>사진 {brief.photos.length}장과 입력한 소재, 두께, 치수, 장수로 고객용 소개를 씁니다. 폭 {brief.width_cm}cm, 길이 {brief.length_cm}cm, {brief.sheet_count}장은 바꾸지 않아요.</p>
+      <p>사진 {brief.photos.length}장과 입력한 소재, 두께, 치수{roll ? '' : ', 장수'}로 고객용 소개를 씁니다. 폭 {brief.width_cm}cm, {roll ? '남은 길이' : '길이'} {brief.length_cm}cm{roll ? '' : `, ${brief.sheet_count}장`}은 바꾸지 않아요.</p>
       <div className="actions"><Button tone="primary" onClick={write} disabled={mutation.busy || !brief.photos.length || !requiredReady}>{mutation.busy ? '상세설명을 쓰는 중' : 'AI에게 작성 맡기기'}</Button></div>
     </section>}
     <p className="muted">이 단계의 사진과 입력은 이 탭에만 남아요. 새로고침하면 다시 선택해야 해요.</p>

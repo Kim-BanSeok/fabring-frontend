@@ -6,7 +6,7 @@ import { formatLength, formatPrice } from '../../lib/format.js';
 import SellerFabricRegistration from './SellerFabricRegistration.jsx';
 import SellerFabricPhotos from './SellerFabricPhotos.jsx';
 import { FabricDetails, FabricLink, FabricStatus, LiveFabricForm, LiveFabricInfo, LiveStockInfo } from './SellerLiveFabricParts.jsx';
-import { LIVE_FABRIC_STATUS, liveEditDraftKey, liveFabricFailure, liveFabricListPath, liveFabricListQuery, liveFabricPath, validateLiveFabricDraft } from './sellerLiveFabricModel.js';
+import { LIVE_FABRIC_STATUS, liveEditDraftKey, liveFabricDraftKey, liveFabricFailure, liveFabricListPath, liveFabricListQuery, liveFabricPath, validateLiveFabricDraft } from './sellerLiveFabricModel.js';
 
 const acknowledgeKey = id => `seller:live:fabric-result:${id}`;
 function FabricLoadError({ resource, ctx, title = '원단 정보를 불러오지 못했어요' }) {
@@ -36,7 +36,12 @@ function Detail({ ctx, fabric, retry }) {
   return <section className="seller-page stack" data-figma-node="127:7149"><PageHeading title="내 원단 상세" description={fabric.title} />{ack && <Notice>{ack}</Notice>}
     <FabricImage fabric={fabric} className="seller-banner-image" /><section className="panel seller-panel"><FabricStatus status={fabric.status} /><h2>원단 정보</h2><LiveFabricInfo fabric={fabric} />{fabric.reject_reason && <Notice tone="error">거절 사유: {fabric.reject_reason}</Notice>}</section>
     <section className="panel seller-panel"><h2>재고 현황</h2><LiveStockInfo fabric={fabric} /></section>
-    <div className="actions">{fabric.status !== 'SOLD_OUT' && <FabricLink path={liveFabricPath(ctx, fabric.id, 'edit')} tone="primary">{fabric.status === 'REJECTED' ? '내용 보완하기' : '정보 수정'}</FabricLink>}<FabricLink path={liveFabricPath(ctx, fabric.id, 'photos')}>사진 확인 · 관리</FabricLink><FabricLink path={`/seller/reservations?status=ALL&fabric_id=${fabric.id}`}>판매 내역 확인</FabricLink><FabricLink path={liveFabricPath(ctx, fabric.id, 'delete')} tone="danger">삭제</FabricLink><FabricLink path={liveFabricListPath(ctx)}>원단 목록</FabricLink><Button onClick={retry}>상세 새로 조회</Button></div>
+    <div className="actions"><Button onClick={() => {
+      const type = fabric.sale_type;
+      ctx.drafts.set(liveFabricDraftKey(type), { sale_type: type, title: `${fabric.title} 복사`.slice(0, 100), material: fabric.material, thickness: fabric.thickness, color: fabric.color, color_detail: fabric.color_detail || '', width_cm: fabric.width_cm, length_cm: type === 'ROLL' ? fabric.remaining_length_cm : fabric.length_cm, remaining_length_cm: type === 'ROLL' ? fabric.remaining_length_cm : null, price: fabric.price, sheet_count: type === 'SCRAP' ? fabric.sheet_count || 1 : undefined, has_defect: Boolean(fabric.has_defect), defect_note: fabric.defect_note || '', description: fabric.description || '', photos: [] });
+      ctx.drafts.set('seller:live:last-type', type);
+      ctx.navigate(`/seller/register/manual?type=${type}&from=copy`);
+    }}>이 원단 복사</Button>{fabric.status !== 'SOLD_OUT' && <FabricLink path={liveFabricPath(ctx, fabric.id, 'edit')} tone="primary">{fabric.status === 'REJECTED' ? '내용 보완하기' : '정보 수정'}</FabricLink>}<FabricLink path={liveFabricPath(ctx, fabric.id, 'photos')}>사진 확인 · 관리</FabricLink><FabricLink path={`/seller/reservations?status=ALL&fabric_id=${fabric.id}`}>판매 내역 확인</FabricLink><FabricLink path={liveFabricPath(ctx, fabric.id, 'delete')} tone="danger">삭제</FabricLink><FabricLink path={liveFabricListPath(ctx)}>원단 목록</FabricLink><Button onClick={retry}>상세 새로 조회</Button></div>
   </section>;
 }
 function Edit({ ctx, fabric, retry }) {

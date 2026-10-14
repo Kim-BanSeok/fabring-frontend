@@ -174,7 +174,7 @@ export default function AuthPage({ ctx }) {
     submittingRef.current = true;
     setSubmitting(true);
     const contest = kind === 'login' && isContestLogin(role, data);
-    const switched = contest && role === 'seller' && ctx.useLive ? ctx.useLive() : contest && ctx.useContest ? ctx.useContest() : null;
+    const switched = contest && ctx.useLive ? ctx.useLive() : null;
     const context = switched ? { ...ctx, ...switched, navigate: ctx.navigate, useContest: ctx.useContest } : ctx;
     const auth = getAuthState(context.drafts);
     const scenario = context.mode === 'live' ? null : context.query.get('demo');

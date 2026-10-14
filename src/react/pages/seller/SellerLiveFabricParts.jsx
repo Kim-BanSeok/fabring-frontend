@@ -10,7 +10,7 @@ export const FabricDetails = ({ rows }) => <dl className="seller-details">{rows.
 export function LiveFabricInfo({ fabric }) {
   return <>
     <FabricDetails rows={[
-      ['판매 형태', fabric.sale_type === 'ROLL' ? '롤 원단' : '자투리 · 1장'],
+      ['판매 형태', fabric.sale_type === 'ROLL' ? '롤 원단' : '자투리 원단'],
       ['폭 / 길이', `${fabric.width_cm}cm / ${fabric.sale_type === 'ROLL' ? fabric.remaining_length_cm : fabric.length_cm}cm`],
       ['소재 / 두께 / 색상', `${fabric.material} / ${fabric.thickness} / ${fabric.color}`],
       ['색상 상세 / 무늬', fabric.color_detail || '입력하지 않음'],
@@ -24,7 +24,7 @@ export function LiveFabricInfo({ fabric }) {
 export function LiveStockInfo({ fabric }) {
   return <FabricDetails rows={fabric.sale_type === 'ROLL' ? [
     ['물리적으로 남은 길이', formatLength(fabric.remaining_length_cm)], ['수락된 예약으로 확보', formatLength(fabric.reserved_length_cm)], ['판매 가능 길이', formatLength(fabric.available_length_cm)],
-  ] : [['판매 형태', '자투리 1장'], ['예약 확보', fabric.is_reserved ? '수락된 예약이 있어요' : '수락된 예약 없음']]} />;
+  ] : [['남은 장수', fabric.sheet_count ? `${fabric.sheet_count}장` : '1장'], ['수락으로 확보', `${fabric.reserved_sheet_count || 0}장`], ['지금 구매 가능', `${fabric.available_sheet_count ?? fabric.sheet_count ?? 1}장`]]} />;
 }
 
 export function LocalPhoto({ photo, className = 'seller-photo' }) {

@@ -13,7 +13,7 @@ import './sellerAi.css';
 
 export function AiProviderNotice() {
   const provider = import.meta.env.VITE_AI_PROVIDER;
-  return <Notice>{provider === 'fake' ? '현재 연결된 개발 서버는 외부 AI 대신 규칙 기반 테스트 도우미를 사용해요. 답변 정리와 실제 원단 등록 흐름을 확인할 수 있어요.' : provider === 'openai' ? '입력과 사진을 AI가 상세설명으로 정리해요. 등록 전에 내용이 맞는지 직접 확인해 주세요.' : '입력한 내용과 사진은 서버의 등록 도우미가 정리해요. 이 환경의 외부 AI 연결 여부는 확인되지 않았어요.'} 폭, 길이, 소재 표현은 입력한 값을 유지해요.</Notice>;
+  return <Notice>{provider === 'fake' ? '현재 연결된 개발 서버는 외부 AI 대신 규칙 기반 테스트 도우미를 사용해요. 답변 정리와 실제 원단 등록 흐름을 확인할 수 있어요.' : provider === 'claude' ? '입력과 사진을 Claude가 상세설명으로 정리해요. 등록 전에 내용이 맞는지 직접 확인해 주세요.' : provider === 'openai' ? '입력과 사진을 AI가 상세설명으로 정리해요. 등록 전에 내용이 맞는지 직접 확인해 주세요.' : '입력한 내용과 사진은 서버의 등록 도우미가 정리해요. 이 환경의 외부 AI 연결 여부는 확인되지 않았어요.'} 폭, 길이, 소재 표현은 입력한 값을 유지해요.</Notice>;
 }
 
 function DraftSummary({ session }) {

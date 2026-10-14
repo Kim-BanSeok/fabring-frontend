@@ -7,6 +7,10 @@
 .buyer-making-copy { margin: 0; white-space: pre-line; }
 .buyer-making-steps { margin: 0; padding-left: 1.25rem; display: grid; gap: 10px; }
 .buyer-cutting-sheet { display: flex; flex-wrap: wrap; gap: 28px 32px; align-items: flex-end; }
+.buyer-pattern-sheet { margin: 0 0 16px; }
+.buyer-pattern-sheet figcaption { margin-bottom: 6px; font-size: 0.92rem; }
+.buyer-pattern-svg { overflow: auto; background: #fff; border: 1px solid #dbe2ec; }
+.buyer-pattern-svg svg { display: block; width: 720px; max-width: none; height: auto; }
 .buyer-cutting-figure { margin: 0; display: grid; justify-items: center; gap: 8px; }
 .buyer-cutting-figure figcaption { display: flex; gap: 8px; align-items: baseline; }
 .buyer-cutting-figure p { margin: 0; color: var(--loop-muted, #68766f); font-size: 14px; }

@@ -2,7 +2,7 @@ import { Badge, Button, Notice } from './ui.jsx';
 import { useRef } from 'react';
 import { HOME } from '../app/store.js';
 
-const buyerLinks = [['홈', '/buyer/home'], ['원단목록', '/buyer/fabrics'], ['부자재 찾기', '/buyer/supplies'], ['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
+const buyerLinks = [['홈', '/buyer/home'], ['브랜드', '/buyer/brand'], ['원단목록', '/buyer/fabrics'], ['부자재 찾기', '/buyer/supplies'], ['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
 const sellerLinks = [['홈', '/seller/dashboard'], ['내 원단', '/seller/fabrics'], ['원단 등록', '/seller/register'], ['픽업 예약', '/seller/reservations'], ['픽업 일정', '/seller/calendar'], ['문의내역', '/seller/inquiries'], ['매장 관리', '/seller/store'], ['마이페이지', '/seller/profile']];
 const adminLinks = [['대시보드 홈', '/admin/dashboard'], ['판매자 승인', '/admin/sellers'], ['상품목록', '/admin/fabrics'], ['원단 게시 승인', '/admin/approvals']];
 
@@ -28,7 +28,7 @@ export function Logo({ role }) {
 
 export default function AppShell({ ctx, children, footer }) {
   const { path, query, role, logout } = ctx;
-  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile'].includes(path)
+  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/brand', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile'].includes(path)
     || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/', '/buyer/patterns/', '/buyer/recommendations/'].some(prefix => path.startsWith(prefix));
   const sellerConnectedPage = ['/seller', '/seller/dashboard', '/seller/calendar', '/seller/reservations', '/seller/fabrics', '/seller/register', '/seller/upload', '/seller/store', '/seller/profile', '/seller/profile/saved', '/seller/approval'].includes(path)
     || path === '/seller/inquiries' || ['/seller/reservations/', '/seller/fabrics/', '/seller/register/', '/seller/inquiries/'].some(prefix => path.startsWith(prefix));

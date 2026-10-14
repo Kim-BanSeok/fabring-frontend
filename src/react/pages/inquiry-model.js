@@ -105,6 +105,7 @@ export function startInquiryRead(api, request, success, failure) {
     const options = { signal: controller.signal };
     if (request.kind === 'fabric') return api.listFabricInquiries(request.id, request.query, options);
     if (request.kind === 'detail') return api.getFabric(request.id, options);
+    if (request.kind === 'buyer') return api.listMyInquiries(request.query, options);
     return api.listSellerInquiries(request.query, options);
   }).then(value => { if (active) success(value); }, error => {
     if (!active || controller.signal.aborted) return;
