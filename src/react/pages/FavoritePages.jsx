@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Button, EmptyState, Notice, PageHeading } from '../components/ui.jsx';
+import { Button, BuyerMast, EmptyState, Notice } from '../components/ui.jsx';
 import { formatPrice } from '../lib/format.js';
 
 const date = value => String(value).slice(0, 10).replaceAll('-', '.');
@@ -94,7 +94,7 @@ export function FavoriteList({ ctx }) {
   const page = current ? result.data : null;
   const target = query.target_type;
   return <section className="buyer-page stack">
-    <PageHeading title="관심 도안" description="저장한 도안입니다. 도안 사용이 멈춰도 목록에는 남아요." />
+    <BuyerMast image="/assets/brand/home-tile-scrap.jpg" title="관심 도안" description="저장한 도안입니다. 도안 사용이 멈춰도 목록에는 남아요." />
     {!current && <Notice role="status">관심 목록을 확인하고 있어요.</Notice>}
     {current && result.error && <><Notice tone="error">{result.error.message || '관심 목록을 불러오지 못했어요.'}</Notice><Button onClick={() => setAttempt(value => value + 1)} tone="primary">다시 조회</Button></>}
     {page && <>

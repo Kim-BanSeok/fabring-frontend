@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { Button, Badge, Notice, PageHeading, EmptyState, FabricImage, Field, SelectField, Icon } from '../components/ui.jsx';
+import { Button, Badge, Notice, PageHeading, BuyerMast, EmptyState, FabricImage, Field, SelectField } from '../components/ui.jsx';
 import useFabricResource from '../hooks/useFabricResource.js';
 import useReservationResource from '../hooks/useReservationResource.js';
 import useReservationMutation from '../hooks/useReservationMutation.js';
@@ -155,15 +155,54 @@ function FabricCard({ ctx, fabric }) {
   return <article className="buyer-fabric-card"><a className="buyer-card-photo" href={route} aria-label={`${fabric.title} 상세 보기`}><Picture fabric={fabric} /></a><div className="buyer-card-copy"><h3><a href={route}>{fabric.title}</a></h3><strong className="buyer-card-price">{priceText(fabric)}</strong><p className="buyer-small">{[fabric.material, fabric.color, fabric.thickness].filter(Boolean).join(' · ')}</p><p className="buyer-card-dimensions">{dimensions(fabric)}</p><p className="buyer-card-store">{fabric.store_name || store?.store_name || '매장 정보 확인 필요'} · 매장 픽업</p>{fabric.has_defect && <Badge tone="gray">하자 있음 · 상세 확인</Badge>}{!stock.canRequest && <Badge tone="amber">{stock.label}</Badge>}</div></article>;
 }
 
+function HomeFabricCard({ ctx, fabric }) {
+  const route = href(detailPath(ctx, fabric));
+  const meta = [fabricFilterLabel('material', fabric.material), fabricFilterLabel('color', fabric.color), fabricFilterLabel('thickness', fabric.thickness)].filter(Boolean).join(' · ');
+  return <article className="look-card"><a className="look-card-photo" href={route} aria-label={`${fabric.title} 상세 보기`}><Picture fabric={fabric} /><span>{fabric.sale_type === 'ROLL' ? '롤' : '자투리'}</span></a><p className="look-card-meta">{meta}</p><h3><a href={route}>{fabric.title}</a></h3><p className="look-card-price">{priceText(fabric)}</p><p className="look-card-stock">{dimensions(fabric)}</p></article>;
+}
+
 function Home({ ctx }) {
   const live = ctx.mode === 'live', resource = ctx.fabricResource;
   const fabrics = live ? ctx.state.fabrics : ctx.state.fabrics.filter(f => f.status === 'POSTED' && f.sale_type === 'SCRAP').toSorted((a, b) => String(b.created_at).localeCompare(String(a.created_at))).slice(0, 4);
   const search = event => { event.preventDefault(); const keyword = new FormData(event.currentTarget).get('keyword') || ''; ctx.navigate(fabricSearchPath({ query: new URLSearchParams() }, keyword)); };
-  return <Page node="123:482" className="buyer-page--home">
-    <section className="buyer-home-banner"><div className="buyer-home-banner-copy"><PageHeading title={<>양주에 남은 자투리 원단,<br />가까운 매장에서 받아 가세요.</>} description="양주 원단 매장에서 쓰고 남은 원단을 사진과 치수로 고르고, 매장에 들러 실물을 확인한 뒤 가져가요." /><form className="brand-search" onSubmit={search}><label className="sr-only" htmlFor="home-fabric-search">원단 검색</label><input id="home-fabric-search" name="keyword" maxLength={100} placeholder="원단 이름, 소재, 색상 검색" /><button type="submit" aria-label="원단 검색하기"><Icon name="search" /></button></form><nav className="buyer-material-links" aria-label="자주 찾는 원단"><a href="#/buyer/fabrics?sale_type=SCRAP&color_family=BLUE&keyword=데님">블루 데님</a><a href="#/buyer/fabrics?sale_type=SCRAP&material=COTTON">면</a><a href="#/buyer/fabrics?sale_type=SCRAP&material=BLEND">혼방</a><a href="#/buyer/fabrics?sale_type=ROLL">롤 원단</a></nav></div><div className="buyer-home-banner-photo"><img src="/assets/brand/fabric-hero.webp" alt="워시드 데님과 인디고 원단의 결감을 보여주는 생성 소재 사진" width="1536" height="1024" fetchPriority="high" /></div></section>
-    <div className="buyer-home-section-heading"><h2>최근 등록된 자투리</h2><LinkButton path="/buyer/fabrics?sale_type=ALL">자투리·롤 전체 보기 <Icon name="arrow" /></LinkButton></div>
-    {resource?.loading || resource?.error ? <FabricReadFeedback resource={resource} /> : <div className="buyer-home-products">{fabrics.length ? fabrics.map(fabric => <FabricCard key={fabric.id} ctx={ctx} fabric={fabric} />) : <EmptyState title="새로운 원단을 기다리고 있어요" description="원단이 게시되면 이곳에서 확인할 수 있어요." />}</div>}
-    <section className="buyer-pickup-guide" aria-label="매장 픽업 이용 안내"><h2>매장 픽업은 이렇게 진행돼요.</h2><ol>{[['소재·치수 확인','롤은 1마(90cm), 자투리는 남은 장수 안에서 고릅니다.'],['픽업 요청·수락 확인','판매자가 수락하면 요청 수량이 확보돼요.'],['실물 확인·수령','약속한 시간에 매장에서 원단을 받아요.']].map(([title,text],i)=><li key={title}><span>0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
+  const tiles = [
+    ['자투리', '남은 장수', '/buyer/fabrics?sale_type=SCRAP', '/assets/brand/home-tile-scrap.jpg'],
+    ['롤', '90cm 단위', '/buyer/fabrics?sale_type=ROLL', '/assets/brand/home-tile-roll.jpg'],
+    ['전체 원단', '자투리와 롤', '/buyer/fabrics?sale_type=ALL', '/assets/brand/home-tile-stack.jpg'],
+    ['부자재 공장', '양주 지도', '/buyer/supplies', '/assets/brand/home-tile-notions.jpg'],
+  ];
+  return <Page node="123:482" className="buyer-page--home look-home">
+    <div className="look-promo"><p>양주 매장에 남은 자투리와 롤</p><a href="#/buyer/fabrics?sale_type=ALL">새로 들어온 원단 보기</a></div>
+    <section className="look-hero">
+      <div className="look-film" aria-hidden="true"><img src="/assets/brand/home-hero-cloth.jpg" alt="" /><img src="/assets/brand/home-hero-denim.jpg" alt="" /></div>
+      <div className="look-hero-copy">
+        <p className="look-kicker">남은 원단의 다음 쓰임</p>
+        <h1>가까운 매장에서 <br />다시 고르는 원단</h1>
+        <p>사진과 치수를 보고, 매장에 들러 실물을 확인한 뒤 가져가세요.</p>
+        <a className="look-cta" href="#/buyer/fabrics?sale_type=ALL">새로 들어온 원단</a>
+        <form className="look-search" onSubmit={search}><label className="sr-only" htmlFor="home-fabric-search">원단 검색</label><input id="home-fabric-search" name="keyword" maxLength={100} placeholder="원단 이름, 소재, 색상" /><button type="submit">검색</button></form>
+      </div>
+    </section>
+    <ul className="look-points">
+      {[['매장에 남은 원단', '자투리와 롤을 사진으로 확인합니다.'], ['치수와 장수', '폭, 길이, 남은 장수를 먼저 보여 드립니다.'], ['양주 매장 픽업', '수락된 일정에 매장에서 받습니다.'], ['도안과 비교', '등록된 도안의 치수와 맞춰 볼 수 있습니다.']].map(([title, text]) => <li key={title}><strong>{title}</strong><p>{text}</p></li>)}
+    </ul>
+    <p className="look-statement">패브링은 양주 매장에 남아 있는 롤과 자투리를, 필요한 사람이 <em>치수를 확인하고 픽업</em>하는 원단 자리입니다.</p>
+    <nav className="look-tiles" aria-label="원단 분류">{tiles.map(([title, caption, path, image]) => <a key={title} href={href(path)}><img src={image} alt="" /><span><small>{caption}</small><strong>{title}</strong></span></a>)}</nav>
+    <nav className="look-keywords" aria-label="자주 찾는 원단"><a href="#/buyer/fabrics?sale_type=SCRAP&color_family=BLUE&keyword=데님">블루 데님</a><a href="#/buyer/fabrics?sale_type=SCRAP&material=COTTON">면</a><a href="#/buyer/fabrics?sale_type=SCRAP&material=BLEND">혼방</a><a href="#/buyer/fabrics?sale_type=ROLL">롤 원단</a></nav>
+    <section className="look-selection" aria-labelledby="home-selection-title">
+      <div className="look-selection-head"><div><p className="look-kicker">최근 등록</p><h2 id="home-selection-title">자투리 원단</h2></div><a href="#/buyer/fabrics?sale_type=ALL">전체 보기</a></div>
+      <nav className="look-tabs" aria-label="홈 원단 분류"><a href="#/buyer/fabrics?sale_type=SCRAP" aria-current="true">자투리</a><a href="#/buyer/fabrics?sale_type=ROLL">롤</a></nav>
+      {resource?.loading || resource?.error ? <FabricReadFeedback resource={resource} /> : <div className="look-grid">{fabrics.length ? fabrics.map(fabric => <HomeFabricCard key={fabric.id} ctx={ctx} fabric={fabric} />) : <EmptyState title="새로운 원단을 기다리고 있어요" description="원단이 게시되면 이곳에서 확인할 수 있어요." />}</div>}
+    </section>
+    <section className="look-visit" aria-label="매장 픽업 이용 안내">
+      <img className="look-visit-photo" src="/assets/brand/home-visit-shop.jpg" alt="" />
+      <div>
+        <p className="look-kicker">매장 픽업</p>
+        <h2>실물을 확인하고 받아 가세요.</h2>
+        <ol>{[['소재·치수 확인', '롤은 1마(90cm), 자투리는 남은 장수 안에서 고릅니다.'], ['픽업 요청·수락 확인', '판매자가 수락하면 요청 수량이 확보돼요.'], ['실물 확인·수령', '약속한 시간에 매장에서 원단을 받아요.']].map(([title, text], index) => <li key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol>
+        <a className="look-cta look-cta--light" href="#/buyer/fabrics?sale_type=ALL">원단 보러 가기</a>
+      </div>
+    </section>
   </Page>;
 }
 
@@ -198,9 +237,9 @@ function Fabrics({ ctx, dedicated = false }) {
   const ready = !resource?.loading && !resource?.error;
   const outsidePage = live && page?.page > 0 && !fabrics.length && page?.totalElements > 0;
   return <Page node={node} className="buyer-page--catalog">
-    <PageHeading title={search ? '검색 결과' : '원단 둘러보기'} description={saleType === 'ALL' ? '자투리와 롤을 함께 봅니다.' : saleType === 'SCRAP' ? '자투리는 남은 장수 안에서 구매할 장수를 고릅니다.' : '롤은 1마(90cm) 단위로 요청할 수 있어요.'} />
+    <BuyerMast image="/assets/brand/home-tile-stack.jpg" title={search ? '검색 결과' : '원단 둘러보기'} description={saleType === 'ALL' ? '자투리와 롤을 함께 봅니다.' : saleType === 'SCRAP' ? '자투리는 남은 장수 안에서 구매할 장수를 고릅니다.' : '롤은 1마(90cm) 단위로 요청할 수 있어요.'} />
     <SaleTypeTabs ctx={ctx} saleType={saleType} />
-    <div className="buyer-catalog-toolbar"><form className="brand-search" onSubmit={event => { event.preventDefault(); ctx.navigate(fabricSearchPath(ctx, keyword)); }}><label htmlFor="catalog-fabric-search" className="sr-only">원단 검색</label><input id="catalog-fabric-search" value={keyword} onChange={event => setKeyword(event.target.value)} maxLength={100} placeholder="원단 이름, 소재, 색상 검색" /><button type="submit" aria-label="원단 검색하기"><Icon name="search" /></button></form><SelectField label="원단 정렬" name="sort" options={[{value:'latest',label:'최근 등록순'},{value:'price_asc',label:'낮은 가격순'},{value:'price_desc',label:'높은 가격순'}]} value={ctx.query.get('sort') || 'latest'} onChange={event => ctx.navigate(fabricSearchPath(ctx, ctx.query.get('keyword') || '', event.target.value))} /></div>
+    <div className="buyer-catalog-toolbar"><form className="brand-search" onSubmit={event => { event.preventDefault(); ctx.navigate(fabricSearchPath(ctx, keyword)); }}><label htmlFor="catalog-fabric-search" className="sr-only">원단 검색</label><input id="catalog-fabric-search" value={keyword} onChange={event => setKeyword(event.target.value)} maxLength={100} placeholder="원단 이름, 소재, 색상 검색" /><button type="submit">검색</button></form><SelectField label="원단 정렬" name="sort" options={[{value:'latest',label:'최근 등록순'},{value:'price_asc',label:'낮은 가격순'},{value:'price_desc',label:'높은 가격순'}]} value={ctx.query.get('sort') || 'latest'} onChange={event => ctx.navigate(fabricSearchPath(ctx, ctx.query.get('keyword') || '', event.target.value))} /></div>
     <div className="buyer-catalog-layout"><section className={`panel buyer-filter-panel${!expanded ? ' is-collapsed' : ''}`} aria-label="원단 필터"><div className="buyer-filter-toolbar"><h2 className="buyer-panel-heading">검색 조건</h2><div className="actions">{<Button data-buyer-collapse="" aria-expanded={expanded} aria-controls="buyer-filter-fields" onClick={() => setExpanded(value => !value)}>{expanded ? '검색 조건 접기' : '검색 조건 펼치기'}</Button>}{hasFilters && <Button data-buyer-reset-filter="" onClick={reset}>검색 조건 지우기</Button>}</div></div>{summary}{<form ref={formRef} id="buyer-filter-fields" hidden={!expanded} data-buyer-filter="" onSubmit={apply}><input type="hidden" name="sale_type" value={saleType} /><div className="buyer-filter-grid">{selects}</div><div className="actions"><Button type="submit" tone="primary">이 조건으로 원단 찾기</Button><Button data-buyer-reset-filter="" onClick={() => setFilters({ material: '', thickness: '', color: '' })}>고른 소재·두께·색상 지우기</Button></div></form>}</section>
     <div className="buyer-catalog-content">{ready && <p className="buyer-result-count" aria-live="polite">{saleType === 'ALL' ? '전체' : saleType === 'SCRAP' ? '자투리' : '롤'} 원단 {live ? page?.totalElements ?? 0 : fabrics.length}개</p>}
     <div className="buyer-results" aria-busy={resource?.loading || undefined}>{!ready ? <FabricReadFeedback resource={resource} resetPath={resetPath} /> : fabrics.length ? fabrics.map(fabric => <FabricCard key={fabric.id} ctx={ctx} fabric={fabric} />) : outsidePage ? <EmptyState title="이 페이지에는 원단이 없어요" description="등록된 원단 수가 바뀌었을 수 있어요. 첫 페이지에서 다시 확인해 주세요."><LinkButton path={fabricListPagePath(ctx, 0)} tone="primary">첫 페이지로</LinkButton></EmptyState> : <EmptyState title="조건에 맞는 원단이 없어요" description="검색 범위를 넓히거나 조건을 바꿔서 다시 찾아보세요."><LinkButton path={filterPath} tone="primary">조건 수정</LinkButton><Button data-buyer-reset-filter="" onClick={reset}>전체 원단 보기</Button></EmptyState>}</div>
@@ -344,7 +383,7 @@ function Reservations({ ctx }) {
   const reservations = live ? ctx.state.reservations : examples ? ['demo-roll', ...(status === 'REJECTED' ? [] : ['demo-scrap'])].map(id => exampleReservation(ctx, id)).filter(Boolean) : ctx.state.reservations.filter(item => item.status === status);
   const outsidePage = live && page?.page > 0 && !reservations.length && page?.totalElements > 0;
   const nodes = { REQUESTED: '123:1806', ACCEPTED: '127:4648', PICKED_UP: '127:4860', REJECTED: '127:4960', CANCELED: '127:5025' };
-  return <Page node={nodes[status]}><PageHeading title="픽업 예약 내역" description={live ? '진행 상태와 한국 시간 기준 픽업 일정을 확인하세요.' : '요청한 원단과 픽업 진행 상태를 확인하세요.'} />{examples && <ExampleNotice />}<ReservationTabs ctx={ctx} status={status} />
+  return <Page node={nodes[status]}><BuyerMast image="/assets/brand/home-visit-shop.jpg" title="픽업 예약 내역" description={live ? '진행 상태와 한국 시간 기준 픽업 일정을 확인하세요.' : '요청한 원단과 픽업 진행 상태를 확인하세요.'} />{examples && <ExampleNotice />}<ReservationTabs ctx={ctx} status={status} />
     {live && ready && <div className="buyer-list-status"><p className="buyer-result-count" aria-live="polite">{STATUS[status]} {page?.totalElements ?? 0}건</p><Button onClick={resource.retry}>최신 내역 확인</Button></div>}
     {status === 'CANCELED' && reservations.length > 0 && <Notice>취소된 예약 내역입니다. 수락된 예약을 취소하면 확보된 원단은 다시 판매할 수 있어요.</Notice>}
     <div className="buyer-results" aria-busy={resource?.loading || undefined}>{!ready ? <ReservationReadFeedback resource={resource} /> : reservations.length ? reservations.map(item => <ReservationCard key={item.id} ctx={ctx} item={live ? { ...item, list_return: reservationListReturn(ctx) } : item} />) : outsidePage ? <EmptyState title="이 페이지에는 예약이 없어요" description="예약 상태가 바뀌었을 수 있어요. 첫 페이지에서 확인해 주세요."><LinkButton path={reservationListPagePath(ctx, 0)} tone="primary">첫 페이지로</LinkButton></EmptyState> : <EmptyState title={`${STATUS[status]} 내역이 없어요`} description="필요한 원단을 찾아 픽업을 요청해 보세요."><LinkButton path="/buyer/fabrics" tone="primary">원단 둘러보기</LinkButton></EmptyState>}</div>

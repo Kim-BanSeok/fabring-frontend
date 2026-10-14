@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Badge, Button, EmptyState, Notice, PageHeading } from '../components/ui.jsx';
+import { Badge, Button, BuyerMast, EmptyState, Notice, PageHeading } from '../components/ui.jsx';
 import useReservationMutation from '../hooks/useReservationMutation.js';
 import './inquiry.css';
 import { formatDate, formatDateTime } from '../lib/format.js';
@@ -66,7 +66,7 @@ function BuyerInquiryIndex({ ctx }) {
     const search = params.toString();
     return `/buyer/inquiries${search ? `?${search}` : ''}`;
   };
-  return <BuyerPage><PageHeading title="문의 내역" description="내가 남긴 질문과 판매자의 답변을 확인하세요." />
+  return <BuyerPage><BuyerMast image="/assets/brand/home-hero-denim.jpg" title="문의 내역" description="내가 남긴 질문과 판매자의 답변을 확인하세요." />
     <nav className="tabs" aria-label="문의 답변 상태">{[['WAITING', '답변 대기'], ['ANSWERED', '답변 완료'], ['ALL', '전체']].map(([value, label]) => <Link key={value} path={pathFor(value)} className={status === value ? 'is-active' : ''} aria-current={status === value ? 'page' : undefined}>{label}</Link>)}</nav>
     <div><Button onClick={resource.retry} disabled={resource.loading}>새로 조회</Button></div>
     <ReadFeedback resource={resource} />
@@ -93,7 +93,7 @@ export function FabricInquiryThread({ ctx, fabric }) {
   return <section id="buyer-fabric-inquiries" className="panel buyer-page stack" aria-labelledby="buyer-fabric-inquiries-title">
     <h2 id="buyer-fabric-inquiries-title" className="buyer-panel-heading">이 원단 문의와 답변</h2>
     <p className="buyer-muted">이 원단에 달린 질문과 판매자 답변입니다. 비공개 내용은 작성한 사람과 판매자, 운영만 볼 수 있어요.</p>
-    <div className="actions"><Link path={inquiryFlowPath(ctx, fabric.id, { compose: 1 })} tone="primary">이 원단 문의 작성</Link>{page && page.totalElements > items.length ? <Link path={inquiryFlowPath(ctx, fabric.id)}>문의 {page.totalElements}건 모두 보기</Link> : null}</div>
+    <div className="actions"><Link path={inquiryFlowPath(ctx, fabric.id, { compose: 1 })}>이 원단 문의 작성</Link>{page && page.totalElements > items.length ? <Link path={inquiryFlowPath(ctx, fabric.id)}>문의 {page.totalElements}건 모두 보기</Link> : null}</div>
     <ReadFeedback resource={resource} />
     {page && (items.length ? items.map(item => <article key={item.id} className="buyer-inquiry-item stack" aria-label={`문의 ${item.id}`}><InquiryContent item={item} /></article>) : <EmptyState title="아직 문의가 없어요" description="치수, 소재, 하자처럼 사진으로 확인하기 어려운 점을 판매자에게 물어보세요." />)}
   </section>;

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, Notice, PageHeading, EmptyState, SelectField } from '../components/ui.jsx';
+import { Button, Notice, BuyerMast, EmptyState, SelectField } from '../components/ui.jsx';
 import NaverFactoryMap from '../components/NaverFactoryMap.jsx';
 import useFactoryResource from '../hooks/useFactoryResource.js';
 import { internalReturn } from './buyer-model.js';
@@ -50,7 +50,7 @@ export default function FactorySupplies({ ctx }) {
   };
   useEffect(() => { if (ctx.query.get('focus') === 'selected') heading.current?.focus({ preventScroll: true }); }, [selected?.id, ctx.query]);
   return <section className="buyer-page factory-supplies" data-figma-node="123:1637">
-    <PageHeading title={routeId && selected ? selected.name : '부자재 관련 공장 찾기'} description="양주시청 공장등록 자료에서 생산품을 기준으로 선별한 업체입니다." />
+    <BuyerMast image="/assets/brand/home-tile-notions.jpg" title={routeId && selected ? selected.name : '부자재 관련 공장 찾기'} description="양주시청 공장등록 자료에서 생산품을 기준으로 선별한 업체입니다." />
     <Notice>소매 판매와 영업 여부는 확인되지 않았어요. 방문 전 업체에 공급 가능 여부를 확인해 주세요.</Notice>
     {resource.loading && <section className="panel" role="status">공장 정보를 불러오는 중이에요…</section>}
     {resource.error && <section className="panel"><Notice tone="error">{resource.error.message || '공장 정보를 불러오지 못했어요.'}</Notice><Button onClick={resource.retry} tone="primary">다시 불러오기</Button></section>}

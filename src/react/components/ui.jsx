@@ -27,6 +27,10 @@ export function PageHeading({ title, description = '' }) {
   return <header className="page-heading"><h1 tabIndex={-1}>{title}</h1>{description && <p>{description}</p>}</header>;
 }
 
+export function BuyerMast({ title, description = '', image }) {
+  return <header className="buyer-mast"><img src={image} alt="" /><div><h1 tabIndex={-1}>{title}</h1>{description && <p>{description}</p>}</div></header>;
+}
+
 export function EmptyState({ title, description = '', children }) {
   return <section className="empty-state"><h2>{title}</h2><p>{description}</p>{children && <div className="actions">{children}</div>}</section>;
 }

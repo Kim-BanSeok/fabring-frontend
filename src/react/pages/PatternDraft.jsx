@@ -148,7 +148,7 @@ export default function PatternDraftPanel({ ctx, fabric }) {
   return <section className="buyer-page" aria-labelledby="buyer-pattern-draft-title">
     <div className="buyer-home-section-heading"><h2 id="buyer-pattern-draft-title">이 원단 치수로 그리는 도안 초안</h2></div>
     <p className="buyer-muted">만들고 싶은 이름을 적으면 재단선, 시접, 식서, 부품표, 5cm 칸이 있는 시트를 그립니다. 위쪽 등록 도안 비교와 다르고, 추천 판정에 넣거나 저장하지 않아요.</p>
-    {!open && !draft ? <div className="actions"><Button tone="primary" onClick={() => setOpen(true)}>도안 초안 입력 열기</Button></div> : null}
+    {!open && !draft ? <div className="actions"><Button onClick={() => setOpen(true)}>도안 초안 입력 열기</Button></div> : null}
     {(open || draft) && <>
     <form className="panel buyer-page" onSubmit={submit}>
       <Field label="만들고 싶은 것" name="item_name" required maxLength={40} value={itemName} onChange={event => setItemName(event.target.value)} />
