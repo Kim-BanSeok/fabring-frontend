@@ -3,7 +3,7 @@ import { Badge, Button, EmptyState, Notice, PageHeading } from '../components/ui
 import useReservationMutation from '../hooks/useReservationMutation.js';
 import './inquiry.css';
 import { formatDate, formatDateTime } from '../lib/format.js';
-import { INQUIRY_RECEIPT_KEY, INQUIRY_TARGETS_KEY, inquiryAnswerKey, inquiryCreateKey, inquiryFailure, inquiryFlowPath, inquiryPageQuery, inquiryPath, inquiryReturnPath, reconcileInquiryAnswer, rememberInquiryTarget, sellerInquiryPath, sendInquiry, sendInquiryAnswer, startInquiryRead } from './inquiry-model.js';
+import { INQUIRY_RECEIPT_KEY, inquiryAnswerKey, inquiryCreateKey, inquiryFailure, inquiryFlowPath, inquiryPageQuery, inquiryPath, inquiryReturnPath, reconcileInquiryAnswer, rememberInquiryTarget, sellerInquiryPath, sendInquiry, sendInquiryAnswer, startInquiryRead } from './inquiry-model.js';
 
 const Link = ({ path, children, ...props }) => <Button href={path} {...props}>{children}</Button>;
 const BuyerPage = ({ children }) => <div className="buyer-page" data-figma-node="123:2068">{children}</div>;

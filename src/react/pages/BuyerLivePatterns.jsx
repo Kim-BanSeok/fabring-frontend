@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Fragment, useLayoutEffect, useRef, useState } from 'react';
 import { Button, Badge, Notice, PageHeading, EmptyState, Field } from '../components/ui.jsx';
 import usePatternResource from '../hooks/usePatternResource.js';
 import { fabricFilterLabel } from '../services/fabric-contract.js';
@@ -50,11 +50,6 @@ function RecommendationEmpty({ result }) {
   return <EmptyState title={result.available ? '현재 추천 결과가 없어요' : '현재 이 원단의 도안을 추천할 수 없어요'} description={result.message || '현재 원단 정보로 추천할 도안을 찾지 못했어요.'} />;
 }
 
-export const pouchGuideImages = [
-  { src: '/assets/patterns/tote-sizes.svg?v=1', caption: '사이즈', alt: '기본 A4, 세로로 긴 A4, 도시락 가방, 1박 여행 가방 완성 크기' },
-  { src: '/assets/patterns/tote-patterns.svg?v=1', caption: '도안', alt: '가방 몸통과 손잡이를 치수대로 자르는 재단 도안' },
-];
-
 export function MakingSteps({ parts, description, steps, images }) {
   const cut = parts.map(part => `${part.part_name} ${part.width_cm}×${part.height_cm}cm ${part.quantity}장`).join(', ');
   const list = steps || [
@@ -87,9 +82,12 @@ function RecommendationCard({ ctx, fabric, item, compact = false }) {
   return <article className="panel buyer-pattern-card"><div className="buyer-pattern-card-heading"><h3>{item.pattern_name}</h3><Badge tone={suitable ? 'green' : 'amber'}>{suitable ? '조건 적합' : '소재 확인 필요'}</Badge></div><div className="buyer-recommend-body"><PatternImage pattern={item} /><div className="buyer-recommend-copy"><strong>{recommendationPurchase(item, fabric)}</strong><p className="buyer-muted">{suitable ? '등록된 원단 정보가 도안의 조건을 충족해요. 제작 전 실물 확인을 권장해요.' : '원단 소재가 확인되지 않았어요. 소재를 확인한 뒤 제작 여부를 결정해 주세요.'}</p>{fabric.sale_type === 'ROLL' && <p className="buyer-small">재단에 필요한 길이 {item.required_length_cm}cm → 1마 단위 구매 {item.purchase_length_cm}cm</p>}</div></div>{compact ? <details><summary>판정 근거 보기</summary><ul className="buyer-pattern-reasons">{reasons}</ul></details> : <><h4>판정 근거</h4><ul className="buyer-pattern-reasons">{reasons}</ul></>}{!suitable && <Notice tone="warning">소재 확인이 필요한 추천은 제작 적합성이 확정된 결과가 아닙니다. 판매자에게 소재를 문의한 뒤 제작 여부를 결정해 주세요.</Notice>}<PatternMaking api={ctx.api} patternId={item.pattern_id} /><RecommendationActions ctx={ctx} fabric={fabric} item={item} /></article>;
 }
 
-export function LiveRecommendationsPreview({ ctx, fabric }) {
+export function LiveRecommendationsPreview(props) {
+  return <RecommendationsPreviewContent key={props.fabric.id} {...props} />;
+}
+
+function RecommendationsPreviewContent({ ctx, fabric }) {
   const [asked, setAsked] = useState(false);
-  useEffect(() => { setAsked(false); }, [fabric.id]);
   const resource = usePatternResource(ctx.api, asked ? { kind: 'recommendations', id: fabric.id } : null);
   return <section className="buyer-page" aria-labelledby="buyer-recommendation-title"><div className="buyer-home-section-heading"><h2 id="buyer-recommendation-title">이 원단으로 만들 도안</h2>{asked && resource.data?.items?.length ? <Button href={recommendationPath(ctx, fabric.id)}>추천 전체 보기</Button> : null}</div><p className="buyer-muted">이 원단의 폭, 길이, 소재를 등록된 도안과 비교해서 맞는 도안을 골라 보여 드려요.</p>{!asked ? <div className="actions"><Button tone="primary" onClick={() => setAsked(true)}>AI로 도안 뽑아서 보기</Button></div> : !resource.data ? <PatternReadFeedback resource={resource} label="추천 정보" resetPath={detailPath(ctx, fabric)} /> : <>{resource.data.items.length ? <div className="buyer-recommend-grid">{resource.data.items.map(item => <RecommendationCard key={item.pattern_id} ctx={ctx} fabric={fabric} item={item} compact />)}</div> : <RecommendationEmpty result={resource.data} />}<RecommendationNotices result={resource.data} /></>}</section>;
 }

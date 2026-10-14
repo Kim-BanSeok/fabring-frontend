@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Button } from '../../components/ui.jsx';
 import { composeVoiceAnswer, createBrowserVoice, primeMicrophone, voiceErrorMessage } from './sellerVoice.js';
 
@@ -9,22 +9,28 @@ const sameWords = (left, right) => left.replace(/\s+/g, '') === right.replace(/\
 
 // 질문이 끝나면 마이크를 계속 열어 두고, 말이 잠깐 끊기면 그때 답을 보낸다.
 export default function SellerVoiceAnswer({ questionText, paused, onSpoken, onHearing }) {
-  const voice = useRef(null);
-  if (!voice.current) voice.current = createBrowserVoice();
+  return <VoiceAnswerTurn key={`${questionText}:${paused}`} questionText={questionText} paused={paused} onSpoken={onSpoken} onHearing={onHearing} />;
+}
+
+function VoiceAnswerTurn({ questionText, paused, onSpoken, onHearing }) {
+  const [voice] = useState(createBrowserVoice);
   const [phase, setPhase] = useState('idle');
   const [message, setMessage] = useState('');
   const turn = useRef(0);
   const timers = useRef([]);
   const spokenRef = useRef(onSpoken);
   const hearingRef = useRef(onHearing);
-  spokenRef.current = onSpoken;
-  hearingRef.current = onHearing;
+  useEffect(() => {
+    spokenRef.current = onSpoken;
+    hearingRef.current = onHearing;
+  }, [onSpoken, onHearing]);
 
-  const clearTimers = () => { timers.current.forEach((id) => window.clearTimeout(id)); timers.current = []; };
-  const later = (fn, ms) => { const id = window.setTimeout(fn, ms); timers.current.push(id); return id; };
-  const stop = () => { turn.current += 1; clearTimers(); voice.current.stop(); setPhase('idle'); };
+  const clearTimers = useCallback(() => { timers.current.forEach((id) => window.clearTimeout(id)); timers.current = []; }, []);
+  const later = useCallback((fn, ms) => { const id = window.setTimeout(fn, ms); timers.current.push(id); return id; }, []);
+  const cancel = useCallback(() => { turn.current += 1; clearTimers(); voice.stop(); }, [clearTimers, voice]);
+  const stop = () => { cancel(); setPhase('idle'); };
 
-  const run = (current) => {
+  const run = useCallback((current) => {
     let heard = '';
     let committed = false;
     let restarts = 0;
@@ -42,21 +48,21 @@ export default function SellerVoiceAnswer({ questionText, paused, onSpoken, onHe
       if (!text || sameWords(text, questionText)) return;
       committed = true;
       clearTimers();
-      voice.current.stopListening();
+      voice.stopListening();
       setPhase('idle');
       spokenRef.current?.(text);
     };
 
     const listen = () => {
       if (committed || current !== turn.current) return;
-      if (!voice.current.canListen) {
+      if (!voice.canListen) {
         setPhase('idle');
         setMessage('이 브라우저는 말을 글로 바꾸지 못해요. Chrome에서 마이크를 허용해 주세요.');
         return;
       }
       const base = heard;
       setPhase('listening');
-      voice.current.listen({
+      voice.listen({
         onresult: ({ finalText, interimText }) => {
           if (committed || current !== turn.current) return;
           heard = composeVoiceAnswer(base, finalText, interimText);
@@ -86,21 +92,19 @@ export default function SellerVoiceAnswer({ questionText, paused, onSpoken, onHe
       });
     };
 
-    if (!voice.current.canSpeak) { later(listen, AFTER_SPEECH_MS); return; }
+    if (!voice.canSpeak) { later(listen, AFTER_SPEECH_MS); return; }
     setPhase('speaking');
-    voice.current.speak(questionText, { onend: () => later(listen, AFTER_SPEECH_MS) });
-  };
+    voice.speak(questionText, { onend: () => { if (current === turn.current) later(listen, AFTER_SPEECH_MS); } });
+  }, [clearTimers, later, questionText, voice]);
 
-  useEffect(() => () => stop(), []);
   useEffect(() => {
     if (!questionText || paused) return undefined;
     const current = ++turn.current;
     clearTimers();
-    setMessage('');
     hearingRef.current?.('');
     run(current);
-    return () => { turn.current += 1; clearTimers(); voice.current.stop(); };
-  }, [questionText, paused]);
+    return cancel;
+  }, [questionText, paused, clearTimers, run, cancel]);
 
   const status = phase === 'speaking' ? '질문을 읽고 있어요. 끝난 뒤에 답을 들어요.' : phase === 'listening' ? '듣고 있어요. 말씀한 뒤 잠깐 멈추면 다음 질문으로 넘어가요.' : '말로 답하거나, 아래 버튼을 눌러도 돼요.';
 
