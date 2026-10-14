@@ -21,8 +21,11 @@ export const supplyCategoryCodes = (industry) => {
 
 export const supplyCategoryCode = (value) => SUPPLY_CATEGORIES.some(([code]) => code === value) ? value : '';
 
+const areaIn = (source) => {
+  const match = /양주시\s*((?![0-9]+동)[가-힣][가-힣0-9]{0,8}(?:읍|면|동))/u.exec(String(source || ''));
+  return match?.[1] || '';
+};
+
 export function factoryArea(item) {
-  const source = item?.legal_dong || item?.address || '';
-  const areas = String(source).match(/[가-힣0-9]+(?:읍|면|동)/gu) || [];
-  return areas.at(-1) || '';
+  return areaIn(item?.legal_dong) || areaIn(item?.address);
 }

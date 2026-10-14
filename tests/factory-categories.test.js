@@ -10,5 +10,6 @@ test('supply categories follow the product words and can overlap', () => {
   assert.equal(supplyCategoryCode('LACE'), 'LACE');
   assert.equal(supplyCategoryCode('FOOD'), '');
   assert.equal(factoryArea({ legal_dong: '경기도 양주시 광적면', address: '경기도 양주시 덕정동' }), '광적면');
-  assert.equal(factoryArea({ address: '경기도 양주시 은현면 봉암리 44-0' }), '은현면');
+  assert.equal(factoryArea({ address: '경기도 양주시 은현면 봉암리 44-0 101동' }), '은현면');
+  assert.equal(factoryArea({ address: '경기도 양주시 회천1동 123' }), '회천1동');
 });

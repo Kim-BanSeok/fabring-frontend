@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Button, Notice, PageHeading, EmptyState } from '../components/ui.jsx';
+import { Button, Notice, PageHeading, EmptyState, SelectField } from '../components/ui.jsx';
 import NaverFactoryMap from '../components/NaverFactoryMap.jsx';
 import useFactoryResource from '../hooks/useFactoryResource.js';
 import { internalReturn } from './buyer-model.js';
@@ -14,8 +14,16 @@ export default function FactorySupplies({ ctx }) {
   const routeId = ctx.path === '/buyer/supplies' ? '' : ctx.path.split('/')[3];
   const selectedId = routeId || ctx.query.get('selected');
   const items = resource.data?.items || [];
-  const areas = [...new Set(items.map(factoryArea).filter(Boolean))];
-  const area = areas.includes(ctx.query.get('area')) ? ctx.query.get('area') : '';
+  const inProduct = (item) => !product || supplyCategoryCodes(item.industry).includes(product);
+  const scoped = items.filter(inProduct);
+  const areaCounts = new Map();
+  for (const item of scoped) {
+    const name = factoryArea(item);
+    if (name) areaCounts.set(name, (areaCounts.get(name) || 0) + 1);
+  }
+  const areaOptions = [...areaCounts.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ko'));
+  const area = product && areaCounts.has(ctx.query.get('area')) ? ctx.query.get('area') : '';
+  const productLabel = SUPPLY_CATEGORIES.find(([code]) => code === product)?.[1] || '';
   const visible = items.filter((item) => (!product || supplyCategoryCodes(item.industry).includes(product)) && (!area || factoryArea(item) === area));
   const selected = visible.find((item) => item.id === selectedId) || (!selectedId ? visible[0] : null);
   const withQuery = (query) => {
@@ -50,19 +58,13 @@ export default function FactorySupplies({ ctx }) {
     {resource.data && items.length > 0 && <>
       <p className="factory-source">{items[0].data_source} · {area || product ? `${[area, product ? SUPPLY_CATEGORIES.find(([code]) => code === product)?.[1] : ''].filter(Boolean).join(' · ')} ${visible.length}곳` : `후보 ${items.length}곳`} · 위치 확인 {visible.filter((item) => item.latitude !== null).length}곳</p>
       <nav className="factory-categories" aria-label="부자재 분류">
-        <Button href={listPath({ product: '' })} aria-current={!product ? 'page' : undefined}>분류 전체 {items.filter((item) => !area || factoryArea(item) === area).length}</Button>
+        <Button href={listPath({ product: '', area: '' })} aria-current={!product ? 'page' : undefined}>분류 전체 {items.length}</Button>
         {SUPPLY_CATEGORIES.map(([code, label]) => {
-          const count = items.filter((item) => supplyCategoryCodes(item.industry).includes(code) && (!area || factoryArea(item) === area)).length;
-          return count ? <Button key={code} href={listPath({ product: code })} aria-current={product === code ? 'page' : undefined}>{label} {count}</Button> : null;
+          const count = items.filter((item) => supplyCategoryCodes(item.industry).includes(code)).length;
+          return count ? <Button key={code} href={listPath({ product: code, area: '' })} aria-current={product === code ? 'page' : undefined}>{label} {count}</Button> : null;
         })}
       </nav>
-      <nav className="factory-categories" aria-label="공장 지역">
-        <Button href={listPath({ area: '' })} aria-current={!area ? 'page' : undefined}>지역 전체 {items.filter((item) => !product || supplyCategoryCodes(item.industry).includes(product)).length}</Button>
-        {areas.map((name) => {
-          const count = items.filter((item) => factoryArea(item) === name && (!product || supplyCategoryCodes(item.industry).includes(product))).length;
-          return count ? <Button key={name} href={listPath({ area: name })} aria-current={area === name ? 'page' : undefined}>{name} {count}</Button> : null;
-        })}
-      </nav>
+      {product && <SelectField label={`${productLabel} 안의 지역`} name="factory-area" value={area} onChange={(event) => ctx.navigate(listPath({ area: event.target.value }))} options={[{ value: '', label: `${productLabel} 전체 (${scoped.length})` }, ...areaOptions.map(([name, count]) => ({ value: name, label: `${name} (${count})` }))]} />}
       {visible.length === 0 && <EmptyState title="이 분류의 공장이 없어요" description="다른 분류를 선택해 주세요." />}
       {visible.length > 0 && <>
       {!routeId && <div className="buyer-supply-layout factory-supply-layout">
