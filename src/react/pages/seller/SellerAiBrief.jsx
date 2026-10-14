@@ -5,6 +5,7 @@ import useReservationMutation from '../../hooks/useReservationMutation.js';
 import { LocalPhoto, LocalPhotoGallery } from './SellerLiveFabricParts.jsx';
 import { validateLivePhoto } from './sellerLiveFabricModel.js';
 import { AI_ACTIVE_KEY, aiDraftKey, aiFabricDraft, aiFailureMessage, aiPath } from './sellerAiModel.js';
+import RollSaleUnit from './RollSaleUnit.jsx';
 
 const BRIEF_KEY = 'seller:live:ai:brief';
 const STEPS = ['photos', 'required', 'optional', 'preview', 'generate'];
@@ -113,11 +114,12 @@ export default function SellerAiBrief({ ctx }) {
     </section>}
     {step === 'required' && <form className="panel seller-panel stack" onSubmit={event => { event.preventDefault(); if (requiredReady) go('optional'); }}>
       <h2>필수 입력 · {roll ? '롤' : '자투리'}</h2>
+      {roll && <RollSaleUnit />}
       <Field label="소재·원단 종류" name="material_text" value={brief.material_text} maxLength={100} required onChange={event => remember({ material_text: event.target.value })} placeholder="예: 면 혼방 데님" />
       <fieldset className="seller-material"><legend>두께</legend><div className="actions">{THICKNESS.map(([value, label]) => <Button key={value} type="button" tone={brief.thickness === value ? 'primary' : 'secondary'} aria-pressed={brief.thickness === value} onClick={() => remember({ thickness: value })}>{label}</Button>)}</div></fieldset>
       <div className="form-grid">
         <Field label="폭 · cm" name="width_cm" type="number" min={1} max={1000} step={1} required inputMode="numeric" value={brief.width_cm} onChange={event => remember({ width_cm: event.target.value })} />
-        <Field label={roll ? '남은 길이 · cm' : '길이 · cm'} name="length_cm" type="number" min={roll ? 90 : 1} max={2147483647} step={1} required inputMode="numeric" value={brief.length_cm} onChange={event => remember({ length_cm: event.target.value })} />
+        <Field label={roll ? '전체 남은 길이 · cm' : '길이 · cm'} name="length_cm" type="number" min={roll ? 90 : 1} max={2147483647} step={1} required inputMode="numeric" value={brief.length_cm} onChange={event => remember({ length_cm: event.target.value })} />
         {!roll && <Field label="판매 장수" name="sheet_count" type="number" min={1} max={9999} step={1} required inputMode="numeric" value={brief.sheet_count} onChange={event => remember({ sheet_count: event.target.value })} />}
       </div>
       {roll && brief.length_cm !== '' && Number(brief.length_cm) < 90 && <Notice tone="warning">롤은 남은 길이를 90cm 이상으로 입력해 주세요. 60cm처럼 더 짧은 조각은 자투리로 등록해요.</Notice>}

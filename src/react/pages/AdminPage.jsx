@@ -62,19 +62,16 @@ function Dashboard({ ctx }) {
     ['원단 게시 대기', pending.length, '확인이 필요한 원단', '/admin/fabrics?status=PENDING'],
     ['승인 완료 판매자', state.sellers.filter(s => s.seller_approval_status === 'APPROVED').length, '승인이 완료된 판매자', '/admin/sellers?status=APPROVED'],
     ['판매자 승인 대기', state.sellers.filter(s => s.seller_approval_status === 'PENDING').length, '승인 확인 대기 판매자', '/admin/sellers?status=PENDING'],
-    ['등록된 원단수', state.fabrics.length, '전체 상태 합계 · 상태별 목록에서 조회', null],
+    ['등록된 원단수', state.fabrics.length, '전체 상태 합계 · 상태별 목록에서 조회', '/admin/fabrics'],
   ];
   return <section className="admin-page admin-dashboard stack" data-figma-node="123:4955">
     <PageHeading title="관리자 대시보드" />
+    <div className="stat-grid admin-stats" aria-label="서비스 현황">{cards.map(([title, count, hint, path]) => <a key={title} className="stat-card admin-stat" href={'#' + path}><span className="admin-stat-label">{title}<span aria-hidden="true">→</span></span><strong>{ctx.mode === 'live' ? '—' : count}</strong><small>{ctx.mode === 'live' ? '조회 연결 준비 중' : hint}</small></a>)}</div>
     <AdminWorkQueue fabrics={pending.length} sellers={state.sellers.filter(s => s.seller_approval_status === 'PENDING').length} />
     <section className="panel admin-panel admin-dashboard-work" aria-labelledby="admin-pending-heading"><div className="admin-list-heading"><h2 id="admin-pending-heading">원단 게시 승인 대기 · {pending.length}건</h2><Button href="/admin/approvals" tone="primary">대기 원단 검토</Button></div>
       <div className="admin-dashboard-preview">{pending.length ? <PendingTable fabrics={pending.slice(0, 3)} /> : <EmptyState title={ctx.mode === 'live' ? '승인 대기 목록 연결을 준비하고 있어요.' : '게시 승인을 기다리는 원단이 없어요.'} description={ctx.mode === 'live' ? '원단 승인 내역은 아직 조회하지 않았습니다.' : '새로운 원단이 등록되면 이곳에서 확인할 수 있어요.'} />}</div>
       {pending.length > 3 && <Button href="/admin/approvals">대기 {pending.length}건 모두 보기 →</Button>}
     </section>
-    <div className="stat-grid admin-stats" aria-label="서비스 현황">{cards.map(([title, count, hint, path]) => {
-      const content = <><span>{title}</span><strong>{ctx.mode === 'live' ? '—' : count}</strong><small>{ctx.mode === 'live' ? '조회 연결 준비 중' : hint}</small></>;
-      return path ? <a key={title} className="stat-card admin-stat" href={'#' + path}>{content}</a> : <div key={title} className="stat-card admin-stat admin-stat--summary">{content}</div>;
-    })}</div>
     <p className="admin-footnote muted">{ctx.mode === 'live' ? '계정 인증만 연결되었습니다. 관리 목록과 통계는 아직 조회하지 않았습니다.' : '화면에 표시된 이름, 수치와 날짜는 예시입니다.'}</p>
   </section>;
 }

@@ -117,11 +117,6 @@
   .admin-fabric-thumbnail { width:80px; height:80px; }
 }
 
-/* Review work stays near its target; summary metrics are secondary. */
-.admin-dashboard > .page-heading { order: 0; }
-.admin-dashboard-work { order: 1; }
-.admin-dashboard .admin-stats { order: 2; }
-.admin-dashboard > .admin-footnote { order: 3; }
 .admin-stat--summary:hover { border-color: var(--loop-border); }
 .admin-list-heading, .admin-result-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 .admin-list-heading h2, .admin-result-heading h2 { margin: 0; font-size: 20px; line-height: 30px; }
