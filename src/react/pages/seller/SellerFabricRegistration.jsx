@@ -9,14 +9,24 @@ import SellerBulkRegister from './SellerBulkRegister.jsx';
 
 const SALE_TABS = [['ROLL', '롤 원단'], ['SCRAP', '자투리 원단']];
 
+function SaleTypeTabs({ type, path }) {
+  return <nav className="tabs seller-tabs seller-sale-type-tabs" aria-label="판매 형태">
+    {SALE_TABS.map(([value, label]) => {
+      const selected = type === value;
+      return <FabricLink key={value} className={selected ? 'seller-tab--active' : ''} path={`${path}?type=${value}`} aria-current={selected ? 'page' : undefined}>
+        <span className="seller-sale-type-copy"><strong>{label}</strong><small>{value === 'ROLL' ? '90cm(1마) 단위 판매' : '장수 단위 판매'}</small></span>
+        <span className="seller-sale-type-state">{selected ? <><span aria-hidden="true">✓</span> 선택됨</> : '선택'}</span>
+      </FabricLink>;
+    })}
+  </nav>;
+}
+
 function RegisterStart({ type }) {
   return <section className="seller-page stack" data-figma-node="123:3245">
     <PageHeading title="새 원단 등록" description="원단 정보를 입력하고 사진을 첨부해 주세요." />
-    <nav className="tabs seller-tabs" aria-label="판매 형태">
-      {SALE_TABS.map(([value, label]) => <FabricLink key={value} className={type === value ? 'seller-tab--active' : ''} path={`/seller/register?type=${value}`} aria-current={type === value ? 'page' : undefined}>{label}</FabricLink>)}
-    </nav>
+    <SaleTypeTabs type={type} path="/seller/register" />
     <p className="muted">{type === 'ROLL' ? '롤 원단은 길이 90cm가 1마로 고정돼요. 실제 원단 폭과 전체 남은 길이를 입력하고, 가격은 1마당 입력해 주세요.' : '직사각형 한 장을 그대로 판매해요. 길이는 1cm 이상의 정수로 입력해 주세요.'}</p>
-    <div className="seller-columns seller-methods">
+    <div className="seller-columns seller-methods seller-methods--three">
       <section className="panel seller-panel">
         <h2>AI와 대화로 등록</h2>
         <h3>원단에 대해 알려 주세요.</h3>
@@ -95,5 +105,5 @@ export default function SellerFabricRegistration({ ctx }) {
   if (ctx.path === '/seller/register' || ctx.path === '/seller/register/type') return <RegisterStart type={type} />;
   if (ctx.path === '/seller/register/photos') return <section className="seller-page stack" data-figma-node="127:6637"><PageHeading title="선택한 사진을 확인해 주세요" description={`사진 ${draft.photos.length}장 선택 · 아직 업로드 전`} /><section className="panel seller-panel"><RegistrationSteps stage={2} /><LocalPhotoGallery photos={draft.photos} /><div className="actions"><Button onClick={() => toReview(draft)} tone="primary">등록 내용 확인</Button><FabricLink path={`/seller/register/manual?type=${type}`} onClick={photoBack}>입력하던 곳으로 돌아가기</FabricLink></div></section>{failure && <SubmissionAlert>{failure.message}</SubmissionAlert>}</section>;
   if (ctx.path === '/seller/register/review') return <section className="seller-page stack" data-figma-node={type === 'SCRAP' ? '127:6325' : '123:4153'}><PageHeading title="등록 내용 확인" description="원단 정보와 사진을 확인한 뒤 승인 신청을 보내 주세요." />{failure && <SubmissionAlert>{failure.message}</SubmissionAlert>}<RegistrationSteps stage={3} /><div className="seller-review"><section className="panel seller-panel"><h2>선택한 사진 {draft.photos.length}장</h2><LocalPhotoGallery photos={draft.photos} /></section><section className="panel seller-panel"><h2>원단 정보</h2><Badge tone="gray">승인 신청 전</Badge><h3 className="seller-review-title">{draft.title || '원단 이름 미입력'}</h3><LiveFabricInfo fabric={draft} /><div className="actions"><Button onClick={create} disabled={mutation.busy || failure?.locked} tone="primary">확인 후 승인 신청</Button><FabricLink path={`/seller/register/manual?type=${type}`}>내용 수정</FabricLink></div></section></div></section>;
-  return <section className="seller-page stack" data-figma-node={type === 'SCRAP' ? '127:6196' : '123:3466'}><PageHeading title={type === 'SCRAP' ? '자투리 원단 입력' : '원단 등록 · 직접 입력'} description="입력 내용과 파일은 이 탭에서만 임시로 보관해요. 새로고침하면 다시 선택해야 합니다." /><nav className="tabs seller-tabs" aria-label="판매 형태">{[['ROLL', '롤 원단'], ['SCRAP', '자투리 원단']].map(([value, label]) => <FabricLink key={value} className={type === value ? 'seller-tab--active' : ''} path={`/seller/register/manual?type=${value}`} aria-current={type === value ? 'page' : undefined}>{label}</FabricLink>)}</nav>{ctx.query.get('from') === 'copy' && <Notice>복사한 내용이에요. 치수, 장수, 가격을 확인한 뒤 새 승인 대기로 저장합니다. 사진은 다시 올려 주세요.</Notice>}{ctx.query.get('from') === 'ai' && <Notice><div className="stack"><span>중단한 대화에서 확인한 내용을 가져왔어요. 비어 있는 항목과 사진을 보완해 주세요.</span>{ctx.drafts.get('seller:live:ai:manual-note')?.answer && <p className="seller-chat-user">아직 반영 여부를 확인하지 못한 답변: {ctx.drafts.get('seller:live:ai:manual-note').answer}</p>}</div></Notice>}{failure && <SubmissionAlert>{failure.message}</SubmissionAlert>}<RegistrationSteps /><LiveFabricForm ctx={ctx} initial={draft} onRemember={remember} onSubmit={toReview} busy={mutation.busy} /></section>;
+  return <section className="seller-page stack" data-figma-node={type === 'SCRAP' ? '127:6196' : '123:3466'}><PageHeading title={type === 'SCRAP' ? '자투리 원단 입력' : '원단 등록 · 직접 입력'} description="입력 내용과 파일은 이 탭에서만 임시로 보관해요. 새로고침하면 다시 선택해야 합니다." /><SaleTypeTabs type={type} path="/seller/register/manual" />{ctx.query.get('from') === 'copy' && <Notice>복사한 내용이에요. 치수, 장수, 가격을 확인한 뒤 새 승인 대기로 저장합니다. 사진은 다시 올려 주세요.</Notice>}{ctx.query.get('from') === 'ai' && <Notice><div className="stack"><span>중단한 대화에서 확인한 내용을 가져왔어요. 비어 있는 항목과 사진을 보완해 주세요.</span>{ctx.drafts.get('seller:live:ai:manual-note')?.answer && <p className="seller-chat-user">아직 반영 여부를 확인하지 못한 답변: {ctx.drafts.get('seller:live:ai:manual-note').answer}</p>}</div></Notice>}{failure && <SubmissionAlert>{failure.message}</SubmissionAlert>}<RegistrationSteps /><LiveFabricForm ctx={ctx} initial={draft} onRemember={remember} onSubmit={toReview} busy={mutation.busy} /></section>;
 }
