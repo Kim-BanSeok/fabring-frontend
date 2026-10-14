@@ -124,6 +124,7 @@ export function patternSvg(draft, { watermark = false } = {}) {
 }
 
 export default function PatternDraftPanel({ ctx, fabric }) {
+  const [open, setOpen] = useState(false);
   const [itemName, setItemName] = useState('슬리퍼');
   const [note, setNote] = useState('');
   const [draft, setDraft] = useState(null);
@@ -145,12 +146,14 @@ export default function PatternDraftPanel({ ctx, fabric }) {
     URL.revokeObjectURL(url);
   };
   return <section className="buyer-page" aria-labelledby="buyer-pattern-draft-title">
-    <div className="buyer-home-section-heading"><h2 id="buyer-pattern-draft-title">도안 초안</h2></div>
-    <p className="buyer-muted">AI가 조각 치수를 정하면 재단선, 시접, 식서, 부품표, 5cm 칸이 있는 도안 시트로 그립니다. 추천 판정에 넣지 않고 저장하지 않아요.</p>
+    <div className="buyer-home-section-heading"><h2 id="buyer-pattern-draft-title">이 원단 치수로 그리는 도안 초안</h2></div>
+    <p className="buyer-muted">만들고 싶은 이름을 적으면 재단선, 시접, 식서, 부품표, 5cm 칸이 있는 시트를 그립니다. 위쪽 등록 도안 비교와 다르고, 추천 판정에 넣거나 저장하지 않아요.</p>
+    {!open && !draft ? <div className="actions"><Button tone="primary" onClick={() => setOpen(true)}>도안 초안 입력 열기</Button></div> : null}
+    {(open || draft) && <>
     <form className="panel buyer-page" onSubmit={submit}>
       <Field label="만들고 싶은 것" name="item_name" required maxLength={40} value={itemName} onChange={event => setItemName(event.target.value)} />
       <Field label="추가 요청" name="note" maxLength={200} value={note} onChange={event => setNote(event.target.value)} />
-      <Button type="submit" tone="primary" disabled={mutation.busy}>{mutation.busy ? '초안 만드는 중' : '초안 SVG 받아보기'}</Button>
+      <Button type="submit" tone="primary" disabled={mutation.busy}>{mutation.busy ? '도안 초안을 그리는 중' : '이 치수로 도안 시트 만들기'}</Button>
       {mutation.error && <Notice tone="error">{mutation.error}</Notice>}
     </form>
     {draft && <article className="panel">
@@ -162,7 +165,8 @@ export default function PatternDraftPanel({ ctx, fabric }) {
         <div className="buyer-pattern-svg" dangerouslySetInnerHTML={{ __html: patternPageSvg(draft, index) }} />
       </figure>)}
       {draft.steps?.length ? <ol>{draft.steps.map((step) => <li key={step}>{step}</li>)}</ol> : null}
-      <Button onClick={download}>실제 크기로 다운로드</Button>
+      <Button onClick={download}>A4 실제 크기 SVG 다운로드</Button>
     </article>}
+    </>}
   </section>;
 }

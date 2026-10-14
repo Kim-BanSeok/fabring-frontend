@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>패브링 소프트웨어 아키텍처</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 1600px;
+    height: 900px;
+    overflow: hidden;
+    background: #edf3fb;
+    color: #20242b;
+    font-family: "Malgun Gothic", "Segoe UI", sans-serif;
+  }
+  .slide {
+    width: 1600px;
+    height: 900px;
+    padding: 36px 48px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  h1 {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+  h1 span { color: #1b7a34; }
+  .sub { margin: 6px 0 0; font-size: 16px; color: #4a5562; }
+  .badge {
+    background: #20242b;
+    color: #fff;
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .layer {
+    background: #fff;
+    border-radius: 18px;
+    padding: 16px 18px 18px;
+    box-shadow: 0 8px 24px rgba(32, 36, 43, 0.06);
+  }
+  .label {
+    margin: 0 0 12px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: #1b7a34;
+  }
+  .row { display: flex; gap: 14px; }
+  .card {
+    flex: 1;
+    background: #f7fafc;
+    border: 1px solid #d7e2ee;
+    border-radius: 14px;
+    padding: 14px 16px 12px;
+  }
+  .card h2 { margin: 0 0 4px; font-size: 20px; letter-spacing: -0.03em; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.45; color: #3d4a40; }
+  .api {
+    background: #20242b;
+    color: #fff;
+  }
+  .api .label { color: #b7e3c4; }
+  .mods { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .mod {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 12px;
+    padding: 12px 14px;
+  }
+  .mod strong { display: block; font-size: 16px; margin-bottom: 4px; }
+  .mod span { display: block; font-size: 13px; line-height: 1.4; color: #d5deea; }
+  .stores .card:last-child { background: #e7f3df; border-color: #c5e3b4; }
+  footer {
+    margin-top: auto;
+    font-size: 14px;
+    color: #4a5562;
+  }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <header>
+      <div>
+        <h1>패브링 <span>소프트웨어 아키텍처</span></h1>
+        <p class="sub">구매자 · 판매자 · 관리자가 한 웹 화면에서 원단 거래 흐름을 사용합니다.</p>
+      </div>
+      <div class="badge">React · Express · PostgreSQL</div>
+    </header>
+
+    <section class="layer">
+      <p class="label">사용자</p>
+      <div class="row">
+        <article class="card"><h2>구매자</h2><p>원단 탐색, 예약, 문의, 브랜드, 도안 초안</p></article>
+        <article class="card"><h2>판매자</h2><p>매장, 원단 등록, 사진, 예약 수락과 수령</p></article>
+        <article class="card"><h2>관리자</h2><p>판매자 승인, 원단 게시 검토</p></article>
+      </div>
+    </section>
+
+    <section class="layer">
+      <p class="label">화면 · React / Vite</p>
+      <div class="row">
+        <article class="card"><h2>둘러보기</h2><p>목록, 상세, 관심, 브랜드, 부자재 공장</p></article>
+        <article class="card"><h2>거래</h2><p>자투리 장수 선택, 롤 예약, 문의</p></article>
+        <article class="card"><h2>등록</h2><p>직접 입력, AI 소개, 엑셀 여러 건</p></article>
+      </div>
+    </section>
+
+    <section class="layer api">
+      <p class="label">API 서버 · Node.js / Express &nbsp;·&nbsp; /api/v1 &nbsp;·&nbsp; JWT</p>
+      <div class="mods">
+        <div class="mod"><strong>인증 · 회원</strong><span>가입, 로그인, 내 정보</span></div>
+        <div class="mod"><strong>원단 · 사진</strong><span>등록, 수정, 조회, 이미지</span></div>
+        <div class="mod"><strong>예약</strong><span>요청, 수락, 장수 차감, 수령</span></div>
+        <div class="mod"><strong>문의 · 관심</strong><span>질문, 답변, 찜</span></div>
+        <div class="mod"><strong>매장</strong><span>판매자 매장 정보</span></div>
+        <div class="mod"><strong>공장</strong><span>양주시 공장등록 목록</span></div>
+        <div class="mod"><strong>추천 · 도안</strong><span>활용 추천, 도안 조회, 초안</span></div>
+        <div class="mod"><strong>AI · 엑셀</strong><span>상세설명 작성, 표 해석</span></div>
+      </div>
+    </section>
+
+    <section class="layer">
+      <p class="label">데이터와 외부 서비스</p>
+      <div class="row stores">
+        <article class="card"><h2>PostgreSQL</h2><p>회원, 매장, 원단, 예약, 문의, 공장, 도안</p></article>
+        <article class="card"><h2>사진 폴더</h2><p>서버에 원단 사진을 파일로 저장</p></article>
+        <article class="card"><h2>Claude</h2><p>사진과 입력으로 상품 설명과 도안 초안 작성</p></article>
+      </div>
+    </section>
+    <footer>화면은 API만 호출합니다. 업무 데이터는 PostgreSQL에 두고, 상품 설명과 도안 초안만 Claude에 요청합니다.</footer>
+  </div>
+</body>
+</html>

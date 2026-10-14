@@ -57,7 +57,7 @@ export default function BuyerBrand({ ctx }) {
         <h1 className="loop-word"><Wordmark /></h1>
         <p className="loop-kicker">지속 가능한 패션과 더 나은 내일을 위한<br />원단 순환 플랫폼, 패브링</p>
         <p className="loop-intro">쓰지 않고 남은 원단이 다음 작업을 만나는 곳입니다. 판매자가 롤과 자투리를 올리고, 구매자는 치수를 확인한 뒤 양주 매장에서 받아 갑니다.</p>
-        <a className="loop-cta" href="#/buyer/fabrics">원단 둘러보기 →</a>
+        <a className="loop-cta" href="#/buyer/fabrics?sale_type=ALL">원단 둘러보기 →</a>
       </div>
       <figure className="loop-hero-photo">
         <img src="/assets/brand/loop-hero.jpg" alt="노란 테이블 위에 쌓인 롤 원단과 무지 에코백, 사과" />
@@ -95,11 +95,11 @@ export default function BuyerBrand({ ctx }) {
           <h2 id="loop-picks-title">지금, 올라온 원단을 만나보세요</h2>
           <p>게시된 자투리를 치수와 가격까지 확인하고 바로 열어볼 수 있습니다.</p>
         </div>
-        <a className="loop-picks-link" href="#/buyer/fabrics">전체 원단 보기 →</a>
+        <a className="loop-picks-link" href="#/buyer/fabrics?sale_type=ALL">전체 원단 보기 →</a>
       </div>
       {resource.loading ? <p className="loop-note" role="status">원단을 불러오고 있어요.</p> : null}
       {resource.error ? <p className="loop-note">원단 목록을 불러오지 못했어요. <button type="button" onClick={resource.retry}>다시 시도</button></p> : null}
-      {!resource.loading && !resource.error && fabrics.length === 0 ? <div className="loop-empty"><p>아직 게시된 자투리가 없습니다. 운영 확인이 끝나면 사진, 치수, 가격이 이 자리에 놓입니다.</p><a className="loop-cta" href="#/buyer/fabrics">원단 목록 열기 →</a></div> : null}
+      {!resource.loading && !resource.error && fabrics.length === 0 ? <div className="loop-empty"><p>아직 게시된 자투리가 없습니다. 운영 확인이 끝나면 사진, 치수, 가격이 이 자리에 놓입니다.</p><a className="loop-cta" href="#/buyer/fabrics?sale_type=ALL">원단 목록 열기 →</a></div> : null}
       {fabrics.length > 0 ? <div className="loop-grid">{fabrics.map(fabric => <PickCard key={fabric.id} ctx={ctx} fabric={fabric} />)}</div> : null}
     </section>
 
@@ -116,7 +116,7 @@ export default function BuyerBrand({ ctx }) {
       <div>
         <h2 id="loop-ai-title">고른 원단에 맞는 도안</h2>
         <p>원단을 열면 폭, 길이, 소재를 등록된 도안과 비교해 만들 수 있는 작업을 보여 줍니다.</p>
-        <a className="loop-cta" href="#/buyer/fabrics">원단 고르고 도안 보기 →</a>
+        <a className="loop-cta" href="#/buyer/fabrics?sale_type=ALL">원단 고르고 도안 보기 →</a>
       </div>
       <div className="loop-ai-aside">
         <p className="loop-script loop-script--ai">가방을 만들고 싶은데,<br />어떤 천이 맞을까요?</p>
@@ -132,7 +132,7 @@ export default function BuyerBrand({ ctx }) {
         <div className="loop-close-mark">
           <p className="loop-word"><Wordmark /></p>
           <p>지속 가능한 내일, 함께 만들어요.</p>
-          <a className="loop-cta" href="#/buyer/fabrics">지금 시작하기 →</a>
+          <a className="loop-cta" href="#/buyer/fabrics?sale_type=ALL">지금 시작하기 →</a>
         </div>
         <p className="loop-script loop-script--foot">원단이 다시<br />흐르는 세상,<br />패브링</p>
       </div>

@@ -267,7 +267,7 @@ export default function AuthPage({ ctx }) {
       <Notice tone="error">다시 로그인한 뒤 원단 상태와 예약 내역을 확인하고 진행해 주세요.</Notice>
       <div className="actions">
         <Button href={url(role, 'login')} tone="primary">다시 로그인</Button>
-        <Button href={role === 'buyer' ? '/buyer/fabrics' : homes[role]}>{role === 'buyer' ? '원단 둘러보기' : '홈으로'}</Button>
+        <Button href={role === 'buyer' ? '/buyer/fabrics?sale_type=ALL' : homes[role]}>{role === 'buyer' ? '원단 둘러보기' : '홈으로'}</Button>
       </div>
     </>;
   }

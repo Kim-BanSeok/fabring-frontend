@@ -23,7 +23,7 @@ test('clearing the keyword and changing sort keep unrelated applied filters', ()
   const ctx = { query: new URLSearchParams('keyword=데님&material=BLEND&page=3') };
   const query = new URL(fabricSearchPath(ctx, ' ', 'price_asc'), 'https://local.test').searchParams;
   assert.equal(query.has('keyword'), false); assert.equal(query.get('sort'), 'price_asc');
-  assert.equal(query.get('material'), 'BLEND'); assert.equal(query.get('sale_type'), 'SCRAP');
+  assert.equal(query.get('material'), 'BLEND'); assert.equal(query.get('sale_type'), 'ALL');
 });
 const fabrics = [
   { id: 'blue', title: '블루 데님', material: '면', color: '블루', thickness: '두꺼움', price: 9000, created_at: '2026-10-10' },

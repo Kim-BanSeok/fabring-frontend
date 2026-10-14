@@ -87,6 +87,18 @@ function BuyerUnknownInquiry({ ctx, fabric, record, resource }) {
   </section>;
 }
 
+export function FabricInquiryThread({ ctx, fabric }) {
+  const resource = useInquiryResource(ctx.api, { kind: 'fabric', id: fabric.id, query: { page: 0, size: 10 } });
+  const page = resource.data, items = page?.items || [];
+  return <section id="buyer-fabric-inquiries" className="panel buyer-page stack" aria-labelledby="buyer-fabric-inquiries-title">
+    <h2 id="buyer-fabric-inquiries-title" className="buyer-panel-heading">이 원단 문의와 답변</h2>
+    <p className="buyer-muted">이 원단에 달린 질문과 판매자 답변입니다. 비공개 내용은 작성한 사람과 판매자, 운영만 볼 수 있어요.</p>
+    <div className="actions"><Link path={inquiryFlowPath(ctx, fabric.id, { compose: 1 })} tone="primary">이 원단 문의 작성</Link>{page && page.totalElements > items.length ? <Link path={inquiryFlowPath(ctx, fabric.id)}>문의 {page.totalElements}건 모두 보기</Link> : null}</div>
+    <ReadFeedback resource={resource} />
+    {page && (items.length ? items.map(item => <article key={item.id} className="buyer-inquiry-item stack" aria-label={`문의 ${item.id}`}><InquiryContent item={item} /></article>) : <EmptyState title="아직 문의가 없어요" description="치수, 소재, 하자처럼 사진으로 확인하기 어려운 점을 판매자에게 물어보세요." />)}
+  </section>;
+}
+
 function BuyerFabricInquiries({ ctx, fabric }) {
   const query = inquiryPageQuery(ctx.query), resource = useInquiryResource(ctx.api, { kind: 'fabric', id: fabric.id, query });
   const page = resource.data, items = page?.items || [];

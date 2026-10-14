@@ -30,7 +30,7 @@ export function fabricQuery(input = {}) {
   const read = key => input instanceof URLSearchParams ? input.get(key) : input[key];
   const query = new URLSearchParams();
   const saleType = read('sale_type') || 'SCRAP';
-  if (!['SCRAP', 'ROLL'].includes(saleType)) validation('판매 형태를 다시 선택해 주세요.');
+  if (!['SCRAP', 'ROLL', 'ALL'].includes(saleType)) validation('판매 형태를 다시 선택해 주세요.');
   query.set('sale_type', saleType);
   for (const name of ['material', 'thickness', 'color']) {
     const value = read(name) || (name === 'color' ? read('color_family') : null);

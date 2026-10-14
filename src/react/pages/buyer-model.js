@@ -80,12 +80,14 @@ export const detailPath = (ctx, fabric) => keepList(ctx, fabricRoute(fabric.id))
 export const pickupPath = (ctx, fabric) => keepList(ctx, `/buyer/pickup/${encodeURIComponent(fabric.id)}`);
 export const listPath = (ctx, fabric) => listReturn(ctx) || `/buyer/fabrics?sale_type=${fabric.sale_type}`;
 export const FILTER_NAMES = ['material', 'thickness', 'color'];
+export const CATALOG_PAGE_SIZE = '12';
+export const catalogSaleType = value => value === 'ROLL' ? 'ROLL' : value === 'SCRAP' ? 'SCRAP' : 'ALL';
 export function fabricSaleTypePath(ctx, saleType) {
-  return fabricSearchPath({ query: new URLSearchParams({ ...Object.fromEntries(ctx.query), sale_type: saleType === 'ROLL' ? 'ROLL' : 'SCRAP' }) }, ctx.query.get('keyword') || '');
+  return fabricSearchPath({ query: new URLSearchParams({ ...Object.fromEntries(ctx.query), sale_type: catalogSaleType(saleType) }) }, ctx.query.get('keyword') || '');
 }
 export function fabricSearchPath(ctx, keyword, sort) {
   const query = new URLSearchParams(ctx.query);
-  query.set('sale_type', query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP');
+  query.set('sale_type', catalogSaleType(query.get('sale_type')));
   query.set('page', '0'); query.delete('view'); query.delete('collapsed');
   if (keyword.trim()) query.set('keyword', keyword.trim()); else query.delete('keyword');
   if (sort) query.set('sort', sort);
@@ -105,21 +107,26 @@ const FILTER_QUERY_NAMES = [...FILTER_NAMES, 'color_family', 'keyword', 'sort', 
 export function fabricResourceRequest(ctx) {
   if (ctx.path.startsWith('/buyer/pickup/') && ctx.query.has('submitted')) return null;
   if (ctx.path === '/buyer/home') return { kind: 'list', query: { sale_type: 'SCRAP', sort: 'latest', page: 0, size: 4 } };
-  if (['/buyer', '/buyer/fabrics'].includes(ctx.path)) return { kind: 'list', query: Object.fromEntries(LIST_QUERY_NAMES.filter(name => ctx.query.has(name)).map(name => [name, ctx.query.get(name)])) };
+  if (['/buyer', '/buyer/fabrics'].includes(ctx.path)) {
+    const query = Object.fromEntries(LIST_QUERY_NAMES.filter(name => ctx.query.has(name)).map(name => [name, ctx.query.get(name)]));
+    if (!query.sale_type) query.sale_type = 'ALL';
+    if (!query.size) query.size = CATALOG_PAGE_SIZE;
+    return { kind: 'list', query };
+  }
   if (['/buyer/fabrics/', '/buyer/pickup/', '/buyer/recommendations/'].some(prefix => ctx.path.startsWith(prefix))) return { kind: 'detail', id: routeId(ctx) };
   if (['/buyer/patterns', '/buyer/patterns/pouch'].includes(ctx.path) || (ctx.path === '/buyer/inquiries' && ctx.query.get('compose') === '1')) return { kind: 'detail', id: ctx.query.get('fabric_id') || '' };
   return null;
 }
 export const fabricListPagePath = (ctx, page) => addQuery(`/buyer/fabrics${ctx.query.size ? `?${ctx.query}` : ''}`, 'page', String(page));
 export function applyFilterPath(ctx, filters) {
-  const query = new URLSearchParams({ sale_type: ctx.query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP', view: 'search' });
+  const query = new URLSearchParams({ sale_type: catalogSaleType(ctx.query.get('sale_type')), view: 'search' });
   for (const name of ['keyword', 'sort', 'size']) if (ctx.query.get(name)) query.set(name, ctx.query.get(name));
   for (const name of FILTER_NAMES) if (filters[name]) query.set(name, filters[name]);
   query.set('page', '0');
   return `/buyer/fabrics?${query}`;
 }
 export function filterResultPath(query) {
-  const applied = new URLSearchParams({ sale_type: query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP' });
+  const applied = new URLSearchParams({ sale_type: catalogSaleType(query.get('sale_type')) });
   for (const name of FILTER_QUERY_NAMES) if (query.get(name)) applied.set(name, query.get(name));
   applied.set('view', 'search');
   return `/buyer/fabrics?${applied}`;
@@ -127,12 +134,12 @@ export function filterResultPath(query) {
 // Cancellation restores the applied route, never the unsaved select values.
 export const filterCancelPath = ctx => internalReturn(ctx.query.get('return'), 'list') || filterResultPath(ctx.query);
 export const filterEditPath = ctx => {
-  const query = new URLSearchParams({ sale_type: ctx.query.get('sale_type') === 'ROLL' ? 'ROLL' : 'SCRAP' });
+  const query = new URLSearchParams({ sale_type: catalogSaleType(ctx.query.get('sale_type')) });
   for (const name of FILTER_QUERY_NAMES) if (ctx.query.get(name)) query.set(name, ctx.query.get(name));
   return addQuery(`/buyer/filters?${query}`, 'return', listReturn(ctx));
 };
 export const filterValue = (query, name) => query.get(name) || (name === 'color' ? query.get('color_family') : '') || '';
-export const filterSummary = query => [query.get('sale_type') === 'ROLL' ? '롤' : '자투리', ...FILTER_NAMES.map((name, i) => fabricFilterLabel(name, filterValue(query, name)) || ['전체 소재', '전체 두께', '전체 색상'][i]), ...(query.get('keyword') ? [`검색어: ${query.get('keyword')}`] : []), ...(query.get('sort') && query.get('sort') !== 'latest' ? [{ price_asc: '낮은 가격순', price_desc: '높은 가격순' }[query.get('sort')] || '정렬 조건 확인 필요'] : [])];
+export const filterSummary = query => [query.get('sale_type') === 'ROLL' ? '롤' : query.get('sale_type') === 'ALL' ? '전체' : '자투리', ...FILTER_NAMES.map((name, i) => fabricFilterLabel(name, filterValue(query, name)) || ['전체 소재', '전체 두께', '전체 색상'][i]), ...(query.get('keyword') ? [`검색어: ${query.get('keyword')}`] : []), ...(query.get('sort') && query.get('sort') !== 'latest' ? [{ price_asc: '낮은 가격순', price_desc: '높은 가격순' }[query.get('sort')] || '정렬 조건 확인 필요'] : [])];
 export function currentPickupStore(state, fabric) {
   if (fabric?.source === 'api') return fabric.store || null;
   if (!fabric || !state.store) return null;

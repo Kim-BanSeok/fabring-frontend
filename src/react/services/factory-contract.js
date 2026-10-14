@@ -34,8 +34,10 @@ export function factoryItem(raw) {
   const missing = raw.latitude === null && raw.longitude === null;
   if (!missing && (!Number.isFinite(raw.latitude) || !Number.isFinite(raw.longitude)
     || Math.abs(raw.latitude) > 90 || Math.abs(raw.longitude) > 180)) invalid();
+  if (raw.legal_dong != null && !text(raw.legal_dong)) invalid();
   return { id: String(raw.factoryId), name: raw.factory_name, address: raw.address, industry: raw.industry,
     phone_number: raw.phone_number?.trim() || null, fax_number: raw.fax_number?.trim() || null,
+    legal_dong: raw.legal_dong?.trim() || null,
     category: raw.category, latitude: raw.latitude, longitude: raw.longitude, data_source: raw.data_source, created_at: raw.created_at };
 }
 

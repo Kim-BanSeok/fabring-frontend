@@ -4,7 +4,7 @@ import { formatPrice } from '../lib/format.js';
 
 const date = value => String(value).slice(0, 10).replaceAll('-', '.');
 const queryOf = ctx => ({
-  target_type: ctx.query.get('target_type') === 'PATTERN' ? 'PATTERN' : 'FABRIC',
+  target_type: 'PATTERN',
   page: /^\d+$/.test(ctx.query.get('page') || '') ? ctx.query.get('page') : '0',
   size: '20',
 });
@@ -94,12 +94,11 @@ export function FavoriteList({ ctx }) {
   const page = current ? result.data : null;
   const target = query.target_type;
   return <section className="buyer-page stack">
-    <PageHeading title="관심 목록" description="저장한 원단과 도안입니다. 판매가 끝나거나 도안 사용이 멈춰도 목록에는 남아요." />
-    <nav className="tabs" aria-label="관심 대상">{[['FABRIC', '원단'], ['PATTERN', '도안']].map(([value, label]) => <Button key={value} href={listPath(value)} tone={target === value ? 'primary' : 'secondary'} aria-current={target === value ? 'page' : undefined}>{label}</Button>)}</nav>
+    <PageHeading title="관심 도안" description="저장한 도안입니다. 도안 사용이 멈춰도 목록에는 남아요." />
     {!current && <Notice role="status">관심 목록을 확인하고 있어요.</Notice>}
     {current && result.error && <><Notice tone="error">{result.error.message || '관심 목록을 불러오지 못했어요.'}</Notice><Button onClick={() => setAttempt(value => value + 1)} tone="primary">다시 조회</Button></>}
     {page && <>
-      <p className="buyer-result-count">저장한 {target === 'PATTERN' ? '도안' : '원단'} {page.totalElements}건</p>
+      <p className="buyer-result-count">저장한 도안 {page.totalElements}건</p>
       {page.items.length ? page.items.map(item => {
         const href = itemHref(item);
         return <article className="panel stack" key={item.id}>
@@ -107,7 +106,7 @@ export function FavoriteList({ ctx }) {
           <p className="buyer-muted">{itemStatus(item)} · {date(item.created_at)}{item.price != null ? ` · ${formatPrice(item.price)}` : ''}</p>
           <div className="actions">{href && <Button href={href} tone="primary">{item.target_type === 'PATTERN' ? '도안 보기' : '원단 보기'}</Button>}<Button onClick={() => ctx.api.deleteFavorite(item.id).then(() => setAttempt(value => value + 1), () => setAttempt(value => value + 1))}>관심 해제</Button></div>
         </article>;
-      }) : <EmptyState title={page.page > 0 ? '이 페이지에 저장된 항목이 없어요.' : '아직 저장한 항목이 없어요.'} description="원단 상세나 도안 상세에서 관심 저장을 누를 수 있어요." />}
+      }) : <EmptyState title={page.page > 0 ? '이 페이지에 저장된 도안이 없어요.' : '아직 저장한 도안이 없어요.'} description="도안 상세에서 관심 저장을 누를 수 있어요." />}
       <nav className="actions" aria-label="관심 목록 페이지">
         <Button href={listPath(target, Math.max(0, page.page - 1))} disabled={page.page <= 0}>이전 페이지</Button>
         <span className="muted">{page.totalPages ? page.page + 1 : 0} / {page.totalPages}페이지</span>

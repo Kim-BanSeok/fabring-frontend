@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>패브링 서비스 흐름도</title>
+<style>
+  html, body { margin: 0; background: #fff; }
+  body { width: 1600px; height: 980px; overflow: hidden; font-family: "Malgun Gothic", "Segoe UI", sans-serif; }
+  svg { display: block; }
+</style>
+</head>
+<body>
+<svg width="1600" height="980" viewBox="0 0 1600 980">
+  <text x="40" y="46" font-size="34" font-weight="800" fill="#1b7a34">패브링 서비스 흐름도</text>
+  <text x="420" y="44" font-size="16" fill="#5d6b60">판매자가 원단을 올리고, 관리자가 승인한 뒤, 구매자가 양주 매장에서 받아 갑니다.</text>
+
+  <rect x="28" y="68" width="1544" height="270" rx="10" fill="#f6efe2"/>
+  <rect x="28" y="350" width="1544" height="270" rx="10" fill="#d9e8f8"/>
+  <rect x="28" y="632" width="1544" height="270" rx="10" fill="#e7eef3"/>
+
+  <text x="48" y="96" font-size="14" font-weight="700" fill="#c56a24">판매자</text>
+  <text x="48" y="378" font-size="14" font-weight="700" fill="#2f6fbe">구매자</text>
+  <text x="48" y="660" font-size="14" font-weight="700" fill="#4d5d6c">관리자</text>
+
+  <line x1="168" y1="168" x2="1360" y2="168" stroke="#e07a2f" stroke-width="5"/>
+  <polygon points="1360,160 1384,168 1360,176" fill="#e07a2f"/>
+  <line x1="168" y1="468" x2="1280" y2="468" stroke="#2f6fbe" stroke-width="5"/>
+  <polygon points="1280,460 1304,468 1280,476" fill="#2f6fbe"/>
+  <line x1="168" y1="760" x2="620" y2="760" stroke="#5c6b7a" stroke-width="5"/>
+  <polygon points="620,752 644,760 620,768" fill="#5c6b7a"/>
+
+  <!-- 원단 등록 → 원단 승인 -->
+  <path d="M590 214 H650 V706" fill="none" stroke="#1b7a34" stroke-width="3"/>
+  <polygon points="642,706 650,724 658,706" fill="#1b7a34"/>
+  <text x="668" y="600" font-size="13" fill="#1b7a34">승인 요청</text>
+  <!-- 원단 승인 → 원단 고르기 -->
+  <path d="M696 760 H760 V400 H446 V422" fill="none" stroke="#1b7a34" stroke-width="3"/>
+  <polygon points="438,422 446,440 454,422" fill="#1b7a34"/>
+  <text x="500" y="392" font-size="13" fill="#1b7a34">승인 후 공개</text>
+  <!-- 픽업 요청 → 요청 수락 -->
+  <path d="M860 422 V250 H980 V214" fill="none" stroke="#1b7a34" stroke-width="3"/>
+  <polygon points="972,214 980,196 988,214" fill="#1b7a34"/>
+  <text x="868" y="340" font-size="13" fill="#1b7a34">요청 전달</text>
+  <!-- 요청 수락 → 매장 수령 -->
+  <path d="M1026 214 V330 H1160 V422" fill="none" stroke="#1b7a34" stroke-width="3"/>
+  <polygon points="1152,422 1160,440 1168,422" fill="#1b7a34"/>
+  <text x="1034" y="310" font-size="13" fill="#1b7a34">수량 확보</text>
+
+  <g font-family="Malgun Gothic, Segoe UI, sans-serif">
+    <!-- 판매자 -->
+    <g transform="translate(120 168)">
+      <circle r="46" fill="#fff" stroke="#e07a2f" stroke-width="3"/>
+      <circle cy="-10" r="9" fill="#e07a2f"/>
+      <path d="M-16 20c1-12 8-18 16-18s15 6 16 18z" fill="#e07a2f"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700" fill="#243028">판매자</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#6b5a45">원단을 올리는 사람</text>
+    </g>
+    <g transform="translate(340 168)">
+      <circle r="46" fill="#fff" stroke="#d7c4a4" stroke-width="2"/>
+      <path d="M-16 16 h32 l-4-18 h-24 z" fill="#f3d7b0" stroke="#8a5a2b" stroke-width="2"/>
+      <path d="M-10 -8 h20 l3 8 h-26 z" fill="#fff" stroke="#8a5a2b" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">매장 등록</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#6b5a45">위치와 연락처</text>
+    </g>
+    <g transform="translate(560 168)">
+      <circle r="46" fill="#fff" stroke="#d7c4a4" stroke-width="2"/>
+      <rect x="-16" y="-18" width="24" height="30" rx="2" fill="#f7e7cf" stroke="#8a5a2b" stroke-width="2"/>
+      <path d="M0 -18 l10 8 v22 h-10" fill="#fff" stroke="#8a5a2b" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">원단 등록</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#6b5a45">사진, 치수, 장수</text>
+    </g>
+    <g transform="translate(980 168)">
+      <circle r="46" fill="#fff" stroke="#d7c4a4" stroke-width="2"/>
+      <rect x="-16" y="-14" width="32" height="24" rx="3" fill="#f7e7cf" stroke="#8a5a2b" stroke-width="2"/>
+      <path d="M-8 -2 h16 M-8 6 h10" stroke="#8a5a2b" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">요청 수락</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#6b5a45">요청한 수량만 확보</text>
+    </g>
+    <g transform="translate(1200 168)">
+      <circle r="46" fill="#fff" stroke="#d7c4a4" stroke-width="2"/>
+      <circle r="16" fill="#e7f3df" stroke="#1b7a34" stroke-width="2"/>
+      <path d="M-8 1 l5 5 10-12" fill="none" stroke="#1b7a34" stroke-width="3"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">수령 확인</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#6b5a45">매장에서 전달</text>
+    </g>
+    <g transform="translate(1440 168)">
+      <circle r="46" fill="#fff" stroke="#e07a2f" stroke-width="3"/>
+      <rect x="-14" y="-16" width="28" height="32" rx="3" fill="#fff" stroke="#e07a2f" stroke-width="2"/>
+      <path d="M-6 -6 h12 M-6 2 h12 M-6 10 h8" stroke="#e07a2f" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">거래 종료</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#6b5a45">재고 차감 완료</text>
+    </g>
+
+    <!-- 구매자 -->
+    <g transform="translate(120 468)">
+      <circle r="46" fill="#fff" stroke="#2f6fbe" stroke-width="3"/>
+      <circle cy="-10" r="9" fill="#2f6fbe"/>
+      <path d="M-16 20c1-12 8-18 16-18s15 6 16 18z" fill="#2f6fbe"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">구매자</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#3d5678">원단을 받아 가는 사람</text>
+    </g>
+    <g transform="translate(400 468)">
+      <circle r="46" fill="#fff" stroke="#b7cbe4" stroke-width="2"/>
+      <circle cx="-4" cy="-4" r="12" fill="#e7f1fb" stroke="#2f6fbe" stroke-width="2"/>
+      <path d="M6 6 l10 10" stroke="#2f6fbe" stroke-width="3"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">원단 고르기</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#3d5678">소재, 폭, 길이 확인</text>
+    </g>
+    <g transform="translate(860 468)">
+      <circle r="46" fill="#fff" stroke="#b7cbe4" stroke-width="2"/>
+      <rect x="-16" y="-18" width="32" height="34" rx="3" fill="#e7f1fb" stroke="#2f6fbe" stroke-width="2"/>
+      <path d="M-8 -6 h16 M-8 2 h16 M-8 10 h10" stroke="#2f6fbe" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">픽업 요청</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#3d5678">장수 또는 90cm</text>
+    </g>
+    <g transform="translate(1160 468)">
+      <circle r="46" fill="#fff" stroke="#b7cbe4" stroke-width="2"/>
+      <path d="M-18 14 h36 v-8 h-36 z" fill="#d7e4f5" stroke="#2f6fbe" stroke-width="2"/>
+      <path d="M-10 6 v-16 h20 v16" fill="#fff" stroke="#2f6fbe" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">매장 수령</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#3d5678">양주 매장에서 방문</text>
+    </g>
+    <g transform="translate(1420 468)">
+      <circle r="46" fill="#fff" stroke="#2f6fbe" stroke-width="3"/>
+      <rect x="-14" y="-16" width="28" height="32" rx="3" fill="#fff" stroke="#2f6fbe" stroke-width="2"/>
+      <path d="M-6 0 l5 5 9-11" fill="none" stroke="#2f6fbe" stroke-width="3"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">수령 완료</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#3d5678">실물 원단 수령</text>
+    </g>
+
+    <!-- 관리자 -->
+    <g transform="translate(120 760)">
+      <circle r="46" fill="#fff" stroke="#5c6b7a" stroke-width="3"/>
+      <circle cy="-10" r="9" fill="#5c6b7a"/>
+      <path d="M-16 20c1-12 8-18 16-18s15 6 16 18z" fill="#5c6b7a"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">관리자</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#5c6b7a">게시 전 검토</text>
+    </g>
+    <g transform="translate(400 760)">
+      <circle r="46" fill="#fff" stroke="#c5ced6" stroke-width="2"/>
+      <circle cy="-8" r="8" fill="#e7eef3" stroke="#5c6b7a" stroke-width="2"/>
+      <path d="M-6 10 l5 5 10-12" fill="none" stroke="#5c6b7a" stroke-width="3"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">판매자 승인</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#5c6b7a">가입한 판매자 확인</text>
+    </g>
+    <g transform="translate(650 760)">
+      <circle r="46" fill="#fff" stroke="#c5ced6" stroke-width="2"/>
+      <rect x="-16" y="-16" width="32" height="28" rx="3" fill="#fff" stroke="#5c6b7a" stroke-width="2"/>
+      <path d="M-8 -4 h16 M-8 4 h10 M-8 12 h12" stroke="#5c6b7a" stroke-width="2"/>
+      <text y="74" text-anchor="middle" font-size="16" font-weight="700">원단 승인</text>
+      <text y="94" text-anchor="middle" font-size="13" fill="#5c6b7a">내용 확인 후 공개</text>
+    </g>
+  </g>
+  <text x="40" y="948" font-size="15" fill="#5d6b60">초록 선은 역할 사이 전달입니다. 승인된 원단만 구매자가 고르고, 판매자가 수락한 수량만 매장에서 받습니다.</text>
+</svg>
+</body>
+</html>

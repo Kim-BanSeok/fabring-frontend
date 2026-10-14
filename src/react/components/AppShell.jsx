@@ -2,8 +2,8 @@ import { Badge, Button, Notice } from './ui.jsx';
 import { useRef } from 'react';
 import { HOME } from '../app/store.js';
 
-const buyerMainLinks = [['홈', '/buyer/home'], ['브랜드', '/buyer/brand'], ['원단목록', '/buyer/fabrics'], ['부자재 공장 지도', '/buyer/supplies']];
-const buyerAccountLinks = [['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
+const buyerMainLinks = [['홈', '/buyer/home'], ['브랜드', '/buyer/brand'], ['원단목록', '/buyer/fabrics?sale_type=ALL'], ['부자재 공장 지도', '/buyer/supplies']];
+const buyerAccountLinks = [['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심 도안', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
 const buyerLinks = [...buyerMainLinks, ...buyerAccountLinks];
 const sellerLinks = [['홈', '/seller/dashboard'], ['내 원단', '/seller/fabrics'], ['원단 등록', '/seller/register'], ['픽업 예약', '/seller/reservations'], ['픽업 일정', '/seller/calendar'], ['문의내역', '/seller/inquiries'], ['매장 관리', '/seller/store'], ['마이페이지', '/seller/profile']];
 const adminLinks = [['대시보드', '/admin/dashboard'], ['판매자 승인', '/admin/sellers'], ['원단 목록', '/admin/fabrics'], ['원단 게시 승인', '/admin/approvals']];
@@ -16,7 +16,7 @@ function MobileMenu({ links, activePath, routeKey, label, logout }) {
   }}>
     <summary ref={trigger} aria-label={`${label} 전체 메뉴`}>메뉴 <span aria-hidden="true">☰</span></summary>
     <div className="mobile-menu-panel">
-      <nav className="mobile-menu-links" aria-label={`${label} 모바일 메뉴`}>{links.map(([text, href]) => <a key={href} href={`#${href}`} aria-current={activePath.startsWith(href) ? 'page' : undefined} onClick={event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) close(); }}>{text}</a>)}</nav>
+      <nav className="mobile-menu-links" aria-label={`${label} 모바일 메뉴`}>{links.map(([text, href]) => { const target = href.split('?')[0]; return <a key={href} href={`#${href}`} aria-current={activePath === target || activePath.startsWith(`${target}/`) ? 'page' : undefined} onClick={event => { if (event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) close(); }}>{text}</a>; })}</nav>
       <div className="mobile-menu-account"><span>{label}</span><Button onClick={logout}>로그아웃</Button></div>
     </div>
   </details>;
@@ -69,7 +69,7 @@ export default function AppShell({ ctx, children, footer }) {
     <nav className="seller-side-nav" aria-label="판매자 메뉴">{sellerLinks.map(([label, destination]) => <a key={destination} href={`#${destination}`} aria-current={path.startsWith(destination) ? 'page' : undefined}>{label}</a>)}</nav>
     <div className="seller-sidebar-account"><strong>{ctx.state.store?.store_name || ctx.state.seller?.nickname || '내 판매자 계정'}</strong><Button onClick={logout}>로그아웃</Button></div>
   </aside><div className="seller-workspace"><header className="seller-topbar"><span>판매자 센터 / {sellerLinks.find(([, destination]) => path.startsWith(destination))?.[0] || '원단 관리'}</span><Badge>판매자</Badge></header>{main}{footer}</div></div>;
-  const navLink = ([label, href]) => <a key={href} href={`#${href}`} aria-current={path.startsWith(href) ? 'page' : undefined}>{label}</a>;
+  const navLink = ([label, href]) => { const target = href.split('?')[0]; return <a key={href} href={`#${href}`} aria-current={path === target || path.startsWith(`${target}/`) ? 'page' : undefined}>{label}</a>; };
   return <div className="shell app-shell"><header className="site-header"><Logo role={role} tag /><nav className="site-nav" aria-label="구매자 메뉴">{buyerMainLinks.map(navLink)}</nav>
     <nav className="site-account" aria-label="내 계정 메뉴">{buyerAccountLinks.map(navLink)}</nav><MobileMenu links={buyerLinks} activePath={path} routeKey={`${path}?${query}`} label="구매자" logout={logout} /></header>{main}<SiteFooter />{footer}</div>;
 }

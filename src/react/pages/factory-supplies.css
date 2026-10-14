@@ -4,6 +4,9 @@
 .factory-map-feedback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;text-align:center;gap:12px;color:#52617a;background:#edf2fa}
 .factory-map-caption{position:absolute;bottom:12px;left:12px;right:12px;max-width:calc(100% - 24px);width:fit-content;padding:7px 10px;background:#fff;border-radius:6px;font-size:13px}
 .factory-source{color:#52617a;font-size:14px;line-height:1.8}
+.factory-categories{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 16px}
+.factory-categories a{min-height:36px;padding:6px 12px;border:1px solid #d5deee;border-radius:999px;background:#fff;color:#243044;font-size:14px}
+.factory-categories a[aria-current=page]{border-color:#2458c6;background:#edf3ff;color:#2458c6}
 .factory-list-panel{padding:22px!important;min-width:0}
 .factory-list-panel h2{font-size:20px;margin:0 0 20px}
 .factory-store-list{max-height:395px;overflow-y:auto;scrollbar-gutter:stable;padding-right:12px}
