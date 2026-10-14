@@ -1,7 +1,10 @@
 import RegistrationSteps from '../../components/RegistrationSteps.jsx';
+import SellerPickupCalendar from './SellerPickupCalendar.jsx';
+import RollSaleUnit from './RollSaleUnit.jsx';
+import { SELLER_FABRIC_COUNT_LABELS } from './sellerDashboardModel.js';
 import { SellerRuntime } from './SellerRuntime.js';
 import { PHOTO_SLOTS, ownFabrics, fabricByQuery, draftFor, validateSellerDraft } from './sellerModel.js';
-import { inquiryDraft, selectedPhotos, uploadPhotoSummary, sellerCalendar, stockAfterReservation } from './sellerUx.js';
+import { inquiryDraft, selectedPhotos, uploadPhotoSummary, stockAfterReservation } from './sellerUx.js';
 import { formatPrice, formatLength, formatDate, formatDateTime } from '../../lib/format.js';
 import { Fragment, useContext, useEffect, useRef } from 'react';
 import { Button, Badge, Notice, PageHeading, EmptyState, FabricImage, Field, SelectField, } from '../../components/ui.jsx';
@@ -98,11 +101,10 @@ function dashboardView(ctx) {
   const requests = reservations.filter(r => r.status === 'REQUESTED');
   const inquiries = ctx.state.inquiries.filter(i => fabrics.some(f => f.id === i.fabric_id) && !i.answer);
   const title = item => item.fabric_title || fabrics.find(f => f.id === item.fabric_id)?.title || '원단 정보 확인 필요';
-  return wrap('123:2473', <>{pageHeading('오늘 처리할 일', ctx.state.store?.store_name || ctx.state.seller.nickname)}<div className="actions">{go('원단 등록','/seller/register','primary')}</div>
-    <div className="seller-overview-work"><section className="panel seller-panel"><div className="seller-section-heading"><h2>오늘의 픽업 · {pickups.length}건</h2>{go('일정 보기','/seller/calendar')}</div><p className="muted">{formatDate(today)}</p>{pickups.length ? <ul className="seller-today-list">{pickups.map(r => <li key={r.id}><time>{r.pickup_time}</time><div><strong>{title(r)}</strong><small>예약 #{r.id} · 수락됨</small></div>{go('예약 확인',`/seller/reservations?status=ACCEPTED&id=${encodeURIComponent(r.id)}`)}</li>)}</ul> : <p className="seller-empty-line">오늘 예정된 픽업이 없습니다.</p>}</section>
-    <div className="stack"><section className="panel seller-panel"><h2>새 예약 요청 · {requests.length}건</h2>{requests.length ? <ul className="seller-today-list">{requests.map(r => <li key={r.id}><div><strong>{title(r)}</strong><small>{formatDate(r.pickup_date)} · {r.pickup_time}</small></div>{go('요청 검토',`/seller/reservations?status=REQUESTED&id=${encodeURIComponent(r.id)}`)}</li>)}</ul> : <p className="seller-empty-line">확인할 새 요청이 없습니다.</p>}</section><section className="panel seller-panel"><h2>답변을 기다리는 문의 · {inquiries.length}건</h2>{inquiries.length ? <ul className="seller-today-list">{inquiries.map(i => <li key={i.id}><div><strong>{title(i)}</strong><small>{i.content || i.question}</small></div>{go('답변 작성',`/seller/inquiries?id=${encodeURIComponent(i.id)}`)}</li>)}</ul> : <p className="seller-empty-line">미답변 문의가 없습니다.</p>}</section></div></div>
-    <section className="panel seller-panel"><h2>내 원단 현황</h2>{details(Object.entries(FABRIC_STATUS).map(([key,label]) => [label,`${fabrics.filter(f => f.status === key).length}건`]))}{go('원단 관리','/seller/fabrics')}</section>
-  </>);
+  return wrap('123:2473', <><div className="seller-dashboard-summary" aria-label="판매자 요약 현황">{[['예약 요청', requests.length, '/seller/reservations?status=REQUESTED'], ['답변 대기', inquiries.length, '/seller/inquiries?status=WAITING'], ['수락된 예약', reservations.filter(item => item.status === 'ACCEPTED').length, '/seller/reservations?status=ACCEPTED'], ['원단 승인 대기', fabrics.filter(item => item.status === 'PENDING').length, '/seller/fabrics?status=PENDING']].map(([label, count, path]) => <div key={label} className="panel stat-card"><a className="seller-stat-link" href={href(path)}><span className="seller-stat-label">{label}<span aria-hidden="true">→</span></span><strong className="seller-stat-value">{count}건</strong></a></div>)}</div><div className="seller-dashboard-heading">{pageHeading('오늘 처리할 일', ctx.state.store?.store_name || ctx.state.seller.nickname)}<div className="actions">{go('원단 등록','/seller/register','primary')}</div></div>
+    <div className="seller-overview-work"><div className="stack seller-overview-tasks"><section className="panel seller-panel"><div className="seller-section-heading"><h2>오늘의 픽업 · {pickups.length}건</h2>{go('일정 보기','/seller/calendar')}</div><p className="muted">{formatDate(today)}</p>{pickups.length ? <ul className="seller-today-list">{pickups.map(r => <li key={r.id}><time>{r.pickup_time}</time><div><strong>{title(r)}</strong><small>예약 #{r.id} · 수락됨</small></div>{go('예약 확인',`/seller/reservations?status=ACCEPTED&id=${encodeURIComponent(r.id)}`)}</li>)}</ul> : <p className="seller-empty-line">오늘 예정된 픽업이 없습니다.</p>}</section>
+    <section className="panel seller-panel"><h2>새 예약 요청 · {requests.length}건</h2>{requests.length ? <ul className="seller-today-list">{requests.map(r => <li key={r.id}><div><strong>{title(r)}</strong><small>{formatDate(r.pickup_date)} · {r.pickup_time}</small></div>{go('요청 검토',`/seller/reservations?status=REQUESTED&id=${encodeURIComponent(r.id)}`)}</li>)}</ul> : <p className="seller-empty-line">확인할 새 요청이 없습니다.</p>}</section><section className="panel seller-panel"><h2>답변을 기다리는 문의 · {inquiries.length}건</h2>{inquiries.length ? <ul className="seller-today-list">{inquiries.map(i => <li key={i.id}><div><strong>{title(i)}</strong><small>{i.content || i.question}</small></div>{go('답변 작성',`/seller/inquiries?id=${encodeURIComponent(i.id)}`)}</li>)}</ul> : <p className="seller-empty-line">미답변 문의가 없습니다.</p>}</section><section className="panel seller-panel seller-dashboard-fabrics"><div className="seller-section-heading"><h2>내 원단 현황</h2><a className="seller-dashboard-manage" href="#/seller/fabrics">원단 관리 →</a></div><nav className="seller-dashboard-fabric-counts" aria-label="상태별 내 원단">{SELLER_FABRIC_COUNT_LABELS.map(([key, label]) => <a key={key} href={href('/seller/fabrics?status=' + key)}><span>{label}</span><strong>{fabrics.filter(fabric => fabric.status === key).length}건</strong></a>)}</nav></section></div><SellerPickupCalendar ctx={ctx} resource={demoCalendarResource(ctx)} compact /></div>
+  </>, 'seller-dashboard');
 }
 
 function fabricsView(ctx) {
@@ -152,7 +154,7 @@ function manualView(ctx) {
                 } : {}} /><span>{material}</span></label></>))}</div></fieldset><div className={scrap ? 'stack' : 'form-grid'}>{selectField('두께', 'thickness', options(['얇음', '중간 두께', '두꺼움']), draft.thickness)}{selectField('색상 계열', 'color', options(['흰색', '검정', '회색', '내추럴', '베이지', '갈색', '빨강', '분홍', '노랑', '올리브', '초록', '블루', '네이비', '보라', '혼합']), draft.color)}</div>{field('색상 상세 / 무늬', 'color_detail', {
           value: draft.color_detail || '',
           "maxLength": "100"
-        })}</section>{"\n    "}<section className={"panel seller-panel"}><h2>{"치수 / 가격"}</h2><h3>{"사용 가능 치수"}</h3><div className={scrap ? 'stack' : 'form-grid'}>{field('가로(폭) · cm', 'width_cm', {
+        })}</section>{"\n    "}<section className={"panel seller-panel"}><h2>{"치수 / 가격"}</h2>{!scrap && <RollSaleUnit />}<h3>{"사용 가능 치수"}</h3><div className={scrap ? 'stack' : 'form-grid'}>{field('가로(폭) · cm', 'width_cm', {
             value: draft.width_cm,
             type: 'number',
             required: true,
@@ -160,14 +162,14 @@ function manualView(ctx) {
             "max": "1000",
             "step": "1",
             "inputMode": "numeric"
-          })}{field(scrap ? '세로(길이) · cm' : '남은 길이 · cm', 'length_cm', {
+          })}{field(scrap ? '세로(길이) · cm' : '전체 남은 길이 · cm', 'length_cm', {
             value: scrap ? draft.length_cm : draft.remaining_length_cm ?? draft.length_cm,
             type: 'number',
             required: true,
             "min": scrap ? '1' : '90',
             "step": "1",
             "inputMode": "numeric"
-          })}</div><p className={"muted seller-small"}>{scrap ? '자투리 길이는 1cm 이상의 정수로 입력해 주세요.' : '롤 잔량은 90cm 이상인 cm 정수로 입력해 주세요.'}</p><div className={scrap ? '' : 'seller-half'}>{field(scrap ? '가격 · 원/장' : '90cm(1마)당 가격 · 원', 'price', {
+          })}</div><p className={"muted seller-small"}>{scrap ? '자투리 길이는 1cm 이상의 정수로 입력해 주세요.' : '롤 잔량은 90cm 이상인 cm 정수로 입력해 주세요.'}</p><div className={scrap ? '' : 'seller-half'}>{field(scrap ? '가격 · 원/장' : '1마 (길이 90cm)당 가격 · 원', 'price', {
             value: draft.price,
             type: 'number',
             required: true,
@@ -495,33 +497,12 @@ function deleteView(ctx) {
 function deletedView(ctx) {
   return wrap('127:7497', <>{pageHeading('원단을 삭제했어요', '삭제한 원단은 구매자에게 표시되지 않아요.')}{notice('원단을 삭제했어요. 구매자에게 표시되지 않아요.')}{record('남은 원단', <><div className={"table-wrapper"}><table className={"data-table"}><thead><tr><th>{"원단"}</th><th>{"판매 형태"}</th><th>{"상태"}</th></tr></thead><tbody>{keyed(ownFabrics(ctx.state).map(f => <><tr><td><a href={"" + "#" + fabricRoute(f)}>{f.title}</a></td><td>{f.sale_type === 'ROLL' ? '롤' : '자투리'}</td><td>{FABRIC_STATUS[f.status]}</td></tr></>))}</tbody></table></div></>)}<div className={"actions"}>{go('메인으로', '/seller/dashboard', 'primary')}{go('새 원단 등록', '/seller/register')}</div></>);
 }
+function demoCalendarResource(ctx) {
+  const fabrics = ownFabrics(ctx.state);
+  return { data: { content: ownReservations(ctx.state).map(item => ({ ...item, fabric_title: item.fabric_title || fabrics.find(fabric => fabric.id === item.fabric_id)?.title || '원단 정보 확인 필요' })) }, loading: false, error: null, retry: ctx.refresh };
+}
 function calendarView(ctx) {
-  const now = new Date(), fallback = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
-  const month = /^\d{4}-(0[1-9]|1[0-2])$/.test(ctx.query.get('month') || '') ? ctx.query.get('month') : fallback;
-  const { year, number: num, offset, days, selected } = sellerCalendar(month, ctx.query.get('date'));
-  const rs = ownReservations(ctx.state).filter(r => r.status === 'ACCEPTED' && r.pickup_date.startsWith(month));
-  const shown = rs.filter(r => !selected || r.pickup_date === selected);
-  const resultTitle = `${selected ? formatDate(selected) : `${year}년 ${num}월 전체`} · 픽업 ${shown.length}건`;
-  const monthRoute = shift => {
-    const d = new Date(year, num - 1 + shift, 1);
-    return `/seller/calendar?month=${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
-  };
-  const source = num === 9 ? '142:6789' : num === 11 ? '142:7090' : '142:6919';
-  return wrap(source, <>{pageHeading('픽업 일정', '날짜를 선택하면 그날 수락된 예약을 확인할 수 있어요.')}
-    <div className="actions seller-calendar-actions">{go('이전 달', monthRoute(-1))}{go('대시보드로', '/seller/dashboard')}{go('다음 달', monthRoute(1))}</div>
-    {record(`${year}년 ${num}월`, <div className="seller-calendar seller-calendar-full" aria-label="월요일부터 시작하는 픽업 달력">
-      {['월', '화', '수', '목', '금', '토', '일'].map(day => <span key={day} className="seller-calendar-weekday">{day}</span>)}
-      {Array.from({ length: offset }, (_, index) => <span key={`blank-${index}`} aria-hidden="true" />)}
-      {Array.from({ length: days }, (_, i) => {
-        const date = `${month}-${String(i + 1).padStart(2, '0')}`, items = rs.filter(r => r.pickup_date === date);
-        const route = `/seller/calendar?month=${month}&date=${date}`;
-        return <a key={date} className={`seller-calendar-day ${items.length ? 'has-pickup' : ''} ${selected === date ? 'is-selected' : ''}`} href={href(route)} onClick={event => { event.preventDefault(); ctx.navigate(route, { preserveScroll: true }); }} aria-current={selected === date ? 'date' : undefined} aria-label={`${year}년 ${num}월 ${i + 1}일 · 픽업 ${items.length}건`}><span>{i + 1}</span>{items.length ? <span className="seller-calendar-pickup"><span className="seller-calendar-pickup-label">픽업 </span>{items.length}건</span> : null}</a>;
-      })}
-    </div>)}
-    <section className="stack" aria-live="polite"><div className="seller-section-heading"><h2>{resultTitle}</h2>{selected ? <a href={href(`/seller/calendar?month=${month}`)} onClick={event => { event.preventDefault(); ctx.navigate(`/seller/calendar?month=${month}`, { preserveScroll: true }); }}>이번 달 전체 보기</a> : null}</div>
-      {shown.length ? shown.map(r => <Fragment key={r.id}>{record(r.fabric_title, <p>{r.buyer_nickname} · {formatDate(r.pickup_date)} {r.pickup_time} · {r.sale_type === 'ROLL' ? formatLength(r.requested_length_cm) : '1장'}</p>, { status: '수락됨', actions: go('판매 내역 확인', `/seller/reservations?status=ACCEPTED&id=${encodeURIComponent(r.id)}`, 'primary') })}</Fragment>) : notice(`${selected ? formatDate(selected) : `${num}월`}에 등록된 픽업 일정이 없어요.`)}
-    </section>
-  </>);
+  return wrap('142:6919', <>{pageHeading('픽업 일정', '날짜를 선택하면 그날 수락된 예약을 확인할 수 있어요.')}<div className="actions">{go('대시보드로', '/seller/dashboard')}</div><SellerPickupCalendar ctx={ctx} resource={demoCalendarResource(ctx)} /></>);
 }
 function reservationConfirmView(ctx) {
   const r = ownReservations(ctx.state).find(x => x.id === ctx.query.get('id')),

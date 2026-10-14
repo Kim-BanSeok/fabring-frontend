@@ -3,6 +3,7 @@ import { Badge, Button, Field, Notice, SelectField } from '../../components/ui.j
 import { FABRIC_FILTER_OPTIONS } from '../../services/fabric-contract.js';
 import { formatLength, formatPrice } from '../../lib/format.js';
 import { LIVE_FABRIC_STATUS, LIVE_PHOTO_SLOTS, liveFabricPath, readLiveFabricForm, validateLivePhoto } from './sellerLiveFabricModel.js';
+import RollSaleUnit from './RollSaleUnit.jsx';
 
 export const FabricLink = ({ path, children, ...props }) => <Button href={path} {...props}>{children}</Button>;
 export const FabricStatus = ({ status }) => <Badge tone={status === 'REJECTED' ? 'red' : status === 'PENDING' ? 'amber' : status === 'SOLD_OUT' ? 'gray' : 'green'}>{LIVE_FABRIC_STATUS[status]}</Badge>;
@@ -14,7 +15,7 @@ export function LiveFabricInfo({ fabric }) {
       ['폭 / 길이', `${fabric.width_cm}cm / ${fabric.sale_type === 'ROLL' ? fabric.remaining_length_cm : fabric.length_cm}cm`],
       ['소재 / 두께 / 색상', `${fabric.material} / ${fabric.thickness} / ${fabric.color}`],
       ['색상 상세 / 무늬', fabric.color_detail || '입력하지 않음'],
-      ['가격', `${formatPrice(fabric.price)} / ${fabric.sale_type === 'ROLL' ? '90cm(1마)' : '1장'}`],
+      ['가격', `${formatPrice(fabric.price)} / ${fabric.sale_type === 'ROLL' ? '1마 (길이 90cm)' : '1장'}`],
       ...(fabric.sale_type === 'SCRAP' ? [['판매 장수', fabric.sheet_count ? `${fabric.sheet_count}장` : '미입력']] : []),
       ['하자', fabric.has_defect ? fabric.defect_note : '없음'],
     ]} />
@@ -70,12 +71,12 @@ export function LiveFabricForm({ ctx, initial, onRemember, onSubmit, busy, edit 
         <Field label="색상 상세 / 무늬" name="color_detail" defaultValue={initial.color_detail || ''} maxLength={100} />
         <label className="field"><span>판매자 설명</span><textarea name="description" defaultValue={initial.description || ''} rows={6} maxLength={5000} placeholder="밴드에 올리던 글을 붙여 넣어도 됩니다" /></label>
       </section>
-      <section className="panel seller-panel"><h2>치수 / 가격</h2><h3>사용 가능 치수</h3><div className="form-grid">
+      <section className="panel seller-panel"><h2>치수 / 가격</h2>{!scrap && <RollSaleUnit />}<h3>사용 가능 치수</h3><div className="form-grid">
         <Field label="가로(폭) · cm" name="width_cm" defaultValue={initial.width_cm} type="number" min={1} max={1000} step={1} required inputMode="numeric" />
-        <Field label={scrap ? '세로(길이) · cm' : '남은 길이 · cm'} name="length_cm" defaultValue={scrap ? initial.length_cm : initial.remaining_length_cm} type="number" min={scrap ? 1 : Math.max(90, initial.reserved_length_cm || 0)} max={2147483647} step={1} required inputMode="numeric" />
+        <Field label={scrap ? '세로(길이) · cm' : '전체 남은 길이 · cm'} name="length_cm" defaultValue={scrap ? initial.length_cm : initial.remaining_length_cm} type="number" min={scrap ? 1 : Math.max(90, initial.reserved_length_cm || 0)} max={2147483647} step={1} required inputMode="numeric" />
         {scrap && <Field label="판매 장수" name="sheet_count" defaultValue={initial.sheet_count} type="number" min={1} max={9999} step={1} required inputMode="numeric" />}
       </div><p className="muted seller-small">{scrap ? '하자를 피한 가장 큰 직사각형 기준 · 길이는 1cm 이상의 정수' : '롤 잔량은 90cm 이상인 정수예요. 90cm의 배수일 필요는 없어요.'}</p>
-        <Field label={scrap ? '가격 · 원/장' : '90cm(1마)당 가격 · 원'} name="price" defaultValue={initial.price} type="number" min={1} max={2147483647} step={1} required inputMode="numeric" />
+        <Field label={scrap ? '가격 · 원/장' : '1마 (길이 90cm)당 가격 · 원'} name="price" defaultValue={initial.price} type="number" min={1} max={2147483647} step={1} required inputMode="numeric" />
       </section>
       <section className="panel seller-panel"><h2>하자</h2><fieldset className="seller-defect"><legend>하자가 있나요?</legend><div className="actions"><label><input type="radio" name="has_defect" value="false" defaultChecked={initial.has_defect === false} required /> 없음</label><label><input type="radio" name="has_defect" value="true" defaultChecked={initial.has_defect === true} required /> 있음</label></div></fieldset><Field label="하자 위치 / 내용 / 크기" name="defect_note" defaultValue={initial.defect_note || ''} maxLength={255} /></section>
       {!edit && <section ref={photoSection} className="panel seller-panel seller-photo-section" data-seller-photos tabIndex={-1}>

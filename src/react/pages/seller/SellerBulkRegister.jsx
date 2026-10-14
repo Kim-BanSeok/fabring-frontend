@@ -4,6 +4,7 @@ import { FABRIC_FILTER_OPTIONS } from '../../services/fabric-contract.js';
 import useReservationMutation from '../../hooks/useReservationMutation.js';
 import { FabricLink } from './SellerLiveFabricParts.jsx';
 import { validateLiveFabricDraft, validateLivePhoto } from './sellerLiveFabricModel.js';
+import RollSaleUnit from './RollSaleUnit.jsx';
 
 const THICKNESS_CODE = { '얇음': 'THIN', '중간 두께': 'NORMAL', '두꺼움': 'THICK' };
 
@@ -169,6 +170,7 @@ export default function SellerBulkRegister({ ctx }) {
   };
   return <section className="seller-page stack">
     <PageHeading title="여러 원단 등록" description="엑셀로 줄을 채우거나 표에 직접 입력합니다. 사진을 고른 줄만 AI가 소개를 씁니다." />
+    {rows.some(row => row.sale_type === 'ROLL') && <RollSaleUnit />}
     <Notice>사진이 없는 줄은 소개를 만들지 않고, 승인 대기에서 멈춥니다. 관리자는 사진이 있어야 게시할 수 있어요.</Notice>
     {summary && <Notice>{summary}</Notice>}
     {mutation.error && <Notice tone="error">{mutation.error}</Notice>}

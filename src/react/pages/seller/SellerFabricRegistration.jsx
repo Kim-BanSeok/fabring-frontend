@@ -15,7 +15,7 @@ function RegisterStart({ type }) {
     <nav className="tabs seller-tabs" aria-label="판매 형태">
       {SALE_TABS.map(([value, label]) => <FabricLink key={value} className={type === value ? 'seller-tab--active' : ''} path={`/seller/register?type=${value}`} aria-current={type === value ? 'page' : undefined}>{label}</FabricLink>)}
     </nav>
-    <p className="muted">{type === 'ROLL' ? '90cm 이상 남은 원단이에요. 가격은 90cm(1마)당 입력해요.' : '직사각형 한 장을 그대로 판매해요. 길이는 1cm 이상의 정수로 입력해 주세요.'}</p>
+    <p className="muted">{type === 'ROLL' ? '롤 원단은 길이 90cm가 1마로 고정돼요. 실제 원단 폭과 전체 남은 길이를 입력하고, 가격은 1마당 입력해 주세요.' : '직사각형 한 장을 그대로 판매해요. 길이는 1cm 이상의 정수로 입력해 주세요.'}</p>
     <div className="seller-columns seller-methods">
       <section className="panel seller-panel">
         <h2>AI와 대화로 등록</h2>
