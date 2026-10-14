@@ -76,11 +76,12 @@ function PendingTable({ items }) {
 }
 function Dashboard({ ctx }) {
   const resource = useAdminResource(ctx.api, { type: 'dashboard' }), data = resource.data;
-  const cards = data ? [['원단 게시 대기', data.fabricCounts.PENDING, '확인이 필요한 원단', '/admin/fabrics?status=PENDING'], ['승인 완료 판매자', data.sellerCounts.APPROVED, '승인이 완료된 판매자', '/admin/sellers?status=APPROVED'], ['판매자 승인 대기', data.sellerCounts.PENDING, '승인 확인 대기 판매자', '/admin/sellers?status=PENDING'], ['등록된 원단수', Object.values(data.fabricCounts).reduce((sum, count) => sum + count, 0), '전체 상태 합계 · 상태별 목록에서 조회', null]] : [];
+  const cards = data ? [['원단 게시 대기', data.fabricCounts.PENDING, '확인이 필요한 원단', '/admin/fabrics?status=PENDING'], ['승인 완료 판매자', data.sellerCounts.APPROVED, '승인이 완료된 판매자', '/admin/sellers?status=APPROVED'], ['판매자 승인 대기', data.sellerCounts.PENDING, '승인 확인 대기 판매자', '/admin/sellers?status=PENDING'], ['등록된 원단수', Object.values(data.fabricCounts).reduce((sum, count) => sum + count, 0), '전체 상태 합계 · 상태별 목록에서 조회', '/admin/fabrics']] : [];
   return <section className="admin-page admin-dashboard stack" data-figma-node="123:4955"><PageHeading title="관리자 대시보드" />
     <AsyncState resource={resource} title="관리 목록과 통계를 확인하고 있어요." />
-    {data && <><AdminWorkQueue fabrics={data.fabricCounts.PENDING} sellers={data.sellerCounts.PENDING} />
-      <div className="stat-grid admin-stats" aria-label="서비스 현황">{cards.map(([title, count, hint, path]) => { const content = <><span>{title}</span><strong>{count}</strong><small>{hint}</small></>; return path ? <a key={title} className="stat-card admin-stat" href={'#' + path}>{content}</a> : <div key={title} className="stat-card admin-stat admin-stat--summary">{content}</div>; })}</div>
+    {data && <>
+      <div className="stat-grid admin-stats" aria-label="서비스 현황">{cards.map(([title, count, hint, path]) => <a key={title} className="stat-card admin-stat" href={'#' + path}><span className="admin-stat-label">{title}<span aria-hidden="true">→</span></span><strong>{count}</strong><small>{hint}</small></a>)}</div>
+      <AdminWorkQueue fabrics={data.fabricCounts.PENDING} sellers={data.sellerCounts.PENDING} />
       <section className="panel admin-panel admin-dashboard-work"><div className="admin-list-heading"><h2>원단 게시 승인 대기 · {data.fabricCounts.PENDING}건</h2><Button href="/admin/approvals" tone="primary">대기 원단 검토</Button></div><div className="admin-dashboard-preview"><PendingTable items={data.pendingFabrics.slice(0, 3)} /></div>{data.fabricCounts.PENDING > 3 && <Button href="/admin/approvals">대기 {data.fabricCounts.PENDING}건 모두 보기 →</Button>}</section>
       <div className="actions"><Button onClick={resource.retry}>최신 현황 조회</Button></div></>}
   </section>;

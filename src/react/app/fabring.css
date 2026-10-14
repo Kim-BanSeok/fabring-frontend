@@ -382,7 +382,7 @@ html{background:#fff}
 .seller-live-calendar .seller-calendar-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .seller-live-calendar .seller-calendar-actions .button { min-width: 0; padding-inline: 4px; }
 .seller-roll-sale-unit input[readonly] { max-width: 240px; background: var(--loop-canvasClear, #f2f5f3); font-weight: 600; }
-.seller-roll-sale-unit .field-hint { max-width: 640px; }
+.seller-roll-sale-unit .field-hint { max-width: none; word-break: keep-all; }
 @media (max-width: 1150px) {
   .seller-overview-work, .seller-calendar-layout { grid-template-columns: minmax(0, 1fr); }
   .seller-live-calendar { width: 100%; max-width: 560px; }
@@ -402,6 +402,13 @@ html{background:#fff}
 .seller-stat-label > span { color: #2458c6; }
 .seller-dashboard-summary .seller-stat-value { font-size: 26px; line-height: 32px; color: #20242b; }
 .seller-dashboard-summary .stat-card > .button { align-self: flex-start; min-width: 0; margin: 0 14px 12px; }
+.admin-dashboard .admin-stats { gap: 12px; padding: 0; border: 0; }
+.admin-dashboard .admin-stat { min-height: 0; padding: 14px 18px; gap: 8px; background: #f6f8fc; border: 1px solid #e1e7ef; border-radius: 4px; }
+.admin-dashboard .admin-stat:hover { background: #edf3ff; }
+.admin-dashboard .admin-stat > .admin-stat-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; color: #526176; font-size: 14px; line-height: 22px; }
+.admin-stat-label > span { color: #2458c6; }
+.admin-dashboard .admin-stat > strong { color: #20242b; font-size: 26px; line-height: 32px; }
+.admin-dashboard .admin-stat > small { color: #657185; font-size: 12px; line-height: 20px; }
 .seller-dashboard-heading { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 20px; }
 .seller-dashboard-heading .page-heading { gap: 4px; }
 .seller-dashboard-heading h1 { font-size: 26px; line-height: 36px; }

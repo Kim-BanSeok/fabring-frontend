@@ -31,7 +31,7 @@ function RegisterStart({ type }) {
         <h2>AI와 대화로 등록</h2>
         <h3>원단에 대해 알려 주세요.</h3>
         <p className="muted">사진과 소재, 두께, 치수를 입력하면 AI가 상세설명을 써 줘요. 가격과 맞지 않는 항목은 확인 화면에서 고치면 돼요.</p>
-        <Notice>첨부한 사진은 상세설명을 쓸 때 함께 보내요. 폭과 길이는 입력한 값을 유지해요.</Notice>
+        <Notice>첨부한 사진은 상세설명을 쓸 때 함께 보내요.<br />폭과 길이는 입력한 값을 유지해요.</Notice>
         <FabricLink path={`/seller/register/ai?step=photos&type=${type}`} tone="primary">AI 등록</FabricLink>
       </section>
       <section className="panel seller-panel">
