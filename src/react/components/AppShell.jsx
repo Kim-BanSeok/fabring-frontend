@@ -2,8 +2,8 @@ import { Badge, Button, Notice } from './ui.jsx';
 import { useRef } from 'react';
 import { HOME } from '../app/store.js';
 
-const buyerMainLinks = [['홈', '/buyer/home'], ['원단 찾기', '/buyer/fabrics'], ['부자재 공장 지도', '/buyer/supplies']];
-const buyerAccountLinks = [['픽업 예약', '/buyer/reservations'], ['문의', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
+const buyerMainLinks = [['홈', '/buyer/home'], ['브랜드', '/buyer/brand'], ['원단목록', '/buyer/fabrics'], ['부자재 공장 지도', '/buyer/supplies']];
+const buyerAccountLinks = [['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
 const buyerLinks = [...buyerMainLinks, ...buyerAccountLinks];
 const sellerLinks = [['홈', '/seller/dashboard'], ['내 원단', '/seller/fabrics'], ['원단 등록', '/seller/register'], ['픽업 예약', '/seller/reservations'], ['픽업 일정', '/seller/calendar'], ['문의내역', '/seller/inquiries'], ['매장 관리', '/seller/store'], ['마이페이지', '/seller/profile']];
 const adminLinks = [['대시보드', '/admin/dashboard'], ['판매자 승인', '/admin/sellers'], ['원단 목록', '/admin/fabrics'], ['원단 게시 승인', '/admin/approvals']];
@@ -38,7 +38,7 @@ function SiteFooter() {
 
 export default function AppShell({ ctx, children, footer }) {
   const { path, query, role, logout } = ctx;
-  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile', '/buyer/supplies'].includes(path)
+  const buyerConnectedPage = ['/buyer', '/buyer/home', '/buyer/brand', '/buyer/fabrics', '/buyer/filters', '/buyer/reservations', '/buyer/patterns', '/buyer/inquiries', '/buyer/favorites', '/buyer/profile', '/buyer/supplies'].includes(path)
     || ['/buyer/fabrics/', '/buyer/pickup/', '/buyer/reservations/', '/buyer/errors/', '/buyer/patterns/', '/buyer/recommendations/', '/buyer/supplies/'].some(prefix => path.startsWith(prefix));
   const sellerConnectedPage = ['/seller', '/seller/dashboard', '/seller/calendar', '/seller/reservations', '/seller/fabrics', '/seller/register', '/seller/upload', '/seller/store', '/seller/profile', '/seller/profile/saved', '/seller/approval'].includes(path)
     || path === '/seller/inquiries' || ['/seller/reservations/', '/seller/fabrics/', '/seller/register/', '/seller/inquiries/'].some(prefix => path.startsWith(prefix));

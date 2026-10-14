@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="760" viewBox="0 0 1100 760">
+
+  <rect width="1100" height="760" fill="#f7f8fb"/>
+  <text x="40" y="42" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="26" font-weight="700">도안</text>
+  <text x="110" y="42" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16">바깥은 자르는 선, 파란 점선은 박음선. 단위 cm. 겉감·안감 각 1장.</text>
+  
+    <text x="170" y="94" text-anchor="middle" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="20" font-weight="700">세로로 긴 A4</text>
+    <text x="170" y="118" text-anchor="middle" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="14">몸통 50 × 70 · 손잡이 50</text>
+    <text x="170" y="52" text-anchor="middle" fill="#c2410c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">50</text>
+    <line x1="70" y1="64" x2="270" y2="64" stroke="#c2410c" stroke-width="1.5"/>
+    <path d="M 70 130 H 270 V 382 Q 170 428 70 382 Z" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <path d="M 84 144 H 256 V 370 Q 170 410 84 370 Z" fill="none" stroke="#2458c6" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <line x1="170" y1="144" x2="170" y2="390" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="62" y="270" text-anchor="end" fill="#c2410c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">70</text>
+    <text x="170" y="458" text-anchor="middle" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">손잡이</text>
+    <rect x="70" y="470" width="200" height="36" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <line x1="70" y1="482" x2="270" y2="482" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="70" y1="494" x2="270" y2="494" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="170" y="526" text-anchor="middle" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="14">50 × 8cm · 2조</text>
+  
+    <text x="500" y="124" text-anchor="middle" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="20" font-weight="700">도시락 가방</text>
+    <text x="500" y="148" text-anchor="middle" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="14">몸통 40 × 55 · 손잡이 40</text>
+    <text x="500" y="82" text-anchor="middle" fill="#c2410c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">40</text>
+    <line x1="420" y1="94" x2="580" y2="94" stroke="#c2410c" stroke-width="1.5"/>
+    <path d="M 420 160 H 580 V 352 Q 500 398 420 352 Z" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <path d="M 434 174 H 566 V 340 Q 500 380 434 340 Z" fill="none" stroke="#2458c6" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <line x1="500" y1="174" x2="500" y2="360" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="412" y="270" text-anchor="end" fill="#c2410c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">55</text>
+    <text x="500" y="428" text-anchor="middle" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">손잡이</text>
+    <rect x="420" y="440" width="160" height="36" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <line x1="420" y1="452" x2="580" y2="452" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="420" y1="464" x2="580" y2="464" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="500" y="496" text-anchor="middle" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="14">40 × 8cm · 2조</text>
+  
+    <text x="884" y="104" text-anchor="middle" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="20" font-weight="700">1박 여행 가방</text>
+    <text x="884" y="128" text-anchor="middle" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="14">몸통 62 × 75 · 손잡이 62</text>
+    <text x="884" y="62" text-anchor="middle" fill="#c2410c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">62</text>
+    <line x1="760" y1="74" x2="1008" y2="74" stroke="#c2410c" stroke-width="1.5"/>
+    <path d="M 760 140 H 1008 V 412 Q 884 458 760 412 Z" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <path d="M 774 154 H 994 V 400 Q 884 440 774 400 Z" fill="none" stroke="#2458c6" stroke-width="1.4" stroke-dasharray="5 4"/>
+    <line x1="884" y1="154" x2="884" y2="420" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="752" y="290" text-anchor="end" fill="#c2410c" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">75</text>
+    <text x="884" y="488" text-anchor="middle" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16" font-weight="700">손잡이</text>
+    <rect x="760" y="500" width="248" height="36" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <line x1="760" y1="512" x2="1008" y2="512" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 3"/>
+    <line x1="760" y1="524" x2="1008" y2="524" stroke="#2458c6" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="884" y="556" text-anchor="middle" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="14">62 × 8cm · 2조</text>
+  <text x="40" y="720" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="16">손잡이 점선은 세 번 접어 만드는 선입니다. 바닥 곡선은 모서리를 둥글게 잡는 부분입니다.</text>
+
+</svg>

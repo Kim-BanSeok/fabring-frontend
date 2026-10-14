@@ -256,6 +256,11 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       const query = inquiryQuery(input, { seller: true });
       return inquiryRequest(`/sellers/me/inquiries?${query}`, { signal, decode: raw => inquiryPage(raw, query) });
     },
+    async listMyInquiries(input = {}, { signal } = {}) {
+      requireSession(['BUYER']);
+      const query = inquiryQuery(input, { seller: true });
+      return inquiryRequest(`/buyers/me/inquiries?${query}`, { signal, decode: raw => inquiryPage(raw, query) });
+    },
     async createInquiry(fabricId, input, { signal } = {}) {
       requireSession(['BUYER']);
       const identifier = inquiryIdentifier(fabricId), body = inquiryInput(input);
@@ -291,6 +296,9 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
     },
     async startAiSession({ signal } = {}) {
       return aiRequest('/ai-sessions', { method: 'POST', signal, decode: raw => aiSession(raw, { open: true }) });
+    },
+    async composeAiListing(input, { signal } = {}) {
+      return aiRequest('/ai-sessions/listings', { method: 'POST', signal, body: input, answer: true, decode: raw => aiSession(raw, { detail: true, open: true }) });
     },
     async getAiSession(id, { signal } = {}) {
       const sessionId = aiSessionIdentifier(id);
@@ -441,6 +449,30 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       requireSession(['SELLER']);
       return sellerFabricRequest('/fabrics', { signal, method: 'POST', body: sellerFabricInput(input), decode: raw => fabricMutation(raw, { created: true }) });
     },
+    async downloadFabricSheet() {
+      requireSession(['SELLER']);
+      const response = await globalThis.fetch(`${baseUrl.replace(/\/+$/, '')}/sellers/me/fabric-sheet`, {
+        headers: { Authorization: `Bearer ${credential.accessToken}` }, cache: 'no-store',
+      });
+      if (!response.ok) throw new ApiError('HTTP_ERROR', '양식을 받지 못했어요. 다시 로그인한 뒤 시도해 주세요.', { status: response.status });
+      return response.blob();
+    },
+    async parseFabricSheet(file, { signal } = {}) {
+      requireSession(['SELLER']);
+      if (!(file instanceof Blob) || !/\.xlsx$/i.test(file.name || '')) throw new ApiError('VALIDATION_ERROR', 'xlsx 파일을 선택해 주세요.', { status: 400 });
+      const body = new FormData();
+      body.append('file', file);
+      const raw = await request('/sellers/me/fabric-sheet', { signal, method: 'POST', body, authenticated: true });
+      if (!raw || !Array.isArray(raw.rows) || !raw.rows.length || raw.rows.length > 40) throw new ApiError('INVALID_RESPONSE', '엑셀에서 읽은 줄을 확인하지 못했어요.');
+      return raw.rows.map((row) => {
+        const number = (value) => value === '' || (Number.isSafeInteger(value) && value >= 0);
+        if (!row || !['SCRAP', 'ROLL'].includes(row.sale_type) || typeof row.title !== 'string' || typeof row.error !== 'string'
+          || ![row.width_cm, row.length_cm, row.price].every(number) || (row.sheet_count !== '' && !Number.isSafeInteger(row.sheet_count))) {
+          throw new ApiError('INVALID_RESPONSE', '엑셀에서 읽은 줄을 확인하지 못했어요.');
+        }
+        return { sale_type: row.sale_type, title: row.title, material: row.material, thickness: row.thickness, color: row.color, width_cm: row.width_cm, length_cm: row.length_cm, sheet_count: row.sheet_count, price: row.price, error: row.error };
+      });
+    },
     async updateFabric(id, input, { signal } = {}) {
       requireSession(['SELLER']);
       const identifier = fabricIdentifier(id);
@@ -518,10 +550,22 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
         return item;
       } });
     },
+    async createPatternDraft(input, { signal } = {}) {
+      requireSession(['BUYER']);
+      const fabricId = Number(input?.fabric_id);
+      const itemName = String(input?.item_name || '').trim();
+      const note = String(input?.note || '').trim();
+      if (!Number.isSafeInteger(fabricId) || fabricId < 1) throw new ApiError('VALIDATION_ERROR', '원단을 다시 선택해 주세요.', { status: 400 });
+      if (!itemName || itemName.length > 40) throw new ApiError('VALIDATION_ERROR', '만들고 싶은 것을 1~40자로 입력해 주세요.', { status: 400 });
+      if (note.length > 200) throw new ApiError('VALIDATION_ERROR', '추가 요청은 200자 이내로 입력해 주세요.', { status: 400 });
+      const raw = await request('/pattern-drafts', { signal, method: 'POST', authenticated: true, body: { fabric_id: fabricId, item_name: itemName, note: note || null } });
+      if (!raw || raw.draft !== true || raw.saved !== false || !Array.isArray(raw.parts) || !raw.parts.length) throw new ApiError('INVALID_RESPONSE', '도안 초안을 확인하지 못했어요.');
+      return raw;
+    },
     async createReservation(input, { signal } = {}) {
       requireSession(['BUYER']);
       const body = reservationInput(input, now());
-      return reservationRequest('/reservations', { signal, method: 'POST', body, decode: raw => reservationMutation(raw, 'REQUESTED', { length: body.requested_length_cm }) });
+      return reservationRequest('/reservations', { signal, method: 'POST', body, decode: raw => reservationMutation(raw, 'REQUESTED', { length: body.requested_length_cm, sheets: body.requested_sheet_count ?? null }) });
     },
     async cancelReservation(id, { signal } = {}) {
       requireSession();

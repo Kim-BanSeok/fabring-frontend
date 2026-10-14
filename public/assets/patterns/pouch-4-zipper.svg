@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="640" viewBox="0 0 880 640">
+
+  <title>지퍼 달기</title>
+  <rect width="880" height="640" fill="#f7f8fb"/>
+  <text x="36" y="46" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700">4. 지퍼를 가운데 두고 박기</text>
+  <text x="36" y="76" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">위에서부터 겉감 입구, 지퍼, 안감 입구 순서입니다.</text>
+  <g transform="translate(80,120)">
+    <rect x="180" y="0" width="360" height="70" fill="#fff" stroke="#20242b" stroke-width="2"/>
+    <text x="360" y="42" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="24" font-weight="700" text-anchor="middle">겉감 입구</text>
+    <rect x="180" y="86" width="360" height="36" fill="#20242b"/>
+    <rect x="348" y="74" width="24" height="60" rx="4" fill="#2458c6"/>
+    <text x="560" y="110" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" fill="#2458c6">지퍼 이를 아래로</text>
+    <rect x="180" y="138" width="360" height="70" fill="#edf3fb" stroke="#20242b" stroke-width="2"/>
+    <text x="360" y="180" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="24" font-weight="700" text-anchor="middle">안감 입구</text>
+    <path d="M196 20 H524" fill="none" stroke="#2458c6" stroke-width="3" stroke-dasharray="7 5"/>
+    <path d="M196 156 H524" fill="none" stroke="#2458c6" stroke-width="3" stroke-dasharray="7 5"/>
+    <text x="40" y="250" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">① 지퍼를 열어 두면 뒤집기 쉽습니다.</text>
+    <text x="40" y="282" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">② 겉감 입구와 지퍼 테이프를 맞추고, 그 위에 안감 입구를 옮습니다.</text>
+    <text x="40" y="314" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">③ 파란 점선처럼 지퍼 테이프를 따라 박습니다. 이는 닿지 않게 합니다.</text>
+    <text x="40" y="346" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">④ 반대쪽 입구도 같은 순서로 한 번 더 박습니다.</text>
+  </g>
+  <text x="36" y="590" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">지퍼 끝은 파우치 가장자리보다 조금 안쪽에 두어, 양쪽 끝을 되박음으로 박아 고정합니다.</text>
+</svg>

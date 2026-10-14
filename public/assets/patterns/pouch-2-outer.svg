@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="620" viewBox="0 0 880 620">
+
+  <title>겉감 세 면 박기</title>
+  <rect width="880" height="620" fill="#f7f8fb"/>
+  <text x="36" y="46" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700">2. 겉감 — 겉면이 마주 보게</text>
+  <text x="36" y="76" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">입구는 열어 두고, 나머지 세 면을 시접 1cm로 박습니다.</text>
+  <g transform="translate(180,130)">
+    <rect x="24" y="18" width="360" height="250" fill="#d9e4f5" stroke="#20242b" stroke-width="2"/>
+    <rect x="0" y="0" width="360" height="250" fill="#fff" stroke="#20242b" stroke-width="2.5"/>
+    <path d="M28 28 V222 H332 V28" fill="none" stroke="#2458c6" stroke-width="4" stroke-dasharray="9 6"/>
+    <circle cx="28" cy="28" r="6" fill="#2458c6"/>
+    <circle cx="332" cy="28" r="6" fill="#2458c6"/>
+    <text x="180" y="130" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-weight="700" fill="#2458c6" text-anchor="middle" font-size="22">겉감 2장</text>
+    <text x="180" y="158" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22" text-anchor="middle">파란 점선만 박기</text>
+    <text x="180" y="-16" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" text-anchor="middle" fill="#c2410c">입구 35cm · 박지 않음</text>
+    <text x="390" y="140" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">① 왼쪽에서 시작</text>
+    <text x="390" y="168" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">② 바닥을 지나</text>
+    <text x="390" y="196" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">③ 오른쪽에서 끝</text>
+    <text x="390" y="230" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">시작·끝은</text>
+    <text x="390" y="254" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">2단 되돌아 박기</text>
+  </g>
+  <text x="36" y="560" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">두 장이 조금 비끼돌 보이는 것은 겉감을 포개자 두 겹으로 옮은 모습입니다.</text>
+  <text x="36" y="588" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">모서리는 시접 안쪽에서 좋아도 됩니다. 바깥까지 박지 마세요.</text>
+</svg>

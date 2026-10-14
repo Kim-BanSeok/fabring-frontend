@@ -32,8 +32,6 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
   let toast = { message: '', route: '', role: '' };
   let mode = liveApi ? 'live' : 'demo';
   let lastAuth = liveApi?.getAuth();
-  try { if (liveApi && browser.sessionStorage?.getItem('yangju-loop-mode') === 'demo') mode = 'demo'; } catch { /* Memory-only mode is sufficient. */ }
-  if (liveApi && !browser.location.hash.replace(/^#\/?$/, '')) mode = 'live';
 
   function emit() { listeners.forEach(listener => listener()); }
   function draftStore() {
@@ -53,12 +51,12 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
     let route = parseRoute(browser.location.hash);
     const requested = route.query.get('scenario');
     const requestedMode = route.query.get('mode');
-    if (liveApi && ['live', 'demo'].includes(requestedMode)) mode = requestedMode;
-    if (requested && /^\d+:\d+$/.test(requested)) mode = 'demo';
-    if (route.path === '/preview') mode = 'demo';
-    // 공개 공장 지도는 저장된 시연 세션보다 실제 조회를 우선한다.
-    // 명시적인 시연 링크와 Figma 상태 예시는 그대로 열 수 있다.
-    if (liveApi && isFactoryRoute(route.path) && requestedMode !== 'demo' && !(requested && /^\d+:\d+$/.test(requested))) mode = 'live';
+    if (liveApi) mode = isFactoryRoute(route.path) && (requestedMode === 'demo' || /^\d+:\d+$/.test(requested || '')) ? 'demo' : 'live';
+    else {
+      if (['live', 'demo'].includes(requestedMode)) mode = requestedMode;
+      if (requested && /^\d+:\d+$/.test(requested)) mode = 'demo';
+      if (route.path === '/preview') mode = 'demo';
+    }
     try { browser.sessionStorage?.setItem('yangju-loop-mode', mode); } catch { /* See above. */ }
     if (mode === 'live') {
       if (api !== liveApi) { api = liveApi; scenario = ''; sessionId++; }
@@ -69,10 +67,10 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
         route = parseRoute(browser.location.hash);
       }
     } else if (api === liveApi) { api = savedApi; scenario = ''; sessionId++; }
-    if (route.path === '/preview') {
+    if (!liveApi && route.path === '/preview') {
       if (api !== savedApi) sessionId++;
       api = savedApi; scenario = '';
-    } else if (requested && /^\d+:\d+$/.test(requested) && requested !== scenario) {
+    } else if (mode === 'demo' && requested && /^\d+:\d+$/.test(requested) && requested !== scenario) {
       api = scenarioFactory(requested); scenario = requested; sessionId++;
     }
     // The mock adapter updates synchronously; no request is made by this demo role switch.
@@ -137,14 +135,7 @@ export function createAppStore({ browser = window, savedApi = createMockApi(), s
       return () => { browser.removeEventListener('hashchange', update); browser.removeEventListener('focus', onFocus); disconnect?.(); };
     },
     navigate, refresh, notify, logout, reset, retrySession: () => liveApi?.restore(),
-    useContest() {
-      mode = 'demo';
-      const route = parseRoute(browser.location.hash);
-      route.query.delete('mode');
-      const search = route.query.toString();
-      browser.history.replaceState(null, '', `#${route.path}${search ? `?${search}` : ''}`);
-      return update();
-    },
+    useContest() { return this.useLive(); },
     useLive() {
       mode = 'live';
       const route = parseRoute(browser.location.hash);

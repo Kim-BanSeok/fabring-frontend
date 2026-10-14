@@ -35,12 +35,15 @@ export function reservationInput(input, now = Date.now()) {
   if (!/^\d+$/.test(String(input.fabric_id)) || !integer(fabricId, 1)) validation('원단 번호를 확인해 주세요.');
   const length = input.requested_length_cm ?? null;
   if (length !== null && (!integer(length, 1) || length > 2147483647 || length % 90 !== 0)) validation('구매할 길이는 1마(90cm) 단위로 선택해 주세요.');
+  const sheets = input.requested_sheet_count ?? null;
+  if (sheets !== null && (!integer(sheets, 1) || sheets > 9999)) validation('구매할 장수는 1장 이상 9,999장 이하로 선택해 주세요.');
+  if (length !== null && sheets !== null) validation('길이와 장수를 함께 보낼 수 없어요.');
   if (input.memo != null && !text(input.memo)) validation('요청 사항을 확인해 주세요.');
   const memo = input.memo?.trim() || null;
   if (memo?.length > 500) validation('요청 사항은 500자 이내로 입력해 주세요.');
   const patternId = input.pattern_id == null ? null : Number(input.pattern_id);
   if (patternId !== null && (!/^\d+$/.test(String(input.pattern_id)) || !integer(patternId, 1))) validation('도안 번호를 확인해 주세요. 도안 추천에서 다시 선택해 주세요.');
-  return { fabric_id: fabricId, pickup_at: pickupAtKst(input.pickup_date, input.pickup_time, now), memo, requested_length_cm: length, pattern_id: patternId };
+  return { fabric_id: fabricId, pickup_at: pickupAtKst(input.pickup_date, input.pickup_time, now), memo, requested_length_cm: length, pattern_id: patternId, ...(sheets !== null ? { requested_sheet_count: sheets } : {}) };
 }
 
 export function reservationQuery(input = {}) {
@@ -83,11 +86,16 @@ function baseReservation(raw) {
     || !nullableText(raw.reject_reason)) invalid();
   // API 26 omits sale_type. The contract uses null length for SCRAP and 90cm multiples for ROLL.
   const roll = raw.requested_length_cm !== null;
-  if (roll ? !integer(raw.requested_length_cm, 1) || raw.requested_length_cm % 90 !== 0 || !integer(raw.estimated_price) : raw.estimated_price !== null) invalid();
+  const sheets = Object.hasOwn(raw, 'requested_sheet_count') ? raw.requested_sheet_count : null;
+  if (roll) {
+    if (sheets != null || !integer(raw.requested_length_cm, 1) || raw.requested_length_cm % 90 !== 0 || !integer(raw.estimated_price)) invalid();
+  } else if (sheets == null) {
+    if (raw.estimated_price !== null) invalid();
+  } else if (!integer(sheets, 1) || sheets > 9999 || !integer(raw.estimated_price)) invalid();
   const kst = new Date(Date.parse(raw.pickup_at) + 9 * 3600000).toISOString();
   return {
     source: 'api', id: String(raw.reservationId), status: raw.status, sale_type: roll ? 'ROLL' : 'SCRAP',
-    requested_length_cm: raw.requested_length_cm, estimated_price: raw.estimated_price, display_price: raw.estimated_price,
+    requested_length_cm: raw.requested_length_cm, requested_sheet_count: sheets, estimated_price: raw.estimated_price, display_price: raw.estimated_price,
     pickup_at: raw.pickup_at, pickup_date: kst.slice(0, 10), pickup_time: kst.slice(11, 16),
     reject_reason: raw.reject_reason, rejection_reason: raw.reject_reason,
   };
@@ -136,8 +144,8 @@ export function reservationDetail(raw) {
     canceled_by: raw.canceled_by, accepted_at: raw.accepted_at, picked_up_at: raw.picked_up_at, canceled_at: raw.canceled_at, created_at: raw.created_at };
 }
 
-export function reservationMutation(raw, status, { id, length } = {}) {
+export function reservationMutation(raw, status, { id, length, sheets = null } = {}) {
   if (!record(raw) || !integer(raw.reservationId, 1) || raw.status !== status || (id && String(raw.reservationId) !== id)) invalid();
-  if (status === 'REQUESTED' && (length === null ? raw.estimated_price !== null : !integer(raw.estimated_price))) invalid();
+  if (status === 'REQUESTED' && (sheets != null ? !integer(raw.estimated_price) : length == null ? raw.estimated_price !== null : !integer(raw.estimated_price))) invalid();
   return { id: String(raw.reservationId), status: raw.status, ...(status === 'REQUESTED' ? { estimated_price: raw.estimated_price } : {}) };
 }

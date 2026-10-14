@@ -56,12 +56,25 @@ function InquiryReturn({ ctx }) {
 }
 
 function BuyerInquiryIndex({ ctx }) {
-  const targets = ctx.drafts.get(INQUIRY_TARGETS_KEY) || [];
-  return <BuyerPage><PageHeading title="문의 내역" description="원단별로 남긴 질문과 판매자의 답변을 확인하세요." />
-    <Notice>전체 원단의 내 문의를 모아 보는 기능은 아직 준비 중이에요. 원단 상세의 ‘문의·답변 보기’에서 해당 원단의 문의를 확인할 수 있습니다.</Notice>
-    <section className="panel stack"><h2 className="buyer-panel-heading">이 탭에서 문의를 작성한 원단</h2><p className="buyer-small buyer-muted">문의 작성 시 남긴 바로가기입니다. 등록 여부와 답변은 원단별 문의 목록에서 확인해 주세요. 전체 문의 내역이 아니며 새로고침·로그아웃하면 이 목록은 사라져요.</p>
-      {targets.length ? targets.map(item => <article className="record-card" key={item.id}><h3>{item.title}</h3><Link path={inquiryPath(item.id)}>문의·답변 보기</Link></article>) : <p>이 탭에서 문의를 작성한 원단 바로가기가 없어요. 원단 목록이나 픽업 내역에서 원단을 선택해 주세요.</p>}
-    </section><div className="actions"><Link path="/buyer/fabrics" tone="primary">원단 둘러보기</Link><Link path="/buyer/reservations">픽업 내역에서 원단 찾기</Link></div>
+  const query = inquiryPageQuery(ctx.query, true), status = query.status || 'ALL';
+  const resource = useInquiryResource(ctx.api, { kind: 'buyer', query });
+  const page = resource.data, items = page?.items || [];
+  const pathFor = (nextStatus, pageIndex = 0) => {
+    const params = new URLSearchParams();
+    if (nextStatus && nextStatus !== 'ALL') params.set('status', nextStatus);
+    if (pageIndex) params.set('page', String(pageIndex));
+    const search = params.toString();
+    return `/buyer/inquiries${search ? `?${search}` : ''}`;
+  };
+  return <BuyerPage><PageHeading title="문의 내역" description="내가 남긴 질문과 판매자의 답변을 확인하세요." />
+    <nav className="tabs" aria-label="문의 답변 상태">{[['WAITING', '답변 대기'], ['ANSWERED', '답변 완료'], ['ALL', '전체']].map(([value, label]) => <Link key={value} path={pathFor(value)} className={status === value ? 'is-active' : ''} aria-current={status === value ? 'page' : undefined}>{label}</Link>)}</nav>
+    <div><Button onClick={resource.retry} disabled={resource.loading}>새로 조회</Button></div>
+    <ReadFeedback resource={resource} />
+    {page && <section className="panel stack"><h2 className="buyer-panel-heading">내 문의 · {page.totalElements}건</h2>
+      {items.length ? items.map(item => <article className="record-card stack" key={item.id}><div className="actions"><Badge tone={item.status === 'ANSWERED' ? 'green' : 'amber'}>{item.status === 'ANSWERED' ? '답변 완료' : '답변 대기'}</Badge></div><h3>{item.fabric_title}</h3><p className="buyer-small buyer-muted">{formatDateTime(item.created_at)}</p><p className="buyer-message">{item.content}</p>{item.answer && <p className="buyer-message">{item.answer}</p>}<Link path={inquiryPath(item.fabric_id)}>이 원단 문의 보기</Link></article>) : <EmptyState title={page.page > 0 ? '이 페이지에 문의가 없어요' : '남긴 문의가 없어요'} description="원단 상세에서 판매자에게 질문할 수 있어요." />}
+      <Pagination page={page} path={index => pathFor(status, index)} />
+    </section>}
+    <div className="actions"><Link path="/buyer/fabrics" tone="primary">원단 둘러보기</Link></div>
   </BuyerPage>;
 }
 

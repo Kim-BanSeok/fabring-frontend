@@ -6,6 +6,19 @@
   scrollbar-gutter: stable;
 }
 .seller-live-ai-chat p { white-space: pre-wrap; margin-bottom: 0; }
+.seller-step-back {
+  align-self: flex-start;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #2458c6;
+  font: inherit;
+  min-height: 44px;
+  cursor: pointer;
+}
+.seller-step-back:hover { text-decoration: underline; }
+.seller-step-back:disabled { color: #657185; cursor: default; text-decoration: none; }
 .seller-live-ai-chat .seller-chat-user { margin: 0; }
 @media (max-width: 600px) {
   .seller-live-ai-chat { max-height: 18rem; }

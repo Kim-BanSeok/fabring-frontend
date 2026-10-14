@@ -48,7 +48,7 @@ test('public factory map opens real data without login after a saved demo sessio
 });
 
 test('factory navigation exits demo by default but explicit demo and gallery routes stay examples', async () => {
-  const { store, liveApi } = setup('#/buyer/home?mode=demo');
+  const { store, liveApi } = setup('#/buyer/supplies?mode=demo');
   assert.equal(store.getSnapshot().mode, 'demo');
   await store.navigate('/buyer/supplies');
   assert.equal(store.getSnapshot().api, liveApi);
@@ -104,27 +104,22 @@ test('live route roles never change authenticated server role or expose demo sta
   stop(); await liveApi.logout();
 });
 
-test('gallery is isolated and returning to real mode preserves real account, not demo role', async () => {
+test('a real session ignores demo links and stays on the server account', async () => {
   const { store, liveApi } = setup();
   const stop = store.connect();
   liveApi.commitLogin(await liveApi.login({ email: profile.email, password: 'TestPass123!' }));
   await store.navigate('/admin/dashboard?mode=demo');
-  assert.equal(store.getSnapshot().state.session.role, 'ADMIN');
-  assert.equal(liveApi.getAuth().user.role, 'SELLER');
-  await store.navigate('/admin/dashboard?mode=live');
+  assert.equal(store.getSnapshot().mode, 'live');
   assert.equal(store.getSnapshot().path, '/seller/dashboard');
-  assert.equal(store.getSnapshot().state.seller.nickname, profile.nickname);
+  assert.equal(store.getSnapshot().api, liveApi);
+  assert.equal(liveApi.getAuth().user.role, 'SELLER');
   stop(); await liveApi.logout();
 });
 
-test('numeric scenarios remain in demo across links; explicit live exits the scenario', async () => {
+test('scenario links stay on the server account', async () => {
   const { store, liveApi } = setup();
   await store.navigate('/seller/register?scenario=127:6528');
-  assert.equal(store.getSnapshot().mode, 'demo');
-  const scenario = store.getSnapshot().api;
-  await store.navigate('/seller/profile');
-  assert.equal(store.getSnapshot().api, scenario);
-  await store.navigate('/auth/seller/login?mode=live');
+  assert.equal(store.getSnapshot().mode, 'live');
   assert.equal(store.getSnapshot().api, liveApi);
   assert.equal(store.getSnapshot().scenario, '');
 });
@@ -165,7 +160,7 @@ test('StrictMode re-subscription consumes one request once, leaving processing a
   assert.equal(consumed, 1);
 });
 
-test('identity changes and expiration clear sensitive live forms even while viewing a demo', async () => {
+test('expiration clears the signed-in drafts', async () => {
   let time = Date.now();
   const { store, liveApi } = setup(undefined, undefined, { now: () => time });
   const stop = store.connect();
@@ -176,13 +171,12 @@ test('identity changes and expiration clear sensitive live forms even while view
   snapshot = store.getSnapshot();
   getAuthState(snapshot.drafts).updateForm(snapshot.state, 'buyer', 'signup', 'password', 'Another-secret!');
   await store.navigate('/admin/dashboard?mode=demo');
-  const demo = store.getSnapshot();
-  demo.drafts.set('demo-note', 'preserve');
+  snapshot.drafts.set('note', 'keep-until-expiry');
   time += 61000; liveApi.checkExpiry();
   assert.equal(snapshot.drafts.size, 0);
-  assert.equal(demo.drafts.get('demo-note'), 'preserve');
-  await store.navigate('/auth/buyer/signup?mode=live');
+  await store.navigate('/auth/buyer/signup');
   snapshot = store.getSnapshot();
+  assert.equal(store.getSnapshot().mode, 'live');
   assert.equal(getAuthState(snapshot.drafts).initialForm(snapshot.state, 'buyer', 'signup').password, '');
   stop();
 });

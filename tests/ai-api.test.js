@@ -44,6 +44,13 @@ test('answer input trims documented values and cannot silently prioritize select
   }
 });
 
+test('a one-line fabric description is a question without option buttons', () => {
+  const text = '어떤 원단인지 편하게 적어 주세요.';
+  const actual = aiSession(session({ next_question: { field: 'listing', text } }), { open: true });
+  assert.deepEqual(actual.next_question, { field: 'listing', text });
+  assert.equal(actual.is_complete, false);
+});
+
 test('partial draft preserves missing fields and unknown material even when conversation is complete', () => {
   const raw = session({ ai_draft: { sale_type: 'SCRAP', width_cm: 50, length_cm: 110, material: 'UNKNOWN', description: '원단의 가치' },
     unconfirmed_fields: ['material', 'thickness', 'has_defect'], next_question: null, is_complete: true });

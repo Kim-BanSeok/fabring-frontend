@@ -12,7 +12,10 @@ export const routeId = ctx => { try { return ctx.resolvedFabricId || decodeURICo
 export const href = path => `#${path}`;
 export const fabricRoute = id => `/buyer/fabrics/${encodeURIComponent(id)}`;
 export const quantityText = cm => Number(cm) % 90 === 0 ? `${Number(cm) / 90}마(${Number(cm)}cm)` : `${Number(cm)}cm`;
-export const dimensions = fabric => fabric.sale_type === 'ROLL' ? `폭 ${fabric.width_cm}cm · 구매 가능 ${quantityText(fabric.available_length_cm ?? 0)}` : `폭 ${fabric.width_cm}cm × 길이 ${fabric.length_cm}cm`;
+export const dimensions = fabric => {
+  const sheets = fabric.available_sheet_count ?? fabric.sheet_count;
+  return fabric.sale_type === 'ROLL' ? `폭 ${fabric.width_cm}cm · 구매 가능 ${quantityText(fabric.available_length_cm ?? 0)}` : `폭 ${fabric.width_cm}cm × 길이 ${fabric.length_cm}cm${sheets ? ` · 남은 ${sheets}장` : ''}`;
+};
 export const priceText = fabric => `${price(fabric.price)} / ${fabric.sale_type === 'ROLL' ? '1마(90cm)' : '한 장'}`;
 export const dateText = value => String(value || '').replaceAll('-', '.');
 export const validDate = offset => {
@@ -39,7 +42,7 @@ export const exampleQuery = ctx => isExample(ctx) ? '&example=1' : '';
 const safeReservationReturn = value => value && !/[\\#\r\n]/.test(value) && value.split('?')[0] === '/buyer/reservations' ? value : '';
 export const reservationListReturn = ctx => ctx.path === '/buyer/reservations' ? currentRoute(ctx) : safeReservationReturn(ctx.query.get('return'));
 export const reservationPath = (item, suffix = '') => addQuery(`/buyer/reservations/${encodeURIComponent(item.id)}${suffix}${item.example ? `?status=${item.status}&example=1&fabric_id=${encodeURIComponent(item.fabric_id)}${item.viewSubset ? `&subset=${encodeURIComponent(item.viewSubset)}` : ''}` : ''}`, 'return', safeReservationReturn(item.list_return));
-export const reservationQuantity = item => item.sale_type === 'ROLL' ? quantityText(item.requested_length_cm) : '자투리 한 장 전체';
+export const reservationQuantity = item => item.sale_type === 'ROLL' ? quantityText(item.requested_length_cm) : item.requested_sheet_count ? `${item.requested_sheet_count}장` : '자투리 한 장 전체';
 export const reservationPriceText = item => item.display_price == null ? '예약 금액 정보 없음' : price(item.display_price);
 export const submittedReservationKey = id => `buyer:submitted:${id}`;
 export function reservationResourceRequest(ctx) {
@@ -141,7 +144,8 @@ export const storeAddress = store => [store?.address, store?.detail_address].fil
 export const reservationPrimaryAction = item => ({ path: reservationPath(item), label: item.status === 'ACCEPTED' ? '픽업 정보 보기' : '상세 보기' });
 export function availability(ctx, fabric) {
   if (ctx.mode === 'live' || fabric.source === 'api') {
-    const available = fabric.status === 'POSTED' && (fabric.sale_type === 'ROLL' ? Number(fabric.available_length_cm) >= 90 : fabric.is_reserved === false);
+    const sheetsLeft = fabric.available_sheet_count;
+    const available = fabric.status === 'POSTED' && (fabric.sale_type === 'ROLL' ? Number(fabric.available_length_cm) >= 90 : fabric.is_reserved === false && (sheetsLeft == null || sheetsLeft >= 1));
     return { own: null, canRequest: available, label: available ? '거래 가능' : fabric.is_reserved ? '예약 중' : '현재 요청 불가' };
   }
   const active = ctx.state.reservations.filter(item => item.fabric_id === fabric.id && ['REQUESTED', 'ACCEPTED'].includes(item.status));

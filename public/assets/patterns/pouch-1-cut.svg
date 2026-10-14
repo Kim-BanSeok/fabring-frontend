@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="620" viewBox="0 0 880 620">
+
+  <title>지퍼 파우치 재단</title>
+  <rect width="880" height="620" fill="#f7f8fb"/>
+  <text x="36" y="46" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700">1. 재단 — 시접 1cm가 포함된 크기</text>
+  <text x="36" y="76" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">바깥은 자르는 선, 안쪽 점선은 박음선. 세로 화살표는 원단 결 방향.</text>
+  <g transform="translate(70,150)">
+    <text x="150" y="0" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" fill="#2458c6" text-anchor="middle">35cm</text>
+    <line x1="40" y1="12" x2="260" y2="12" stroke="#2458c6" stroke-width="1.5"/>
+    <line x1="40" y1="6" x2="40" y2="18" stroke="#2458c6"/>
+    <line x1="260" y1="6" x2="260" y2="18" stroke="#2458c6"/>
+    <rect x="40" y="28" width="220" height="160" fill="#fff" stroke="#20242b" stroke-width="2.5"/>
+    <rect x="56" y="44" width="188" height="128" fill="none" stroke="#2458c6" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <path d="M150 150 V70" fill="none" stroke="#20242b" stroke-width="1.5" marker-end="url(#g1)"/>
+    <text x="28" y="110" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" fill="#2458c6" text-anchor="end">25</text>
+    <text x="150" y="220" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" text-anchor="middle">겉감 앞·뒤</text>
+    <text x="150" y="246" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22" text-anchor="middle">2장 · 위쪽이 지퍼 입구</text>
+    <line x1="48" y1="36" x2="64" y2="52" stroke="#c2410c" stroke-width="1.5"/>
+    <text x="8" y="28" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-weight="700" fill="#c2410c" font-size="14">시접 1cm</text>
+  </g>
+  <g transform="translate(470,150)">
+    <text x="150" y="0" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" fill="#2458c6" text-anchor="middle">35cm</text>
+    <line x1="40" y1="12" x2="260" y2="12" stroke="#2458c6" stroke-width="1.5"/>
+    <rect x="40" y="28" width="220" height="160" fill="#edf3fb" stroke="#20242b" stroke-width="2.5" stroke-dasharray="8 5"/>
+    <rect x="56" y="44" width="188" height="128" fill="none" stroke="#2458c6" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <path d="M70 150 H150" fill="none" stroke="#c2410c" stroke-width="3"/>
+    <text x="150" y="146" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-weight="700" fill="#c2410c" text-anchor="middle" font-size="14">8cm</text>
+    <text x="150" y="220" fill="#20242b" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="30" font-weight="700" text-anchor="middle">안감 앞·뒤</text>
+    <text x="150" y="246" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22" text-anchor="middle">2장 · 바닥 빨간선은 뒤집기 구멍</text>
+  </g>
+  <text x="36" y="560" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">겉감과 안감을 같은 크기로 각 2장. 지퍼 30cm 1개, 실은 따로 준비합니다.</text>
+  <text x="36" y="588" fill="#526176" font-family="Malgun Gothic, Apple SD Gothic Neo, sans-serif" font-size="22">입구(위) 시접은 지퍼에 물리므로 세 면 박음에는 포함하지 않습니다.</text>
+  <defs><marker id="g1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#20242b"/></marker></defs>
+</svg>

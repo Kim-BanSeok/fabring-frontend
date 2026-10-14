@@ -101,9 +101,16 @@ export function fabricDetail(raw) {
       || ![null, undefined, 'FULL', 'ZOOM', 'DEFECT'].includes(image.image_type)) invalid();
     return { id: String(image.imageId), image_url: imageUrl(image.image_url), thumbnail_url: imageUrl(image.thumbnail_url), image_type: image.image_type, sort_order: image.sort_order };
   }).sort((a, b) => a.sort_order - b.sort_order || Number(a.id) - Number(b.id));
+  const sheetCount = Object.hasOwn(detail, 'sheet_count') ? detail.sheet_count : null;
+  const availableSheets = Object.hasOwn(raw.availability, 'available_sheet_count') ? raw.availability.available_sheet_count : null;
+  const reservedSheets = Object.hasOwn(raw.availability, 'reserved_sheet_count') ? raw.availability.reserved_sheet_count : null;
+  if (availableSheets != null && !integer(availableSheets)) invalid();
+  if (reservedSheets != null && !integer(reservedSheets)) invalid();
+  if (fabric.sale_type === 'ROLL' && (availableSheets != null || reservedSheets != null)) invalid();
+  if (!(sheetCount == null || integer(sheetCount, 1)) || (fabric.sale_type === 'ROLL' && sheetCount != null) || (sheetCount != null && sheetCount > 9999)) invalid();
   return {
     ...fabric, status: raw.status, description: detail.description, defect_note: detail.defect_note, color_detail: detail.color_detail,
-    reserved_length_cm: raw.availability.reserved_length_cm, created_at: raw.created_at,
+    sheet_count: sheetCount, available_sheet_count: availableSheets, reserved_sheet_count: reservedSheets, reserved_length_cm: raw.availability.reserved_length_cm, created_at: raw.created_at,
     images, image_url: images.find(image => image.image_url)?.image_url || null,
     store_id: String(store.storeId), store_name: store.store_name,
     store: { id: String(store.storeId), store_name: store.store_name, address: store.store_address, phone_number: store.store_phone, closed_days: store.closed_days, pickup_guide: store.pickup_guide },

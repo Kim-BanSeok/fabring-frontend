@@ -9,7 +9,7 @@ export const SELLER_RESERVATION_ACTIONS = {
 };
 export const sellerCanProcess = (status, next) => (status === 'REQUESTED' ? ['ACCEPTED', 'REJECTED'] : status === 'ACCEPTED' ? ['PICKED_UP', 'CANCELED'] : []).includes(next);
 export const sellerReservationPrice = item => item.display_price == null ? '예약 금액 정보 없음' : formatPrice(item.display_price);
-export const sellerReservationQuantity = item => item.sale_type === 'ROLL' ? formatLength(item.requested_length_cm) : '자투리 한 장 전체';
+export const sellerReservationQuantity = item => item.sale_type === 'ROLL' ? formatLength(item.requested_length_cm) : item.requested_sheet_count ? `${item.requested_sheet_count}장` : '자투리 한 장 전체';
 export const sellerRejectDraftKey = id => `seller:reservation-reject:${id}`;
 export const sellerResultKey = id => `seller:reservation-result:${id}`;
 const allowedQuery = ['status', 'fabric', 'fabric_id', 'page', 'size', 'id', 'mode'];

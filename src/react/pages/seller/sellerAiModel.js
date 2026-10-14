@@ -31,7 +31,7 @@ export function aiMessageDisplay(message) {
 export function aiFabricDraft(session, previous = {}) {
   const raw = session?.ai_draft || {}, type = raw.sale_type || '';
   const base = emptyLiveFabricDraft(type);
-  return {
+  const draft = {
     ...base, sale_type: type, title: raw.title ?? '', width_cm: raw.width_cm ?? '',
     length_cm: type === 'ROLL' ? raw.remaining_length_cm ?? '' : raw.length_cm ?? '',
     remaining_length_cm: type === 'ROLL' ? raw.remaining_length_cm ?? '' : null,
@@ -41,12 +41,17 @@ export function aiFabricDraft(session, previous = {}) {
     defect_note: raw.defect_note ?? '', description: raw.description || previous.description || '', color_detail: previous.color_detail || '',
     photos: previous.photos || [],
   };
+  if (type !== 'ROLL') draft.sheet_count = previous.sheet_count ?? '';
+  return draft;
 }
 
 export function changeAiSaleType(draft, type) {
   if (draft.sale_type === type) return draft;
   // A length collected for another sale type requires fresh confirmation.
-  return { ...draft, sale_type: type, length_cm: '', remaining_length_cm: type === 'ROLL' ? '' : null };
+  const next = { ...draft, sale_type: type, length_cm: '', remaining_length_cm: type === 'ROLL' ? '' : null };
+  if (type === 'ROLL') delete next.sheet_count;
+  else next.sheet_count = '';
+  return next;
 }
 
 export function aiSessionSnapshot(session) {

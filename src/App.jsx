@@ -1,6 +1,5 @@
 import { Component, lazy, Suspense, useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
 import AppShell from './react/components/AppShell.jsx';
-import ReviewTools from './react/components/ReviewTools.jsx';
 import { Button, EmptyState } from './react/components/ui.jsx';
 import { NAVIGATION_FOCUS_TARGETS, isFactoryRoute, pageMountKey } from './react/app/store.js';
 
@@ -49,8 +48,7 @@ function RoutePage({ ctx }) {
     const title = loading ? '로그인 정보를 확인하고 있어요' : status === 'unavailable' ? '계정 연결을 확인해 주세요' : status === 'expired' ? '다시 로그인해 주세요' : '로그인이 필요해요';
     return <EmptyState title={title} description={error || (loading ? '잠시만 기다려 주세요.' : status === 'expired' ? '로그인 유효 시간이 지났어요.' : '로그인 후 내 계정의 화면을 이용할 수 있어요.')}>
       {status === 'unavailable' && <Button onClick={ctx.retrySession} tone="primary">다시 연결</Button>}
-      {!loading && <Button href={`/auth/${ctx.role.toLowerCase()}/login?mode=live`} tone="primary">로그인으로 이동</Button>}
-      {import.meta.env.DEV && <Button href="/preview">전체 화면 미리보기</Button>}
+      {!loading && <Button href={`/auth/${ctx.role.toLowerCase()}/login`} tone="primary">로그인으로 이동</Button>}
     </EmptyState>;
   }
   if (ctx.role === 'SELLER') return <SellerPage ctx={ctx} />;
@@ -80,7 +78,7 @@ export default function App({ store }) {
   });
   return <>
     <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); const main = document.getElementById('main-content'); main.tabIndex = -1; main.focus(); }}>본문으로 바로가기</a>
-    <AppShell ctx={ctx} footer={import.meta.env.DEV || snapshot.mode === 'demo' ? <ReviewTools ctx={ctx} onReset={store.reset} /> : null}><PageErrorBoundary key={pageMountKey(snapshot)}><Suspense fallback={<section className="panel" role="status" aria-live="polite">화면을 불러오고 있어요…</section>}><RoutePage ctx={ctx} /></Suspense></PageErrorBoundary></AppShell>
+    <AppShell ctx={ctx}><PageErrorBoundary key={pageMountKey(snapshot)}><Suspense fallback={<section className="panel" role="status" aria-live="polite">화면을 불러오고 있어요…</section>}><RoutePage ctx={ctx} /></Suspense></PageErrorBoundary></AppShell>
     <div className="toast" id="feedback" role="status" aria-live="polite">{snapshot.toast}</div>
   </>;
 }
