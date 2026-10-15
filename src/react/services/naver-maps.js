@@ -24,7 +24,7 @@ export function focusFactoryMarker(map, marker) {
 
 export function loadNaverMaps(clientId, target = window) {
   if (!clientId) return Promise.reject(new Error('지도 연결을 준비하고 있어요. 업체 주소는 목록에서 확인할 수 있어요.'));
-  if (target.naver?.maps?.glEnabled) return Promise.resolve(target.naver.maps);
+  if (target.naver?.maps) return Promise.resolve(target.naver.maps);
   if (loads.get(target)?.key === clientId) return loads.get(target).promise;
   const promise = new Promise((resolve, reject) => {
     const script = target.document.createElement('script');
@@ -47,7 +47,9 @@ export function loadNaverMaps(clientId, target = window) {
     // SDK의 콜백이 같은 스크립트 안에서 maps 전역 공개보다 먼저 실행될 수 있다.
     target[callbackName] = () => queueMicrotask(() => target.naver?.maps ? finish() : failure());
     target.navermap_authFailure = failure;
-    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?${new URLSearchParams({ ncpKeyId: clientId, submodules: 'gl', callback: callbackName })}`;
+    // 일반 Web Dynamic Map으로 로드한다. GL(vector) 모듈은 애플리케이션 설정에
+    // 별도 권한이 필요할 수 있어, 권한이 없는 키에서는 SDK 초기화가 끝나지 않는다.
+    script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?${new URLSearchParams({ ncpKeyId: clientId, callback: callbackName })}`;
     script.async = true;
     script.onerror = failure;
     // 기본 스크립트의 load보다 GL 모듈 완료 콜백을 기다린다.
