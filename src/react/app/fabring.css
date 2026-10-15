@@ -181,6 +181,7 @@ html{background:#fff}
 .buyer-catalog-layout .buyer-filter-grid{grid-template-columns:1fr;gap:17px}
 .buyer-catalog-layout .buyer-filter-panel .actions .button{min-width:0;flex:1;font-size:13px}
 .buyer-catalog-layout .buyer-filter-panel .actions{gap:10px}
+@media(min-width:701px){.buyer-catalog-layout .buyer-filter-toolbar{flex-direction:column;align-items:stretch}.buyer-catalog-layout .buyer-filter-toolbar .actions,.buyer-catalog-layout .buyer-filter-panel form .actions{flex-direction:column;flex-wrap:nowrap}.buyer-catalog-layout .buyer-filter-toolbar .button,.buyer-catalog-layout .buyer-filter-panel form .actions .button{width:100%;flex:none;white-space:normal;word-break:keep-all;text-align:center;justify-content:center}}
 .buyer-catalog-content{min-width:0;display:flex;flex-direction:column;gap:24px}
 .buyer-filter-summary li{border-radius:2px;font-size:12px}
 .buyer-pickup-guide{margin-top:12px;border-top:1px solid #e1e7ef;padding-top:30px}
