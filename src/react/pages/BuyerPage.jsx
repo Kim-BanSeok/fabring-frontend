@@ -10,7 +10,7 @@ import { BuyerLiveInquiries } from './InquiryPages.jsx';
 
 import BuyerBrand from './BuyerBrand.jsx';
 import PatternDraftPanel from './PatternDraft.jsx';
-import { FavoriteList } from './FavoritePages.jsx';
+import { FavoriteButton, FavoriteList } from './FavoritePages.jsx';
 import LiveProfilePage from './LiveProfilePage.jsx';
 import FactorySupplies from './FactorySupplies.jsx';
 import { inquiryFlowPath } from './inquiry-model.js';

@@ -105,12 +105,39 @@ function SellerInfo({ seller }) {
 function FabricInfo({ fabric, compact = false }) {
   return <><div className={compact ? 'admin-selected-product' : 'admin-detail-product'}><PhotoGallery key={fabric.id} fabric={fabric} compact={compact} /><Details entries={fabricRows(fabric).filter(([label]) => label !== '원단명')} className="admin-review-details" /></div>{fabric.description && <><h3>판매자 설명</h3><p className="admin-text-preserve">{fabric.description}</p></>}{fabric.status === 'REJECTED' && <Details entries={[[ '거절 사유', fabric.reject_reason || '등록된 거절 사유 없음' ]]} />}</>;
 }
+function fabricDeletePath(item, listPath) {
+  const itemPath = new URL(adminItemPath('fabrics', item.id, listPath), 'https://admin.local');
+  return adminRoute(itemPath.pathname, { ...Object.fromEntries(itemPath.searchParams), action: 'delete' });
+}
+function FabricDelete({ ctx, item, retry }) {
+  const mutation = useReservationMutation(ctx);
+  const listPath = adminListBack('fabrics', ctx.query, item.status);
+  const back = adminItemPath('fabrics', item.id, listPath);
+  const blocked = mutation.failure?.code === 'FABRIC_HAS_ACTIVE_RESERVATION';
+  function remove() {
+    void mutation.run(async ({ signal, isCurrent }) => {
+      await ctx.api.deleteAdminFabric(item.id, { signal });
+      if (!isCurrent()) return;
+      ctx.navigate(listPath, { replace: true });
+      ctx.notify('원단을 삭제했어요.');
+    });
+  }
+  return <section className="admin-page stack"><PageHeading title="이 원단을 삭제할까요?" description="삭제하면 구매자 목록과 상세에서 사라집니다." />
+    <section className="panel admin-panel stack">
+      <div className="admin-confirm-target"><FabricImage fabric={item} className="admin-fabric-thumbnail" /><div><h2>{item.title}</h2><p>{item.store_name || '매장 정보 없음'}</p><Status status={item.status} /></div></div>
+      <Notice tone="warning">{blocked ? '요청됨 또는 수락됨 예약이 있어 삭제할 수 없어요. 예약을 먼저 마무리해 주세요.' : '실제로 지우지 않고 삭제 표시만 합니다. 진행 중인 예약이 있으면 삭제되지 않습니다.'}</Notice>
+      {mutation.error && !blocked && <Notice tone="error">{mutation.error}</Notice>}
+      <div className="actions admin-actions"><Button onClick={remove} tone="danger" disabled={mutation.busy || blocked}>{mutation.busy ? '삭제 확인 중…' : '원단 삭제 확정'}</Button><Button href={back}>취소 · 상세로 돌아가기</Button>{blocked && <Button onClick={retry}>최신 상태 다시 조회</Button>}</div>
+    </section>
+  </section>;
+}
 function ReviewActions({ ctx, kind, item, origin, listPath, compact = false }) {
   const approved = kind === 'sellers' ? 'APPROVED' : 'POSTED', isSeller = kind === 'sellers';
   const saveScroll = () => ctx.drafts.set('admin:live:scroll:' + origin, window.scrollY);
   return <div className={'actions ' + (compact ? 'admin-review-actions' : 'admin-actions')}>
     {adminCanReview(kind, item, approved) && <Button href={adminReviewPath(kind, item.id, approved, origin, listPath)} onClick={saveScroll} tone="primary">{isSeller ? '판매자 승인' : compact ? '게시글 승인' : '원단 게시 승인'}</Button>}
     {adminCanReview(kind, item, 'REJECTED') && <Button href={adminReviewPath(kind, item.id, 'REJECTED', origin, listPath)} onClick={saveScroll} tone="danger">{isSeller ? '판매자 승인 거절' : compact ? '게시글 거절' : '게시 승인 거절'}</Button>}
+    {!isSeller && <Button href={fabricDeletePath(item, listPath)} onClick={saveScroll} tone="danger">원단 삭제</Button>}
     {!compact && <Button href={listPath}>{isSeller ? '판매자 목록으로' : ctx.query.get('from') === 'approvals' ? '승인 목록으로' : '상품 목록으로'}</Button>}
   </div>;
 }
@@ -200,6 +227,7 @@ function Detail({ ctx, kind, id }) {
   useReviewScroll(ctx, origin, Boolean(item) && !ctx.query.has('action') && !ctx.query.has('result') && !ctx.query.has('preview'));
   if (!item) return <section className="admin-page stack"><PageHeading title={ctx.query.has('result') && operation?.status === 'CONFIRMED' ? '처리를 완료했어요' : kind === 'sellers' ? '판매자 승인 검토' : '등록 원단 상세'} /><AsyncState resource={resource} back={listPath} acknowledgement={ctx.query.has('result') && operation?.status === 'CONFIRMED'} /></section>;
   const seller = kind === 'sellers', next = ctx.query.get('action') === 'reject' ? 'REJECTED' : seller ? 'APPROVED' : 'POSTED';
+  if (ctx.query.get('action') === 'delete' && !seller) return <FabricDelete key={resource.attempt} ctx={ctx} item={item} retry={resource.retry} />;
   if (['approve', 'reject'].includes(ctx.query.get('action'))) return <ReviewConfirmation key={resource.attempt} ctx={ctx} kind={kind} item={item} next={next} retry={resource.retry} />;
   if (ctx.query.has('result')) return <Result ctx={ctx} kind={kind} item={item} operation={operation} retry={resource.retry} />;
   const preview = !seller && ctx.query.has('preview'), status = itemStatus(kind, item);
