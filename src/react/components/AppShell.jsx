@@ -1,6 +1,7 @@
 import { Badge, Button, Notice } from './ui.jsx';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { HOME } from '../app/store.js';
+import PolicyViewer from './PolicyViewer.jsx';
 
 const buyerMainLinks = [['홈', '/buyer/home'], ['브랜드', '/buyer/brand'], ['원단목록', '/buyer/fabrics?sale_type=ALL'], ['부자재 공장 지도', '/buyer/supplies']];
 const buyerAccountLinks = [['구매내역', '/buyer/reservations'], ['문의내역', '/buyer/inquiries'], ['관심 도안', '/buyer/favorites'], ['마이페이지', '/buyer/profile']];
@@ -28,12 +29,14 @@ export function Logo({ role, tag = false }) {
   </a>;
 }
 
-function SiteFooter() {
-  return <footer className="site-footer">
+function SiteFooter({ showPolicies = true }) {
+  const [policyKey, setPolicyKey] = useState(null);
+  return <><footer className="site-footer">
     <div className="site-footer-brand"><strong>패브링</strong><span>양주 원단 매장에 남은 자투리·롤 원단 픽업</span></div>
     <p>운영 고덕한청년 · 2026 양주시 미래인재 AI 공모전 출품작</p>
     <p>부자재 공장 정보 출처: 양주시청 공장등록 자료</p>
-  </footer>;
+    {showPolicies && <nav className="site-footer-policies" aria-label="서비스 약관 및 개인정보 안내"><button type="button" className="policy-link" onClick={() => setPolicyKey('privacy')}>개인정보 안내</button><button type="button" className="policy-link" onClick={() => setPolicyKey('terms')}>이용약관</button></nav>}
+  </footer>{policyKey && <PolicyViewer policyKey={policyKey} onClose={() => setPolicyKey(null)} />}</>;
 }
 
 export default function AppShell({ ctx, children, footer }) {
@@ -53,7 +56,7 @@ export default function AppShell({ ctx, children, footer }) {
   const main = <main className="main-content" id="main-content">{showConnectionScope || showStoreError ? <div className="stack">{showConnectionScope && <Notice>{scopeMessage}</Notice>}{showStoreError && <Notice tone="error">{ctx.state.storeError}</Notice>}{children}</div> : children}</main>;
   if ((path.startsWith('/auth/') && !path.endsWith('/session-expired')) || path === '/preview' || path === '/seller/upload') {
     const classes = path === '/seller/upload' ? 'upload-shell' : `auth-shell${path === '/preview' ? ' preview-shell' : ''}`;
-    return <div className={`shell app-shell ${classes}`}><header className="auth-header"><Logo role={role} tag={path !== '/seller/upload'} /></header>{main}{path.startsWith('/auth/') && <SiteFooter />}{footer}</div>;
+    return <div className={`shell app-shell ${classes}`}><header className="auth-header"><Logo role={role} tag={path !== '/seller/upload'} /></header>{main}{path.startsWith('/auth/') && <SiteFooter showPolicies={false} />}{footer}</div>;
   }
   if (role === 'ADMIN') {
     const approvalScreen = path === '/admin/error' || query.get('from') === 'approvals' || (path.startsWith('/admin/fabrics/') && (query.has('action') || query.has('result')));
@@ -62,13 +65,13 @@ export default function AppShell({ ctx, children, footer }) {
       <MobileMenu links={adminLinks} activePath={activePath} routeKey={`${path}?${query}`} label="관리자" logout={logout} />
       <nav className="admin-nav" aria-label="관리자 메뉴">{adminLinks.map(([label, href]) => <a key={href} className="button" href={`#${href}`} aria-current={activePath.startsWith(href) ? 'page' : undefined}>{label}</a>)}</nav>
       <div className="admin-sidebar-footer"><small>운영 관리자</small><Button data-logout="ADMIN" onClick={logout}>로그아웃</Button></div>
-    </aside><div className="admin-workspace"><header className="admin-topbar"><span>패브링 / 운영 관리</span><Badge>관리자</Badge></header>{main}{footer}</div></div>;
+    </aside><div className="admin-workspace"><header className="admin-topbar"><span>패브링 / 운영 관리</span><Badge>관리자</Badge></header>{main}<SiteFooter />{footer}</div></div>;
   }
   if (role === 'SELLER') return <div className="shell app-shell seller-shell"><aside className="seller-sidebar"><Logo role={role} /><small>판매자 센터</small>
     <MobileMenu links={sellerLinks} activePath={path} routeKey={`${path}?${query}`} label="판매자" logout={logout} />
     <nav className="seller-side-nav" aria-label="판매자 메뉴">{sellerLinks.map(([label, destination]) => <a key={destination} href={`#${destination}`} aria-current={path.startsWith(destination) ? 'page' : undefined}>{label}</a>)}</nav>
     <div className="seller-sidebar-account"><strong>{ctx.state.store?.store_name || ctx.state.seller?.nickname || '내 판매자 계정'}</strong><Button onClick={logout}>로그아웃</Button></div>
-  </aside><div className="seller-workspace"><header className="seller-topbar"><span>판매자 센터 / {sellerLinks.find(([, destination]) => path.startsWith(destination))?.[0] || '원단 관리'}</span><Badge>판매자</Badge></header>{main}{footer}</div></div>;
+  </aside><div className="seller-workspace"><header className="seller-topbar"><span>판매자 센터 / {sellerLinks.find(([, destination]) => path.startsWith(destination))?.[0] || '원단 관리'}</span><Badge>판매자</Badge></header>{main}<SiteFooter />{footer}</div></div>;
   const navLink = ([label, href]) => { const target = href.split('?')[0]; return <a key={href} href={`#${href}`} aria-current={path === target || path.startsWith(`${target}/`) ? 'page' : undefined}>{label}</a>; };
   return <div className="shell app-shell"><header className="site-header"><Logo role={role} tag /><nav className="site-nav" aria-label="구매자 메뉴">{buyerMainLinks.map(navLink)}</nav>
     <nav className="site-account" aria-label="내 계정 메뉴">{buyerAccountLinks.map(navLink)}</nav><MobileMenu links={buyerLinks} activePath={path} routeKey={`${path}?${query}`} label="구매자" logout={logout} /></header>{main}<SiteFooter />{footer}</div>;

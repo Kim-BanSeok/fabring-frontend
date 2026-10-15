@@ -321,6 +321,8 @@ html{background:#fff}
 .site-footer-brand{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;margin-bottom:8px}
 .site-footer-brand strong{color:#fff;font-size:16px;font-weight:600}
 .site-footer-brand span{color:#d5dae2;font-size:13px}
+.site-footer-policies{display:flex;flex-wrap:wrap;gap:8px}
+.site-footer .policy-link{color:#d5dae2}
 .buyer-home-section-heading>.button{gap:6px}
 .buyer-uses-link{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:44px;padding:0;border:0;background:none;color:#2458c6;font-size:14px;cursor:pointer}
 .buyer-uses-link .icon{width:16px;height:16px}

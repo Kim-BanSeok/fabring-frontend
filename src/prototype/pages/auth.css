@@ -52,7 +52,7 @@
 .policy-dialog header h2 { font-size:22px; line-height:32px; }
 .policy-close { min-height:44px; min-width:60px; padding:8px; border:1px solid var(--loop-control-border); border-radius:8px; color:var(--loop-action); background:white; }
 .policy-dialog section { margin-bottom:20px; }
-.policy-dialog section p { white-space:pre-line; }
+.policy-dialog section p { white-space:pre-line; overflow-wrap:anywhere; }
 .policy-dialog > .button { margin-top:24px; }
 @media(max-width:1150px) {
   .auth-layout { padding:40px 32px; gap:32px; }
