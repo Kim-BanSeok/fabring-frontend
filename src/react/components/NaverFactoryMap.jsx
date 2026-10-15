@@ -15,7 +15,7 @@ export default function NaverFactoryMap({ items, selectedId, onSelect, focusSele
       if (!active) return;
       setReadyMap(null);
       maps = sdk;
-      const map = new sdk.Map(element, { center: new sdk.LatLng(37.7853, 127.0458), zoom: 10, gl: true, zoomControl: true, tileDuration: 120 });
+      const map = new sdk.Map(element, { center: new sdk.LatLng(37.7853, 127.0458), zoom: 10, zoomControl: true, tileDuration: 120 });
       mapRef.current = map;
       const onReady = () => { if (active) { setError(''); setReadyMap(map); } };
       // GL 초기화가 끝나야 첫 위치 이동이 초기 카메라 설정에 덮어쓰이지 않는다.

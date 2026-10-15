@@ -95,14 +95,13 @@ test('SDK는 공식 ncpKeyId 주소로 한 번만 로드하고 준비 완료를 
   const url = new URL(scripts[0].src);
   assert.equal(url.hostname, 'oapi.map.naver.com');
   assert.equal(url.searchParams.get('ncpKeyId'), 'test-id');
-  assert.equal(url.searchParams.get('submodules'), 'gl');
+  assert.equal(url.searchParams.get('submodules'), null);
   let resolved = false;
   first.then(() => { resolved = true; });
   browser.naver = { maps: { Map: class {} } };
   scripts[0].onload?.();
   await Promise.resolve();
   assert.equal(resolved, false, '기본 SDK가 로드돼도 GL 모듈 완료 전에는 반환하지 않는다');
-  browser.naver.maps.glEnabled = true;
   browser[url.searchParams.get('callback')]();
   assert.equal(await first, browser.naver.maps);
   assert.equal(timers.size, 0);
