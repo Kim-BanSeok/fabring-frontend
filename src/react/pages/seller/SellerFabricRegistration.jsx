@@ -28,11 +28,11 @@ function RegisterStart({ type }) {
     <p className="muted">{type === 'ROLL' ? '롤 원단은 길이 90cm가 1마로 고정돼요. 실제 원단 폭과 전체 남은 길이를 입력하고, 가격은 1마당 입력해 주세요.' : '직사각형 한 장을 그대로 판매해요. 길이는 1cm 이상의 정수로 입력해 주세요.'}</p>
     <div className="seller-columns seller-methods seller-methods--three">
       <section className="panel seller-panel">
-        <h2>AI와 대화로 등록</h2>
-        <h3>원단에 대해 알려 주세요.</h3>
-        <p className="muted">사진과 소재, 두께, 치수를 입력하면 AI가 상세설명을 써 줘요. 가격과 맞지 않는 항목은 확인 화면에서 고치면 돼요.</p>
-        <Notice>첨부한 사진은 상세설명을 쓸 때 함께 보내요.<br />폭과 길이는 입력한 값을 유지해요.</Notice>
-        <FabricLink path={`/seller/register/ai?step=photos&type=${type}`} tone="primary">AI 등록</FabricLink>
+        <h2>AI가 상세설명 작성</h2>
+        <h3>입력한 정보로 고객용 설명을 만들어요.</h3>
+        <p className="muted">사진과 소재·두께·치수를 바탕으로 AI가 원단 상세설명을 작성해요. 등록 전에 내용을 직접 확인하고 수정할 수 있어요.</p>
+        <Notice>AI는 입력한 정보를 바탕으로 작성해요. 소재·치수·가격은 등록 전에 직접 확인해 주세요.</Notice>
+        <FabricLink path={`/seller/register/ai?step=photos&type=${type}`} tone="primary">AI로 상세설명 작성</FabricLink>
       </section>
       <section className="panel seller-panel">
         <h2>직접 입력</h2>
