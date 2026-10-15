@@ -32,7 +32,7 @@ function RegisterStart({ type }) {
         <h3>입력한 정보로 고객용 설명을 만들어요.</h3>
         <p className="muted">사진과 소재·두께·치수를 바탕으로 AI가 원단 상세설명을 작성해요. 등록 전에 내용을 직접 확인하고 수정할 수 있어요.</p>
         <Notice>AI는 입력한 정보를 바탕으로 작성해요. 소재·치수·가격은 등록 전에 직접 확인해 주세요.</Notice>
-        <FabricLink path={`/seller/register/ai?step=photos&type=${type}`} tone="primary">AI로 상세설명 작성</FabricLink>
+        <FabricLink path={`/seller/register/ai?step=photos&type=${type}`} tone="primary">AI 등록</FabricLink>
       </section>
       <section className="panel seller-panel">
         <h2>직접 입력</h2>
