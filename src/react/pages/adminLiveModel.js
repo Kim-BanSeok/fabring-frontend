@@ -54,7 +54,7 @@ export function adminReviewConfirmed(operation, next, currentStatus) {
 export function adminReviewSignature(kind, item) {
   return JSON.stringify(kind === 'sellers'
     ? [item.id, item.seller_approval_status, item.nickname, item.email, item.phone_number, item.store]
-    : [item.id, item.status, item.title, item.sale_type, item.price, item.remaining_length_cm, item.reserved_length_cm, item.available_length_cm, item.store_name, item.store, item.material, item.thickness, item.color, item.color_detail, item.width_cm, item.length_cm, item.has_defect, item.defect_note, item.blend_ratio, item.weave, item.grain_direction, item.description, item.images]);
+    : [item.id, item.status, item.title, item.sale_type, item.price, item.remaining_length_cm, item.reserved_length_cm, item.available_length_cm, item.store_name, item.store, item.material, item.thickness, item.color, item.color_detail, item.width_cm, item.length_cm, item.has_defect, item.defect_note, item.blend_ratio, item.weave, item.grain_direction, item.description, (item.images || []).map(image => [image.imageId ?? image.image_id ?? image.id, image.image_type, image.sort_order])]);
 }
 function reviewError(code, message) { return Object.assign(new Error(message), { code }); }
 export function adminReviewNeedsRead(error) {

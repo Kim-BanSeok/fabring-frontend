@@ -382,6 +382,14 @@ export function createLiveApi({ baseUrl = '/api/v1', fetchImpl, storage = global
       const { identifier, action, body } = adminReview('fabrics', id, next, reason);
       return adminRequest(`/admin/fabrics/${identifier}/${action}`, { signal, method: 'POST', body, decode: raw => adminReviewResult('fabrics', raw, identifier, next) });
     },
+    async deleteAdminFabric(id, { signal } = {}) {
+      requireSession(['ADMIN']);
+      const identifier = fabricIdentifier(id);
+      return adminRequest(`/fabrics/${identifier}`, { signal, method: 'DELETE', decode: raw => {
+        if (raw !== null) throw new ApiError('INVALID_RESPONSE', '원단을 지웠는지 확인하지 못했어요. 목록을 다시 조회해 주세요.');
+        return { id: identifier };
+      } });
+    },
     async refreshSellerProfile({ signal } = {}) {
       requireSession(['SELLER']);
       const version = storeVersion, profileReadVersion = profileVersion;
